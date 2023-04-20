@@ -19,11 +19,6 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class Authorization : Form
     {
-        public new string log_in
-        {
-            get {return login_tb.Text; }
-            set { login_tb.Text = value; }
-        }
         public Authorization()
         {
             InitializeComponent();
@@ -68,18 +63,11 @@ namespace TeamProject2__ListOfRecommendations
             DataTable table = new DataTable();
 
             adapter.Fill(table);// записываем данные в объект класса DataTable
-
-
-
             if (table.Rows.Count > 0)
             {
-
-                MainForm mainForm = new MainForm();
-
+                ProfileMenagement profileMenagement = new ProfileMenagement(loginUser);
+                MainForm mainForm = new MainForm(loginUser);
                 mainForm.ShowDialog();
-
-
-
             }
 
             else
@@ -154,12 +142,12 @@ namespace TeamProject2__ListOfRecommendations
 
         private void registration_btn_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
+            Registration registration = new Registration(login_tb.Text);
             registration.Show();
         }
         private void forgotpassword_btn_Click(object sender, EventArgs e)
         {
-            PasswordRecovery passwordRecovery = new PasswordRecovery();
+            PasswordRecovery passwordRecovery = new PasswordRecovery(login_tb.Text);
             passwordRecovery.Show();
         }
     }

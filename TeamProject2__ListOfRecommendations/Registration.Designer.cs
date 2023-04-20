@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
             this.registration_lbl = new System.Windows.Forms.Label();
             this.go_btn = new System.Windows.Forms.Button();
-            this.picture_logo = new System.Windows.Forms.PictureBox();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.info_lbl = new System.Windows.Forms.Label();
             this.password_tb = new System.Windows.Forms.TextBox();
             this.login_tb = new System.Windows.Forms.TextBox();
             this.email_tb = new System.Windows.Forms.TextBox();
+            this.picture_logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,15 +62,6 @@
             this.go_btn.Text = "Далее";
             this.go_btn.UseVisualStyleBackColor = false;
             this.go_btn.Click += new System.EventHandler(this.go_btn_Click);
-            // 
-            // picture_logo
-            // 
-            this.picture_logo.Image = ((System.Drawing.Image)(resources.GetObject("picture_logo.Image")));
-            this.picture_logo.Location = new System.Drawing.Point(154, 41);
-            this.picture_logo.Name = "picture_logo";
-            this.picture_logo.Size = new System.Drawing.Size(780, 331);
-            this.picture_logo.TabIndex = 8;
-            this.picture_logo.TabStop = false;
             // 
             // cancel_btn
             // 
@@ -136,6 +127,15 @@
             this.email_tb.Text = "Введите email";
             this.email_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.email_tb.Click += new System.EventHandler(this.email_tb_Click);
+            // 
+            // picture_logo
+            // 
+            this.picture_logo.Image = ((System.Drawing.Image)(resources.GetObject("picture_logo.Image")));
+            this.picture_logo.Location = new System.Drawing.Point(154, 41);
+            this.picture_logo.Name = "picture_logo";
+            this.picture_logo.Size = new System.Drawing.Size(780, 331);
+            this.picture_logo.TabIndex = 8;
+            this.picture_logo.TabStop = false;
             // 
             // Registration
             // 

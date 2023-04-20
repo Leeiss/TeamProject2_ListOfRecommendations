@@ -21,7 +21,7 @@ namespace TeamProject2__ListOfRecommendations
         private List<Label> labels;
 
 
-        public Preferences()
+        public Preferences(string login)
         {
             InitializeComponent();
             timer = new System.Windows.Forms.Timer();
@@ -38,8 +38,9 @@ namespace TeamProject2__ListOfRecommendations
             go_btn.Visible = false;
             timer.Start();
 
+            Login = login;
         }
-
+        public string Login;
         private void timer_Tick(object sender, EventArgs e)
         {
             Label nextLabel = labels.FirstOrDefault(l => !l.Visible);
@@ -52,40 +53,47 @@ namespace TeamProject2__ListOfRecommendations
             {
                 closing_panel.Visible = false;
                 info_lbl4.Visible = true;
-                go_btn.Visible = true;
                 timer.Stop();
             }
 
         }
 
+        
+
         private void Preferences_Load(object sender, EventArgs e)
         {
+            if (this.Tag != null && this.Tag.ToString() == "зарегистрироваться")
+            {
+                go_btn.Text = "Зарегестрироваться";
+            }
+            else if  (this.Tag != null && this.Tag.ToString() == "изменить")
+            {
+                go_btn.Text = "Изменить";
+            }
+        
+
+            genres_list.DrawMode = DrawMode.OwnerDrawFixed;
+            genres_list.DrawItem += genres_list_DrawItem;
+
+            var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            var screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
+
             // Работа с элементами управления на форме
             int buttonOffset = 10; // Размер отступа (10 мм)
             int formWidth = go_btn.Location.X + go_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = go_btn.Location.Y + go_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
             
-            search_btn1.Height = searchCountry_tb.Height;
-            search_btn1.Width = search_btn1.Height;
-            search_btn1.Location = new Point(searchCountry_tb.Right, search_btn1.Top);
+            search_genre_btn.Height = searchGenre_tb.Height;
+            search_genre_btn.Width = search_genre_btn.Height;
+            search_genre_btn.Location = new Point(searchGenre_tb.Right, search_genre_btn.Top);
 
-            search_btn2.Height = searchCountry_tb.Height;
-            search_btn2.Width = search_btn2.Height;
-            search_btn2.Location = new Point(searchGenre_tb.Right, search_btn2.Top);
+            search_actor_btn.Height = searchGenre_tb.Height;
+            search_actor_btn.Width = search_actor_btn.Height;
+            search_actor_btn.Location = new Point(searchActor_tb.Right, search_actor_btn.Top);
 
-            search_btn3.Height = searchCountry_tb.Height;
-            search_btn3.Width = search_btn3.Height;
-            search_btn3.Location = new Point(searchActor_tb.Right, search_btn3.Top);
-
-            search_btn4.Height = searchCountry_tb.Height;
-            search_btn4.Width = search_btn4.Height;
-            search_btn4.Location = new Point(searchDirector_tb.Right, search_btn4.Top);
-        }
-
-        private void searchCountry_tb_Click(object sender, EventArgs e)
-        {
-            searchCountry_tb.Text = "";
         }
 
         private void searchGenre_tb_TextChanged(object sender, EventArgs e)
@@ -103,19 +111,94 @@ namespace TeamProject2__ListOfRecommendations
             searchActor_tb.Text = "";
         }
 
-        private void searchDirector_tb_Click(object sender, EventArgs e)
-        {
-            searchDirector_tb.Text = "";
-        }
-
         private void go_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Вы успешно зарегестрированы!");
-            Preferences preferences = new Preferences();
-            preferences.Show();
+            if (this.Tag != null && this.Tag.ToString() == "зарегистрироваться")
+            {
+                MessageBox.Show("Вы успешно зарегестрированы!");
+                MainForm mainform = new MainForm(Login);
+                mainform.ShowDialog();
+            }
+            else if (this.Tag != null && this.Tag.ToString() == "изменить")
+            {
+                MainForm mainform = new MainForm(Login);
+                mainform.ShowDialog();
+            }
+           
+        }
+       
+        private void search_btn2_Click(object sender, EventArgs e)
+        {
+            //по жанру
+            
         }
 
-        private void countries_list_SelectedIndexChanged(object sender, EventArgs e)
+        private void add_genre_Click(object sender, EventArgs e)
+        {
+            next_btn.Visible = true;
+        }
+
+        private void add_actor_Click(object sender, EventArgs e)
+        {
+            go_btn.Visible = true;
+        }
+
+        private void actors_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            add_actor.Visible = true;
+        }
+
+        private void genres_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            add_genre.Visible = true;
+        }
+
+        private void search_btn3_Click(object sender, EventArgs e)
+        {
+            string searchValue = searchActor_tb.Text.ToLower();
+
+            for (int i = 0; i < genres_list.Items.Count; i++)
+            {
+                string itemText = genres_list.Items[i].ToString().ToLower(); // Получаем значение элемента списка и приводим его к нижнему регистру
+                if (itemText.Contains(searchValue))
+                {
+                    genres_list.SetSelected(i, true); // Выделяем элемент в списке, если он содержит значения из текстового поля
+                }
+                else
+                {
+                    genres_list.SetSelected(i, false); // Убираем выделение, если элемент не содержит значение из текстового поля
+                }
+            }
+        }
+
+        private void next_btn_Click(object sender, EventArgs e)
+        {
+            actors_list.DrawMode = DrawMode.OwnerDrawFixed;
+            actors_list.DrawItem += actors_list_DrawItem;
+
+            next_btn.Visible = false;
+            info_lbl5.Visible = true;
+            genres_list.Visible = false;
+            searchGenre_tb.Visible = false;
+            search_genre_btn.Visible = false;
+            info_lbl4.Visible = false;
+            add_genre.Visible = false;
+            go_btn.Visible = false;
+        }
+
+        private void genres_list_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TextRenderer.DrawText(e.Graphics, genres_list.Items[e.Index].ToString(), e.Font,
+                e.Bounds, e.ForeColor, e.BackColor, TextFormatFlags.HorizontalCenter);
+        }
+
+        private void actors_list_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TextRenderer.DrawText(e.Graphics, actors_list.Items[e.Index].ToString(), e.Font,
+                e.Bounds, e.ForeColor, e.BackColor, TextFormatFlags.HorizontalCenter);
+        }
+
+        private void change_btn_Click(object sender, EventArgs e)
         {
 
         }

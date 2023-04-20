@@ -19,16 +19,19 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class PasswordRecovery : Form
     {
-        public PasswordRecovery()
+        public PasswordRecovery(string login)
         {
             InitializeComponent();
+            Login = login;
         }
+        public string Login;
         public string newPassword;
         public string email;
         public int userId;
         string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
         private void PasswordRecovery_Load(object sender, EventArgs e)
         {
+
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
@@ -101,58 +104,71 @@ namespace TeamProject2__ListOfRecommendations
 
                 if (string.IsNullOrEmpty(email))
                 {
-                    MessageBox.Show("Введите email"); 
+                    MessageBox.Show("Введите email");
                     return;
                 }
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    try
+
+                    connection.Open();
+                    string selectQuery = $"SELECT * FROM `users` WHERE email='{email}'";
+
+                    MySqlCommand command = new MySqlCommand("SELECT id FROM users WHERE email = @Email", connection);
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    object result = command.ExecuteScalar();
+                    if (result == null)
                     {
-                        connection.Open();
-                        string selectQuery = $"SELECT * FROM `users` WHERE email='{email}'";
-
-                        MySqlCommand command = new MySqlCommand("SELECT id FROM users WHERE email = @Email", connection);
-                        command.Parameters.AddWithValue("@Email", email);
-
+                        MessageBox.Show("Введенный вами email неверен");
+                    }
+                    else
+                    {
                         int id = (int)command.ExecuteScalar();
 
-                        MySqlCommand command1 = new MySqlCommand(selectQuery, connection);
+                    }
 
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                    MySqlCommand command1 = new MySqlCommand(selectQuery, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
                         {
-                            if (!reader.HasRows)
-                            {
-                                MessageBox.Show("Пользователь с таким email не найден");
-                                return;
-                            }
+                            return;
+                        }
 
-                            reader.Read();
-                            newPassword = GeneratePassword();
-                            userId = reader.GetInt32(0); // id пользователя в таблице
-                            MessageBox.Show($"{userId}");
-                            info_lbl.Visible = false;
-                            email_tb.Visible = false;
+                        reader.Read();
+                        newPassword = GeneratePassword();
+                        userId = reader.GetInt32(0); // id пользователя в таблице
+                        info_lbl.Visible = false;
+                        email_tb.Visible = false;
+                        reader.Close();
 
+                        MySqlCommand command2 = new MySqlCommand("SELECT id FROM users WHERE login = @Login AND email = @Email", connection);
+                        command2.Parameters.AddWithValue("@Email", email);
+                        command2.Parameters.AddWithValue("@Login", Login);
 
-                            SendEmail(email, newPassword);
-                            MessageBox.Show("На указанный email был отправлен новый пароль");
-
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = command2; // выполняем команду
+                        DataTable table = new DataTable();
+                        
+                        adapter.Fill(table);// записываем данные в объект класса DataTable
+                        if (table.Rows.Count > 0)
+                        {
+                            MessageBox.Show("На указанный email был отправлен код подтверждения");
                             information_lbl.Visible = true;
                             cod_tb.Visible = true;
                             send_btn.Visible = true;
 
-
-
+                            SendEmail(email, newPassword);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка: " + ex.Message);
+                        else
+                        {
+                            MessageBox.Show("Пользователя с такими логином и email нет");
+                        }
                     }
                 }
             }
-
         }
 
         private void cod_tb_Click(object sender, EventArgs e)

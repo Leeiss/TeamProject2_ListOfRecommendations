@@ -39,9 +39,9 @@
             this.information_lbl = new System.Windows.Forms.Label();
             this.cod_tb = new System.Windows.Forms.TextBox();
             this.send_btn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.newpassword_tb = new System.Windows.Forms.TextBox();
             this.changepassword_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,15 +163,6 @@
             this.send_btn.Visible = false;
             this.send_btn.Click += new System.EventHandler(this.send_btn_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(344, 54);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 146);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            // 
             // newpassword_tb
             // 
             this.newpassword_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
@@ -199,6 +190,15 @@
             this.changepassword_btn.UseVisualStyleBackColor = false;
             this.changepassword_btn.Visible = false;
             this.changepassword_btn.Click += new System.EventHandler(this.changepassword_btn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(344, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 146);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
             // 
             // PasswordRecovery
             // 

@@ -20,11 +20,12 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class Registration : Form
     {
-        public Registration()
+        public Registration(string login)
         {
             InitializeComponent();
+            Login = login;  
         }
-
+        public string Login;
         private void password_tb_Click(object sender, EventArgs e)
         {
             password_tb.Text = "";
@@ -114,7 +115,8 @@ namespace TeamProject2__ListOfRecommendations
                     if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Отлично! Приступим к подборке рекомендаций");
-                        Preferences preferences = new Preferences();
+                        Preferences preferences = new Preferences(Login);
+                        preferences.Tag = "зарегистрироваться";
                         preferences.Show();
                     }
                     else
