@@ -46,7 +46,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void go_btn_Click(object sender, EventArgs e)
         {
-            String loginUser = login_tb.Text;// помещаем данные введеные пользователем в переменную
+            String loginUser = login_tb.Text;
             String passUser = password_tb.Text;
 
             DataBase db = new DataBase();
@@ -57,12 +57,12 @@ namespace TeamProject2__ListOfRecommendations
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            adapter.SelectCommand = command; // выполняем команду
+            adapter.SelectCommand = command; 
 
 
             DataTable table = new DataTable();
 
-            adapter.Fill(table);// записываем данные в объект класса DataTable
+            adapter.Fill(table);
             if (table.Rows.Count > 0)
             {
                 ProfileMenagement profileMenagement = new ProfileMenagement(loginUser);
@@ -77,9 +77,6 @@ namespace TeamProject2__ListOfRecommendations
             }
 
         }
-
-    
-
         private void timer_Tick(object sender, EventArgs e)
         {
             info_lbl.Visible = true;

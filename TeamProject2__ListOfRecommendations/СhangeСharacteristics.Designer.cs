@@ -29,18 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(СhangeСharacteristics));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.directrors_list = new System.Windows.Forms.ListBox();
-            this.search_btn4 = new System.Windows.Forms.Button();
             this.searchDirector_tb = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,21 +49,16 @@
             this.year_lbl = new System.Windows.Forms.Label();
             this.save_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.search_btn4 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.frame1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(595, 109);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 146);
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
             // 
             // panel3
             // 
@@ -88,16 +79,6 @@
             this.label3.Size = new System.Drawing.Size(123, 33);
             this.label3.TabIndex = 9;
             this.label3.Text = "Страна";
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(1239, 600);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 37);
-            this.button2.TabIndex = 57;
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -182,16 +163,6 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Актеры";
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(582, 599);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 37);
-            this.button1.TabIndex = 54;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
@@ -230,16 +201,6 @@
             this.directrors_list.Name = "directrors_list";
             this.directrors_list.Size = new System.Drawing.Size(289, 85);
             this.directrors_list.TabIndex = 49;
-            // 
-            // search_btn4
-            // 
-            this.search_btn4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search_btn4.BackgroundImage")));
-            this.search_btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.search_btn4.Location = new System.Drawing.Point(1239, 358);
-            this.search_btn4.Name = "search_btn4";
-            this.search_btn4.Size = new System.Drawing.Size(42, 37);
-            this.search_btn4.TabIndex = 52;
-            this.search_btn4.UseVisualStyleBackColor = true;
             // 
             // searchDirector_tb
             // 
@@ -391,6 +352,45 @@
             this.panel1.Size = new System.Drawing.Size(1378, 13);
             this.panel1.TabIndex = 59;
             // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Location = new System.Drawing.Point(1239, 600);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 37);
+            this.button2.TabIndex = 57;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Location = new System.Drawing.Point(582, 599);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 37);
+            this.button1.TabIndex = 54;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // search_btn4
+            // 
+            this.search_btn4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search_btn4.BackgroundImage")));
+            this.search_btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.search_btn4.Location = new System.Drawing.Point(1239, 358);
+            this.search_btn4.Name = "search_btn4";
+            this.search_btn4.Size = new System.Drawing.Size(42, 37);
+            this.search_btn4.TabIndex = 52;
+            this.search_btn4.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(595, 109);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 146);
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            // 
             // СhangeСharacteristics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -418,8 +418,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "СhangeСharacteristics";
-            this.Text = "СhangeСharacteristics";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "Изменение характеристик";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -428,6 +427,7 @@
             this.panel4.PerformLayout();
             this.frame1.ResumeLayout(false);
             this.frame1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

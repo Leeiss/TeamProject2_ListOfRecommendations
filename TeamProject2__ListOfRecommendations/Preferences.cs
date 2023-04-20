@@ -58,9 +58,7 @@ namespace TeamProject2__ListOfRecommendations
 
         }
 
-        
-
-        private void Preferences_Load(object sender, EventArgs e)
+      private void Preferences_Load(object sender, EventArgs e)
         {
             if (this.Tag != null && this.Tag.ToString() == "зарегистрироваться")
             {
@@ -81,7 +79,7 @@ namespace TeamProject2__ListOfRecommendations
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
 
             // Работа с элементами управления на форме
-            int buttonOffset = 10; // Размер отступа (10 мм)
+            int buttonOffset = 10; 
             int formWidth = go_btn.Location.X + go_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = go_btn.Location.Y + go_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
@@ -93,11 +91,6 @@ namespace TeamProject2__ListOfRecommendations
             search_actor_btn.Height = searchGenre_tb.Height;
             search_actor_btn.Width = search_actor_btn.Height;
             search_actor_btn.Location = new Point(searchActor_tb.Right, search_actor_btn.Top);
-
-        }
-
-        private void searchGenre_tb_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -127,13 +120,7 @@ namespace TeamProject2__ListOfRecommendations
            
         }
        
-        private void search_btn2_Click(object sender, EventArgs e)
-        {
-            //по жанру
-            
-        }
-
-        private void add_genre_Click(object sender, EventArgs e)
+       private void add_genre_Click(object sender, EventArgs e)
         {
             next_btn.Visible = true;
         }
@@ -198,10 +185,7 @@ namespace TeamProject2__ListOfRecommendations
                 e.Bounds, e.ForeColor, e.BackColor, TextFormatFlags.HorizontalCenter);
         }
 
-        private void change_btn_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
 

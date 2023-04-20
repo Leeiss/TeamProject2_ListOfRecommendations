@@ -149,13 +149,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFilm.Designer.cs">
+      <DependentUpon>AddFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="APISearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="APISearch.Designer.cs">
       <DependentUpon>APISearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeCollections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeCollections.Designer.cs">
+      <DependentUpon>ChangeCollections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCollection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCollection.Designer.cs">
+      <DependentUpon>CreateCollection.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
+    <Compile Include="InfoAboutCollection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoAboutCollection.Designer.cs">
+      <DependentUpon>InfoAboutCollection.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordRecovery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,8 +224,26 @@
     <Compile Include="СhangeСharacteristics.Designer.cs">
       <DependentUpon>СhangeСharacteristics.cs</DependentUpon>
     </Compile>
+    <Compile Include="СhooseASelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="СhooseASelection.Designer.cs">
+      <DependentUpon>СhooseASelection.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddFilm.resx">
+      <DependentUpon>AddFilm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="APISearch.resx">
       <DependentUpon>APISearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeCollections.resx">
+      <DependentUpon>ChangeCollections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCollection.resx">
+      <DependentUpon>CreateCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoAboutCollection.resx">
+      <DependentUpon>InfoAboutCollection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -233,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="СhangeСharacteristics.resx">
       <DependentUpon>СhangeСharacteristics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="СhooseASelection.resx">
+      <DependentUpon>СhooseASelection.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

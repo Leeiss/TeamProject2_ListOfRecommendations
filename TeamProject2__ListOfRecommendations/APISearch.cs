@@ -21,7 +21,7 @@ namespace TeamProject2__ListOfRecommendations
         public APISearch()
         {
             InitializeComponent();
-            timer = new System.Windows.Forms.Timer();
+            timer = new Timer();
             timer.Interval = 400;
             timer.Tick += new EventHandler(timer_Tick);
             labels = new List<Label> { info_lbl1, info_lbl2, info_lbl3, info_lbl4 };
@@ -145,19 +145,15 @@ namespace TeamProject2__ListOfRecommendations
             public string Plot { get; set; }
         }
 
-        private void closing_panel_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void APISearch_Load(object sender, EventArgs e)
+       private void APISearch_Load(object sender, EventArgs e)
         {
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
 
-            int buttonOffset = 20; // Размер отступа (10 мм)
+            int buttonOffset = 20; 
             int formWidth = ok_btn.Location.X + ok_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = ok_btn.Location.Y + ok_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
@@ -168,9 +164,6 @@ namespace TeamProject2__ListOfRecommendations
             MessageBox.Show(plot);
         }
 
-        private void info_genre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

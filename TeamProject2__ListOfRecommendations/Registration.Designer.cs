@@ -153,7 +153,7 @@
             this.Controls.Add(this.go_btn);
             this.Controls.Add(this.picture_logo);
             this.Name = "Registration";
-            this.Text = "Registration";
+            this.Text = "Регистрация";
             this.Load += new System.EventHandler(this.Registration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).EndInit();
             this.ResumeLayout(false);

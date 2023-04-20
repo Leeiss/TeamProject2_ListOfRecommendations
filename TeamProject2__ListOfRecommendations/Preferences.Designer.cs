@@ -104,7 +104,6 @@
             this.searchGenre_tb.TabIndex = 23;
             this.searchGenre_tb.Text = "Поиск по списку..";
             this.searchGenre_tb.Click += new System.EventHandler(this.searchGenre_tb_Click);
-            this.searchGenre_tb.TextChanged += new System.EventHandler(this.searchGenre_tb_TextChanged);
             // 
             // searchActor_tb
             // 
@@ -298,7 +297,6 @@
             this.search_genre_btn.Size = new System.Drawing.Size(41, 37);
             this.search_genre_btn.TabIndex = 25;
             this.search_genre_btn.UseVisualStyleBackColor = true;
-            this.search_genre_btn.Click += new System.EventHandler(this.search_btn2_Click);
             // 
             // search_actor_btn
             // 

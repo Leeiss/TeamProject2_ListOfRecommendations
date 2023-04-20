@@ -141,8 +141,6 @@ namespace TeamProject2__ListOfRecommendations
         {
             email_tb.Text = string.Empty;
         }
-
-        
     }
 }
 

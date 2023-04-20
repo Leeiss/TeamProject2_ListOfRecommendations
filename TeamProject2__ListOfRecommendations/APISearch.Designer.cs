@@ -38,9 +38,11 @@
             this.info_lbl4 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.closing_panel = new System.Windows.Forms.Panel();
-            this.search_tb = new System.Windows.Forms.TextBox();
-            this.search_btn1 = new System.Windows.Forms.Button();
-            this.frame_searching = new System.Windows.Forms.PictureBox();
+            this.show_plot_btn = new System.Windows.Forms.Button();
+            this.info_country = new System.Windows.Forms.RichTextBox();
+            this.substrate5 = new System.Windows.Forms.Panel();
+            this.country_lbl = new System.Windows.Forms.Label();
+            this.info_title = new System.Windows.Forms.Label();
             this.info_mark = new System.Windows.Forms.RichTextBox();
             this.info_year = new System.Windows.Forms.RichTextBox();
             this.info_actors = new System.Windows.Forms.RichTextBox();
@@ -53,20 +55,18 @@
             this.genre_lbl = new System.Windows.Forms.Label();
             this.substrate3 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
+            this.search_tb = new System.Windows.Forms.TextBox();
             this.image_poster = new System.Windows.Forms.PictureBox();
-            this.info_title = new System.Windows.Forms.Label();
-            this.info_country = new System.Windows.Forms.RichTextBox();
-            this.substrate5 = new System.Windows.Forms.Panel();
-            this.country_lbl = new System.Windows.Forms.Label();
-            this.show_plot_btn = new System.Windows.Forms.Button();
+            this.search_btn1 = new System.Windows.Forms.Button();
+            this.frame_searching = new System.Windows.Forms.PictureBox();
             this.closing_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
+            this.substrate5.SuspendLayout();
             this.substrate4.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
             this.substrate3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
-            this.substrate5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             this.SuspendLayout();
             // 
             // info_lbl1
@@ -161,45 +161,62 @@
             this.closing_panel.Size = new System.Drawing.Size(1484, 930);
             this.closing_panel.TabIndex = 44;
             this.closing_panel.Visible = false;
-            this.closing_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.closing_panel_Paint);
             // 
-            // search_tb
+            // show_plot_btn
             // 
-            this.search_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.search_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.search_tb.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.search_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.search_tb.Location = new System.Drawing.Point(528, 39);
-            this.search_tb.Name = "search_tb";
-            this.search_tb.Size = new System.Drawing.Size(378, 38);
-            this.search_tb.TabIndex = 31;
-            this.search_tb.TabStop = false;
-            this.search_tb.Text = "Поиск фильмов";
-            this.search_tb.Click += new System.EventHandler(this.search_tb_Click);
-            this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
-            this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
+            this.show_plot_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.show_plot_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.show_plot_btn.Location = new System.Drawing.Point(960, 859);
+            this.show_plot_btn.Name = "show_plot_btn";
+            this.show_plot_btn.Size = new System.Drawing.Size(256, 48);
+            this.show_plot_btn.TabIndex = 88;
+            this.show_plot_btn.Text = "Краткий сюжет";
+            this.show_plot_btn.UseVisualStyleBackColor = false;
+            this.show_plot_btn.Click += new System.EventHandler(this.show_plot_btn_Click);
             // 
-            // search_btn1
+            // info_country
             // 
-            this.search_btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.search_btn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search_btn1.BackgroundImage")));
-            this.search_btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.search_btn1.Location = new System.Drawing.Point(906, 35);
-            this.search_btn1.Name = "search_btn1";
-            this.search_btn1.Size = new System.Drawing.Size(52, 48);
-            this.search_btn1.TabIndex = 32;
-            this.search_btn1.UseVisualStyleBackColor = false;
-            this.search_btn1.Click += new System.EventHandler(this.search_btn1_Click);
+            this.info_country.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.info_country.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.info_country.Font = new System.Drawing.Font("XO Courser", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.info_country.ForeColor = System.Drawing.Color.DarkGray;
+            this.info_country.Location = new System.Drawing.Point(997, 595);
+            this.info_country.Name = "info_country";
+            this.info_country.ReadOnly = true;
+            this.info_country.Size = new System.Drawing.Size(337, 102);
+            this.info_country.TabIndex = 87;
+            this.info_country.Text = "";
             // 
-            // frame_searching
+            // substrate5
             // 
-            this.frame_searching.Image = ((System.Drawing.Image)(resources.GetObject("frame_searching.Image")));
-            this.frame_searching.Location = new System.Drawing.Point(522, 35);
-            this.frame_searching.Name = "frame_searching";
-            this.frame_searching.Size = new System.Drawing.Size(395, 50);
-            this.frame_searching.TabIndex = 33;
-            this.frame_searching.TabStop = false;
-            this.frame_searching.Visible = false;
+            this.substrate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.substrate5.Controls.Add(this.country_lbl);
+            this.substrate5.Location = new System.Drawing.Point(799, 601);
+            this.substrate5.Name = "substrate5";
+            this.substrate5.Size = new System.Drawing.Size(190, 96);
+            this.substrate5.TabIndex = 86;
+            // 
+            // country_lbl
+            // 
+            this.country_lbl.AutoSize = true;
+            this.country_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.country_lbl.Location = new System.Drawing.Point(9, 17);
+            this.country_lbl.Name = "country_lbl";
+            this.country_lbl.Size = new System.Drawing.Size(123, 33);
+            this.country_lbl.TabIndex = 9;
+            this.country_lbl.Text = "Страна";
+            // 
+            // info_title
+            // 
+            this.info_title.AutoSize = true;
+            this.info_title.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.info_title.Location = new System.Drawing.Point(788, 122);
+            this.info_title.Name = "info_title";
+            this.info_title.Size = new System.Drawing.Size(183, 57);
+            this.info_title.TabIndex = 45;
+            this.info_title.Text = "фильм";
+            this.info_title.Visible = false;
             // 
             // info_mark
             // 
@@ -209,6 +226,7 @@
             this.info_mark.ForeColor = System.Drawing.Color.DarkGray;
             this.info_mark.Location = new System.Drawing.Point(997, 727);
             this.info_mark.Name = "info_mark";
+            this.info_mark.ReadOnly = true;
             this.info_mark.Size = new System.Drawing.Size(337, 102);
             this.info_mark.TabIndex = 83;
             this.info_mark.Text = "";
@@ -221,6 +239,7 @@
             this.info_year.ForeColor = System.Drawing.Color.DarkGray;
             this.info_year.Location = new System.Drawing.Point(996, 468);
             this.info_year.Name = "info_year";
+            this.info_year.ReadOnly = true;
             this.info_year.Size = new System.Drawing.Size(337, 96);
             this.info_year.TabIndex = 82;
             this.info_year.Text = "";
@@ -233,6 +252,7 @@
             this.info_actors.ForeColor = System.Drawing.Color.DarkGray;
             this.info_actors.Location = new System.Drawing.Point(996, 327);
             this.info_actors.Name = "info_actors";
+            this.info_actors.ReadOnly = true;
             this.info_actors.Size = new System.Drawing.Size(337, 102);
             this.info_actors.TabIndex = 81;
             this.info_actors.Text = "";
@@ -245,10 +265,10 @@
             this.info_genre.ForeColor = System.Drawing.Color.DarkGray;
             this.info_genre.Location = new System.Drawing.Point(996, 204);
             this.info_genre.Name = "info_genre";
+            this.info_genre.ReadOnly = true;
             this.info_genre.Size = new System.Drawing.Size(337, 102);
             this.info_genre.TabIndex = 80;
             this.info_genre.Text = "";
-            this.info_genre.TextChanged += new System.EventHandler(this.info_genre_TextChanged);
             // 
             // substrate4
             // 
@@ -326,6 +346,22 @@
             this.year_lbl.TabIndex = 9;
             this.year_lbl.Text = "Год";
             // 
+            // search_tb
+            // 
+            this.search_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.search_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.search_tb.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.search_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.search_tb.Location = new System.Drawing.Point(528, 39);
+            this.search_tb.Name = "search_tb";
+            this.search_tb.Size = new System.Drawing.Size(378, 38);
+            this.search_tb.TabIndex = 31;
+            this.search_tb.TabStop = false;
+            this.search_tb.Text = "Поиск фильмов";
+            this.search_tb.Click += new System.EventHandler(this.search_tb_Click);
+            this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
+            this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
+            // 
             // image_poster
             // 
             this.image_poster.Location = new System.Drawing.Point(69, 126);
@@ -334,60 +370,27 @@
             this.image_poster.TabIndex = 85;
             this.image_poster.TabStop = false;
             // 
-            // info_title
+            // search_btn1
             // 
-            this.info_title.AutoSize = true;
-            this.info_title.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_title.Location = new System.Drawing.Point(788, 122);
-            this.info_title.Name = "info_title";
-            this.info_title.Size = new System.Drawing.Size(183, 57);
-            this.info_title.TabIndex = 45;
-            this.info_title.Text = "фильм";
-            this.info_title.Visible = false;
+            this.search_btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.search_btn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search_btn1.BackgroundImage")));
+            this.search_btn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.search_btn1.Location = new System.Drawing.Point(906, 35);
+            this.search_btn1.Name = "search_btn1";
+            this.search_btn1.Size = new System.Drawing.Size(52, 48);
+            this.search_btn1.TabIndex = 32;
+            this.search_btn1.UseVisualStyleBackColor = false;
+            this.search_btn1.Click += new System.EventHandler(this.search_btn1_Click);
             // 
-            // info_country
+            // frame_searching
             // 
-            this.info_country.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.info_country.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.info_country.Font = new System.Drawing.Font("XO Courser", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.info_country.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_country.Location = new System.Drawing.Point(997, 595);
-            this.info_country.Name = "info_country";
-            this.info_country.Size = new System.Drawing.Size(337, 102);
-            this.info_country.TabIndex = 87;
-            this.info_country.Text = "";
-            // 
-            // substrate5
-            // 
-            this.substrate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.substrate5.Controls.Add(this.country_lbl);
-            this.substrate5.Location = new System.Drawing.Point(799, 601);
-            this.substrate5.Name = "substrate5";
-            this.substrate5.Size = new System.Drawing.Size(190, 96);
-            this.substrate5.TabIndex = 86;
-            // 
-            // country_lbl
-            // 
-            this.country_lbl.AutoSize = true;
-            this.country_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.country_lbl.Location = new System.Drawing.Point(9, 17);
-            this.country_lbl.Name = "country_lbl";
-            this.country_lbl.Size = new System.Drawing.Size(123, 33);
-            this.country_lbl.TabIndex = 9;
-            this.country_lbl.Text = "Страна";
-            // 
-            // show_plot_btn
-            // 
-            this.show_plot_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.show_plot_btn.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.show_plot_btn.Location = new System.Drawing.Point(960, 859);
-            this.show_plot_btn.Name = "show_plot_btn";
-            this.show_plot_btn.Size = new System.Drawing.Size(256, 48);
-            this.show_plot_btn.TabIndex = 88;
-            this.show_plot_btn.Text = "Краткий сюжет";
-            this.show_plot_btn.UseVisualStyleBackColor = false;
-            this.show_plot_btn.Click += new System.EventHandler(this.show_plot_btn_Click);
+            this.frame_searching.Image = ((System.Drawing.Image)(resources.GetObject("frame_searching.Image")));
+            this.frame_searching.Location = new System.Drawing.Point(522, 35);
+            this.frame_searching.Name = "frame_searching";
+            this.frame_searching.Size = new System.Drawing.Size(395, 50);
+            this.frame_searching.TabIndex = 33;
+            this.frame_searching.TabStop = false;
+            this.frame_searching.Visible = false;
             // 
             // APISearch
             // 
@@ -407,7 +410,8 @@
             this.Load += new System.EventHandler(this.APISearch_Load);
             this.closing_panel.ResumeLayout(false);
             this.closing_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
+            this.substrate5.ResumeLayout(false);
+            this.substrate5.PerformLayout();
             this.substrate4.ResumeLayout(false);
             this.substrate4.PerformLayout();
             this.substrate2.ResumeLayout(false);
@@ -417,8 +421,7 @@
             this.substrate3.ResumeLayout(false);
             this.substrate3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
-            this.substrate5.ResumeLayout(false);
-            this.substrate5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
