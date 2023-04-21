@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.info_lbl1 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.collections_list = new System.Windows.Forms.ListBox();
             this.add_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -44,20 +44,21 @@
             this.info_lbl1.TabIndex = 76;
             this.info_lbl1.Text = "Выберите подборку:";
             // 
-            // listBox2
+            // collections_list
             // 
-            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listBox2.Font = new System.Drawing.Font("XO Courser", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 36;
-            this.listBox2.Items.AddRange(new object[] {
+            this.collections_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.collections_list.Font = new System.Drawing.Font("XO Courser", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.collections_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.collections_list.FormattingEnabled = true;
+            this.collections_list.ItemHeight = 36;
+            this.collections_list.Items.AddRange(new object[] {
             "Избранное ",
             "Фильмы дня"});
-            this.listBox2.Location = new System.Drawing.Point(49, 206);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(617, 364);
-            this.listBox2.TabIndex = 103;
+            this.collections_list.Location = new System.Drawing.Point(49, 206);
+            this.collections_list.Name = "collections_list";
+            this.collections_list.Size = new System.Drawing.Size(617, 364);
+            this.collections_list.TabIndex = 103;
+            this.collections_list.SelectedIndexChanged += new System.EventHandler(this.collections_list_SelectedIndexChanged);
             // 
             // add_btn
             // 
@@ -69,6 +70,7 @@
             this.add_btn.TabIndex = 104;
             this.add_btn.Text = "Добавить";
             this.add_btn.UseVisualStyleBackColor = false;
+            this.add_btn.Visible = false;
             // 
             // СhooseCollection
             // 
@@ -77,7 +79,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(707, 696);
             this.Controls.Add(this.add_btn);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.collections_list);
             this.Controls.Add(this.info_lbl1);
             this.Name = "СhooseCollection";
             this.Text = "Выбор подборки";
@@ -90,7 +92,7 @@
         #endregion
 
         private System.Windows.Forms.Label info_lbl1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox collections_list;
         private System.Windows.Forms.Button add_btn;
     }
 }

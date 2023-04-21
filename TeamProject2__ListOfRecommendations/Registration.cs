@@ -22,10 +22,9 @@ namespace TeamProject2__ListOfRecommendations
     {
         public Registration(string login)
         {
-            InitializeComponent();
-            Login = login;  
+            InitializeComponent(); 
         }
-        public string Login;
+        private int AdminRight = 0;
         private void password_tb_Click(object sender, EventArgs e)
         {
             password_tb.Text = "";
@@ -52,7 +51,7 @@ namespace TeamProject2__ListOfRecommendations
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
         }
 
-        private void go_btn_Click(object sender, EventArgs e)
+        private void SendEmail()
         {
             // Отправляем письмо об успешной регистрации
             MailMessage mail = new MailMessage();
@@ -83,7 +82,10 @@ namespace TeamProject2__ListOfRecommendations
                 MessageBox.Show("Такого почтового ящика не существует");
             }
 
+        }
 
+        private void go_btn_Click(object sender, EventArgs e)
+        {
             if (login_tb.Text != "" & password_tb.Text != "")
             {
                 DataBase db = new DataBase();
@@ -106,17 +108,18 @@ namespace TeamProject2__ListOfRecommendations
 
                 if (table1.Rows.Count == 0 && table2.Rows.Count == 0)
                 {
-                    MySqlCommand command = new MySqlCommand("INSERT INTO users (`login`, `password`, `email`) VALUES(@login, @password, @email)", db.GetConnection());
+                    MySqlCommand command = new MySqlCommand("INSERT INTO users (`login`, `password`, `email`, `admin_rights`) VALUES(@login, @password, @email, @admin_rights)", db.GetConnection());
                     command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login_tb.Text;
                     command.Parameters.Add("@password", MySqlDbType.VarChar).Value = password_tb.Text;
                     command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_tb.Text;
-                    
-                    
+                    command.Parameters.Add("@admin_rights", MySqlDbType.VarChar).Value = AdminRight;
+
                     if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Отлично! Приступим к подборке рекомендаций");
-                        Preferences preferences = new Preferences(Login);
+                        Preferences preferences = new Preferences(login_tb.Text);
                         preferences.Tag = "зарегистрироваться";
+                        SendEmail();
                         preferences.Show();
                     }
                     else
@@ -140,6 +143,64 @@ namespace TeamProject2__ListOfRecommendations
         private void email_tb_Click(object sender, EventArgs e)
         {
             email_tb.Text = string.Empty;
+        }
+
+        private void cancel_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void administration_btn_MouseEnter(object sender, EventArgs e)
+        {
+            administration_btn.ForeColor = Color.FromArgb(197, 210, 219);
+        }
+
+       private void administration_btn_MouseLeave(object sender, EventArgs e)
+        {
+            administration_btn.ForeColor = Color.FromArgb(133, 162, 167);
+        }
+
+        private void administration_btn_Click(object sender, EventArgs e)
+        {
+            close_panel.Visible = true;
+            admin_btn.Visible = true;
+            admin_password_tb.Visible = true;
+            info_lbl1.Visible = true;
+            adminrights_btn_cancel.Visible = true;
+        }
+
+        private void admin_btn_Click(object sender, EventArgs e)
+        {
+            close_panel.Visible = false;
+            admin_btn.Visible = false;
+            admin_password_tb.Visible = false;
+            info_lbl1.Visible = false;
+            adminrights_btn_cancel.Visible = false;
+
+
+            if (admin_password_tb.Text.Equals(string.Empty)) 
+            {
+                MessageBox.Show("Вы ничего не ввели");
+            }
+            else if (admin_password_tb.Text.Equals("admin"))
+            {
+                AdminRight = 1;
+                admin_btn.Visible = false;
+                MessageBox.Show("Права админа подтверждены");
+            }
+            else
+            {
+                MessageBox.Show("Пароль неверный");
+            }
+        }
+
+        private void adminrights_btn_cancel_Click(object sender, EventArgs e)
+        {
+            close_panel.Visible = false;
+            admin_btn.Visible = false;
+            admin_password_tb.Visible = false;
+            info_lbl1.Visible = false;
+            adminrights_btn_cancel.Visible = false;
         }
     }
 }

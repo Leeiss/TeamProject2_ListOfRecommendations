@@ -49,9 +49,6 @@
             this.year_lbl = new System.Windows.Forms.Label();
             this.save_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.search_btn4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -86,7 +83,7 @@
             this.textBox2.Font = new System.Drawing.Font("XO Courser", 9F);
             this.textBox2.Location = new System.Drawing.Point(992, 601);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(249, 35);
+            this.textBox2.Size = new System.Drawing.Size(289, 35);
             this.textBox2.TabIndex = 56;
             this.textBox2.Text = "Поиск по списку..";
             // 
@@ -127,7 +124,7 @@
             this.textBox1.Font = new System.Drawing.Font("XO Courser", 9F);
             this.textBox1.Location = new System.Drawing.Point(335, 600);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(249, 35);
+            this.textBox1.Size = new System.Drawing.Size(289, 35);
             this.textBox1.TabIndex = 53;
             this.textBox1.Text = "Поиск по списку..";
             // 
@@ -167,7 +164,7 @@
             this.searchDirector_tb.Font = new System.Drawing.Font("XO Courser", 9F);
             this.searchDirector_tb.Location = new System.Drawing.Point(988, 360);
             this.searchDirector_tb.Name = "searchDirector_tb";
-            this.searchDirector_tb.Size = new System.Drawing.Size(249, 35);
+            this.searchDirector_tb.Size = new System.Drawing.Size(293, 35);
             this.searchDirector_tb.TabIndex = 51;
             this.searchDirector_tb.Text = "Поиск по списку..";
             // 
@@ -197,6 +194,213 @@
             this.countries_list.Font = new System.Drawing.Font("XO Courser", 9F);
             this.countries_list.FormattingEnabled = true;
             this.countries_list.ItemHeight = 27;
+            this.countries_list.Items.AddRange(new object[] {
+            "Австралия ",
+            "Австрия ",
+            "Азербайджан ",
+            "Албания ",
+            "Алжир ",
+            "Англия ",
+            "Ангилья ",
+            "Ангола ",
+            "Андорра ",
+            "Антигуа и Барбуда ",
+            "Аргентина ",
+            "Армения ",
+            "Аруба ",
+            "Багамы ",
+            "Бангладеш ",
+            "Барбадос ",
+            "Бахрейн ",
+            "Беларусь ",
+            "Белиз ",
+            "Бельгия ",
+            "Бенин ",
+            "Бермудские Острова ",
+            "Болгария ",
+            "Боливия ",
+            "Босния и Герцеговина ",
+            "Ботсвана ",
+            "Бразилия ",
+            "Бруней ",
+            "Буркина-Фасо ",
+            "Бурунди ",
+            "Вануату ",
+            "Великобритания ",
+            "Венгрия ",
+            "Венесуэла ",
+            "Вьетнам ",
+            "Габон ",
+            "Гаити ",
+            "Гайана ",
+            "Гамбия ",
+            "Гана ",
+            "Гваделупа ",
+            "Гватемала ",
+            "Гвинея ",
+            "Гвинея-Бисау ",
+            "Германия ",
+            "Гибралтар ",
+            "Гондурас ",
+            "Гренада ",
+            "Гренландия ",
+            "Греция ",
+            "Грузия ",
+            "Дания ",
+            "Джерси ",
+            "Джибути ",
+            "Доминика ",
+            "Доминиканская Республика ",
+            "Египет ",
+            "Замбия ",
+            "Западная Сахара ",
+            "Зимбабве ",
+            "Израиль ",
+            "Индия ",
+            "Индонезия ",
+            "Иордания ",
+            "Ирак ",
+            "Иран ",
+            "Ирландия ",
+            "Исландия ",
+            "Испания ",
+            "Италия ",
+            "Йемен ",
+            "Кабо-Верде ",
+            "Казахстан ",
+            "Камбоджа ",
+            "Камерун ",
+            "Канада ",
+            "Катар ",
+            "Кения ",
+            "Кипр ",
+            "Киргизия ",
+            "Китай ",
+            "Колумбия ",
+            "Коморы ",
+            "Коста-Рика ",
+            "Кот-д\'Ивуар ",
+            "Куба ",
+            "Кувейт ",
+            "Лаос ",
+            "Латвия ",
+            "Лесото ",
+            "Либерия ",
+            "Ливан ",
+            "Ливия ",
+            "Литва ",
+            "Лихтенштейн ",
+            "Люксембург ",
+            "Маврикий ",
+            "Мавритания ",
+            "Мадагаскар ",
+            "Македония ",
+            "Малави ",
+            "Малайзия ",
+            "Мали ",
+            "Мальдивы ",
+            "Мальта ",
+            "Марокко ",
+            "Мартиника ",
+            "Мексика ",
+            "Микронезия ",
+            "Мозамбик ",
+            "Молдова ",
+            "Монако ",
+            "Монголия ",
+            "Монтсеррат ",
+            "Мьянма ",
+            "Намибия ",
+            "Непал ",
+            "Нигер ",
+            "Нигерия ",
+            "Нидерланды ",
+            "Никарагуа ",
+            "Новая Зеландия ",
+            "Новая Каледония ",
+            "Норвегия ",
+            "Объединенные Арабские Эмираты ",
+            "Оман ",
+            "Остров Мэн ",
+            "Острова Кука ",
+            "Острова Теркс и Кайкос ",
+            "Острова Уоллис и Футуна ",
+            "Пакистан ",
+            "Палау ",
+            "Палестина ",
+            "Панама ",
+            "Папуа – Новая Гвинея ",
+            "Парагвай ",
+            "Перу ",
+            "Польша ",
+            "Португалия ",
+            "Пуэрто-Рико ",
+            "Реюньон ",
+            "Россия ",
+            "Руанда ",
+            "Румыния ",
+            "Сальвадор ",
+            "Самоа ",
+            "Сан-Марино ",
+            "Сан-Томе и Принсипи ",
+            "Саудовская Аравия ",
+            "Святая Люсия ",
+            "Святой Винсент и Гренадины ",
+            "Северные Марианские острова ",
+            "Сенегал ",
+            "Сент-Китс и Невис ",
+            "Сент-Люсия ",
+            "Сербия ",
+            "Сейшельские Острова ",
+            "Сен-Пьер и Микелон ",
+            "Сингапур ",
+            "Сирия ",
+            "Словакия ",
+            "Словения ",
+            "Сомали ",
+            "Судан ",
+            "Суринам ",
+            "США ",
+            "Сьерра-Леоне ",
+            "Таджикистан ",
+            "Таиланд ",
+            "Танзания ",
+            "Того ",
+            "Токелау ",
+            "Тонга ",
+            "Тринидад и Тобаго ",
+            "Тувалу ",
+            "Тунис ",
+            "Туркменистан ",
+            "Турция ",
+            "Уганда ",
+            "Узбекистан ",
+            "Украина ",
+            "Уругвай ",
+            "Фиджи ",
+            "Филиппины ",
+            "Финляндия ",
+            "Франция ",
+            "Французская Гвиана ",
+            "Французская Полинезия ",
+            "Хорватия ",
+            "Центральноафриканская Республика ",
+            "Чад ",
+            "Черногория ",
+            "Чехия ",
+            "Чили ",
+            "Швейцария ",
+            "Швеция ",
+            "Шри-Ланка ",
+            "Эквадор ",
+            "Экваториальная Гвинея ",
+            "Эритрея ",
+            "Эстония ",
+            "Эфиопия ",
+            "Южная Африка ",
+            "Южная Корея ",
+            "Ямайка ",
+            "Япония"});
             this.countries_list.Location = new System.Drawing.Point(988, 401);
             this.countries_list.Name = "countries_list";
             this.countries_list.Size = new System.Drawing.Size(293, 85);
@@ -281,42 +485,13 @@
             this.panel1.Size = new System.Drawing.Size(1378, 13);
             this.panel1.TabIndex = 59;
             // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(1239, 600);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 37);
-            this.button2.TabIndex = 57;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(582, 599);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 37);
-            this.button1.TabIndex = 54;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // search_btn4
-            // 
-            this.search_btn4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search_btn4.BackgroundImage")));
-            this.search_btn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.search_btn4.Location = new System.Drawing.Point(1239, 358);
-            this.search_btn4.Name = "search_btn4";
-            this.search_btn4.Size = new System.Drawing.Size(42, 37);
-            this.search_btn4.TabIndex = 52;
-            this.search_btn4.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(595, 109);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(144, 146);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
@@ -328,14 +503,11 @@
             this.ClientSize = new System.Drawing.Size(1339, 936);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.actors_list);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.directrors_list);
-            this.Controls.Add(this.search_btn4);
             this.Controls.Add(this.searchDirector_tb);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.countries_list);
@@ -367,15 +539,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox actors_list;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox directrors_list;
-        private System.Windows.Forms.Button search_btn4;
         private System.Windows.Forms.TextBox searchDirector_tb;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;

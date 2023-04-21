@@ -58,15 +58,10 @@
             this.substrate6 = new System.Windows.Forms.Panel();
             this.actors_lbl = new System.Windows.Forms.Label();
             this.add_actor_btn = new System.Windows.Forms.Label();
-            this.add_country_btn = new System.Windows.Forms.Label();
             this.closing_actors = new System.Windows.Forms.Panel();
-            this.closing_countries = new System.Windows.Forms.Panel();
-            this.actor_tb = new System.Windows.Forms.TextBox();
-            this.add_actor_in_list_btn = new System.Windows.Forms.Button();
             this.cancel_btn2 = new System.Windows.Forms.Button();
-            this.cancel_btn = new System.Windows.Forms.Button();
-            this.add_country_in_list_btn = new System.Windows.Forms.Button();
-            this.country_tb = new System.Windows.Forms.TextBox();
+            this.add_actor_in_list_btn = new System.Windows.Forms.Button();
+            this.actor_tb = new System.Windows.Forms.TextBox();
             this.substrate1.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate4.SuspendLayout();
@@ -75,7 +70,6 @@
             this.substrate5.SuspendLayout();
             this.substrate6.SuspendLayout();
             this.closing_actors.SuspendLayout();
-            this.closing_countries.SuspendLayout();
             this.SuspendLayout();
             // 
             // upper_panel
@@ -205,7 +199,7 @@
             "Фильм-катастрофа"});
             this.genres_list.Location = new System.Drawing.Point(326, 588);
             this.genres_list.Name = "genres_list";
-            this.genres_list.Size = new System.Drawing.Size(289, 85);
+            this.genres_list.Size = new System.Drawing.Size(289, 139);
             this.genres_list.TabIndex = 83;
             this.genres_list.SelectedIndexChanged += new System.EventHandler(this.genres_list_SelectedIndexChanged);
             // 
@@ -234,7 +228,7 @@
             this.substrate8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.substrate8.Controls.Add(this.year_lbl);
-            this.substrate8.Location = new System.Drawing.Point(704, 815);
+            this.substrate8.Location = new System.Drawing.Point(715, 846);
             this.substrate8.Name = "substrate8";
             this.substrate8.Size = new System.Drawing.Size(238, 58);
             this.substrate8.TabIndex = 76;
@@ -254,7 +248,7 @@
             this.add_genre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.add_genre.Font = new System.Drawing.Font("XO Courser", 8F);
             this.add_genre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_genre.Location = new System.Drawing.Point(458, 679);
+            this.add_genre.Location = new System.Drawing.Point(462, 733);
             this.add_genre.Name = "add_genre";
             this.add_genre.Size = new System.Drawing.Size(153, 42);
             this.add_genre.TabIndex = 92;
@@ -283,7 +277,7 @@
             this.selected_date.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.selected_date.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.selected_date.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.selected_date.Location = new System.Drawing.Point(1034, 829);
+            this.selected_date.Location = new System.Drawing.Point(1045, 860);
             this.selected_date.Name = "selected_date";
             this.selected_date.Size = new System.Drawing.Size(260, 35);
             this.selected_date.TabIndex = 96;
@@ -315,7 +309,7 @@
             this.add_actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.add_actor.Font = new System.Drawing.Font("XO Courser", 8F);
             this.add_actor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_actor.Location = new System.Drawing.Point(1138, 745);
+            this.add_actor.Location = new System.Drawing.Point(1138, 772);
             this.add_actor.Name = "add_actor";
             this.add_actor.Size = new System.Drawing.Size(160, 42);
             this.add_actor.TabIndex = 115;
@@ -329,7 +323,7 @@
             this.add_country.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.add_country.Font = new System.Drawing.Font("XO Courser", 8F);
             this.add_country.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_country.Location = new System.Drawing.Point(458, 899);
+            this.add_country.Location = new System.Drawing.Point(458, 991);
             this.add_country.Name = "add_country";
             this.add_country.Size = new System.Drawing.Size(157, 42);
             this.add_country.TabIndex = 111;
@@ -343,7 +337,7 @@
             this.substrate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.substrate5.Controls.Add(this.county_lbl);
-            this.substrate5.Location = new System.Drawing.Point(36, 777);
+            this.substrate5.Location = new System.Drawing.Point(36, 815);
             this.substrate5.Name = "substrate5";
             this.substrate5.Size = new System.Drawing.Size(236, 96);
             this.substrate5.TabIndex = 108;
@@ -363,7 +357,7 @@
             this.search_country.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.search_country.Font = new System.Drawing.Font("XO Courser", 9F);
             this.search_country.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.search_country.Location = new System.Drawing.Point(322, 767);
+            this.search_country.Location = new System.Drawing.Point(322, 805);
             this.search_country.Name = "search_country";
             this.search_country.Size = new System.Drawing.Size(293, 35);
             this.search_country.TabIndex = 110;
@@ -378,9 +372,216 @@
             this.countries_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.countries_list.FormattingEnabled = true;
             this.countries_list.ItemHeight = 27;
-            this.countries_list.Location = new System.Drawing.Point(322, 808);
+            this.countries_list.Items.AddRange(new object[] {
+            "Австралия ",
+            "Австрия ",
+            "Азербайджан ",
+            "Албания ",
+            "Алжир ",
+            "Англия ",
+            "Ангилья ",
+            "Ангола ",
+            "Андорра ",
+            "Антигуа и Барбуда ",
+            "Аргентина ",
+            "Армения ",
+            "Аруба ",
+            "Багамы ",
+            "Бангладеш ",
+            "Барбадос ",
+            "Бахрейн ",
+            "Беларусь ",
+            "Белиз ",
+            "Бельгия ",
+            "Бенин ",
+            "Бермудские Острова ",
+            "Болгария ",
+            "Боливия ",
+            "Босния и Герцеговина ",
+            "Ботсвана ",
+            "Бразилия ",
+            "Бруней ",
+            "Буркина-Фасо ",
+            "Бурунди ",
+            "Вануату ",
+            "Великобритания ",
+            "Венгрия ",
+            "Венесуэла ",
+            "Вьетнам ",
+            "Габон ",
+            "Гаити ",
+            "Гайана ",
+            "Гамбия ",
+            "Гана ",
+            "Гваделупа ",
+            "Гватемала ",
+            "Гвинея ",
+            "Гвинея-Бисау ",
+            "Германия ",
+            "Гибралтар ",
+            "Гондурас ",
+            "Гренада ",
+            "Гренландия ",
+            "Греция ",
+            "Грузия ",
+            "Дания ",
+            "Джерси ",
+            "Джибути ",
+            "Доминика ",
+            "Доминиканская Республика ",
+            "Египет ",
+            "Замбия ",
+            "Западная Сахара ",
+            "Зимбабве ",
+            "Израиль ",
+            "Индия ",
+            "Индонезия ",
+            "Иордания ",
+            "Ирак ",
+            "Иран ",
+            "Ирландия ",
+            "Исландия ",
+            "Испания ",
+            "Италия ",
+            "Йемен ",
+            "Кабо-Верде ",
+            "Казахстан ",
+            "Камбоджа ",
+            "Камерун ",
+            "Канада ",
+            "Катар ",
+            "Кения ",
+            "Кипр ",
+            "Киргизия ",
+            "Китай ",
+            "Колумбия ",
+            "Коморы ",
+            "Коста-Рика ",
+            "Кот-д\'Ивуар ",
+            "Куба ",
+            "Кувейт ",
+            "Лаос ",
+            "Латвия ",
+            "Лесото ",
+            "Либерия ",
+            "Ливан ",
+            "Ливия ",
+            "Литва ",
+            "Лихтенштейн ",
+            "Люксембург ",
+            "Маврикий ",
+            "Мавритания ",
+            "Мадагаскар ",
+            "Македония ",
+            "Малави ",
+            "Малайзия ",
+            "Мали ",
+            "Мальдивы ",
+            "Мальта ",
+            "Марокко ",
+            "Мартиника ",
+            "Мексика ",
+            "Микронезия ",
+            "Мозамбик ",
+            "Молдова ",
+            "Монако ",
+            "Монголия ",
+            "Монтсеррат ",
+            "Мьянма ",
+            "Намибия ",
+            "Непал ",
+            "Нигер ",
+            "Нигерия ",
+            "Нидерланды ",
+            "Никарагуа ",
+            "Новая Зеландия ",
+            "Новая Каледония ",
+            "Норвегия ",
+            "Объединенные Арабские Эмираты ",
+            "Оман ",
+            "Остров Мэн ",
+            "Острова Кука ",
+            "Острова Теркс и Кайкос ",
+            "Острова Уоллис и Футуна ",
+            "Пакистан ",
+            "Палау ",
+            "Палестина ",
+            "Панама ",
+            "Папуа – Новая Гвинея ",
+            "Парагвай ",
+            "Перу ",
+            "Польша ",
+            "Португалия ",
+            "Пуэрто-Рико ",
+            "Реюньон ",
+            "Россия ",
+            "Руанда ",
+            "Румыния ",
+            "Сальвадор ",
+            "Самоа ",
+            "Сан-Марино ",
+            "Сан-Томе и Принсипи ",
+            "Саудовская Аравия ",
+            "Святая Люсия ",
+            "Святой Винсент и Гренадины ",
+            "Северные Марианские острова ",
+            "Сенегал ",
+            "Сент-Китс и Невис ",
+            "Сент-Люсия ",
+            "Сербия ",
+            "Сейшельские Острова ",
+            "Сен-Пьер и Микелон ",
+            "Сингапур ",
+            "Сирия ",
+            "Словакия ",
+            "Словения ",
+            "Сомали ",
+            "Судан ",
+            "Суринам ",
+            "США ",
+            "Сьерра-Леоне ",
+            "Таджикистан ",
+            "Таиланд ",
+            "Танзания ",
+            "Того ",
+            "Токелау ",
+            "Тонга ",
+            "Тринидад и Тобаго ",
+            "Тувалу ",
+            "Тунис ",
+            "Туркменистан ",
+            "Турция ",
+            "Уганда ",
+            "Узбекистан ",
+            "Украина ",
+            "Уругвай ",
+            "Фиджи ",
+            "Филиппины ",
+            "Финляндия ",
+            "Франция ",
+            "Французская Гвиана ",
+            "Французская Полинезия ",
+            "Хорватия ",
+            "Центральноафриканская Республика ",
+            "Чад ",
+            "Черногория ",
+            "Чехия ",
+            "Чили ",
+            "Швейцария ",
+            "Швеция ",
+            "Шри-Ланка ",
+            "Эквадор ",
+            "Экваториальная Гвинея ",
+            "Эритрея ",
+            "Эстония ",
+            "Эфиопия ",
+            "Южная Африка ",
+            "Южная Корея ",
+            "Ямайка ",
+            "Япония"});
+            this.countries_list.Location = new System.Drawing.Point(322, 846);
             this.countries_list.Name = "countries_list";
-            this.countries_list.Size = new System.Drawing.Size(293, 85);
+            this.countries_list.Size = new System.Drawing.Size(293, 139);
             this.countries_list.TabIndex = 109;
             this.countries_list.SelectedIndexChanged += new System.EventHandler(this.countries_list_SelectedIndexChanged);
             // 
@@ -406,7 +607,7 @@
             this.actors_list.ItemHeight = 27;
             this.actors_list.Location = new System.Drawing.Point(1005, 600);
             this.actors_list.Name = "actors_list";
-            this.actors_list.Size = new System.Drawing.Size(293, 139);
+            this.actors_list.Size = new System.Drawing.Size(293, 166);
             this.actors_list.TabIndex = 117;
             this.actors_list.SelectedIndexChanged += new System.EventHandler(this.actors_list_SelectedIndexChanged);
             // 
@@ -444,43 +645,45 @@
             this.add_actor_btn.MouseEnter += new System.EventHandler(this.add_actor_btn_MouseEnter);
             this.add_actor_btn.MouseLeave += new System.EventHandler(this.add_actor_btn_MouseLeave);
             // 
-            // add_country_btn
-            // 
-            this.add_country_btn.AutoSize = true;
-            this.add_country_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Underline);
-            this.add_country_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.add_country_btn.Location = new System.Drawing.Point(31, 885);
-            this.add_country_btn.Name = "add_country_btn";
-            this.add_country_btn.Size = new System.Drawing.Size(245, 29);
-            this.add_country_btn.TabIndex = 120;
-            this.add_country_btn.Text = "Нет нужной страны?";
-            this.add_country_btn.Click += new System.EventHandler(this.add_country_btn_Click_1);
-            this.add_country_btn.MouseEnter += new System.EventHandler(this.add_country_btn_MouseEnter);
-            this.add_country_btn.MouseLeave += new System.EventHandler(this.add_country_btn_MouseLeave);
-            // 
             // closing_actors
             // 
             this.closing_actors.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.closing_actors.Controls.Add(this.cancel_btn2);
             this.closing_actors.Controls.Add(this.add_actor_in_list_btn);
             this.closing_actors.Controls.Add(this.actor_tb);
-            this.closing_actors.Location = new System.Drawing.Point(691, 525);
+            this.closing_actors.Location = new System.Drawing.Point(691, 559);
             this.closing_actors.Name = "closing_actors";
             this.closing_actors.Size = new System.Drawing.Size(620, 262);
             this.closing_actors.TabIndex = 121;
             this.closing_actors.Visible = false;
             // 
-            // closing_countries
+            // cancel_btn2
             // 
-            this.closing_countries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.closing_countries.Controls.Add(this.cancel_btn);
-            this.closing_countries.Controls.Add(this.country_tb);
-            this.closing_countries.Controls.Add(this.add_country_in_list_btn);
-            this.closing_countries.Location = new System.Drawing.Point(36, 767);
-            this.closing_countries.Name = "closing_countries";
-            this.closing_countries.Size = new System.Drawing.Size(596, 258);
-            this.closing_countries.TabIndex = 122;
-            this.closing_countries.Visible = false;
+            this.cancel_btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cancel_btn2.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.cancel_btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.cancel_btn2.Location = new System.Drawing.Point(15, 195);
+            this.cancel_btn2.Name = "cancel_btn2";
+            this.cancel_btn2.Size = new System.Drawing.Size(153, 42);
+            this.cancel_btn2.TabIndex = 124;
+            this.cancel_btn2.Text = "Отмена";
+            this.cancel_btn2.UseVisualStyleBackColor = false;
+            this.cancel_btn2.Visible = false;
+            this.cancel_btn2.Click += new System.EventHandler(this.cancel_btn2_Click);
+            // 
+            // add_actor_in_list_btn
+            // 
+            this.add_actor_in_list_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_actor_in_list_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_actor_in_list_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_actor_in_list_btn.Location = new System.Drawing.Point(444, 196);
+            this.add_actor_in_list_btn.Name = "add_actor_in_list_btn";
+            this.add_actor_in_list_btn.Size = new System.Drawing.Size(153, 42);
+            this.add_actor_in_list_btn.TabIndex = 123;
+            this.add_actor_in_list_btn.Text = "Добавить";
+            this.add_actor_in_list_btn.UseVisualStyleBackColor = false;
+            this.add_actor_in_list_btn.Visible = false;
+            this.add_actor_in_list_btn.Click += new System.EventHandler(this.add_actor_in_list_btn_Click);
             // 
             // actor_tb
             // 
@@ -497,86 +700,13 @@
             this.actor_tb.Visible = false;
             this.actor_tb.Click += new System.EventHandler(this.actor_tb_Click);
             // 
-            // add_actor_in_list_btn
-            // 
-            this.add_actor_in_list_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.add_actor_in_list_btn.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.add_actor_in_list_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_actor_in_list_btn.Location = new System.Drawing.Point(444, 196);
-            this.add_actor_in_list_btn.Name = "add_actor_in_list_btn";
-            this.add_actor_in_list_btn.Size = new System.Drawing.Size(153, 42);
-            this.add_actor_in_list_btn.TabIndex = 123;
-            this.add_actor_in_list_btn.Text = "Добавить";
-            this.add_actor_in_list_btn.UseVisualStyleBackColor = false;
-            this.add_actor_in_list_btn.Visible = false;
-            this.add_actor_in_list_btn.Click += new System.EventHandler(this.add_actor_in_list_btn_Click);
-            // 
-            // cancel_btn2
-            // 
-            this.cancel_btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cancel_btn2.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.cancel_btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.cancel_btn2.Location = new System.Drawing.Point(15, 195);
-            this.cancel_btn2.Name = "cancel_btn2";
-            this.cancel_btn2.Size = new System.Drawing.Size(153, 42);
-            this.cancel_btn2.TabIndex = 124;
-            this.cancel_btn2.Text = "Отмена";
-            this.cancel_btn2.UseVisualStyleBackColor = false;
-            this.cancel_btn2.Visible = false;
-            this.cancel_btn2.Click += new System.EventHandler(this.cancel_btn2_Click);
-            // 
-            // cancel_btn
-            // 
-            this.cancel_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cancel_btn.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.cancel_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.cancel_btn.Location = new System.Drawing.Point(25, 186);
-            this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(153, 42);
-            this.cancel_btn.TabIndex = 127;
-            this.cancel_btn.Text = "Отмена";
-            this.cancel_btn.UseVisualStyleBackColor = false;
-            this.cancel_btn.Visible = false;
-            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
-            // 
-            // add_country_in_list_btn
-            // 
-            this.add_country_in_list_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.add_country_in_list_btn.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.add_country_in_list_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_country_in_list_btn.Location = new System.Drawing.Point(418, 188);
-            this.add_country_in_list_btn.Name = "add_country_in_list_btn";
-            this.add_country_in_list_btn.Size = new System.Drawing.Size(153, 42);
-            this.add_country_in_list_btn.TabIndex = 125;
-            this.add_country_in_list_btn.Text = "Добавить";
-            this.add_country_in_list_btn.UseVisualStyleBackColor = false;
-            this.add_country_in_list_btn.Visible = false;
-            this.add_country_in_list_btn.Click += new System.EventHandler(this.add_country_in_list_btn_Click);
-            // 
-            // country_tb
-            // 
-            this.country_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.country_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.country_tb.Font = new System.Drawing.Font("XO Courser", 12F);
-            this.country_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.country_tb.Location = new System.Drawing.Point(13, 44);
-            this.country_tb.Name = "country_tb";
-            this.country_tb.Size = new System.Drawing.Size(471, 44);
-            this.country_tb.TabIndex = 126;
-            this.country_tb.TabStop = false;
-            this.country_tb.Text = "Введите название страны";
-            this.country_tb.Visible = false;
-            this.country_tb.Click += new System.EventHandler(this.country_tb_Click);
-            // 
             // AddFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1336, 1062);
-            this.Controls.Add(this.closing_countries);
             this.Controls.Add(this.closing_actors);
-            this.Controls.Add(this.add_country_btn);
             this.Controls.Add(this.add_actor_btn);
             this.Controls.Add(this.search_actor);
             this.Controls.Add(this.actors_list);
@@ -619,8 +749,6 @@
             this.substrate6.PerformLayout();
             this.closing_actors.ResumeLayout(false);
             this.closing_actors.PerformLayout();
-            this.closing_countries.ResumeLayout(false);
-            this.closing_countries.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,14 +786,9 @@
         private System.Windows.Forms.Panel substrate6;
         private System.Windows.Forms.Label actors_lbl;
         private System.Windows.Forms.Label add_actor_btn;
-        private System.Windows.Forms.Label add_country_btn;
         private System.Windows.Forms.Panel closing_actors;
         private System.Windows.Forms.Button cancel_btn2;
         private System.Windows.Forms.Button add_actor_in_list_btn;
         private System.Windows.Forms.TextBox actor_tb;
-        private System.Windows.Forms.Panel closing_countries;
-        private System.Windows.Forms.Button cancel_btn;
-        private System.Windows.Forms.TextBox country_tb;
-        private System.Windows.Forms.Button add_country_in_list_btn;
     }
 }

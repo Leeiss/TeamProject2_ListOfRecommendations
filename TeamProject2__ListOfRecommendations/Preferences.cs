@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
@@ -9,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Label = System.Windows.Forms.Label;
@@ -19,7 +22,10 @@ namespace TeamProject2__ListOfRecommendations
     {
 
         private List<Label> labels;
-
+        XDocument doc = XDocument.Load("@./../../../ForLists.xml");
+        private List<string> Genres = new List<string>();
+        private List<string> Actors = new List<string>();
+        private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
 
         public Preferences(string login)
         {
@@ -58,17 +64,25 @@ namespace TeamProject2__ListOfRecommendations
 
         }
 
-      private void Preferences_Load(object sender, EventArgs e)
+        private void Preferences_Load(object sender, EventArgs e)
         {
+            IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
+
+            foreach (string actor in actors)
+            {
+                actors_list.Items.Add(actor);
+            }
+
+
             if (this.Tag != null && this.Tag.ToString() == "зарегистрироваться")
             {
                 go_btn.Text = "Зарегестрироваться";
             }
-            else if  (this.Tag != null && this.Tag.ToString() == "изменить")
+            else if (this.Tag != null && this.Tag.ToString() == "изменить")
             {
                 go_btn.Text = "Изменить";
             }
-        
+
 
             genres_list.DrawMode = DrawMode.OwnerDrawFixed;
             genres_list.DrawItem += genres_list_DrawItem;
@@ -79,55 +93,115 @@ namespace TeamProject2__ListOfRecommendations
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
 
             // Работа с элементами управления на форме
-            int buttonOffset = 10; 
+            int buttonOffset = 10;
             int formWidth = go_btn.Location.X + go_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = go_btn.Location.Y + go_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
-            
-            search_genre_btn.Height = searchGenre_tb.Height;
-            search_genre_btn.Width = search_genre_btn.Height;
-            search_genre_btn.Location = new Point(searchGenre_tb.Right, search_genre_btn.Top);
-
-            search_actor_btn.Height = searchGenre_tb.Height;
-            search_actor_btn.Width = search_actor_btn.Height;
-            search_actor_btn.Location = new Point(searchActor_tb.Right, search_actor_btn.Top);
-
-        }
-
-        private void searchGenre_tb_Click(object sender, EventArgs e)
-        {
-            searchGenre_tb.Text = "";
-        }
-
-        private void searchActor_tb_Click(object sender, EventArgs e)
-        {
-            searchActor_tb.Text = "";
         }
 
         private void go_btn_Click(object sender, EventArgs e)
         {
             if (this.Tag != null && this.Tag.ToString() == "зарегистрироваться")
             {
-                MessageBox.Show("Вы успешно зарегестрированы!");
-                MainForm mainform = new MainForm(Login);
-                mainform.ShowDialog();
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string insertGenreQuery = "INSERT INTO users_favoritegenres (Genre, Username) VALUES (@Genre, @Username)";
+                    using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
+                    {
+                        foreach (string genre in Genres)
+                        {
+                            genreCommand.Parameters.Clear();
+                            genreCommand.Parameters.AddWithValue("@Username", Login);
+                            genreCommand.Parameters.AddWithValue("@Genre", genre);
+                            genreCommand.ExecuteNonQuery();
+                        }
+                    }
+                    string insertActorQuery = "INSERT INTO users_favoriteactors (Actor, Username) VALUES (@Actor, @Username)";
+                    using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
+                    {
+                        foreach (string actor in Actors)
+                        {
+                            actorCommand.Parameters.Clear();
+                            actorCommand.Parameters.AddWithValue("@Username", Login);
+                            actorCommand.Parameters.AddWithValue("@Actor", actor);
+                            actorCommand.ExecuteNonQuery();
+                        }
+                    }
+                    MessageBox.Show("Вы успешно зарегестрированы!");
+                    Authorization authorization = new Authorization();
+                    authorization.Show();
+                    connection.Close();
+                }
             }
             else if (this.Tag != null && this.Tag.ToString() == "изменить")
             {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string deleteGenreQuery = "DELETE FROM users_favoritegenres WHERE Username = @Username";
+                    using (MySqlCommand cmd = new MySqlCommand(deleteGenreQuery, connection))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@Username", Login);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    string deleteActorQuery = "DELETE FROM users_favoriteactors WHERE Username = @Username";
+                    using (MySqlCommand cmd = new MySqlCommand(deleteActorQuery, connection))
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@Username", Login);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    string insertGenreQuery = "INSERT INTO users_favoritegenres (Genre, Username) VALUES (@Genre, @Username)";
+                    using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
+                    {
+                        foreach (string genre in Genres)
+                        {
+                            genreCommand.Parameters.Clear();
+                            genreCommand.Parameters.AddWithValue("@Username", Login);
+                            genreCommand.Parameters.AddWithValue("@Genre", genre);
+                            genreCommand.ExecuteNonQuery();
+                        }
+                    }
+                    string insertActorQuery = "INSERT INTO users_favoriteactors (Actor, Username) VALUES (@Actor, @Username)";
+                    using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
+                    {
+                        foreach (string actor in Actors)
+                        {
+                            actorCommand.Parameters.Clear();
+                            actorCommand.Parameters.AddWithValue("@Username", Login);
+                            actorCommand.Parameters.AddWithValue("@Actor", actor);
+                            actorCommand.ExecuteNonQuery();
+                        }
+                    }
+                    connection.Close();
+                }
+               
+                MessageBox.Show("Ваши предпочтения изменены");
                 MainForm mainform = new MainForm(Login);
                 mainform.ShowDialog();
             }
-           
+
         }
-       
-       private void add_genre_Click(object sender, EventArgs e)
+
+        private void add_genre_Click(object sender, EventArgs e)
         {
+            Genres.Add(genres_list.SelectedItem.ToString());
             next_btn.Visible = true;
+            MessageBox.Show("Выбранный вами жанр фильма добавился в список ваших любимых");
+
         }
 
         private void add_actor_Click(object sender, EventArgs e)
         {
+            Actors.Add(actors_list.SelectedItem.ToString());
             go_btn.Visible = true;
+            MessageBox.Show("Выбранный вами актер добавился в список ваших любимых");
+
         }
 
         private void actors_list_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,34 +214,17 @@ namespace TeamProject2__ListOfRecommendations
             add_genre.Visible = true;
         }
 
-        private void search_btn3_Click(object sender, EventArgs e)
-        {
-            string searchValue = searchActor_tb.Text.ToLower();
-
-            for (int i = 0; i < genres_list.Items.Count; i++)
-            {
-                string itemText = genres_list.Items[i].ToString().ToLower(); // Получаем значение элемента списка и приводим его к нижнему регистру
-                if (itemText.Contains(searchValue))
-                {
-                    genres_list.SetSelected(i, true); // Выделяем элемент в списке, если он содержит значения из текстового поля
-                }
-                else
-                {
-                    genres_list.SetSelected(i, false); // Убираем выделение, если элемент не содержит значение из текстового поля
-                }
-            }
-        }
-
         private void next_btn_Click(object sender, EventArgs e)
         {
             actors_list.DrawMode = DrawMode.OwnerDrawFixed;
             actors_list.DrawItem += actors_list_DrawItem;
 
+            actors_list.Visible = true;
+            genres_list.Visible = false;
+
             next_btn.Visible = false;
             info_lbl5.Visible = true;
             genres_list.Visible = false;
-            searchGenre_tb.Visible = false;
-            search_genre_btn.Visible = false;
             info_lbl4.Visible = false;
             add_genre.Visible = false;
             go_btn.Visible = false;
@@ -183,11 +240,6 @@ namespace TeamProject2__ListOfRecommendations
         {
             TextRenderer.DrawText(e.Graphics, actors_list.Items[e.Index].ToString(), e.Font,
                 e.Bounds, e.ForeColor, e.BackColor, TextFormatFlags.HorizontalCenter);
-        }
-
-        private void search_btn2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

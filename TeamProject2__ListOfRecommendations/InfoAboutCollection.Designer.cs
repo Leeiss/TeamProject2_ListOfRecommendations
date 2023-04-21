@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.changepassword_btn = new System.Windows.Forms.Button();
+            this.go_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.films_list = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.just_panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // changepassword_btn
+            // go_btn
             // 
-            this.changepassword_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
-            this.changepassword_btn.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.changepassword_btn.Location = new System.Drawing.Point(565, 541);
-            this.changepassword_btn.Name = "changepassword_btn";
-            this.changepassword_btn.Size = new System.Drawing.Size(243, 74);
-            this.changepassword_btn.TabIndex = 109;
-            this.changepassword_btn.Text = "Перейти к просмотру";
-            this.changepassword_btn.UseVisualStyleBackColor = false;
+            this.go_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
+            this.go_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.go_btn.Location = new System.Drawing.Point(565, 541);
+            this.go_btn.Name = "go_btn";
+            this.go_btn.Size = new System.Drawing.Size(243, 74);
+            this.go_btn.TabIndex = 109;
+            this.go_btn.Text = "Перейти к просмотру";
+            this.go_btn.UseVisualStyleBackColor = false;
+            this.go_btn.Visible = false;
             // 
             // label2
             // 
@@ -58,21 +59,22 @@
             this.label2.TabIndex = 105;
             this.label2.Text = "Фильмы подборки";
             // 
-            // listBox2
+            // films_list
             // 
-            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listBox2.Font = new System.Drawing.Font("XO Courser", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 36;
-            this.listBox2.Items.AddRange(new object[] {
+            this.films_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.films_list.Font = new System.Drawing.Font("XO Courser", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.films_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.films_list.FormattingEnabled = true;
+            this.films_list.ItemHeight = 36;
+            this.films_list.Items.AddRange(new object[] {
             "Фильм1",
             "Фильм2",
             "Фильм3"});
-            this.listBox2.Location = new System.Drawing.Point(76, 295);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(732, 220);
-            this.listBox2.TabIndex = 108;
+            this.films_list.Location = new System.Drawing.Point(76, 295);
+            this.films_list.Name = "films_list";
+            this.films_list.Size = new System.Drawing.Size(732, 220);
+            this.films_list.TabIndex = 108;
+            this.films_list.SelectedIndexChanged += new System.EventHandler(this.films_list_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -107,9 +109,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(880, 760);
             this.Controls.Add(this.just_panel);
-            this.Controls.Add(this.changepassword_btn);
+            this.Controls.Add(this.go_btn);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.films_list);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.info_lbl1);
             this.Name = "InfoAboutCollection";
@@ -122,9 +124,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button changepassword_btn;
+        private System.Windows.Forms.Button go_btn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox films_list;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label info_lbl1;
         private System.Windows.Forms.Panel just_panel;

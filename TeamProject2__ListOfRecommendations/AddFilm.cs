@@ -1,11 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using TeamProject1_ToDoList.Classes;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -37,13 +39,7 @@ namespace TeamProject2__ListOfRecommendations
                 actors_list.Items.Add(actor);
             }
 
-            IEnumerable<string> countries = doc.Element("for_lists").Element("countries").Elements("country").Select(x => x.Value);
-
-            foreach (string country in countries)
-            {
-                countries_list.Items.Add(country);
-            }
-
+            
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
@@ -182,64 +178,92 @@ namespace TeamProject2__ListOfRecommendations
             }
             else
             {
-              using (MySqlConnection connection = new MySqlConnection(connectionString))
+                DataBase db = new DataBase();
+                db.OpenConnection();
+                MySqlCommand command1 = new MySqlCommand("SELECT * FROM movies WHERE Title = @Title ", db.GetConnection()); 
+                command1.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
+
+                MySqlCommand command2 = new MySqlCommand("SELECT * FROM movies WHERE Date = @Date ", db.GetConnection()); 
+                command2.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                adapter.SelectCommand = command1;
+                DataTable table1 = new DataTable();
+                adapter.Fill(table1);
+
+                adapter.SelectCommand = command2;
+                DataTable table2 = new DataTable();
+                adapter.Fill(table2);
+
+                if (table1.Rows.Count == 0 && table2.Rows.Count == 0)
                 {
-                    connection.Open();
+                    AddMovie();
+                    MessageBox.Show("Фильм успешно добавлен");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Данный фильм уже добавлен в приложение");
+                }
+            }
+        }
+        
 
-                    // Создаем команду SQL для вставки фильма
-                    string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`) VALUES(@Title, @Date, @PicturePath)";
-                    using (MySqlCommand command = new MySqlCommand(insertFilmQuery, connection))
+        private void AddMovie()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`) VALUES(@Title, @Date, @PicturePath)";
+                using (MySqlCommand command = new MySqlCommand(insertFilmQuery, connection))
+                {
+                    command.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
+                    command.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
+                    command.Parameters.Add("@PicturePath", MySqlDbType.VarChar).Value = selectedFile;
+
+                    command.ExecuteNonQuery();
+                    int filmId = Convert.ToInt32(command.LastInsertedId);
+
+                    string insertGenreQuery = "INSERT INTO film_genres (Genre, FilmId) VALUES (@Genre, @FilmId)";
+                    using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
                     {
-                        // Добавляем параметр названия фильма
-                        command.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
-                        command.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
-                        command.Parameters.Add("@PicturePath", MySqlDbType.VarChar).Value = selectedFile;
-
-                        // Выполняем команду и получаем идентификатор добавленного фильма
-                        int filmId = Convert.ToInt32(command.ExecuteScalar());
-
-                        // Создаем команду SQL для вставки жанров фильма
-                        string insertGenreQuery = "INSERT INTO film_genres (Genre, FilmId) VALUES (@Genre, @FilmId)";
-                        using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
+                        foreach (string genre in Genres)
                         {
-                            foreach (string genre in Genres)
-                            {
-                                genreCommand.Parameters.Clear();
-                                genreCommand.Parameters.AddWithValue("@FilmId", filmId);
-                                genreCommand.Parameters.AddWithValue("@Genre", genre);
-                                genreCommand.ExecuteNonQuery();
-                            }
+                            genreCommand.Parameters.Clear();
+                            genreCommand.Parameters.AddWithValue("@FilmId", filmId);
+                            genreCommand.Parameters.AddWithValue("@Genre", genre);
+                            genreCommand.ExecuteNonQuery();
                         }
+                    }
 
-                        string insertActorQuery = "INSERT INTO film_actors (Actor, FilmId) VALUES (@Actor, @FilmId)";
-                        using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
+                    string insertActorQuery = "INSERT INTO film_actors (Actor, FilmId) VALUES (@Actor, @FilmId)";
+                    using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
+                    {
+                        foreach (string actor in Actors)
                         {
-                            foreach (string actor in Actors)
-                            {
-                                actorCommand.Parameters.Clear();
-                                actorCommand.Parameters.AddWithValue("@FilmId", filmId);
-                                actorCommand.Parameters.AddWithValue("@Actor", actor);
-                                actorCommand.ExecuteNonQuery();
-                            }
+                            actorCommand.Parameters.Clear();
+                            actorCommand.Parameters.AddWithValue("@FilmId", filmId);
+                            actorCommand.Parameters.AddWithValue("@Actor", actor);
+                            actorCommand.ExecuteNonQuery();
                         }
+                    }
 
-                        string insertCountryQuery = "INSERT INTO film_countries (Country, FilmId) VALUES (@Country, @FilmId)";
-                        using (MySqlCommand countryCommand = new MySqlCommand(insertCountryQuery, connection))
+                    string insertCountryQuery = "INSERT INTO film_countries (Country, FilmId) VALUES (@Country, @FilmId)";
+                    using (MySqlCommand countryCommand = new MySqlCommand(insertCountryQuery, connection))
+                    {
+                        foreach (string country in Countries)
                         {
-                            foreach (string country in Countries)
-                            {
-                                countryCommand.Parameters.Clear();
-                                countryCommand.Parameters.AddWithValue("@FilmId", filmId);
-                                countryCommand.Parameters.AddWithValue("@Country", country);
-                                countryCommand.ExecuteNonQuery();
-                            }
+                            countryCommand.Parameters.Clear();
+                            countryCommand.Parameters.AddWithValue("@FilmId", filmId);
+                            countryCommand.Parameters.AddWithValue("@Country", country);
+                            countryCommand.ExecuteNonQuery();
                         }
                     }
                 }
-                MessageBox.Show("Фильм успешно добавлен");
             }
         }
-
         private void add_actor_btn_MouseEnter(object sender, EventArgs e)
         {
             add_actor_btn.ForeColor = Color.FromArgb(197, 210, 219);
@@ -250,24 +274,9 @@ namespace TeamProject2__ListOfRecommendations
             add_actor_btn.ForeColor = Color.FromArgb(133, 162, 167);
         }
 
-        private void add_country_btn_MouseEnter(object sender, EventArgs e)
-        {
-            add_country_btn.ForeColor = Color.FromArgb(197, 210, 219);
-        }
-
-        private void add_country_btn_MouseLeave(object sender, EventArgs e)
-        {
-            add_country_btn.ForeColor = Color.FromArgb(133, 162, 167);
-        }
-
         private void actor_tb_Click(object sender, EventArgs e)
         {
             actor_tb.Text = "";
-        }
-
-        private void country_tb_Click(object sender, EventArgs e)
-        {
-            country_tb.Text = "";
         }
 
         private void add_actor_btn_Click(object sender, EventArgs e)
@@ -287,59 +296,35 @@ namespace TeamProject2__ListOfRecommendations
         }
 
         private void add_actor_in_list_btn_Click(object sender, EventArgs e)
-        { 
+        {
+            XElement actors = doc.Element("for_lists").Element("actors");
+            string actorName = actor_tb.Text;
+
             if (actor_tb.Text.Equals("") || actor_tb.Text.Equals("Введите имя и фамилию актера"))
             {
                 MessageBox.Show("Введите имя и фамилию актера");
             }
             else
             {
-                doc.Element("for_lists").Element("actors").Add(new XElement("actor", actor_tb.Text));
-                doc.Save(Xmlpath);
-                actors_list.Items.Add(actor_tb.Text);
+                if (actors.Descendants().Any(c => c.Value.Equals(actorName)))
+                {
+                    MessageBox.Show("Данный актер уже есть в списке");
+                }
+                else
+                {
+                    doc.Element("for_lists").Element("actors").Add(new XElement("actor", actor_tb.Text));
+                    doc.Save(Xmlpath);
+                    actors_list.Items.Add(actor_tb.Text);
 
-                closing_actors.Visible = false;
-                cancel_btn2.Visible = false;
-                add_actor_in_list_btn.Visible = false;
-                actor_tb.Visible = false;
-                MessageBox.Show("Введенные вами данные об актере добавлены в список актеров приложения");
+                    closing_actors.Visible = false;
+                    cancel_btn2.Visible = false;
+                    add_actor_in_list_btn.Visible = false;
+                    actor_tb.Visible = false;
+                    MessageBox.Show("Введенные вами данные об актере добавлены в список актеров приложения");
+                }
             }
         }
 
-       private void add_country_btn_Click_1(object sender, EventArgs e)
-        {
-            closing_countries.Visible = true;
-            cancel_btn.Visible = true;
-            add_country_in_list_btn.Visible = true;
-            country_tb.Visible = true;
-        }
-
-        private void add_country_in_list_btn_Click(object sender, EventArgs e)
-        {
-            if (country_tb.Text.Equals("") || country_tb.Text.Equals("Введите название страны"))
-            {
-                MessageBox.Show("Введите название страны");
-            }
-            else
-            {
-                doc.Element("for_lists").Element("countries").Add(new XElement("country", country_tb.Text));
-                doc.Save(Xmlpath);
-                countries_list.Items.Add(country_tb.Text);
-
-                closing_countries.Visible = false;
-                cancel_btn.Visible = false;
-                add_country_in_list_btn.Visible = false;
-                country_tb.Visible = false;
-                MessageBox.Show("Введенные вами данные о стране добавлены в список стран приложения");
-            }
-        }
-
-        private void cancel_btn_Click(object sender, EventArgs e)
-        {
-            closing_countries.Visible = false;
-            cancel_btn.Visible = false;
-            add_country_in_list_btn.Visible = false;
-            country_tb.Visible = false;
-        }
+        
     }
 }

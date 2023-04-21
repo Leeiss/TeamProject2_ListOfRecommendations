@@ -153,9 +153,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(655, 113);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(402, 48);
+            this.label1.Size = new System.Drawing.Size(371, 48);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Побег из Шоушенка";
+            this.label1.Text = "Название фильма";
             // 
             // label2
             // 
@@ -288,7 +288,7 @@
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(279, 102);
             this.richTextBox1.TabIndex = 72;
-            this.richTextBox1.Text = "Комедия\nУжасы";
+            this.richTextBox1.Text = "";
             // 
             // richTextBox2
             // 
@@ -301,7 +301,7 @@
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(279, 102);
             this.richTextBox2.TabIndex = 73;
-            this.richTextBox2.Text = "Бред Питт";
+            this.richTextBox2.Text = "";
             // 
             // richTextBox3
             // 
@@ -314,7 +314,7 @@
             this.richTextBox3.ReadOnly = true;
             this.richTextBox3.Size = new System.Drawing.Size(279, 96);
             this.richTextBox3.TabIndex = 74;
-            this.richTextBox3.Text = "США, Норвегия";
+            this.richTextBox3.Text = "";
             // 
             // richTextBox4
             // 
@@ -327,7 +327,7 @@
             this.richTextBox4.ReadOnly = true;
             this.richTextBox4.Size = new System.Drawing.Size(279, 102);
             this.richTextBox4.TabIndex = 75;
-            this.richTextBox4.Text = "09.04.2020-09.09.2023";
+            this.richTextBox4.Text = "";
             // 
             // change_btn
             // 
@@ -465,6 +465,7 @@
             this.picture_poster.Location = new System.Drawing.Point(625, 249);
             this.picture_poster.Name = "picture_poster";
             this.picture_poster.Size = new System.Drawing.Size(432, 492);
+            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picture_poster.TabIndex = 81;
             this.picture_poster.TabStop = false;
             // 
@@ -831,6 +832,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

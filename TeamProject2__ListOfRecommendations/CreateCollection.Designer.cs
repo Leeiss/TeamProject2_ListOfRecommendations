@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.search_tb = new System.Windows.Forms.TextBox();
+            this.name_tb = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.search_film_tb = new System.Windows.Forms.TextBox();
+            this.films_list = new System.Windows.Forms.ListBox();
+            this.add_film_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // search_tb
+            // name_tb
             // 
-            this.search_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.search_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.search_tb.Font = new System.Drawing.Font("XO Courser", 12F);
-            this.search_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.search_tb.Location = new System.Drawing.Point(431, 235);
-            this.search_tb.Name = "search_tb";
-            this.search_tb.Size = new System.Drawing.Size(378, 44);
-            this.search_tb.TabIndex = 77;
-            this.search_tb.TabStop = false;
-            this.search_tb.Text = "Введите название";
+            this.name_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.name_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.name_tb.Font = new System.Drawing.Font("XO Courser", 12F);
+            this.name_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.name_tb.Location = new System.Drawing.Point(431, 235);
+            this.name_tb.Name = "name_tb";
+            this.name_tb.Size = new System.Drawing.Size(378, 44);
+            this.name_tb.TabIndex = 77;
+            this.name_tb.TabStop = false;
+            this.name_tb.Text = "Введите название";
+            this.name_tb.Click += new System.EventHandler(this.name_tb_Click);
             // 
             // panel4
             // 
@@ -115,44 +116,48 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Фильмы подборки";
             // 
-            // textBox2
+            // search_film_tb
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox2.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.textBox2.Location = new System.Drawing.Point(431, 356);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(378, 35);
-            this.textBox2.TabIndex = 101;
-            this.textBox2.Text = "Поиск по списку..";
+            this.search_film_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.search_film_tb.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_film_tb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_film_tb.Location = new System.Drawing.Point(431, 356);
+            this.search_film_tb.Name = "search_film_tb";
+            this.search_film_tb.Size = new System.Drawing.Size(378, 35);
+            this.search_film_tb.TabIndex = 101;
+            this.search_film_tb.Text = "Поиск по списку..";
+            this.search_film_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_film_tb_KeyDown);
             // 
-            // listBox2
+            // films_list
             // 
-            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listBox2.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.listBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 27;
-            this.listBox2.Items.AddRange(new object[] {
+            this.films_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.films_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.films_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.films_list.FormattingEnabled = true;
+            this.films_list.ItemHeight = 27;
+            this.films_list.Items.AddRange(new object[] {
             "Фильм1",
             "Фильм2",
             "Фильм3"});
-            this.listBox2.Location = new System.Drawing.Point(431, 397);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(378, 220);
-            this.listBox2.TabIndex = 100;
+            this.films_list.Location = new System.Drawing.Point(431, 397);
+            this.films_list.Name = "films_list";
+            this.films_list.Size = new System.Drawing.Size(378, 220);
+            this.films_list.TabIndex = 100;
+            this.films_list.SelectedIndexChanged += new System.EventHandler(this.films_list_SelectedIndexChanged);
             // 
-            // button2
+            // add_film_btn
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.button2.Location = new System.Drawing.Point(826, 575);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 42);
-            this.button2.TabIndex = 102;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = false;
+            this.add_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_film_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_film_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_film_btn.Location = new System.Drawing.Point(826, 575);
+            this.add_film_btn.Name = "add_film_btn";
+            this.add_film_btn.Size = new System.Drawing.Size(159, 42);
+            this.add_film_btn.TabIndex = 102;
+            this.add_film_btn.Text = "Добавить";
+            this.add_film_btn.UseVisualStyleBackColor = false;
+            this.add_film_btn.Visible = false;
+            this.add_film_btn.Click += new System.EventHandler(this.add_film_btn_Click);
             // 
             // ok_btn
             // 
@@ -164,6 +169,7 @@
             this.ok_btn.TabIndex = 103;
             this.ok_btn.Text = "Завершить";
             this.ok_btn.UseVisualStyleBackColor = false;
+            this.ok_btn.Visible = false;
             // 
             // CreateCollection
             // 
@@ -172,11 +178,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1063, 846);
             this.Controls.Add(this.ok_btn);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.add_film_btn);
+            this.Controls.Add(this.search_film_tb);
+            this.Controls.Add(this.films_list);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.search_tb);
+            this.Controls.Add(this.name_tb);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.info_lbl1);
@@ -194,16 +200,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox search_tb;
+        private System.Windows.Forms.TextBox name_tb;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label info_lbl1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox search_film_tb;
+        private System.Windows.Forms.ListBox films_list;
+        private System.Windows.Forms.Button add_film_btn;
         private System.Windows.Forms.Button ok_btn;
     }
 }

@@ -29,5 +29,10 @@ namespace TeamProject2__ListOfRecommendations
             int formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
         }
+
+        private void films_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            go_btn.Visible = true;
+        }
     }
 }

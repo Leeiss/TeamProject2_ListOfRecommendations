@@ -29,5 +29,38 @@ namespace TeamProject2__ListOfRecommendations
             int formHeight = ok_btn.Location.Y + ok_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
         }
+
+        private void SearchInList(ListBox list, string searchText)
+        {
+            int index = list.FindString(searchText);
+
+            if (index != ListBox.NoMatches)
+            {
+                list.SelectedIndex = index;
+            }
+        }
+
+        private void name_tb_Click(object sender, EventArgs e)
+        {
+            name_tb.Text = string.Empty;
+        }
+
+        private void films_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            add_film_btn.Visible = true;
+        }
+
+        private void add_film_btn_Click(object sender, EventArgs e)
+        {
+            ok_btn.Visible = true;
+        }
+
+        private void search_film_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchInList(films_list, search_film_tb.Text);
+            }
+        }
     }
 }
