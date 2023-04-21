@@ -185,7 +185,10 @@ namespace TeamProject2__ListOfRecommendations
                 e.Bounds, e.ForeColor, e.BackColor, TextFormatFlags.HorizontalCenter);
         }
 
-        
+        private void search_btn2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

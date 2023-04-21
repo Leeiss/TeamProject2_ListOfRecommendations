@@ -299,5 +299,8 @@
   <ItemGroup>
     <None Include="Resources\к письму 2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ForLists.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

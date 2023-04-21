@@ -14,6 +14,7 @@ using MySql.Data.MySqlClient;
 using TeamProject1_ToDoList.Classes;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Net.Configuration;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -110,7 +111,6 @@ namespace TeamProject2__ListOfRecommendations
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-
                     connection.Open();
                     string selectQuery = $"SELECT * FROM `users` WHERE email='{email}'";
 
@@ -167,6 +167,7 @@ namespace TeamProject2__ListOfRecommendations
                             MessageBox.Show("Пользователя с такими логином и email нет");
                         }
                     }
+                    connection.Close();
                 }
             }
         }
@@ -192,11 +193,13 @@ namespace TeamProject2__ListOfRecommendations
                         send_btn.Visible = false;
                         changepassword_btn.Visible = true;
                         newpassword_tb.Visible = true;
+                        
                     }
                     else
                     {
                         MessageBox.Show("Введенный вами код неверный");
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -224,6 +227,7 @@ namespace TeamProject2__ListOfRecommendations
                     command = new MySqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Пароль успешно изменен");
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {

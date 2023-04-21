@@ -32,7 +32,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.actors_list = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -90,58 +90,16 @@
             this.textBox2.TabIndex = 56;
             this.textBox2.Text = "Поиск по списку..";
             // 
-            // listBox1
+            // actors_list
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.listBox1.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 27;
-            this.listBox1.Items.AddRange(new object[] {
-            "Брэд Питт",
-            "Леонардо Ди Каприо",
-            "Том Круз",
-            "Роберт Дауни мл.",
-            "Дуэйн Джонсон",
-            "Скарлетт Йоханссон",
-            "Анджелина Джоли",
-            "Джонни Депп",
-            "Крис Хемсворт",
-            "Дженнифер Лоуренс",
-            "Райан Рейнольдс",
-            "Гэл Гадот",
-            "Уилл Смит",
-            "Эмма Стоун",
-            "Марго Робби",
-            "Крис Эванс",
-            "Сэмюэл Л. Джексон",
-            "Натали Портман",
-            "Харрисон Форд",
-            "Кристен Стюарт",
-            "Шарлиз Терон",
-            "Мерил Стрип",
-            "Хоакин Феникс",
-            "Кристиан Бэйл",
-            "Идрис Эльба",
-            "Том Харди",
-            "Сирша Ронан",
-            "Мэтью МакКонахи",
-            "Энн Хэтэуэй",
-            "Роберт Паттинсон",
-            "Кейт Бланшетт",
-            "Мелисса Маккарти",
-            "Эмма Уотсон",
-            "Бен Аффлек",
-            "Марк Уолберг",
-            "Лиам Нисон",
-            "Рассел Кроу",
-            "Майкл Б. Джордан",
-            "Зак Эфрон",
-            "Дженнифер Энистон",
-            "Сет Роген"});
-            this.listBox1.Location = new System.Drawing.Point(992, 642);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(289, 85);
-            this.listBox1.TabIndex = 55;
+            this.actors_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.actors_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.actors_list.FormattingEnabled = true;
+            this.actors_list.ItemHeight = 27;
+            this.actors_list.Location = new System.Drawing.Point(992, 642);
+            this.actors_list.Name = "actors_list";
+            this.actors_list.Size = new System.Drawing.Size(289, 85);
+            this.actors_list.TabIndex = 55;
             // 
             // panel5
             // 
@@ -180,23 +138,24 @@
             this.directrors_list.FormattingEnabled = true;
             this.directrors_list.ItemHeight = 27;
             this.directrors_list.Items.AddRange(new object[] {
-            "Комедия  ",
-            "Драма  ",
-            "Триллер  ",
-            "Боевик  ",
-            "Фантастика  ",
-            "Ужасы  ",
-            "Мелодрама  ",
-            "Аниме  ",
-            "Детектив  ",
-            "Исторический  ",
-            "Музыкальный  ",
-            "Военный  ",
-            "Фэнтези  ",
-            "Приключения  ",
-            "Семейный  ",
-            "Спортивный  ",
-            "Документальный "});
+            "Боевик",
+            "Вестерн",
+            "Детектив",
+            "Драма",
+            "Исторический фильм",
+            "Комедия",
+            "Мелодрама",
+            "Музыкальный фильм",
+            "Нуар",
+            "Политический фильм",
+            "Приключенческий фильм",
+            "Сказка",
+            "Трагедия",
+            "Трагикомедия",
+            "Триллер",
+            "Фантастический фильм",
+            "Фильм ужасов",
+            "Фильм-катастрофа"});
             this.directrors_list.Location = new System.Drawing.Point(335, 641);
             this.directrors_list.Name = "directrors_list";
             this.directrors_list.Size = new System.Drawing.Size(289, 85);
@@ -238,36 +197,6 @@
             this.countries_list.Font = new System.Drawing.Font("XO Courser", 9F);
             this.countries_list.FormattingEnabled = true;
             this.countries_list.ItemHeight = 27;
-            this.countries_list.Items.AddRange(new object[] {
-            "США  ",
-            "Великобритания  ",
-            "Франция  ",
-            "Италия  ",
-            "Испания  ",
-            "Германия  ",
-            "Япония  ",
-            "Канада  ",
-            "Корея  ",
-            "Китай  ",
-            "Россия  ",
-            "Индия  ",
-            "Австралия  ",
-            "Норвегия  ",
-            "Дания  ",
-            "Швеция  ",
-            "Бразилия  ",
-            "Аргентина  ",
-            "Мексика  ",
-            "ЮАР (Южно-Африканская Республика)  ",
-            "Нидерланды  ",
-            "Польша  ",
-            "Турция  ",
-            "Таиланд  ",
-            "Иран  ",
-            "Израиль  ",
-            "Египет  ",
-            "Греция  ",
-            "Чехия"});
             this.countries_list.Location = new System.Drawing.Point(988, 401);
             this.countries_list.Name = "countries_list";
             this.countries_list.Size = new System.Drawing.Size(293, 85);
@@ -401,7 +330,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.actors_list);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
@@ -419,6 +348,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "СhangeСharacteristics";
             this.Text = "Изменение характеристик";
+            this.Load += new System.EventHandler(this.СhangeСharacteristics_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -439,7 +369,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox actors_list;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;

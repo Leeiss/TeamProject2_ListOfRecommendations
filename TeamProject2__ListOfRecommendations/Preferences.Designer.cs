@@ -209,7 +209,7 @@
             // 
             // closing_panel
             // 
-            this.closing_panel.Location = new System.Drawing.Point(24, 405);
+            this.closing_panel.Location = new System.Drawing.Point(3, 428);
             this.closing_panel.Name = "closing_panel";
             this.closing_panel.Size = new System.Drawing.Size(1594, 695);
             this.closing_panel.TabIndex = 33;
