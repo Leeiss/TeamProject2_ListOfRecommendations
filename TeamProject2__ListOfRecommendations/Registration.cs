@@ -86,7 +86,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void go_btn_Click(object sender, EventArgs e)
         {
-            if (login_tb.Text != "" & password_tb.Text != "")
+            if (!login_tb.Text.Equals("") && !password_tb.Text.Equals("") && !email_tb.Text.Equals("") && !login_tb.Text.Equals("Введите логин") && !password_tb.Text.Equals("Введите пароль") && !email_tb.Text.Equals("Введите email"))
             {
                 DataBase db = new DataBase();
                 db.OpenConnection();
@@ -136,7 +136,7 @@ namespace TeamProject2__ListOfRecommendations
             }
             else
             {
-                MessageBox.Show("Некорректно введен логин или пароль");
+                MessageBox.Show("Некорректно введен логин, пароль и email");
             }
         }
 

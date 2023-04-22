@@ -29,12 +29,7 @@ namespace TeamProject2__ListOfRecommendations
                 actors_list.Items.Add(actor);
             }
 
-            IEnumerable<string> countries = doc.Element("for_lists").Element("countries").Elements("country").Select(x => x.Value);
-
-            foreach (string country in countries)
-            {
-                countries_list.Items.Add(country);
-            }
+           
         }
     }
 }

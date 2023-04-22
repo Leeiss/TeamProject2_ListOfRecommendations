@@ -32,9 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.delimeter1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.upper_panel = new System.Windows.Forms.Panel();
             this.just_panel = new System.Windows.Forms.Panel();
             this.hints = new System.Windows.Forms.ToolTip(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
@@ -45,7 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.frame1 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.delimeter2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
@@ -55,11 +54,12 @@
             this.list_collections = new System.Windows.Forms.ListBox();
             this.add_compilation = new System.Windows.Forms.Button();
             this.change_compilation = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pass_btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.substrate_picture1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.add_in_compilation_btn = new System.Windows.Forms.Button();
-            this.picture_poster = new System.Windows.Forms.PictureBox();
+            this.collections_btn = new System.Windows.Forms.PictureBox();
             this.api_btn = new System.Windows.Forms.PictureBox();
             this.frame_api = new System.Windows.Forms.PictureBox();
             this.expand_pb = new System.Windows.Forms.PictureBox();
@@ -69,6 +69,7 @@
             this.frane_expand = new System.Windows.Forms.PictureBox();
             this.frame_collapse = new System.Windows.Forms.PictureBox();
             this.frame_profile = new System.Windows.Forms.PictureBox();
+            this.substrate_collection = new System.Windows.Forms.PictureBox();
             this.grayStar1 = new System.Windows.Forms.PictureBox();
             this.yellowStar2 = new System.Windows.Forms.PictureBox();
             this.yellowStar3 = new System.Windows.Forms.PictureBox();
@@ -89,12 +90,16 @@
             this.yellowStar8 = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.yellowStar10 = new System.Windows.Forms.PictureBox();
-            this.panel2.SuspendLayout();
+            this.picture_poster = new System.Windows.Forms.PictureBox();
+            this.substrate_picture = new System.Windows.Forms.PictureBox();
+            this.film_title_lbl = new System.Windows.Forms.TextBox();
+            this.upper_panel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.frame1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).BeginInit();
+            this.substrate_picture1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).BeginInit();
@@ -104,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar3)).BeginInit();
@@ -124,6 +130,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).BeginInit();
             this.SuspendLayout();
             // 
             // delimeter1
@@ -131,7 +139,7 @@
             this.delimeter1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.delimeter1.Location = new System.Drawing.Point(376, 0);
             this.delimeter1.Name = "delimeter1";
-            this.delimeter1.Size = new System.Drawing.Size(10, 1189);
+            this.delimeter1.Size = new System.Drawing.Size(10, 1387);
             this.delimeter1.TabIndex = 0;
             // 
             // info_lbl1
@@ -146,17 +154,6 @@
             this.info_lbl1.TabIndex = 16;
             this.info_lbl1.Text = "МОИ ПОДБОРКИ";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Stencil", 15.125F);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(655, 113);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(371, 48);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Название фильма";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -168,27 +165,29 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "МОИ \r\nХАРАКТЕРИСТИКИ\r\n";
             // 
-            // panel2
+            // upper_panel
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.api_btn);
-            this.panel2.Controls.Add(this.frame_api);
-            this.panel2.Controls.Add(this.expand_pb);
-            this.panel2.Controls.Add(this.collapse_pb);
-            this.panel2.Controls.Add(this.profile_pb);
-            this.panel2.Controls.Add(this.logo_pb);
-            this.panel2.Controls.Add(this.frane_expand);
-            this.panel2.Controls.Add(this.frame_collapse);
-            this.panel2.Controls.Add(this.frame_profile);
-            this.panel2.Location = new System.Drawing.Point(2, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1960, 83);
-            this.panel2.TabIndex = 1;
+            this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.upper_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.upper_panel.Controls.Add(this.collections_btn);
+            this.upper_panel.Controls.Add(this.api_btn);
+            this.upper_panel.Controls.Add(this.frame_api);
+            this.upper_panel.Controls.Add(this.expand_pb);
+            this.upper_panel.Controls.Add(this.collapse_pb);
+            this.upper_panel.Controls.Add(this.profile_pb);
+            this.upper_panel.Controls.Add(this.logo_pb);
+            this.upper_panel.Controls.Add(this.frane_expand);
+            this.upper_panel.Controls.Add(this.frame_collapse);
+            this.upper_panel.Controls.Add(this.frame_profile);
+            this.upper_panel.Controls.Add(this.substrate_collection);
+            this.upper_panel.Location = new System.Drawing.Point(2, 0);
+            this.upper_panel.Name = "upper_panel";
+            this.upper_panel.Size = new System.Drawing.Size(1960, 83);
+            this.upper_panel.TabIndex = 1;
             // 
             // just_panel
             // 
-            this.just_panel.Location = new System.Drawing.Point(1769, 1122);
+            this.just_panel.Location = new System.Drawing.Point(1745, 1191);
             this.just_panel.Name = "just_panel";
             this.just_panel.Size = new System.Drawing.Size(52, 47);
             this.just_panel.TabIndex = 19;
@@ -269,13 +268,13 @@
             this.year_lbl.TabIndex = 9;
             this.year_lbl.Text = "Временной\r\nпромежуток";
             // 
-            // panel1
+            // delimeter2
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Location = new System.Drawing.Point(1307, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 1207);
-            this.panel1.TabIndex = 1;
+            this.delimeter2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.delimeter2.Location = new System.Drawing.Point(1307, 0);
+            this.delimeter2.Name = "delimeter2";
+            this.delimeter2.Size = new System.Drawing.Size(10, 1376);
+            this.delimeter2.TabIndex = 1;
             // 
             // richTextBox1
             // 
@@ -288,6 +287,7 @@
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(279, 102);
             this.richTextBox1.TabIndex = 72;
+            this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
             // 
             // richTextBox2
@@ -301,6 +301,7 @@
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(279, 102);
             this.richTextBox2.TabIndex = 73;
+            this.richTextBox2.TabStop = false;
             this.richTextBox2.Text = "";
             // 
             // richTextBox3
@@ -314,6 +315,7 @@
             this.richTextBox3.ReadOnly = true;
             this.richTextBox3.Size = new System.Drawing.Size(279, 96);
             this.richTextBox3.TabIndex = 74;
+            this.richTextBox3.TabStop = false;
             this.richTextBox3.Text = "";
             // 
             // richTextBox4
@@ -327,6 +329,7 @@
             this.richTextBox4.ReadOnly = true;
             this.richTextBox4.Size = new System.Drawing.Size(279, 102);
             this.richTextBox4.TabIndex = 75;
+            this.richTextBox4.TabStop = false;
             this.richTextBox4.Text = "";
             // 
             // change_btn
@@ -350,7 +353,7 @@
             this.add_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.add_film_btn.Font = new System.Drawing.Font("XO Courser", 10F);
             this.add_film_btn.ForeColor = System.Drawing.Color.DarkGray;
-            this.add_film_btn.Location = new System.Drawing.Point(1479, 1061);
+            this.add_film_btn.Location = new System.Drawing.Point(1499, 1160);
             this.add_film_btn.Name = "add_film_btn";
             this.add_film_btn.Size = new System.Drawing.Size(240, 88);
             this.add_film_btn.TabIndex = 77;
@@ -408,28 +411,42 @@
             this.change_compilation.MouseEnter += new System.EventHandler(this.change_compilation_MouseEnter);
             this.change_compilation.MouseLeave += new System.EventHandler(this.change_compilation_MouseLeave);
             // 
-            // button1
+            // pass_btn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Font = new System.Drawing.Font("XO Courser", 14F);
-            this.button1.ForeColor = System.Drawing.Color.Silver;
-            this.button1.Location = new System.Drawing.Point(701, 1015);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(320, 93);
-            this.button1.TabIndex = 106;
-            this.button1.Text = "Пропуск";
-            this.button1.UseVisualStyleBackColor = false;
+            this.pass_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pass_btn.Font = new System.Drawing.Font("XO Courser", 14F);
+            this.pass_btn.ForeColor = System.Drawing.Color.Silver;
+            this.pass_btn.Location = new System.Drawing.Point(694, 1138);
+            this.pass_btn.Name = "pass_btn";
+            this.pass_btn.Size = new System.Drawing.Size(296, 86);
+            this.pass_btn.TabIndex = 106;
+            this.pass_btn.Text = "Пропуск";
+            this.pass_btn.UseVisualStyleBackColor = false;
+            this.pass_btn.Click += new System.EventHandler(this.pass_btn_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Stencil", 13.125F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(701, 837);
+            this.label6.Location = new System.Drawing.Point(703, 956);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(311, 42);
             this.label6.TabIndex = 107;
             this.label6.Text = "Выберите оценку";
+            // 
+            // substrate_picture1
+            // 
+            this.substrate_picture1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.substrate_picture1.Controls.Add(this.picture_poster);
+            this.substrate_picture1.Location = new System.Drawing.Point(533, 197);
+            this.substrate_picture1.Name = "substrate_picture1";
+            this.substrate_picture1.Size = new System.Drawing.Size(679, 660);
+            this.substrate_picture1.TabIndex = 108;
+            this.substrate_picture1.Visible = false;
+            this.substrate_picture1.Click += new System.EventHandler(this.substrate_picture1_Click);
+            this.substrate_picture1.MouseEnter += new System.EventHandler(this.substrate_picture1_MouseEnter);
+            this.substrate_picture1.MouseLeave += new System.EventHandler(this.substrate_picture1_MouseLeave);
             // 
             // button2
             // 
@@ -438,9 +455,9 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.Font = new System.Drawing.Font("XO Courser", 10F);
             this.button2.ForeColor = System.Drawing.Color.DarkGray;
-            this.button2.Location = new System.Drawing.Point(1126, 995);
+            this.button2.Location = new System.Drawing.Point(1108, 1121);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 137);
+            this.button2.Size = new System.Drawing.Size(137, 125);
             this.button2.TabIndex = 105;
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
@@ -452,22 +469,27 @@
             this.add_in_compilation_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.add_in_compilation_btn.Font = new System.Drawing.Font("XO Courser", 10F);
             this.add_in_compilation_btn.ForeColor = System.Drawing.Color.DarkGray;
-            this.add_in_compilation_btn.Location = new System.Drawing.Point(432, 995);
+            this.add_in_compilation_btn.Location = new System.Drawing.Point(453, 1121);
             this.add_in_compilation_btn.Name = "add_in_compilation_btn";
-            this.add_in_compilation_btn.Size = new System.Drawing.Size(137, 137);
+            this.add_in_compilation_btn.Size = new System.Drawing.Size(137, 117);
             this.add_in_compilation_btn.TabIndex = 103;
             this.add_in_compilation_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.add_in_compilation_btn.UseVisualStyleBackColor = false;
             this.add_in_compilation_btn.Click += new System.EventHandler(this.add_in_compilation_btn_Click);
             // 
-            // picture_poster
+            // collections_btn
             // 
-            this.picture_poster.Location = new System.Drawing.Point(625, 249);
-            this.picture_poster.Name = "picture_poster";
-            this.picture_poster.Size = new System.Drawing.Size(432, 492);
-            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picture_poster.TabIndex = 81;
-            this.picture_poster.TabStop = false;
+            this.collections_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.collections_btn.Image = ((System.Drawing.Image)(resources.GetObject("collections_btn.Image")));
+            this.collections_btn.Location = new System.Drawing.Point(1388, 7);
+            this.collections_btn.Name = "collections_btn";
+            this.collections_btn.Size = new System.Drawing.Size(85, 63);
+            this.collections_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.collections_btn.TabIndex = 25;
+            this.collections_btn.TabStop = false;
+            this.hints.SetToolTip(this.collections_btn, "Коллекции приложения");
+            this.collections_btn.MouseEnter += new System.EventHandler(this.collections_btn_MouseEnter);
+            this.collections_btn.MouseLeave += new System.EventHandler(this.collections_btn_MouseLeave);
             // 
             // api_btn
             // 
@@ -479,6 +501,7 @@
             this.api_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.api_btn.TabIndex = 23;
             this.api_btn.TabStop = false;
+            this.hints.SetToolTip(this.api_btn, "Поиск фильмов сервисом AMDb API");
             this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
             this.api_btn.MouseEnter += new System.EventHandler(this.api_btn_MouseEnter);
             this.api_btn.MouseLeave += new System.EventHandler(this.api_btn_MouseLeave);
@@ -503,7 +526,7 @@
             this.expand_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.expand_pb.TabIndex = 2;
             this.expand_pb.TabStop = false;
-            this.hints.SetToolTip(this.expand_pb, "Закрыть");
+            this.hints.SetToolTip(this.expand_pb, "На весь экран");
             this.expand_pb.MouseEnter += new System.EventHandler(this.expand_pb_MouseEnter);
             this.expand_pb.MouseLeave += new System.EventHandler(this.expand_pb_MouseLeave);
             // 
@@ -578,10 +601,21 @@
             this.frame_profile.TabStop = false;
             this.frame_profile.Visible = false;
             // 
+            // substrate_collection
+            // 
+            this.substrate_collection.Image = ((System.Drawing.Image)(resources.GetObject("substrate_collection.Image")));
+            this.substrate_collection.Location = new System.Drawing.Point(1378, 2);
+            this.substrate_collection.Name = "substrate_collection";
+            this.substrate_collection.Size = new System.Drawing.Size(107, 76);
+            this.substrate_collection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate_collection.TabIndex = 26;
+            this.substrate_collection.TabStop = false;
+            this.substrate_collection.Visible = false;
+            // 
             // grayStar1
             // 
             this.grayStar1.Image = ((System.Drawing.Image)(resources.GetObject("grayStar1.Image")));
-            this.grayStar1.Location = new System.Drawing.Point(467, 893);
+            this.grayStar1.Location = new System.Drawing.Point(453, 1011);
             this.grayStar1.Name = "grayStar1";
             this.grayStar1.Size = new System.Drawing.Size(64, 62);
             this.grayStar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -591,7 +625,7 @@
             // yellowStar2
             // 
             this.yellowStar2.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar2.Image")));
-            this.yellowStar2.Location = new System.Drawing.Point(547, 893);
+            this.yellowStar2.Location = new System.Drawing.Point(533, 1011);
             this.yellowStar2.Name = "yellowStar2";
             this.yellowStar2.Size = new System.Drawing.Size(64, 62);
             this.yellowStar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -601,7 +635,7 @@
             // yellowStar3
             // 
             this.yellowStar3.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar3.Image")));
-            this.yellowStar3.Location = new System.Drawing.Point(627, 893);
+            this.yellowStar3.Location = new System.Drawing.Point(613, 1011);
             this.yellowStar3.Name = "yellowStar3";
             this.yellowStar3.Size = new System.Drawing.Size(64, 62);
             this.yellowStar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -611,7 +645,7 @@
             // grayStar4
             // 
             this.grayStar4.Image = ((System.Drawing.Image)(resources.GetObject("grayStar4.Image")));
-            this.grayStar4.Location = new System.Drawing.Point(708, 893);
+            this.grayStar4.Location = new System.Drawing.Point(694, 1011);
             this.grayStar4.Name = "grayStar4";
             this.grayStar4.Size = new System.Drawing.Size(64, 62);
             this.grayStar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -621,7 +655,7 @@
             // grayStar5
             // 
             this.grayStar5.Image = ((System.Drawing.Image)(resources.GetObject("grayStar5.Image")));
-            this.grayStar5.Location = new System.Drawing.Point(790, 893);
+            this.grayStar5.Location = new System.Drawing.Point(776, 1011);
             this.grayStar5.Name = "grayStar5";
             this.grayStar5.Size = new System.Drawing.Size(64, 62);
             this.grayStar5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -631,7 +665,7 @@
             // yellowStar6
             // 
             this.yellowStar6.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar6.Image")));
-            this.yellowStar6.Location = new System.Drawing.Point(870, 893);
+            this.yellowStar6.Location = new System.Drawing.Point(856, 1011);
             this.yellowStar6.Name = "yellowStar6";
             this.yellowStar6.Size = new System.Drawing.Size(64, 62);
             this.yellowStar6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -641,7 +675,7 @@
             // grayStar7
             // 
             this.grayStar7.Image = ((System.Drawing.Image)(resources.GetObject("grayStar7.Image")));
-            this.grayStar7.Location = new System.Drawing.Point(953, 893);
+            this.grayStar7.Location = new System.Drawing.Point(939, 1011);
             this.grayStar7.Name = "grayStar7";
             this.grayStar7.Size = new System.Drawing.Size(64, 62);
             this.grayStar7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -651,7 +685,7 @@
             // grayStar8
             // 
             this.grayStar8.Image = ((System.Drawing.Image)(resources.GetObject("grayStar8.Image")));
-            this.grayStar8.Location = new System.Drawing.Point(1031, 894);
+            this.grayStar8.Location = new System.Drawing.Point(1017, 1012);
             this.grayStar8.Name = "grayStar8";
             this.grayStar8.Size = new System.Drawing.Size(64, 62);
             this.grayStar8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -661,7 +695,7 @@
             // yellowStar9
             // 
             this.yellowStar9.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar9.Image")));
-            this.yellowStar9.Location = new System.Drawing.Point(1109, 894);
+            this.yellowStar9.Location = new System.Drawing.Point(1095, 1012);
             this.yellowStar9.Name = "yellowStar9";
             this.yellowStar9.Size = new System.Drawing.Size(64, 62);
             this.yellowStar9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -671,7 +705,7 @@
             // grayStar10
             // 
             this.grayStar10.Image = ((System.Drawing.Image)(resources.GetObject("grayStar10.Image")));
-            this.grayStar10.Location = new System.Drawing.Point(1189, 894);
+            this.grayStar10.Location = new System.Drawing.Point(1175, 1012);
             this.grayStar10.Name = "grayStar10";
             this.grayStar10.Size = new System.Drawing.Size(64, 62);
             this.grayStar10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -681,7 +715,7 @@
             // yellowStar1
             // 
             this.yellowStar1.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar1.Image")));
-            this.yellowStar1.Location = new System.Drawing.Point(467, 893);
+            this.yellowStar1.Location = new System.Drawing.Point(453, 1011);
             this.yellowStar1.Name = "yellowStar1";
             this.yellowStar1.Size = new System.Drawing.Size(64, 62);
             this.yellowStar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -691,7 +725,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(547, 893);
+            this.pictureBox5.Location = new System.Drawing.Point(533, 1011);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(64, 62);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -701,7 +735,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(627, 893);
+            this.pictureBox7.Location = new System.Drawing.Point(613, 1011);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(64, 62);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -711,7 +745,7 @@
             // yellowStar4
             // 
             this.yellowStar4.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar4.Image")));
-            this.yellowStar4.Location = new System.Drawing.Point(708, 893);
+            this.yellowStar4.Location = new System.Drawing.Point(694, 1011);
             this.yellowStar4.Name = "yellowStar4";
             this.yellowStar4.Size = new System.Drawing.Size(64, 62);
             this.yellowStar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -721,7 +755,7 @@
             // yellowStar5
             // 
             this.yellowStar5.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar5.Image")));
-            this.yellowStar5.Location = new System.Drawing.Point(790, 893);
+            this.yellowStar5.Location = new System.Drawing.Point(776, 1011);
             this.yellowStar5.Name = "yellowStar5";
             this.yellowStar5.Size = new System.Drawing.Size(64, 62);
             this.yellowStar5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -731,7 +765,7 @@
             // pictureBox13
             // 
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(870, 893);
+            this.pictureBox13.Location = new System.Drawing.Point(856, 1011);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(64, 62);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -741,7 +775,7 @@
             // yellowStar7
             // 
             this.yellowStar7.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar7.Image")));
-            this.yellowStar7.Location = new System.Drawing.Point(953, 893);
+            this.yellowStar7.Location = new System.Drawing.Point(939, 1011);
             this.yellowStar7.Name = "yellowStar7";
             this.yellowStar7.Size = new System.Drawing.Size(64, 62);
             this.yellowStar7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -751,7 +785,7 @@
             // yellowStar8
             // 
             this.yellowStar8.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar8.Image")));
-            this.yellowStar8.Location = new System.Drawing.Point(1031, 894);
+            this.yellowStar8.Location = new System.Drawing.Point(1017, 1012);
             this.yellowStar8.Name = "yellowStar8";
             this.yellowStar8.Size = new System.Drawing.Size(64, 62);
             this.yellowStar8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -761,7 +795,7 @@
             // pictureBox19
             // 
             this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
-            this.pictureBox19.Location = new System.Drawing.Point(1109, 894);
+            this.pictureBox19.Location = new System.Drawing.Point(1095, 1012);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(64, 62);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -771,24 +805,64 @@
             // yellowStar10
             // 
             this.yellowStar10.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar10.Image")));
-            this.yellowStar10.Location = new System.Drawing.Point(1189, 894);
+            this.yellowStar10.Location = new System.Drawing.Point(1175, 1012);
             this.yellowStar10.Name = "yellowStar10";
             this.yellowStar10.Size = new System.Drawing.Size(64, 62);
             this.yellowStar10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.yellowStar10.TabIndex = 101;
             this.yellowStar10.TabStop = false;
             // 
+            // picture_poster
+            // 
+            this.picture_poster.Location = new System.Drawing.Point(-12, 0);
+            this.picture_poster.Name = "picture_poster";
+            this.picture_poster.Size = new System.Drawing.Size(663, 740);
+            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picture_poster.TabIndex = 81;
+            this.picture_poster.TabStop = false;
+            this.picture_poster.Click += new System.EventHandler(this.picture_poster_Click);
+            this.picture_poster.MouseEnter += new System.EventHandler(this.picture_poster_MouseEnter);
+            // 
+            // substrate_picture
+            // 
+            this.substrate_picture.Image = ((System.Drawing.Image)(resources.GetObject("substrate_picture.Image")));
+            this.substrate_picture.Location = new System.Drawing.Point(508, 179);
+            this.substrate_picture.Name = "substrate_picture";
+            this.substrate_picture.Size = new System.Drawing.Size(726, 711);
+            this.substrate_picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate_picture.TabIndex = 82;
+            this.substrate_picture.TabStop = false;
+            this.substrate_picture.Visible = false;
+            // 
+            // film_title_lbl
+            // 
+            this.film_title_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.film_title_lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.film_title_lbl.Font = new System.Drawing.Font("Stencil", 16.125F);
+            this.film_title_lbl.Location = new System.Drawing.Point(408, 140);
+            this.film_title_lbl.Name = "film_title_lbl";
+            this.film_title_lbl.ReadOnly = true;
+            this.film_title_lbl.Size = new System.Drawing.Size(893, 51);
+            this.film_title_lbl.TabIndex = 109;
+            this.film_title_lbl.TabStop = false;
+            this.film_title_lbl.Text = "НАЗВАНИЕ ФИЛЬМА";
+            this.film_title_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hints.SetToolTip(this.film_title_lbl, "Посмотреть информацию о фильме");
+            this.film_title_lbl.Click += new System.EventHandler(this.film_title_lbl_Click);
+            this.film_title_lbl.MouseEnter += new System.EventHandler(this.film_title_lbl_MouseEnter);
+            this.film_title_lbl.MouseLeave += new System.EventHandler(this.film_title_lbl_MouseLeave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.ClientSize = new System.Drawing.Size(1843, 1190);
+            this.ClientSize = new System.Drawing.Size(1843, 1271);
+            this.Controls.Add(this.film_title_lbl);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pass_btn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.add_in_compilation_btn);
-            this.Controls.Add(this.picture_poster);
             this.Controls.Add(this.change_compilation);
             this.Controls.Add(this.add_compilation);
             this.Controls.Add(this.list_collections);
@@ -803,11 +877,10 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.frame1);
             this.Controls.Add(this.just_panel);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.info_lbl1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.delimeter2);
             this.Controls.Add(this.delimeter1);
             this.Controls.Add(this.grayStar1);
             this.Controls.Add(this.yellowStar2);
@@ -829,12 +902,15 @@
             this.Controls.Add(this.yellowStar8);
             this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.yellowStar10);
+            this.Controls.Add(this.substrate_picture1);
+            this.Controls.Add(this.substrate_picture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel2.ResumeLayout(false);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
+            this.upper_panel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -843,7 +919,8 @@
             this.panel4.PerformLayout();
             this.frame1.ResumeLayout(false);
             this.frame1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).EndInit();
+            this.substrate_picture1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).EndInit();
@@ -853,6 +930,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar3)).EndInit();
@@ -873,6 +951,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellowStar10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -882,9 +962,8 @@
 
         private System.Windows.Forms.Panel delimeter1;
         private System.Windows.Forms.Label info_lbl1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.PictureBox logo_pb;
         private System.Windows.Forms.PictureBox expand_pb;
         private System.Windows.Forms.PictureBox profile_pb;
@@ -902,7 +981,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel frame1;
         private System.Windows.Forms.Label year_lbl;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel delimeter2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
@@ -912,7 +991,6 @@
         private System.Windows.Forms.ListBox list_collections;
         private System.Windows.Forms.Button add_compilation;
         private System.Windows.Forms.Button change_compilation;
-        private System.Windows.Forms.PictureBox picture_poster;
         private System.Windows.Forms.PictureBox yellowStar1;
         private System.Windows.Forms.PictureBox grayStar1;
         private System.Windows.Forms.PictureBox yellowStar2;
@@ -935,9 +1013,15 @@
         private System.Windows.Forms.PictureBox yellowStar10;
         private System.Windows.Forms.Button add_in_compilation_btn;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button pass_btn;
         private System.Windows.Forms.PictureBox api_btn;
         private System.Windows.Forms.PictureBox frame_api;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox substrate_picture;
+        private System.Windows.Forms.Panel substrate_picture1;
+        private System.Windows.Forms.PictureBox picture_poster;
+        private System.Windows.Forms.PictureBox substrate_collection;
+        private System.Windows.Forms.PictureBox collections_btn;
+        private System.Windows.Forms.TextBox film_title_lbl;
     }
 }

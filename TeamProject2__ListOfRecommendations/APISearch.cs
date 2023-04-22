@@ -164,6 +164,9 @@ namespace TeamProject2__ListOfRecommendations
             MessageBox.Show(plot);
         }
 
-        
+        private void closing_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -172,18 +172,14 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_film_btn_Click(object sender, EventArgs e)
         {
-            if (title_tb.Text == "" || title_tb.Text.Equals("Введите название"))
-            {
-                MessageBox.Show("Пожалуйста, введите название фильма");
-            }
-            else
+            if (!title_tb.Text.Equals("")  && !title_tb.Text.Equals("Введите название") && !link_tb.Text.Equals("") && !link_tb.Text.Equals("Введите ссылку"))
             {
                 DataBase db = new DataBase();
                 db.OpenConnection();
-                MySqlCommand command1 = new MySqlCommand("SELECT * FROM movies WHERE Title = @Title ", db.GetConnection()); 
+                MySqlCommand command1 = new MySqlCommand("SELECT * FROM movies WHERE Title = @Title ", db.GetConnection());
                 command1.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
 
-                MySqlCommand command2 = new MySqlCommand("SELECT * FROM movies WHERE Date = @Date ", db.GetConnection()); 
+                MySqlCommand command2 = new MySqlCommand("SELECT * FROM movies WHERE Date = @Date ", db.GetConnection());
                 command2.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -207,6 +203,10 @@ namespace TeamProject2__ListOfRecommendations
                     MessageBox.Show("Данный фильм уже добавлен в приложение");
                 }
             }
+            else
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля");
+            }
         }
         
 
@@ -216,12 +216,13 @@ namespace TeamProject2__ListOfRecommendations
             {
                 connection.Open();
 
-                string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`) VALUES(@Title, @Date, @PicturePath)";
+                string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`, `Link`) VALUES(@Title, @Date, @PicturePath, @Link)";
                 using (MySqlCommand command = new MySqlCommand(insertFilmQuery, connection))
                 {
                     command.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
                     command.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
                     command.Parameters.Add("@PicturePath", MySqlDbType.VarChar).Value = selectedFile;
+                    command.Parameters.Add("@Link", MySqlDbType.VarChar).Value = link_tb.Text;
 
                     command.ExecuteNonQuery();
                     int filmId = Convert.ToInt32(command.LastInsertedId);
@@ -325,6 +326,9 @@ namespace TeamProject2__ListOfRecommendations
             }
         }
 
-        
+        private void link_tb_Click(object sender, EventArgs e)
+        {
+            link_tb.Text = string.Empty;
+        }
     }
 }

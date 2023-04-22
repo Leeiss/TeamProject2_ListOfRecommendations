@@ -62,6 +62,9 @@
             this.cancel_btn2 = new System.Windows.Forms.Button();
             this.add_actor_in_list_btn = new System.Windows.Forms.Button();
             this.actor_tb = new System.Windows.Forms.TextBox();
+            this.link_tb = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.substrate1.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate4.SuspendLayout();
@@ -70,6 +73,7 @@
             this.substrate5.SuspendLayout();
             this.substrate6.SuspendLayout();
             this.closing_actors.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // upper_panel
@@ -77,7 +81,7 @@
             this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.upper_panel.Location = new System.Drawing.Point(1, 150);
             this.upper_panel.Name = "upper_panel";
-            this.upper_panel.Size = new System.Drawing.Size(1348, 14);
+            this.upper_panel.Size = new System.Drawing.Size(1553, 14);
             this.upper_panel.TabIndex = 22;
             // 
             // info_lbl1
@@ -85,7 +89,7 @@
             this.info_lbl1.AutoSize = true;
             this.info_lbl1.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.info_lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_lbl1.Location = new System.Drawing.Point(399, 74);
+            this.info_lbl1.Location = new System.Drawing.Point(458, 73);
             this.info_lbl1.Name = "info_lbl1";
             this.info_lbl1.Size = new System.Drawing.Size(513, 57);
             this.info_lbl1.TabIndex = 21;
@@ -228,7 +232,7 @@
             this.substrate8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.substrate8.Controls.Add(this.year_lbl);
-            this.substrate8.Location = new System.Drawing.Point(715, 846);
+            this.substrate8.Location = new System.Drawing.Point(805, 846);
             this.substrate8.Name = "substrate8";
             this.substrate8.Size = new System.Drawing.Size(238, 58);
             this.substrate8.TabIndex = 76;
@@ -261,7 +265,7 @@
             // 
             this.add_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
             this.add_film_btn.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.add_film_btn.Location = new System.Drawing.Point(1116, 959);
+            this.add_film_btn.Location = new System.Drawing.Point(1206, 959);
             this.add_film_btn.Name = "add_film_btn";
             this.add_film_btn.Size = new System.Drawing.Size(195, 74);
             this.add_film_btn.TabIndex = 95;
@@ -277,7 +281,7 @@
             this.selected_date.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.selected_date.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.selected_date.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.selected_date.Location = new System.Drawing.Point(1045, 860);
+            this.selected_date.Location = new System.Drawing.Point(1135, 860);
             this.selected_date.Name = "selected_date";
             this.selected_date.Size = new System.Drawing.Size(260, 35);
             this.selected_date.TabIndex = 96;
@@ -301,7 +305,7 @@
             this.substrate3.Controls.Add(this.info_lbl);
             this.substrate3.Location = new System.Drawing.Point(36, 446);
             this.substrate3.Name = "substrate3";
-            this.substrate3.Size = new System.Drawing.Size(1313, 73);
+            this.substrate3.Size = new System.Drawing.Size(1405, 73);
             this.substrate3.TabIndex = 73;
             // 
             // add_actor
@@ -309,7 +313,7 @@
             this.add_actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.add_actor.Font = new System.Drawing.Font("XO Courser", 8F);
             this.add_actor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.add_actor.Location = new System.Drawing.Point(1138, 772);
+            this.add_actor.Location = new System.Drawing.Point(1228, 772);
             this.add_actor.Name = "add_actor";
             this.add_actor.Size = new System.Drawing.Size(160, 42);
             this.add_actor.TabIndex = 115;
@@ -590,7 +594,7 @@
             this.search_actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.search_actor.Font = new System.Drawing.Font("XO Courser", 9F);
             this.search_actor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.search_actor.Location = new System.Drawing.Point(1005, 559);
+            this.search_actor.Location = new System.Drawing.Point(1095, 559);
             this.search_actor.Name = "search_actor";
             this.search_actor.Size = new System.Drawing.Size(293, 35);
             this.search_actor.TabIndex = 118;
@@ -605,7 +609,7 @@
             this.actors_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.actors_list.FormattingEnabled = true;
             this.actors_list.ItemHeight = 27;
-            this.actors_list.Location = new System.Drawing.Point(1005, 600);
+            this.actors_list.Location = new System.Drawing.Point(1095, 600);
             this.actors_list.Name = "actors_list";
             this.actors_list.Size = new System.Drawing.Size(293, 166);
             this.actors_list.TabIndex = 117;
@@ -616,7 +620,7 @@
             this.substrate6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.substrate6.Controls.Add(this.actors_lbl);
-            this.substrate6.Location = new System.Drawing.Point(704, 569);
+            this.substrate6.Location = new System.Drawing.Point(794, 569);
             this.substrate6.Name = "substrate6";
             this.substrate6.Size = new System.Drawing.Size(236, 102);
             this.substrate6.TabIndex = 116;
@@ -636,7 +640,7 @@
             this.add_actor_btn.AutoSize = true;
             this.add_actor_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Underline);
             this.add_actor_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.add_actor_btn.Location = new System.Drawing.Point(699, 683);
+            this.add_actor_btn.Location = new System.Drawing.Point(789, 683);
             this.add_actor_btn.Name = "add_actor_btn";
             this.add_actor_btn.Size = new System.Drawing.Size(254, 29);
             this.add_actor_btn.TabIndex = 119;
@@ -651,7 +655,7 @@
             this.closing_actors.Controls.Add(this.cancel_btn2);
             this.closing_actors.Controls.Add(this.add_actor_in_list_btn);
             this.closing_actors.Controls.Add(this.actor_tb);
-            this.closing_actors.Location = new System.Drawing.Point(691, 559);
+            this.closing_actors.Location = new System.Drawing.Point(791, 559);
             this.closing_actors.Name = "closing_actors";
             this.closing_actors.Size = new System.Drawing.Size(620, 262);
             this.closing_actors.TabIndex = 121;
@@ -700,12 +704,48 @@
             this.actor_tb.Visible = false;
             this.actor_tb.Click += new System.EventHandler(this.actor_tb_Click);
             // 
+            // link_tb
+            // 
+            this.link_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.link_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.link_tb.Font = new System.Drawing.Font("XO Courser", 12F);
+            this.link_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.link_tb.Location = new System.Drawing.Point(1033, 331);
+            this.link_tb.Name = "link_tb";
+            this.link_tb.Size = new System.Drawing.Size(378, 44);
+            this.link_tb.TabIndex = 123;
+            this.link_tb.TabStop = false;
+            this.link_tb.Text = "Введите ссылку";
+            this.link_tb.Click += new System.EventHandler(this.link_tb_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(781, 313);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(190, 68);
+            this.panel1.TabIndex = 122;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.label1.Location = new System.Drawing.Point(9, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 33);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Ссылка";
+            // 
             // AddFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.ClientSize = new System.Drawing.Size(1336, 1062);
+            this.ClientSize = new System.Drawing.Size(1435, 1062);
+            this.Controls.Add(this.link_tb);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.closing_actors);
             this.Controls.Add(this.add_actor_btn);
             this.Controls.Add(this.search_actor);
@@ -749,6 +789,8 @@
             this.substrate6.PerformLayout();
             this.closing_actors.ResumeLayout(false);
             this.closing_actors.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,5 +832,8 @@
         private System.Windows.Forms.Button cancel_btn2;
         private System.Windows.Forms.Button add_actor_in_list_btn;
         private System.Windows.Forms.TextBox actor_tb;
+        private System.Windows.Forms.TextBox link_tb;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

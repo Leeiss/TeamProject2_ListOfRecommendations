@@ -475,7 +475,6 @@
             this.save_btn.TabIndex = 58;
             this.save_btn.Text = "Сохранить";
             this.save_btn.UseVisualStyleBackColor = false;
-            this.save_btn.Visible = false;
             // 
             // panel1
             // 
