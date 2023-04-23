@@ -31,33 +31,5 @@ namespace TeamProject1_ToDoList.Classes
         {
             return connection;
         }
-
-        public static DataTable GetData(string query)
-        {
-            string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                {
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    return dataTable;
-                }
-            }
-        }
-
-        public static void ExecuteQuery(string query)
-        {
-            string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
     }
 }

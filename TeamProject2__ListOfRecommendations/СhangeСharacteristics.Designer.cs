@@ -31,25 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(СhangeСharacteristics));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.search_actor_tb = new System.Windows.Forms.TextBox();
             this.actors_list = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.directrors_list = new System.Windows.Forms.ListBox();
-            this.searchDirector_tb = new System.Windows.Forms.TextBox();
+            this.search_genre_btn = new System.Windows.Forms.TextBox();
+            this.genres_list = new System.Windows.Forms.ListBox();
+            this.search_country_tb = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.countries_list = new System.Windows.Forms.ListBox();
-            this.date2 = new System.Windows.Forms.DateTimePicker();
-            this.to_lbl = new System.Windows.Forms.Label();
-            this.from_lbl = new System.Windows.Forms.Label();
             this.date1 = new System.Windows.Forms.DateTimePicker();
             this.frame1 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.save_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.add_country_btn = new System.Windows.Forms.Button();
+            this.add_genre_btn = new System.Windows.Forms.Button();
+            this.add_actor_btn = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -77,15 +77,17 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Страна";
             // 
-            // textBox2
+            // search_actor_tb
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.textBox2.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.textBox2.Location = new System.Drawing.Point(992, 601);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(289, 35);
-            this.textBox2.TabIndex = 56;
-            this.textBox2.Text = "Поиск по списку..";
+            this.search_actor_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_actor_tb.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_actor_tb.Location = new System.Drawing.Point(992, 601);
+            this.search_actor_tb.Name = "search_actor_tb";
+            this.search_actor_tb.Size = new System.Drawing.Size(289, 35);
+            this.search_actor_tb.TabIndex = 56;
+            this.search_actor_tb.Text = "Поиск по списку..";
+            this.search_actor_tb.Click += new System.EventHandler(this.search_actor_tb_Click);
+            this.search_actor_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_actor_tb_KeyDown);
             // 
             // actors_list
             // 
@@ -95,8 +97,9 @@
             this.actors_list.ItemHeight = 27;
             this.actors_list.Location = new System.Drawing.Point(992, 642);
             this.actors_list.Name = "actors_list";
-            this.actors_list.Size = new System.Drawing.Size(289, 85);
+            this.actors_list.Size = new System.Drawing.Size(289, 166);
             this.actors_list.TabIndex = 55;
+            this.actors_list.SelectedIndexChanged += new System.EventHandler(this.actors_list_SelectedIndexChanged);
             // 
             // panel5
             // 
@@ -118,23 +121,25 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Актеры";
             // 
-            // textBox1
+            // search_genre_btn
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.textBox1.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.textBox1.Location = new System.Drawing.Point(335, 600);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(289, 35);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.Text = "Поиск по списку..";
+            this.search_genre_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_genre_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_genre_btn.Location = new System.Drawing.Point(335, 600);
+            this.search_genre_btn.Name = "search_genre_btn";
+            this.search_genre_btn.Size = new System.Drawing.Size(289, 35);
+            this.search_genre_btn.TabIndex = 53;
+            this.search_genre_btn.Text = "Поиск по списку..";
+            this.search_genre_btn.Click += new System.EventHandler(this.search_genre_btn_Click);
+            this.search_genre_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_genre_btn_KeyDown);
             // 
-            // directrors_list
+            // genres_list
             // 
-            this.directrors_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.directrors_list.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.directrors_list.FormattingEnabled = true;
-            this.directrors_list.ItemHeight = 27;
-            this.directrors_list.Items.AddRange(new object[] {
+            this.genres_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.genres_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.genres_list.FormattingEnabled = true;
+            this.genres_list.ItemHeight = 27;
+            this.genres_list.Items.AddRange(new object[] {
             "Боевик",
             "Вестерн",
             "Детектив",
@@ -153,20 +158,23 @@
             "Фантастический фильм",
             "Фильм ужасов",
             "Фильм-катастрофа"});
-            this.directrors_list.Location = new System.Drawing.Point(335, 641);
-            this.directrors_list.Name = "directrors_list";
-            this.directrors_list.Size = new System.Drawing.Size(289, 85);
-            this.directrors_list.TabIndex = 49;
+            this.genres_list.Location = new System.Drawing.Point(335, 641);
+            this.genres_list.Name = "genres_list";
+            this.genres_list.Size = new System.Drawing.Size(289, 166);
+            this.genres_list.TabIndex = 49;
+            this.genres_list.SelectedIndexChanged += new System.EventHandler(this.genres_list_SelectedIndexChanged);
             // 
-            // searchDirector_tb
+            // search_country_tb
             // 
-            this.searchDirector_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.searchDirector_tb.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.searchDirector_tb.Location = new System.Drawing.Point(988, 360);
-            this.searchDirector_tb.Name = "searchDirector_tb";
-            this.searchDirector_tb.Size = new System.Drawing.Size(293, 35);
-            this.searchDirector_tb.TabIndex = 51;
-            this.searchDirector_tb.Text = "Поиск по списку..";
+            this.search_country_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_country_tb.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_country_tb.Location = new System.Drawing.Point(988, 360);
+            this.search_country_tb.Name = "search_country_tb";
+            this.search_country_tb.Size = new System.Drawing.Size(293, 35);
+            this.search_country_tb.TabIndex = 51;
+            this.search_country_tb.Text = "Поиск по списку..";
+            this.search_country_tb.Click += new System.EventHandler(this.search_country_tb_Click);
+            this.search_country_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_country_tb_KeyDown);
             // 
             // panel4
             // 
@@ -403,47 +411,20 @@
             "Япония"});
             this.countries_list.Location = new System.Drawing.Point(988, 401);
             this.countries_list.Name = "countries_list";
-            this.countries_list.Size = new System.Drawing.Size(293, 85);
+            this.countries_list.Size = new System.Drawing.Size(293, 166);
             this.countries_list.TabIndex = 47;
-            // 
-            // date2
-            // 
-            this.date2.CalendarMonthBackground = System.Drawing.Color.Gray;
-            this.date2.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.date2.Location = new System.Drawing.Point(364, 414);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(260, 35);
-            this.date2.TabIndex = 45;
-            // 
-            // to_lbl
-            // 
-            this.to_lbl.AutoSize = true;
-            this.to_lbl.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.to_lbl.Location = new System.Drawing.Point(304, 420);
-            this.to_lbl.Name = "to_lbl";
-            this.to_lbl.Size = new System.Drawing.Size(54, 27);
-            this.to_lbl.TabIndex = 44;
-            this.to_lbl.Text = "до-";
-            // 
-            // from_lbl
-            // 
-            this.from_lbl.AutoSize = true;
-            this.from_lbl.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.from_lbl.Location = new System.Drawing.Point(304, 363);
-            this.from_lbl.Name = "from_lbl";
-            this.from_lbl.Size = new System.Drawing.Size(54, 27);
-            this.from_lbl.TabIndex = 41;
-            this.from_lbl.Text = "от-";
+            this.countries_list.SelectedIndexChanged += new System.EventHandler(this.countries_list_SelectedIndexChanged);
             // 
             // date1
             // 
             this.date1.CalendarMonthBackground = System.Drawing.Color.Silver;
             this.date1.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.date1.Location = new System.Drawing.Point(364, 357);
+            this.date1.Location = new System.Drawing.Point(349, 379);
             this.date1.Name = "date1";
             this.date1.Size = new System.Drawing.Size(260, 35);
             this.date1.TabIndex = 43;
             this.date1.TabStop = false;
+            this.date1.ValueChanged += new System.EventHandler(this.date1_ValueChanged);
             // 
             // frame1
             // 
@@ -459,11 +440,11 @@
             // 
             this.year_lbl.AutoSize = true;
             this.year_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.year_lbl.Location = new System.Drawing.Point(15, 12);
+            this.year_lbl.Location = new System.Drawing.Point(3, 18);
             this.year_lbl.Name = "year_lbl";
-            this.year_lbl.Size = new System.Drawing.Size(195, 66);
+            this.year_lbl.Size = new System.Drawing.Size(213, 33);
             this.year_lbl.TabIndex = 9;
-            this.year_lbl.Text = "Временной\r\nпромежуток";
+            this.year_lbl.Text = "Дата выхода";
             // 
             // save_btn
             // 
@@ -475,6 +456,8 @@
             this.save_btn.TabIndex = 58;
             this.save_btn.Text = "Сохранить";
             this.save_btn.UseVisualStyleBackColor = false;
+            this.save_btn.Visible = false;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
             // panel1
             // 
@@ -494,25 +477,67 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // add_country_btn
+            // 
+            this.add_country_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_country_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_country_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_country_btn.Location = new System.Drawing.Point(1124, 546);
+            this.add_country_btn.Name = "add_country_btn";
+            this.add_country_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_country_btn.TabIndex = 112;
+            this.add_country_btn.Text = "Добавить";
+            this.add_country_btn.UseVisualStyleBackColor = false;
+            this.add_country_btn.Visible = false;
+            this.add_country_btn.Click += new System.EventHandler(this.add_country_btn_Click);
+            // 
+            // add_genre_btn
+            // 
+            this.add_genre_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_genre_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_genre_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_genre_btn.Location = new System.Drawing.Point(467, 799);
+            this.add_genre_btn.Name = "add_genre_btn";
+            this.add_genre_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_genre_btn.TabIndex = 113;
+            this.add_genre_btn.Text = "Добавить";
+            this.add_genre_btn.UseVisualStyleBackColor = false;
+            this.add_genre_btn.Visible = false;
+            this.add_genre_btn.Click += new System.EventHandler(this.add_genre_btn_Click);
+            // 
+            // add_actor_btn
+            // 
+            this.add_actor_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_actor_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_actor_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_actor_btn.Location = new System.Drawing.Point(1124, 799);
+            this.add_actor_btn.Name = "add_actor_btn";
+            this.add_actor_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_actor_btn.TabIndex = 114;
+            this.add_actor_btn.Text = "Добавить";
+            this.add_actor_btn.UseVisualStyleBackColor = false;
+            this.add_actor_btn.Visible = false;
+            this.add_actor_btn.Click += new System.EventHandler(this.add_actor_btn_Click);
+            // 
             // СhangeСharacteristics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1339, 936);
+            this.Controls.Add(this.add_actor_btn);
+            this.Controls.Add(this.add_genre_btn);
+            this.Controls.Add(this.add_country_btn);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.search_actor_tb);
             this.Controls.Add(this.actors_list);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.directrors_list);
-            this.Controls.Add(this.searchDirector_tb);
+            this.Controls.Add(this.search_genre_btn);
+            this.Controls.Add(this.genres_list);
+            this.Controls.Add(this.search_country_tb);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.countries_list);
-            this.Controls.Add(this.date2);
-            this.Controls.Add(this.to_lbl);
-            this.Controls.Add(this.from_lbl);
             this.Controls.Add(this.date1);
             this.Controls.Add(this.frame1);
             this.Controls.Add(this.pictureBox1);
@@ -538,23 +563,23 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox search_actor_tb;
         private System.Windows.Forms.ListBox actors_list;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox directrors_list;
-        private System.Windows.Forms.TextBox searchDirector_tb;
+        private System.Windows.Forms.TextBox search_genre_btn;
+        private System.Windows.Forms.ListBox genres_list;
+        private System.Windows.Forms.TextBox search_country_tb;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox countries_list;
-        private System.Windows.Forms.DateTimePicker date2;
-        private System.Windows.Forms.Label to_lbl;
-        private System.Windows.Forms.Label from_lbl;
         private System.Windows.Forms.DateTimePicker date1;
         private System.Windows.Forms.Panel frame1;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button add_country_btn;
+        private System.Windows.Forms.Button add_genre_btn;
+        private System.Windows.Forms.Button add_actor_btn;
     }
 }

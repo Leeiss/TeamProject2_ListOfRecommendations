@@ -1,19 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Label = System.Windows.Forms.Label;
 
 namespace TeamProject2__ListOfRecommendations
@@ -30,7 +22,7 @@ namespace TeamProject2__ListOfRecommendations
         public Preferences(string login)
         {
             InitializeComponent();
-            timer = new System.Windows.Forms.Timer();
+            timer = new Timer();
             timer.Interval = 400;
             timer.Tick += new EventHandler(timer_Tick);
             labels = new List<Label> { info_lbl1, info_lbl2, info_lbl3 };

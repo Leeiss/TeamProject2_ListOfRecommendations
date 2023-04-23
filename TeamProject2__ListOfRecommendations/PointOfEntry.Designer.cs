@@ -59,9 +59,9 @@
             this.registration_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.registration_btn.Location = new System.Drawing.Point(30, 748);
             this.registration_btn.Name = "registration_btn";
-            this.registration_btn.Size = new System.Drawing.Size(252, 29);
+            this.registration_btn.Size = new System.Drawing.Size(253, 29);
             this.registration_btn.TabIndex = 4;
-            this.registration_btn.Text = "Зарегестрироваться";
+            this.registration_btn.Text = "Зарегистрироваться";
             this.registration_btn.Click += new System.EventHandler(this.registration_btn_Click);
             this.registration_btn.MouseEnter += new System.EventHandler(this.registration_btn_MouseEnter);
             this.registration_btn.MouseLeave += new System.EventHandler(this.registration_btn_MouseLeave);

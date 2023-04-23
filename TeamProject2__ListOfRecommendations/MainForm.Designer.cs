@@ -34,31 +34,6 @@
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
-            this.just_panel = new System.Windows.Forms.Panel();
-            this.hints = new System.Windows.Forms.ToolTip(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.frame1 = new System.Windows.Forms.Panel();
-            this.year_lbl = new System.Windows.Forms.Label();
-            this.delimeter2 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.change_btn = new System.Windows.Forms.Label();
-            this.add_film_btn = new System.Windows.Forms.Button();
-            this.list_collections = new System.Windows.Forms.ListBox();
-            this.add_compilation = new System.Windows.Forms.Button();
-            this.change_compilation = new System.Windows.Forms.Button();
-            this.pass_btn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.substrate_picture1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.add_in_compilation_btn = new System.Windows.Forms.Button();
             this.collections_btn = new System.Windows.Forms.PictureBox();
             this.api_btn = new System.Windows.Forms.PictureBox();
             this.frame_api = new System.Windows.Forms.PictureBox();
@@ -70,35 +45,69 @@
             this.frame_collapse = new System.Windows.Forms.PictureBox();
             this.frame_profile = new System.Windows.Forms.PictureBox();
             this.substrate_collection = new System.Windows.Forms.PictureBox();
+            this.just_panel = new System.Windows.Forms.Panel();
+            this.hints = new System.Windows.Forms.ToolTip(this.components);
+            this.film_title_lbl = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.frame1 = new System.Windows.Forms.Panel();
+            this.year_lbl = new System.Windows.Forms.Label();
+            this.delimeter2 = new System.Windows.Forms.Panel();
+            this.genre_info = new System.Windows.Forms.RichTextBox();
+            this.actors_info = new System.Windows.Forms.RichTextBox();
+            this.countries_info = new System.Windows.Forms.RichTextBox();
+            this.dateinterval_info = new System.Windows.Forms.RichTextBox();
+            this.change_btn = new System.Windows.Forms.Label();
+            this.add_film_btn = new System.Windows.Forms.Button();
+            this.list_collections = new System.Windows.Forms.ListBox();
+            this.add_compilation = new System.Windows.Forms.Button();
+            this.change_compilation = new System.Windows.Forms.Button();
+            this.pass__individual__btn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.substrate_picture1 = new System.Windows.Forms.Panel();
+            this.picture_poster = new System.Windows.Forms.PictureBox();
+            this.star_btn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.add_in_compilation_btn = new System.Windows.Forms.Button();
+            this.substrate_picture = new System.Windows.Forms.PictureBox();
             this.grayStar1 = new System.Windows.Forms.PictureBox();
-            this.yellowStar2 = new System.Windows.Forms.PictureBox();
-            this.yellowStar3 = new System.Windows.Forms.PictureBox();
+            this.grayStar2 = new System.Windows.Forms.PictureBox();
+            this.grayStar3 = new System.Windows.Forms.PictureBox();
             this.grayStar4 = new System.Windows.Forms.PictureBox();
             this.grayStar5 = new System.Windows.Forms.PictureBox();
-            this.yellowStar6 = new System.Windows.Forms.PictureBox();
+            this.grayStar6 = new System.Windows.Forms.PictureBox();
             this.grayStar7 = new System.Windows.Forms.PictureBox();
             this.grayStar8 = new System.Windows.Forms.PictureBox();
-            this.yellowStar9 = new System.Windows.Forms.PictureBox();
+            this.grayStar9 = new System.Windows.Forms.PictureBox();
             this.grayStar10 = new System.Windows.Forms.PictureBox();
-            this.yellowStar1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.yellowStar4 = new System.Windows.Forms.PictureBox();
-            this.yellowStar5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.yellowStar7 = new System.Windows.Forms.PictureBox();
-            this.yellowStar8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.yellowStar10 = new System.Windows.Forms.PictureBox();
-            this.picture_poster = new System.Windows.Forms.PictureBox();
-            this.substrate_picture = new System.Windows.Forms.PictureBox();
-            this.film_title_lbl = new System.Windows.Forms.TextBox();
+            this.closing_panel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.save_btn = new System.Windows.Forms.Button();
+            this.add_actor_btn = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.add_country_btn = new System.Windows.Forms.Button();
+            this.add_genre_btn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.search_actor_tb = new System.Windows.Forms.TextBox();
+            this.date1 = new System.Windows.Forms.DateTimePicker();
+            this.actors_list = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.search_country_tb = new System.Windows.Forms.TextBox();
+            this.countries_list = new System.Windows.Forms.ListBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.genres_list = new System.Windows.Forms.ListBox();
+            this.search_genre_btn = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pass_filtration_btn = new System.Windows.Forms.Button();
             this.upper_panel.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.frame1.SuspendLayout();
-            this.substrate_picture1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).BeginInit();
@@ -110,28 +119,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar10)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.frame1.SuspendLayout();
+            this.substrate_picture1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar10)).BeginInit();
+            this.closing_panel.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // delimeter1
@@ -185,298 +194,6 @@
             this.upper_panel.Size = new System.Drawing.Size(1960, 83);
             this.upper_panel.TabIndex = 1;
             // 
-            // just_panel
-            // 
-            this.just_panel.Location = new System.Drawing.Point(1745, 1191);
-            this.just_panel.Name = "just_panel";
-            this.just_panel.Size = new System.Drawing.Size(52, 47);
-            this.just_panel.TabIndex = 19;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(1345, 513);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(190, 96);
-            this.panel3.TabIndex = 63;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label3.Location = new System.Drawing.Point(9, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 33);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Страна";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(1345, 372);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(190, 102);
-            this.panel5.TabIndex = 67;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label5.Location = new System.Drawing.Point(9, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 33);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Актеры";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(1345, 249);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(190, 102);
-            this.panel4.TabIndex = 65;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label4.Location = new System.Drawing.Point(9, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 33);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Жанр";
-            // 
-            // frame1
-            // 
-            this.frame1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.frame1.Controls.Add(this.year_lbl);
-            this.frame1.Location = new System.Drawing.Point(1345, 649);
-            this.frame1.Name = "frame1";
-            this.frame1.Size = new System.Drawing.Size(190, 102);
-            this.frame1.TabIndex = 59;
-            // 
-            // year_lbl
-            // 
-            this.year_lbl.AutoSize = true;
-            this.year_lbl.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.year_lbl.Location = new System.Drawing.Point(3, 19);
-            this.year_lbl.Name = "year_lbl";
-            this.year_lbl.Size = new System.Drawing.Size(173, 60);
-            this.year_lbl.TabIndex = 9;
-            this.year_lbl.Text = "Временной\r\nпромежуток";
-            // 
-            // delimeter2
-            // 
-            this.delimeter2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.delimeter2.Location = new System.Drawing.Point(1307, 0);
-            this.delimeter2.Name = "delimeter2";
-            this.delimeter2.Size = new System.Drawing.Size(10, 1376);
-            this.delimeter2.TabIndex = 1;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Stencil", 10.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.DarkGray;
-            this.richTextBox1.Location = new System.Drawing.Point(1542, 249);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(279, 102);
-            this.richTextBox1.TabIndex = 72;
-            this.richTextBox1.TabStop = false;
-            this.richTextBox1.Text = "";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Font = new System.Drawing.Font("Stencil", 10.85F);
-            this.richTextBox2.ForeColor = System.Drawing.Color.DarkGray;
-            this.richTextBox2.Location = new System.Drawing.Point(1542, 372);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(279, 102);
-            this.richTextBox2.TabIndex = 73;
-            this.richTextBox2.TabStop = false;
-            this.richTextBox2.Text = "";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox3.Font = new System.Drawing.Font("Stencil", 10.85F);
-            this.richTextBox3.ForeColor = System.Drawing.Color.DarkGray;
-            this.richTextBox3.Location = new System.Drawing.Point(1542, 513);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(279, 96);
-            this.richTextBox3.TabIndex = 74;
-            this.richTextBox3.TabStop = false;
-            this.richTextBox3.Text = "";
-            // 
-            // richTextBox4
-            // 
-            this.richTextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox4.Font = new System.Drawing.Font("XO Caliburn", 10.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox4.ForeColor = System.Drawing.Color.DarkGray;
-            this.richTextBox4.Location = new System.Drawing.Point(1542, 649);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.ReadOnly = true;
-            this.richTextBox4.Size = new System.Drawing.Size(279, 102);
-            this.richTextBox4.TabIndex = 75;
-            this.richTextBox4.TabStop = false;
-            this.richTextBox4.Text = "";
-            // 
-            // change_btn
-            // 
-            this.change_btn.AutoSize = true;
-            this.change_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.change_btn.Font = new System.Drawing.Font("Stencil", 10.125F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.change_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.change_btn.Location = new System.Drawing.Point(1595, 785);
-            this.change_btn.Name = "change_btn";
-            this.change_btn.Size = new System.Drawing.Size(227, 64);
-            this.change_btn.TabIndex = 76;
-            this.change_btn.Text = "Изменить \r\nхарактеристики";
-            this.change_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.change_btn.Click += new System.EventHandler(this.change_btn_Click);
-            this.change_btn.MouseEnter += new System.EventHandler(this.change_btn_MouseEnter);
-            this.change_btn.MouseLeave += new System.EventHandler(this.change_btn_MouseLeave);
-            // 
-            // add_film_btn
-            // 
-            this.add_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.add_film_btn.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.add_film_btn.ForeColor = System.Drawing.Color.DarkGray;
-            this.add_film_btn.Location = new System.Drawing.Point(1499, 1160);
-            this.add_film_btn.Name = "add_film_btn";
-            this.add_film_btn.Size = new System.Drawing.Size(240, 88);
-            this.add_film_btn.TabIndex = 77;
-            this.add_film_btn.Text = "Добавить фильм";
-            this.add_film_btn.UseVisualStyleBackColor = false;
-            this.add_film_btn.Click += new System.EventHandler(this.add_film_btn_Click);
-            // 
-            // list_collections
-            // 
-            this.list_collections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.list_collections.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.list_collections.Font = new System.Drawing.Font("Stencil", 10.85F);
-            this.list_collections.ForeColor = System.Drawing.Color.DarkGray;
-            this.list_collections.FormattingEnabled = true;
-            this.list_collections.ItemHeight = 34;
-            this.list_collections.Items.AddRange(new object[] {
-            "Фильмы дня",
-            "Избранное",
-            "Спорт"});
-            this.list_collections.Location = new System.Drawing.Point(31, 249);
-            this.list_collections.Name = "list_collections";
-            this.list_collections.Size = new System.Drawing.Size(322, 442);
-            this.list_collections.TabIndex = 78;
-            this.list_collections.SelectedIndexChanged += new System.EventHandler(this.list_collections_SelectedIndexChanged);
-            // 
-            // add_compilation
-            // 
-            this.add_compilation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.add_compilation.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.add_compilation.ForeColor = System.Drawing.Color.DarkGray;
-            this.add_compilation.Location = new System.Drawing.Point(31, 718);
-            this.add_compilation.Name = "add_compilation";
-            this.add_compilation.Size = new System.Drawing.Size(320, 76);
-            this.add_compilation.TabIndex = 79;
-            this.add_compilation.Text = "Создать подборку";
-            this.add_compilation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_compilation.UseVisualStyleBackColor = false;
-            this.add_compilation.Click += new System.EventHandler(this.add_compilation_Click);
-            this.add_compilation.MouseEnter += new System.EventHandler(this.add_compilation_MouseEnter);
-            this.add_compilation.MouseLeave += new System.EventHandler(this.add_compilation_MouseLeave);
-            // 
-            // change_compilation
-            // 
-            this.change_compilation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.change_compilation.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.change_compilation.ForeColor = System.Drawing.Color.DarkGray;
-            this.change_compilation.Location = new System.Drawing.Point(31, 810);
-            this.change_compilation.Name = "change_compilation";
-            this.change_compilation.Size = new System.Drawing.Size(320, 78);
-            this.change_compilation.TabIndex = 80;
-            this.change_compilation.Text = "Изменить подборки";
-            this.change_compilation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.change_compilation.UseVisualStyleBackColor = false;
-            this.change_compilation.Click += new System.EventHandler(this.change_compilation_Click);
-            this.change_compilation.MouseEnter += new System.EventHandler(this.change_compilation_MouseEnter);
-            this.change_compilation.MouseLeave += new System.EventHandler(this.change_compilation_MouseLeave);
-            // 
-            // pass_btn
-            // 
-            this.pass_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pass_btn.Font = new System.Drawing.Font("XO Courser", 14F);
-            this.pass_btn.ForeColor = System.Drawing.Color.Silver;
-            this.pass_btn.Location = new System.Drawing.Point(694, 1138);
-            this.pass_btn.Name = "pass_btn";
-            this.pass_btn.Size = new System.Drawing.Size(296, 86);
-            this.pass_btn.TabIndex = 106;
-            this.pass_btn.Text = "Пропуск";
-            this.pass_btn.UseVisualStyleBackColor = false;
-            this.pass_btn.Click += new System.EventHandler(this.pass_btn_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Stencil", 13.125F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(703, 956);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(311, 42);
-            this.label6.TabIndex = 107;
-            this.label6.Text = "Выберите оценку";
-            // 
-            // substrate_picture1
-            // 
-            this.substrate_picture1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.substrate_picture1.Controls.Add(this.picture_poster);
-            this.substrate_picture1.Location = new System.Drawing.Point(533, 197);
-            this.substrate_picture1.Name = "substrate_picture1";
-            this.substrate_picture1.Size = new System.Drawing.Size(679, 660);
-            this.substrate_picture1.TabIndex = 108;
-            this.substrate_picture1.Visible = false;
-            this.substrate_picture1.Click += new System.EventHandler(this.substrate_picture1_Click);
-            this.substrate_picture1.MouseEnter += new System.EventHandler(this.substrate_picture1_MouseEnter);
-            this.substrate_picture1.MouseLeave += new System.EventHandler(this.substrate_picture1_MouseLeave);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.button2.ForeColor = System.Drawing.Color.DarkGray;
-            this.button2.Location = new System.Drawing.Point(1108, 1121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 125);
-            this.button2.TabIndex = 105;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // add_in_compilation_btn
-            // 
-            this.add_in_compilation_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.add_in_compilation_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("add_in_compilation_btn.BackgroundImage")));
-            this.add_in_compilation_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.add_in_compilation_btn.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.add_in_compilation_btn.ForeColor = System.Drawing.Color.DarkGray;
-            this.add_in_compilation_btn.Location = new System.Drawing.Point(453, 1121);
-            this.add_in_compilation_btn.Name = "add_in_compilation_btn";
-            this.add_in_compilation_btn.Size = new System.Drawing.Size(137, 117);
-            this.add_in_compilation_btn.TabIndex = 103;
-            this.add_in_compilation_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.add_in_compilation_btn.UseVisualStyleBackColor = false;
-            this.add_in_compilation_btn.Click += new System.EventHandler(this.add_in_compilation_btn_Click);
-            // 
             // collections_btn
             // 
             this.collections_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -488,6 +205,7 @@
             this.collections_btn.TabIndex = 25;
             this.collections_btn.TabStop = false;
             this.hints.SetToolTip(this.collections_btn, "Коллекции приложения");
+            this.collections_btn.Click += new System.EventHandler(this.collections_btn_Click);
             this.collections_btn.MouseEnter += new System.EventHandler(this.collections_btn_MouseEnter);
             this.collections_btn.MouseLeave += new System.EventHandler(this.collections_btn_MouseLeave);
             // 
@@ -612,6 +330,352 @@
             this.substrate_collection.TabStop = false;
             this.substrate_collection.Visible = false;
             // 
+            // just_panel
+            // 
+            this.just_panel.Location = new System.Drawing.Point(1806, 1261);
+            this.just_panel.Name = "just_panel";
+            this.just_panel.Size = new System.Drawing.Size(52, 47);
+            this.just_panel.TabIndex = 19;
+            // 
+            // film_title_lbl
+            // 
+            this.film_title_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.film_title_lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.film_title_lbl.Font = new System.Drawing.Font("Stencil", 16.125F);
+            this.film_title_lbl.Location = new System.Drawing.Point(408, 130);
+            this.film_title_lbl.Name = "film_title_lbl";
+            this.film_title_lbl.ReadOnly = true;
+            this.film_title_lbl.Size = new System.Drawing.Size(893, 51);
+            this.film_title_lbl.TabIndex = 109;
+            this.film_title_lbl.TabStop = false;
+            this.film_title_lbl.Text = "НАЗВАНИЕ ФИЛЬМА";
+            this.film_title_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hints.SetToolTip(this.film_title_lbl, "Посмотреть информацию о фильме");
+            this.film_title_lbl.Click += new System.EventHandler(this.film_title_lbl_Click);
+            this.film_title_lbl.TextChanged += new System.EventHandler(this.film_title_lbl_TextChanged);
+            this.film_title_lbl.MouseEnter += new System.EventHandler(this.film_title_lbl_MouseEnter);
+            this.film_title_lbl.MouseLeave += new System.EventHandler(this.film_title_lbl_MouseLeave);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(1362, 656);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(190, 96);
+            this.panel3.TabIndex = 63;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label3.Location = new System.Drawing.Point(9, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 33);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Страна";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Location = new System.Drawing.Point(1362, 515);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(190, 102);
+            this.panel5.TabIndex = 67;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label5.Location = new System.Drawing.Point(9, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 33);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Актеры";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Location = new System.Drawing.Point(1362, 392);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(190, 102);
+            this.panel4.TabIndex = 65;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label4.Location = new System.Drawing.Point(9, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 33);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Жанр";
+            // 
+            // frame1
+            // 
+            this.frame1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.frame1.Controls.Add(this.year_lbl);
+            this.frame1.Location = new System.Drawing.Point(1362, 268);
+            this.frame1.Name = "frame1";
+            this.frame1.Size = new System.Drawing.Size(190, 102);
+            this.frame1.TabIndex = 59;
+            // 
+            // year_lbl
+            // 
+            this.year_lbl.AutoSize = true;
+            this.year_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.year_lbl.Location = new System.Drawing.Point(3, 19);
+            this.year_lbl.Name = "year_lbl";
+            this.year_lbl.Size = new System.Drawing.Size(123, 66);
+            this.year_lbl.TabIndex = 9;
+            this.year_lbl.Text = "Дата\r\nвыхода\r\n";
+            // 
+            // delimeter2
+            // 
+            this.delimeter2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.delimeter2.Location = new System.Drawing.Point(1307, 0);
+            this.delimeter2.Name = "delimeter2";
+            this.delimeter2.Size = new System.Drawing.Size(10, 1376);
+            this.delimeter2.TabIndex = 1;
+            // 
+            // genre_info
+            // 
+            this.genre_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.genre_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.genre_info.Font = new System.Drawing.Font("Stencil", 10.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genre_info.ForeColor = System.Drawing.Color.DarkGray;
+            this.genre_info.Location = new System.Drawing.Point(1559, 392);
+            this.genre_info.Name = "genre_info";
+            this.genre_info.ReadOnly = true;
+            this.genre_info.Size = new System.Drawing.Size(279, 102);
+            this.genre_info.TabIndex = 72;
+            this.genre_info.TabStop = false;
+            this.genre_info.Text = "";
+            // 
+            // actors_info
+            // 
+            this.actors_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.actors_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.actors_info.Font = new System.Drawing.Font("Stencil", 10.85F);
+            this.actors_info.ForeColor = System.Drawing.Color.DarkGray;
+            this.actors_info.Location = new System.Drawing.Point(1559, 515);
+            this.actors_info.Name = "actors_info";
+            this.actors_info.ReadOnly = true;
+            this.actors_info.Size = new System.Drawing.Size(279, 102);
+            this.actors_info.TabIndex = 73;
+            this.actors_info.TabStop = false;
+            this.actors_info.Text = "";
+            // 
+            // countries_info
+            // 
+            this.countries_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.countries_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.countries_info.Font = new System.Drawing.Font("Stencil", 10.85F);
+            this.countries_info.ForeColor = System.Drawing.Color.DarkGray;
+            this.countries_info.Location = new System.Drawing.Point(1559, 656);
+            this.countries_info.Name = "countries_info";
+            this.countries_info.ReadOnly = true;
+            this.countries_info.Size = new System.Drawing.Size(279, 96);
+            this.countries_info.TabIndex = 74;
+            this.countries_info.TabStop = false;
+            this.countries_info.Text = "";
+            // 
+            // dateinterval_info
+            // 
+            this.dateinterval_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dateinterval_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dateinterval_info.Font = new System.Drawing.Font("XO Caliburn", 10.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateinterval_info.ForeColor = System.Drawing.Color.DarkGray;
+            this.dateinterval_info.Location = new System.Drawing.Point(1559, 268);
+            this.dateinterval_info.Name = "dateinterval_info";
+            this.dateinterval_info.ReadOnly = true;
+            this.dateinterval_info.Size = new System.Drawing.Size(279, 102);
+            this.dateinterval_info.TabIndex = 75;
+            this.dateinterval_info.TabStop = false;
+            this.dateinterval_info.Text = "";
+            // 
+            // change_btn
+            // 
+            this.change_btn.AutoSize = true;
+            this.change_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.change_btn.Font = new System.Drawing.Font("Stencil", 10.125F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.change_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.change_btn.Location = new System.Drawing.Point(1595, 785);
+            this.change_btn.Name = "change_btn";
+            this.change_btn.Size = new System.Drawing.Size(227, 64);
+            this.change_btn.TabIndex = 76;
+            this.change_btn.Text = "Изменить \r\nхарактеристики";
+            this.change_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.change_btn.Click += new System.EventHandler(this.change_btn_Click);
+            this.change_btn.MouseEnter += new System.EventHandler(this.change_btn_MouseEnter);
+            this.change_btn.MouseLeave += new System.EventHandler(this.change_btn_MouseLeave);
+            // 
+            // add_film_btn
+            // 
+            this.add_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_film_btn.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.add_film_btn.ForeColor = System.Drawing.Color.DarkGray;
+            this.add_film_btn.Location = new System.Drawing.Point(1479, 1220);
+            this.add_film_btn.Name = "add_film_btn";
+            this.add_film_btn.Size = new System.Drawing.Size(240, 88);
+            this.add_film_btn.TabIndex = 77;
+            this.add_film_btn.Text = "Добавить фильм";
+            this.add_film_btn.UseVisualStyleBackColor = false;
+            this.add_film_btn.Click += new System.EventHandler(this.add_film_btn_Click);
+            // 
+            // list_collections
+            // 
+            this.list_collections.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.list_collections.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.list_collections.Font = new System.Drawing.Font("Stencil", 10.85F);
+            this.list_collections.ForeColor = System.Drawing.Color.DarkGray;
+            this.list_collections.FormattingEnabled = true;
+            this.list_collections.ItemHeight = 34;
+            this.list_collections.Items.AddRange(new object[] {
+            "Фильмы дня",
+            "Избранное",
+            "Спорт"});
+            this.list_collections.Location = new System.Drawing.Point(31, 249);
+            this.list_collections.Name = "list_collections";
+            this.list_collections.Size = new System.Drawing.Size(322, 442);
+            this.list_collections.TabIndex = 78;
+            this.list_collections.SelectedIndexChanged += new System.EventHandler(this.list_collections_SelectedIndexChanged);
+            // 
+            // add_compilation
+            // 
+            this.add_compilation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_compilation.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.add_compilation.ForeColor = System.Drawing.Color.DarkGray;
+            this.add_compilation.Location = new System.Drawing.Point(31, 718);
+            this.add_compilation.Name = "add_compilation";
+            this.add_compilation.Size = new System.Drawing.Size(320, 76);
+            this.add_compilation.TabIndex = 79;
+            this.add_compilation.Text = "Создать подборку";
+            this.add_compilation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_compilation.UseVisualStyleBackColor = false;
+            this.add_compilation.Click += new System.EventHandler(this.add_compilation_Click);
+            this.add_compilation.MouseEnter += new System.EventHandler(this.add_compilation_MouseEnter);
+            this.add_compilation.MouseLeave += new System.EventHandler(this.add_compilation_MouseLeave);
+            // 
+            // change_compilation
+            // 
+            this.change_compilation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.change_compilation.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.change_compilation.ForeColor = System.Drawing.Color.DarkGray;
+            this.change_compilation.Location = new System.Drawing.Point(31, 810);
+            this.change_compilation.Name = "change_compilation";
+            this.change_compilation.Size = new System.Drawing.Size(320, 78);
+            this.change_compilation.TabIndex = 80;
+            this.change_compilation.Text = "Изменить подборки";
+            this.change_compilation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.change_compilation.UseVisualStyleBackColor = false;
+            this.change_compilation.Click += new System.EventHandler(this.change_compilation_Click);
+            this.change_compilation.MouseEnter += new System.EventHandler(this.change_compilation_MouseEnter);
+            this.change_compilation.MouseLeave += new System.EventHandler(this.change_compilation_MouseLeave);
+            // 
+            // pass__individual__btn
+            // 
+            this.pass__individual__btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pass__individual__btn.Font = new System.Drawing.Font("XO Courser", 14F);
+            this.pass__individual__btn.ForeColor = System.Drawing.Color.Silver;
+            this.pass__individual__btn.Location = new System.Drawing.Point(694, 1191);
+            this.pass__individual__btn.Name = "pass__individual__btn";
+            this.pass__individual__btn.Size = new System.Drawing.Size(296, 86);
+            this.pass__individual__btn.TabIndex = 106;
+            this.pass__individual__btn.Text = "Пропуск";
+            this.pass__individual__btn.UseVisualStyleBackColor = false;
+            this.pass__individual__btn.Click += new System.EventHandler(this.pass_btn_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Stencil", 13.125F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(703, 956);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(311, 42);
+            this.label6.TabIndex = 107;
+            this.label6.Text = "Выберите оценку";
+            // 
+            // substrate_picture1
+            // 
+            this.substrate_picture1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.substrate_picture1.Controls.Add(this.picture_poster);
+            this.substrate_picture1.Location = new System.Drawing.Point(526, 201);
+            this.substrate_picture1.Name = "substrate_picture1";
+            this.substrate_picture1.Size = new System.Drawing.Size(626, 741);
+            this.substrate_picture1.TabIndex = 108;
+            this.substrate_picture1.Click += new System.EventHandler(this.substrate_picture1_Click);
+            this.substrate_picture1.MouseEnter += new System.EventHandler(this.substrate_picture1_MouseEnter);
+            this.substrate_picture1.MouseLeave += new System.EventHandler(this.substrate_picture1_MouseLeave);
+            // 
+            // picture_poster
+            // 
+            this.picture_poster.Location = new System.Drawing.Point(33, 26);
+            this.picture_poster.Name = "picture_poster";
+            this.picture_poster.Size = new System.Drawing.Size(560, 687);
+            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picture_poster.TabIndex = 81;
+            this.picture_poster.TabStop = false;
+            this.picture_poster.Click += new System.EventHandler(this.picture_poster_Click);
+            this.picture_poster.MouseEnter += new System.EventHandler(this.picture_poster_MouseEnter);
+            this.picture_poster.MouseLeave += new System.EventHandler(this.picture_poster_MouseLeave);
+            // 
+            // star_btn
+            // 
+            this.star_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.star_btn.Font = new System.Drawing.Font("XO Courser", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.star_btn.ForeColor = System.Drawing.Color.DarkGray;
+            this.star_btn.Location = new System.Drawing.Point(732, 1097);
+            this.star_btn.Name = "star_btn";
+            this.star_btn.Size = new System.Drawing.Size(240, 52);
+            this.star_btn.TabIndex = 110;
+            this.star_btn.Text = "Оценить";
+            this.star_btn.UseVisualStyleBackColor = false;
+            this.star_btn.Visible = false;
+            this.star_btn.Click += new System.EventHandler(this.star_btn_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.button2.ForeColor = System.Drawing.Color.DarkGray;
+            this.button2.Location = new System.Drawing.Point(1108, 1174);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 125);
+            this.button2.TabIndex = 105;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // add_in_compilation_btn
+            // 
+            this.add_in_compilation_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_in_compilation_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("add_in_compilation_btn.BackgroundImage")));
+            this.add_in_compilation_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.add_in_compilation_btn.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.add_in_compilation_btn.ForeColor = System.Drawing.Color.DarkGray;
+            this.add_in_compilation_btn.Location = new System.Drawing.Point(453, 1174);
+            this.add_in_compilation_btn.Name = "add_in_compilation_btn";
+            this.add_in_compilation_btn.Size = new System.Drawing.Size(137, 117);
+            this.add_in_compilation_btn.TabIndex = 103;
+            this.add_in_compilation_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add_in_compilation_btn.UseVisualStyleBackColor = false;
+            this.add_in_compilation_btn.Click += new System.EventHandler(this.add_in_compilation_btn_Click);
+            // 
+            // substrate_picture
+            // 
+            this.substrate_picture.Image = ((System.Drawing.Image)(resources.GetObject("substrate_picture.Image")));
+            this.substrate_picture.Location = new System.Drawing.Point(505, 171);
+            this.substrate_picture.Name = "substrate_picture";
+            this.substrate_picture.Size = new System.Drawing.Size(677, 799);
+            this.substrate_picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.substrate_picture.TabIndex = 82;
+            this.substrate_picture.TabStop = false;
+            // 
             // grayStar1
             // 
             this.grayStar1.Image = ((System.Drawing.Image)(resources.GetObject("grayStar1.Image")));
@@ -621,26 +685,30 @@
             this.grayStar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar1.TabIndex = 84;
             this.grayStar1.TabStop = false;
+            this.grayStar1.Click += new System.EventHandler(this.grayStar1_Click);
             // 
-            // yellowStar2
+            // grayStar2
             // 
-            this.yellowStar2.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar2.Image")));
-            this.yellowStar2.Location = new System.Drawing.Point(533, 1011);
-            this.yellowStar2.Name = "yellowStar2";
-            this.yellowStar2.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar2.TabIndex = 86;
-            this.yellowStar2.TabStop = false;
+            this.grayStar2.Image = ((System.Drawing.Image)(resources.GetObject("grayStar2.Image")));
+            this.grayStar2.Location = new System.Drawing.Point(533, 1011);
+            this.grayStar2.Name = "grayStar2";
+            this.grayStar2.Size = new System.Drawing.Size(64, 62);
+            this.grayStar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.grayStar2.TabIndex = 86;
+            this.grayStar2.TabStop = false;
+            this.grayStar2.Click += new System.EventHandler(this.grayStar2_Click);
+            this.grayStar2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grayStar2_MouseClick);
             // 
-            // yellowStar3
+            // grayStar3
             // 
-            this.yellowStar3.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar3.Image")));
-            this.yellowStar3.Location = new System.Drawing.Point(613, 1011);
-            this.yellowStar3.Name = "yellowStar3";
-            this.yellowStar3.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar3.TabIndex = 88;
-            this.yellowStar3.TabStop = false;
+            this.grayStar3.Image = ((System.Drawing.Image)(resources.GetObject("grayStar3.Image")));
+            this.grayStar3.Location = new System.Drawing.Point(613, 1011);
+            this.grayStar3.Name = "grayStar3";
+            this.grayStar3.Size = new System.Drawing.Size(64, 62);
+            this.grayStar3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.grayStar3.TabIndex = 88;
+            this.grayStar3.TabStop = false;
+            this.grayStar3.Click += new System.EventHandler(this.grayStar3_Click);
             // 
             // grayStar4
             // 
@@ -651,6 +719,7 @@
             this.grayStar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar4.TabIndex = 90;
             this.grayStar4.TabStop = false;
+            this.grayStar4.Click += new System.EventHandler(this.grayStar4_Click);
             // 
             // grayStar5
             // 
@@ -661,16 +730,18 @@
             this.grayStar5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar5.TabIndex = 92;
             this.grayStar5.TabStop = false;
+            this.grayStar5.Click += new System.EventHandler(this.grayStar5_Click);
             // 
-            // yellowStar6
+            // grayStar6
             // 
-            this.yellowStar6.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar6.Image")));
-            this.yellowStar6.Location = new System.Drawing.Point(856, 1011);
-            this.yellowStar6.Name = "yellowStar6";
-            this.yellowStar6.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar6.TabIndex = 94;
-            this.yellowStar6.TabStop = false;
+            this.grayStar6.Image = ((System.Drawing.Image)(resources.GetObject("grayStar6.Image")));
+            this.grayStar6.Location = new System.Drawing.Point(856, 1011);
+            this.grayStar6.Name = "grayStar6";
+            this.grayStar6.Size = new System.Drawing.Size(64, 62);
+            this.grayStar6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.grayStar6.TabIndex = 94;
+            this.grayStar6.TabStop = false;
+            this.grayStar6.Click += new System.EventHandler(this.grayStar6_Click);
             // 
             // grayStar7
             // 
@@ -681,6 +752,7 @@
             this.grayStar7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar7.TabIndex = 96;
             this.grayStar7.TabStop = false;
+            this.grayStar7.Click += new System.EventHandler(this.grayStar7_Click);
             // 
             // grayStar8
             // 
@@ -691,16 +763,18 @@
             this.grayStar8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar8.TabIndex = 98;
             this.grayStar8.TabStop = false;
+            this.grayStar8.Click += new System.EventHandler(this.grayStar8_Click);
             // 
-            // yellowStar9
+            // grayStar9
             // 
-            this.yellowStar9.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar9.Image")));
-            this.yellowStar9.Location = new System.Drawing.Point(1095, 1012);
-            this.yellowStar9.Name = "yellowStar9";
-            this.yellowStar9.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar9.TabIndex = 100;
-            this.yellowStar9.TabStop = false;
+            this.grayStar9.Image = ((System.Drawing.Image)(resources.GetObject("grayStar9.Image")));
+            this.grayStar9.Location = new System.Drawing.Point(1095, 1012);
+            this.grayStar9.Name = "grayStar9";
+            this.grayStar9.Size = new System.Drawing.Size(64, 62);
+            this.grayStar9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.grayStar9.TabIndex = 100;
+            this.grayStar9.TabStop = false;
+            this.grayStar9.Click += new System.EventHandler(this.grayStar9_Click);
             // 
             // grayStar10
             // 
@@ -711,156 +785,525 @@
             this.grayStar10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.grayStar10.TabIndex = 102;
             this.grayStar10.TabStop = false;
+            this.grayStar10.Click += new System.EventHandler(this.grayStar10_Click);
             // 
-            // yellowStar1
+            // closing_panel
             // 
-            this.yellowStar1.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar1.Image")));
-            this.yellowStar1.Location = new System.Drawing.Point(453, 1011);
-            this.yellowStar1.Name = "yellowStar1";
-            this.yellowStar1.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar1.TabIndex = 83;
-            this.yellowStar1.TabStop = false;
+            this.closing_panel.Controls.Add(this.button1);
+            this.closing_panel.Controls.Add(this.save_btn);
+            this.closing_panel.Controls.Add(this.add_actor_btn);
+            this.closing_panel.Controls.Add(this.panel7);
+            this.closing_panel.Controls.Add(this.add_country_btn);
+            this.closing_panel.Controls.Add(this.add_genre_btn);
+            this.closing_panel.Controls.Add(this.panel2);
+            this.closing_panel.Controls.Add(this.search_actor_tb);
+            this.closing_panel.Controls.Add(this.date1);
+            this.closing_panel.Controls.Add(this.actors_list);
+            this.closing_panel.Controls.Add(this.panel1);
+            this.closing_panel.Controls.Add(this.search_country_tb);
+            this.closing_panel.Controls.Add(this.countries_list);
+            this.closing_panel.Controls.Add(this.panel6);
+            this.closing_panel.Controls.Add(this.genres_list);
+            this.closing_panel.Controls.Add(this.search_genre_btn);
+            this.closing_panel.Location = new System.Drawing.Point(1323, 216);
+            this.closing_panel.Name = "closing_panel";
+            this.closing_panel.Size = new System.Drawing.Size(556, 1108);
+            this.closing_panel.TabIndex = 112;
+            this.closing_panel.Visible = false;
             // 
-            // pictureBox5
+            // button1
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(533, 1011);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(64, 62);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 85;
-            this.pictureBox5.TabStop = false;
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            this.button1.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.button1.Location = new System.Drawing.Point(387, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 42);
+            this.button1.TabIndex = 130;
+            this.button1.Text = "Отмена";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox7
+            // save_btn
             // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(613, 1011);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(64, 62);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 87;
-            this.pictureBox7.TabStop = false;
+            this.save_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
+            this.save_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.save_btn.Location = new System.Drawing.Point(187, 1066);
+            this.save_btn.Name = "save_btn";
+            this.save_btn.Size = new System.Drawing.Size(195, 47);
+            this.save_btn.TabIndex = 129;
+            this.save_btn.Text = "Сохранить";
+            this.save_btn.UseVisualStyleBackColor = false;
+            this.save_btn.Visible = false;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
-            // yellowStar4
+            // add_actor_btn
             // 
-            this.yellowStar4.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar4.Image")));
-            this.yellowStar4.Location = new System.Drawing.Point(694, 1011);
-            this.yellowStar4.Name = "yellowStar4";
-            this.yellowStar4.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar4.TabIndex = 89;
-            this.yellowStar4.TabStop = false;
+            this.add_actor_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_actor_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_actor_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_actor_btn.Location = new System.Drawing.Point(396, 705);
+            this.add_actor_btn.Name = "add_actor_btn";
+            this.add_actor_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_actor_btn.TabIndex = 128;
+            this.add_actor_btn.Text = "Добавить";
+            this.add_actor_btn.UseVisualStyleBackColor = false;
+            this.add_actor_btn.Visible = false;
+            this.add_actor_btn.Click += new System.EventHandler(this.add_actor_btn_Click);
             // 
-            // yellowStar5
+            // panel7
             // 
-            this.yellowStar5.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar5.Image")));
-            this.yellowStar5.Location = new System.Drawing.Point(776, 1011);
-            this.yellowStar5.Name = "yellowStar5";
-            this.yellowStar5.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar5.TabIndex = 91;
-            this.yellowStar5.TabStop = false;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Location = new System.Drawing.Point(10, 49);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(188, 102);
+            this.panel7.TabIndex = 115;
             // 
-            // pictureBox13
+            // label9
             // 
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(856, 1011);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(64, 62);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 93;
-            this.pictureBox13.TabStop = false;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label9.Location = new System.Drawing.Point(12, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(123, 66);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Дата \r\nвыхода";
             // 
-            // yellowStar7
+            // add_country_btn
             // 
-            this.yellowStar7.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar7.Image")));
-            this.yellowStar7.Location = new System.Drawing.Point(939, 1011);
-            this.yellowStar7.Name = "yellowStar7";
-            this.yellowStar7.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar7.TabIndex = 95;
-            this.yellowStar7.TabStop = false;
+            this.add_country_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_country_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_country_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_country_btn.Location = new System.Drawing.Point(397, 993);
+            this.add_country_btn.Name = "add_country_btn";
+            this.add_country_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_country_btn.TabIndex = 126;
+            this.add_country_btn.Text = "Добавить";
+            this.add_country_btn.UseVisualStyleBackColor = false;
+            this.add_country_btn.Visible = false;
+            this.add_country_btn.Click += new System.EventHandler(this.add_country_btn_Click);
             // 
-            // yellowStar8
+            // add_genre_btn
             // 
-            this.yellowStar8.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar8.Image")));
-            this.yellowStar8.Location = new System.Drawing.Point(1017, 1012);
-            this.yellowStar8.Name = "yellowStar8";
-            this.yellowStar8.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar8.TabIndex = 97;
-            this.yellowStar8.TabStop = false;
+            this.add_genre_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_genre_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_genre_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_genre_btn.Location = new System.Drawing.Point(399, 414);
+            this.add_genre_btn.Name = "add_genre_btn";
+            this.add_genre_btn.Size = new System.Drawing.Size(157, 42);
+            this.add_genre_btn.TabIndex = 127;
+            this.add_genre_btn.Text = "Добавить";
+            this.add_genre_btn.UseVisualStyleBackColor = false;
+            this.add_genre_btn.Visible = false;
+            this.add_genre_btn.Click += new System.EventHandler(this.add_genre_btn_Click);
             // 
-            // pictureBox19
+            // panel2
             // 
-            this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
-            this.pictureBox19.Location = new System.Drawing.Point(1095, 1012);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(64, 62);
-            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox19.TabIndex = 99;
-            this.pictureBox19.TabStop = false;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Location = new System.Drawing.Point(10, 530);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(188, 102);
+            this.panel2.TabIndex = 121;
             // 
-            // yellowStar10
+            // label7
             // 
-            this.yellowStar10.Image = ((System.Drawing.Image)(resources.GetObject("yellowStar10.Image")));
-            this.yellowStar10.Location = new System.Drawing.Point(1175, 1012);
-            this.yellowStar10.Name = "yellowStar10";
-            this.yellowStar10.Size = new System.Drawing.Size(64, 62);
-            this.yellowStar10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.yellowStar10.TabIndex = 101;
-            this.yellowStar10.TabStop = false;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label7.Location = new System.Drawing.Point(15, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(123, 33);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Актеры";
             // 
-            // picture_poster
+            // search_actor_tb
             // 
-            this.picture_poster.Location = new System.Drawing.Point(-12, 0);
-            this.picture_poster.Name = "picture_poster";
-            this.picture_poster.Size = new System.Drawing.Size(663, 740);
-            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picture_poster.TabIndex = 81;
-            this.picture_poster.TabStop = false;
-            this.picture_poster.Click += new System.EventHandler(this.picture_poster_Click);
-            this.picture_poster.MouseEnter += new System.EventHandler(this.picture_poster_MouseEnter);
+            this.search_actor_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_actor_tb.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_actor_tb.Location = new System.Drawing.Point(267, 492);
+            this.search_actor_tb.Name = "search_actor_tb";
+            this.search_actor_tb.Size = new System.Drawing.Size(289, 35);
+            this.search_actor_tb.TabIndex = 125;
+            this.search_actor_tb.Text = "Поиск по списку..";
+            this.search_actor_tb.Click += new System.EventHandler(this.search_actor_tb_Click);
+            this.search_actor_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_actor_tb_KeyDown);
             // 
-            // substrate_picture
+            // date1
             // 
-            this.substrate_picture.Image = ((System.Drawing.Image)(resources.GetObject("substrate_picture.Image")));
-            this.substrate_picture.Location = new System.Drawing.Point(508, 179);
-            this.substrate_picture.Name = "substrate_picture";
-            this.substrate_picture.Size = new System.Drawing.Size(726, 711);
-            this.substrate_picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate_picture.TabIndex = 82;
-            this.substrate_picture.TabStop = false;
-            this.substrate_picture.Visible = false;
+            this.date1.CalendarMonthBackground = System.Drawing.Color.Silver;
+            this.date1.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.date1.Location = new System.Drawing.Point(293, 94);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(260, 35);
+            this.date1.TabIndex = 116;
+            this.date1.TabStop = false;
+            this.date1.ValueChanged += new System.EventHandler(this.date1_ValueChanged);
             // 
-            // film_title_lbl
+            // actors_list
             // 
-            this.film_title_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.film_title_lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.film_title_lbl.Font = new System.Drawing.Font("Stencil", 16.125F);
-            this.film_title_lbl.Location = new System.Drawing.Point(408, 140);
-            this.film_title_lbl.Name = "film_title_lbl";
-            this.film_title_lbl.ReadOnly = true;
-            this.film_title_lbl.Size = new System.Drawing.Size(893, 51);
-            this.film_title_lbl.TabIndex = 109;
-            this.film_title_lbl.TabStop = false;
-            this.film_title_lbl.Text = "НАЗВАНИЕ ФИЛЬМА";
-            this.film_title_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.hints.SetToolTip(this.film_title_lbl, "Посмотреть информацию о фильме");
-            this.film_title_lbl.Click += new System.EventHandler(this.film_title_lbl_Click);
-            this.film_title_lbl.MouseEnter += new System.EventHandler(this.film_title_lbl_MouseEnter);
-            this.film_title_lbl.MouseLeave += new System.EventHandler(this.film_title_lbl_MouseLeave);
+            this.actors_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.actors_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.actors_list.FormattingEnabled = true;
+            this.actors_list.ItemHeight = 27;
+            this.actors_list.Location = new System.Drawing.Point(267, 533);
+            this.actors_list.Name = "actors_list";
+            this.actors_list.Size = new System.Drawing.Size(286, 166);
+            this.actors_list.TabIndex = 124;
+            this.actors_list.Click += new System.EventHandler(this.actors_list_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(10, 796);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(188, 96);
+            this.panel1.TabIndex = 117;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label1.Location = new System.Drawing.Point(15, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 33);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Страна";
+            // 
+            // search_country_tb
+            // 
+            this.search_country_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_country_tb.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_country_tb.Location = new System.Drawing.Point(260, 774);
+            this.search_country_tb.Name = "search_country_tb";
+            this.search_country_tb.Size = new System.Drawing.Size(293, 35);
+            this.search_country_tb.TabIndex = 122;
+            this.search_country_tb.Text = "Поиск по списку..";
+            this.search_country_tb.Click += new System.EventHandler(this.search_country_tb_Click);
+            this.search_country_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_country_tb_KeyDown);
+            // 
+            // countries_list
+            // 
+            this.countries_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.countries_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.countries_list.FormattingEnabled = true;
+            this.countries_list.ItemHeight = 27;
+            this.countries_list.Items.AddRange(new object[] {
+            "Австралия ",
+            "Австрия ",
+            "Азербайджан ",
+            "Албания ",
+            "Алжир ",
+            "Англия ",
+            "Ангилья ",
+            "Ангола ",
+            "Андорра ",
+            "Антигуа и Барбуда ",
+            "Аргентина ",
+            "Армения ",
+            "Аруба ",
+            "Багамы ",
+            "Бангладеш ",
+            "Барбадос ",
+            "Бахрейн ",
+            "Беларусь ",
+            "Белиз ",
+            "Бельгия ",
+            "Бенин ",
+            "Бермудские Острова ",
+            "Болгария ",
+            "Боливия ",
+            "Босния и Герцеговина ",
+            "Ботсвана ",
+            "Бразилия ",
+            "Бруней ",
+            "Буркина-Фасо ",
+            "Бурунди ",
+            "Вануату ",
+            "Великобритания ",
+            "Венгрия ",
+            "Венесуэла ",
+            "Вьетнам ",
+            "Габон ",
+            "Гаити ",
+            "Гайана ",
+            "Гамбия ",
+            "Гана ",
+            "Гваделупа ",
+            "Гватемала ",
+            "Гвинея ",
+            "Гвинея-Бисау ",
+            "Германия ",
+            "Гибралтар ",
+            "Гондурас ",
+            "Гренада ",
+            "Гренландия ",
+            "Греция ",
+            "Грузия ",
+            "Дания ",
+            "Джерси ",
+            "Джибути ",
+            "Доминика ",
+            "Доминиканская Республика ",
+            "Египет ",
+            "Замбия ",
+            "Западная Сахара ",
+            "Зимбабве ",
+            "Израиль ",
+            "Индия ",
+            "Индонезия ",
+            "Иордания ",
+            "Ирак ",
+            "Иран ",
+            "Ирландия ",
+            "Исландия ",
+            "Испания ",
+            "Италия ",
+            "Йемен ",
+            "Кабо-Верде ",
+            "Казахстан ",
+            "Камбоджа ",
+            "Камерун ",
+            "Канада ",
+            "Катар ",
+            "Кения ",
+            "Кипр ",
+            "Киргизия ",
+            "Китай ",
+            "Колумбия ",
+            "Коморы ",
+            "Коста-Рика ",
+            "Кот-д\'Ивуар ",
+            "Куба ",
+            "Кувейт ",
+            "Лаос ",
+            "Латвия ",
+            "Лесото ",
+            "Либерия ",
+            "Ливан ",
+            "Ливия ",
+            "Литва ",
+            "Лихтенштейн ",
+            "Люксембург ",
+            "Маврикий ",
+            "Мавритания ",
+            "Мадагаскар ",
+            "Македония ",
+            "Малави ",
+            "Малайзия ",
+            "Мали ",
+            "Мальдивы ",
+            "Мальта ",
+            "Марокко ",
+            "Мартиника ",
+            "Мексика ",
+            "Микронезия ",
+            "Мозамбик ",
+            "Молдова ",
+            "Монако ",
+            "Монголия ",
+            "Монтсеррат ",
+            "Мьянма ",
+            "Намибия ",
+            "Непал ",
+            "Нигер ",
+            "Нигерия ",
+            "Нидерланды ",
+            "Никарагуа ",
+            "Новая Зеландия ",
+            "Новая Каледония ",
+            "Норвегия ",
+            "Объединенные Арабские Эмираты ",
+            "Оман ",
+            "Остров Мэн ",
+            "Острова Кука ",
+            "Острова Теркс и Кайкос ",
+            "Острова Уоллис и Футуна ",
+            "Пакистан ",
+            "Палау ",
+            "Палестина ",
+            "Панама ",
+            "Папуа – Новая Гвинея ",
+            "Парагвай ",
+            "Перу ",
+            "Польша ",
+            "Португалия ",
+            "Пуэрто-Рико ",
+            "Реюньон ",
+            "Россия ",
+            "Руанда ",
+            "Румыния ",
+            "Сальвадор ",
+            "Самоа ",
+            "Сан-Марино ",
+            "Сан-Томе и Принсипи ",
+            "Саудовская Аравия ",
+            "Святая Люсия ",
+            "Святой Винсент и Гренадины ",
+            "Северные Марианские острова ",
+            "Сенегал ",
+            "Сент-Китс и Невис ",
+            "Сент-Люсия ",
+            "Сербия ",
+            "Сейшельские Острова ",
+            "Сен-Пьер и Микелон ",
+            "Сингапур ",
+            "Сирия ",
+            "Словакия ",
+            "Словения ",
+            "Сомали ",
+            "Судан ",
+            "Суринам ",
+            "США ",
+            "Сьерра-Леоне ",
+            "Таджикистан ",
+            "Таиланд ",
+            "Танзания ",
+            "Того ",
+            "Токелау ",
+            "Тонга ",
+            "Тринидад и Тобаго ",
+            "Тувалу ",
+            "Тунис ",
+            "Туркменистан ",
+            "Турция ",
+            "Уганда ",
+            "Узбекистан ",
+            "Украина ",
+            "Уругвай ",
+            "Фиджи ",
+            "Филиппины ",
+            "Финляндия ",
+            "Франция ",
+            "Французская Гвиана ",
+            "Французская Полинезия ",
+            "Хорватия ",
+            "Центральноафриканская Республика ",
+            "Чад ",
+            "Черногория ",
+            "Чехия ",
+            "Чили ",
+            "Швейцария ",
+            "Швеция ",
+            "Шри-Ланка ",
+            "Эквадор ",
+            "Экваториальная Гвинея ",
+            "Эритрея ",
+            "Эстония ",
+            "Эфиопия ",
+            "Южная Африка ",
+            "Южная Корея ",
+            "Ямайка ",
+            "Япония"});
+            this.countries_list.Location = new System.Drawing.Point(260, 815);
+            this.countries_list.Name = "countries_list";
+            this.countries_list.Size = new System.Drawing.Size(293, 166);
+            this.countries_list.TabIndex = 118;
+            this.countries_list.Click += new System.EventHandler(this.countries_list_SelectedIndexChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Location = new System.Drawing.Point(10, 245);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(188, 102);
+            this.panel6.TabIndex = 119;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.label8.Location = new System.Drawing.Point(15, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 33);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Жанр";
+            // 
+            // genres_list
+            // 
+            this.genres_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.genres_list.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.genres_list.FormattingEnabled = true;
+            this.genres_list.ItemHeight = 27;
+            this.genres_list.Items.AddRange(new object[] {
+            "Боевик",
+            "Вестерн",
+            "Детектив",
+            "Драма",
+            "Исторический фильм",
+            "Комедия",
+            "Мелодрама",
+            "Музыкальный фильм",
+            "Нуар",
+            "Политический фильм",
+            "Приключенческий фильм",
+            "Сказка",
+            "Трагедия",
+            "Трагикомедия",
+            "Триллер",
+            "Фантастический фильм",
+            "Фильм ужасов",
+            "Фильм-катастрофа"});
+            this.genres_list.Location = new System.Drawing.Point(267, 242);
+            this.genres_list.Name = "genres_list";
+            this.genres_list.Size = new System.Drawing.Size(289, 166);
+            this.genres_list.TabIndex = 120;
+            this.genres_list.Click += new System.EventHandler(this.genres_list_SelectedIndexChanged);
+            // 
+            // search_genre_btn
+            // 
+            this.search_genre_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_genre_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_genre_btn.Location = new System.Drawing.Point(267, 201);
+            this.search_genre_btn.Name = "search_genre_btn";
+            this.search_genre_btn.Size = new System.Drawing.Size(289, 35);
+            this.search_genre_btn.TabIndex = 123;
+            this.search_genre_btn.Text = "Поиск по списку..";
+            this.search_genre_btn.Click += new System.EventHandler(this.search_genre_btn_Click);
+            this.search_genre_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_genre_btn_KeyDown);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(100, 1011);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(194, 179);
+            this.listBox1.TabIndex = 113;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            // 
+            // pass_filtration_btn
+            // 
+            this.pass_filtration_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pass_filtration_btn.Font = new System.Drawing.Font("XO Courser", 14F);
+            this.pass_filtration_btn.ForeColor = System.Drawing.Color.Silver;
+            this.pass_filtration_btn.Location = new System.Drawing.Point(694, 1191);
+            this.pass_filtration_btn.Name = "pass_filtration_btn";
+            this.pass_filtration_btn.Size = new System.Drawing.Size(296, 86);
+            this.pass_filtration_btn.TabIndex = 114;
+            this.pass_filtration_btn.Text = "Пропуск";
+            this.pass_filtration_btn.UseVisualStyleBackColor = false;
+            this.pass_filtration_btn.Visible = false;
+            this.pass_filtration_btn.Click += new System.EventHandler(this.pass_filtration_btn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.ClientSize = new System.Drawing.Size(1843, 1271);
+            this.ClientSize = new System.Drawing.Size(1891, 1336);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.closing_panel);
+            this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pass_btn);
+            this.Controls.Add(this.pass__individual__btn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.add_in_compilation_btn);
             this.Controls.Add(this.change_compilation);
@@ -868,58 +1311,39 @@
             this.Controls.Add(this.list_collections);
             this.Controls.Add(this.add_film_btn);
             this.Controls.Add(this.change_btn);
-            this.Controls.Add(this.richTextBox4);
-            this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.dateinterval_info);
+            this.Controls.Add(this.countries_info);
+            this.Controls.Add(this.actors_info);
+            this.Controls.Add(this.genre_info);
+            this.Controls.Add(this.just_panel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.frame1);
-            this.Controls.Add(this.just_panel);
             this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.info_lbl1);
             this.Controls.Add(this.delimeter2);
             this.Controls.Add(this.delimeter1);
-            this.Controls.Add(this.grayStar1);
-            this.Controls.Add(this.yellowStar2);
-            this.Controls.Add(this.yellowStar3);
-            this.Controls.Add(this.grayStar4);
-            this.Controls.Add(this.grayStar5);
-            this.Controls.Add(this.yellowStar6);
-            this.Controls.Add(this.grayStar7);
-            this.Controls.Add(this.grayStar8);
-            this.Controls.Add(this.yellowStar9);
-            this.Controls.Add(this.grayStar10);
-            this.Controls.Add(this.yellowStar1);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.yellowStar4);
-            this.Controls.Add(this.yellowStar5);
-            this.Controls.Add(this.pictureBox13);
-            this.Controls.Add(this.yellowStar7);
-            this.Controls.Add(this.yellowStar8);
-            this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.yellowStar10);
             this.Controls.Add(this.substrate_picture1);
             this.Controls.Add(this.substrate_picture);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Controls.Add(this.grayStar1);
+            this.Controls.Add(this.grayStar2);
+            this.Controls.Add(this.grayStar3);
+            this.Controls.Add(this.grayStar4);
+            this.Controls.Add(this.grayStar5);
+            this.Controls.Add(this.grayStar6);
+            this.Controls.Add(this.grayStar7);
+            this.Controls.Add(this.grayStar8);
+            this.Controls.Add(this.grayStar9);
+            this.Controls.Add(this.grayStar10);
+            this.Controls.Add(this.pass_filtration_btn);
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.upper_panel.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.frame1.ResumeLayout(false);
-            this.frame1.PerformLayout();
-            this.substrate_picture1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).EndInit();
@@ -931,28 +1355,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grayStar10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowStar10)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.frame1.ResumeLayout(false);
+            this.frame1.PerformLayout();
+            this.substrate_picture1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grayStar10)).EndInit();
+            this.closing_panel.ResumeLayout(false);
+            this.closing_panel.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -982,46 +1415,60 @@
         private System.Windows.Forms.Panel frame1;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.Panel delimeter2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox genre_info;
+        private System.Windows.Forms.RichTextBox actors_info;
+        private System.Windows.Forms.RichTextBox countries_info;
+        private System.Windows.Forms.RichTextBox dateinterval_info;
         private System.Windows.Forms.Label change_btn;
         private System.Windows.Forms.Button add_film_btn;
         private System.Windows.Forms.ListBox list_collections;
         private System.Windows.Forms.Button add_compilation;
         private System.Windows.Forms.Button change_compilation;
-        private System.Windows.Forms.PictureBox yellowStar1;
-        private System.Windows.Forms.PictureBox grayStar1;
-        private System.Windows.Forms.PictureBox yellowStar2;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox yellowStar3;
-        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox grayStar2;
+        private System.Windows.Forms.PictureBox grayStar3;
         private System.Windows.Forms.PictureBox grayStar4;
-        private System.Windows.Forms.PictureBox yellowStar4;
         private System.Windows.Forms.PictureBox grayStar5;
-        private System.Windows.Forms.PictureBox yellowStar5;
-        private System.Windows.Forms.PictureBox yellowStar6;
-        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox grayStar6;
         private System.Windows.Forms.PictureBox grayStar7;
-        private System.Windows.Forms.PictureBox yellowStar7;
         private System.Windows.Forms.PictureBox grayStar8;
-        private System.Windows.Forms.PictureBox yellowStar8;
-        private System.Windows.Forms.PictureBox yellowStar9;
-        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox grayStar9;
         private System.Windows.Forms.PictureBox grayStar10;
-        private System.Windows.Forms.PictureBox yellowStar10;
         private System.Windows.Forms.Button add_in_compilation_btn;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button pass_btn;
+        private System.Windows.Forms.Button pass__individual__btn;
         private System.Windows.Forms.PictureBox api_btn;
         private System.Windows.Forms.PictureBox frame_api;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox substrate_picture;
-        private System.Windows.Forms.Panel substrate_picture1;
-        private System.Windows.Forms.PictureBox picture_poster;
         private System.Windows.Forms.PictureBox substrate_collection;
         private System.Windows.Forms.PictureBox collections_btn;
         private System.Windows.Forms.TextBox film_title_lbl;
+        private System.Windows.Forms.PictureBox substrate_picture;
+        private System.Windows.Forms.Panel substrate_picture1;
+        private System.Windows.Forms.PictureBox picture_poster;
+        private System.Windows.Forms.PictureBox grayStar1;
+        private System.Windows.Forms.Button star_btn;
+        private System.Windows.Forms.Panel closing_panel;
+        private System.Windows.Forms.Button add_actor_btn;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button add_country_btn;
+        private System.Windows.Forms.Button add_genre_btn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox search_actor_tb;
+        private System.Windows.Forms.DateTimePicker date1;
+        private System.Windows.Forms.ListBox actors_list;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox search_country_tb;
+        private System.Windows.Forms.ListBox countries_list;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox genres_list;
+        private System.Windows.Forms.TextBox search_genre_btn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button save_btn;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button pass_filtration_btn;
     }
 }

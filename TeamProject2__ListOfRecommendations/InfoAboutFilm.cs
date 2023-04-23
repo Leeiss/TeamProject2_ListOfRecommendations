@@ -12,7 +12,7 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class InfoAboutFilm : Form
     {
-        public InfoAboutFilm(string Title, string Path, string Genres, string Actors, string Countries, string Date)
+        public InfoAboutFilm(string Title, string Path, string Genres, string Actors, string Countries, string Date, string Rating)
         {
             InitializeComponent();
             info_title.Text = Title.ToUpper();
@@ -21,7 +21,15 @@ namespace TeamProject2__ListOfRecommendations
             info_actors.Text = Actors;
             info_country.Text = Countries;
             info_year.Text = Date;
+            info_rating.Text = Rating;
         }
-        
+
+        private void InfoAboutFilm_Load(object sender, EventArgs e)
+        {
+            var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            var screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
+        }
     }
 }

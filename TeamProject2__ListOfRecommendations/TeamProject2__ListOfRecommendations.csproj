@@ -167,6 +167,12 @@
     <Compile Include="ChangeCollections.Designer.cs">
       <DependentUpon>ChangeCollections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Collections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Collections.Designer.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateCollection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     <EmbeddedResource Include="ChangeCollections.resx">
       <DependentUpon>ChangeCollections.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Collections.resx">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateCollection.resx">
       <DependentUpon>CreateCollection.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,6 +320,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ForLists.xml" />
+    <None Include="Resources\grayStar.png" />
+    <None Include="Resources\star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
