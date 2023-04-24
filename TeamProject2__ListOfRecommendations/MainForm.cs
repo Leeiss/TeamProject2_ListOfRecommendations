@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
 using System.Data;
 using System.Linq;
@@ -14,59 +13,119 @@ namespace TeamProject2__ListOfRecommendations
 
     public partial class MainForm : Form
     {
+        
+       
         public MainForm(string login)
         {
             InitializeComponent();
+            
+            connection = new MySqlConnection(connectionString);
+
             Login = login;
         }
-        private bool individual = true;
-        private bool notindividual = false;
-        private bool isComedyList = false;
+        private MySqlConnection conn;
+        private static MySqlConnection connection;
 
-
-        
         private bool SelectDate1 = false;
         private bool SelectGenre = false;
         private bool SelectActor = false;
         private bool SelectCountry = false;
+        private bool IsIndividual = true;//если подборка фильмов происходит на основе предпочтений пользователя
+        private bool IsNotIndividual = false;//есди подборка фильма происходит из готовых коллекций (коллекций приложения по жанрам)
+
         private List<string> Genres = new List<string>();
         private List<string> Actors = new List<string>();
         private List<string> Countries = new List<string>();
+        private List<PictureBox> starBoxes = new List<PictureBox>();
+        private List<Movie> CollectionMovies = new List<Movie>();
+        private List<Movie> CollectionMoviesList = new List<Movie>();
 
-        private List<Movie> FiltrationMovies = new List<Movie>();
-        private List<Movie> FiltrartionMovieList = new List<Movie>();
+       
+
 
         private string Date = null;
-        public string[] characteristics = new string[4];
-        XDocument doc = XDocument.Load("@./../../../ForLists.xml");
-        private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
-        
-        private List<Movie> ComedyFilms = new List<Movie>();
-        private List<Movie> ComedyFilmsList = new List<Movie>();
         public string Login;
         private string Link;
-       private List<Movie> movies = new List<Movie>();
-        private List<Movie> movielist = new List<Movie>();
-        private List<PictureBox> starBoxes = new List<PictureBox>();
-        private int Rating;
         private int MovieID;
-        private void ShowInfo(List <Movie> list)
+        private int Rating;
+
+
+        XDocument doc = XDocument.Load("@./../../../ForLists.xml");
+        private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
+
+       private void ClearLbls()
         {
-                Rating = int.Parse(list[0].Rating);
-                film_title_lbl.Text = list[0].Title.ToUpper();
-                MovieID = list[0].MovieID;
-                picture_poster.Image = Image.FromFile(list[0].PicturePath);
-                Link = list[0].Link;
+            genre_info.Text = "";
+            actors_info.Text = "";
+            countries_info.Text = "";
+            dateinterval_info.Text = "";
+        }     
+
+       
+
+        private void ShowInfoInLblForCollection()
+        {
+            try
+            {
+                film_title_lbl.Text = CollectionMoviesList[0].Title;
+                MovieID = CollectionMoviesList[0].MovieID;
+                Link = CollectionMoviesList[0].Link;
+                picture_poster.Image = Image.FromFile(CollectionMoviesList[0].PicturePath);
+            }
+            catch
+            {
+                MessageBox.Show("В базе данных приложения еще нет фильмов с таким жанром");
+            }
             
         }
 
-        public void ShowComedyFilms(bool YesNoComedy)
+        public Movie GetMovieDetails()
         {
-            ShowInfo(ComedyFilms);
-            isComedyList = YesNoComedy;
+            MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations");
+            connection.Open();
+
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = @"
+        SELECT movies.Title, movies.PicturePath, movies.Date,
+            GROUP_CONCAT(DISTINCT film_genres.Genre SEPARATOR ', ') AS Genres,
+            GROUP_CONCAT(DISTINCT film_actors.Actor SEPARATOR ', ') AS Actors,
+            GROUP_CONCAT(DISTINCT film_countries.Country SEPARATOR ', ') AS Countries
+        FROM movies
+            LEFT JOIN film_genres ON movies.MovieID = film_genres.FilmId
+            LEFT JOIN film_actors ON movies.MovieID = film_actors.FilmId
+            LEFT JOIN film_countries ON movies.MovieID = film_countries.FilmId
+        WHERE movies.MovieID = @movieId
+        GROUP BY movies.MovieID;
+    ";
+            command.Parameters.AddWithValue("@movieId", MovieID);
+
+            MySqlDataReader reader = command.ExecuteReader();
+            Movie result_movie = new Movie();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                string title = reader.GetString("Title");
+                string path = reader.GetString("PicturePath");
+                string date = reader.GetString("Date");
+                string genres = reader.IsDBNull(reader.GetOrdinal("Genres")) ? "" : reader.GetString("Genres");
+                string actors = reader.IsDBNull(reader.GetOrdinal("Actors")) ? "" : reader.GetString("Actors");
+                string countries = reader.IsDBNull(reader.GetOrdinal("Countries")) ? "" : reader.GetString("Countries");
+
+                result_movie.Date = date;
+                result_movie.Title = title;
+                result_movie.PicturePath = path;
+                result_movie.Genres = genres;
+                result_movie.Actors = actors;
+                result_movie.Countries = countries;
+            }
+            reader.Close();
+
+            connection.Close();
+
+            return result_movie;
         }
 
-       private void FillFilmsList(List<Movie> list, List<Movie> list1, string genre)
+        private void FillFilmsList(List<Movie> list, List<Movie> list1, string genre)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -75,7 +134,7 @@ namespace TeamProject2__ListOfRecommendations
                 string selectQuery = "SELECT m.*, GROUP_CONCAT(DISTINCT g.Genre SEPARATOR ', ') as Genres"
                             + " FROM movies m"
                             + " JOIN film_genres g ON m.MovieID = g.FilmId"
-                            + " WHERE g.Genre = 'Комедия'"
+                            + $" WHERE g.Genre = '{genre}'"
                             + " GROUP BY m.MovieID";
 
                 using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
@@ -88,7 +147,6 @@ namespace TeamProject2__ListOfRecommendations
                             movie.MovieID = reader.GetInt32("MovieID");
                             movie.Title = reader.GetString("Title");
                             movie.Date = reader.GetString("Date");
-                            movie.Rating = reader.GetString("Rating");
                             movie.PicturePath = reader.GetString("PicturePath");
                             movie.Link = reader.GetString("Link");
                             movie.Genres = reader.GetString("Genres");
@@ -97,40 +155,92 @@ namespace TeamProject2__ListOfRecommendations
                         }
                     }
                 }
-                }
-           foreach (Movie movie in list) 
-            { 
+            }
+            foreach (Movie movie in list)
+            {
                 list1.Add(movie);
             }
-           
         }
 
-
-       private void MainForm_Load(object sender, EventArgs e)
+        private void ShowInfoInLbls(Movie movie)
         {
-            FillFilmsList(ComedyFilms, ComedyFilmsList, "Комедия");
-            CheckAdminRights(Login, add_film_btn);
-            movies = GetMoviesByPreferences(Login);
-            foreach (Movie movie in movies)
+            string year = movie.Date;
+            year = year.Remove(0, 6);
+            film_title_lbl.Text = $"{movie.Title} ({year})";
+            Link = movie.Link;
+            picture_poster.Image = Image.FromFile(movie.PicturePath);
+            MovieID = movie.MovieID;
+
+
+        }
+
+        private void ShowRecomendedMovie()
+        {
+            ClearLbls();
+            Movie topRatedMovie = GetTopRatedMovie(Login);
+            ShowInfoInLbls(topRatedMovie);
+        }
+
+        static Movie GetTopRatedMovie(string userLogin)
+        {
+            connection.Open();
+
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
+                "FROM movies m " +
+                "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
+                "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
+                "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
+                "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
+                "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
+                "JOIN users u ON u.Login = ugr.Username " +
+                "WHERE u.Login = @userLogin " +
+                "GROUP BY m.MovieID " +
+                "ORDER BY MovieRating DESC " +
+                "LIMIT 1";
+            command.Parameters.AddWithValue("@userLogin", userLogin);
+
+            Movie topRatedMovie = null;
+
+            using (MySqlDataReader reader = command.ExecuteReader())
             {
-                movielist.Add(movie);
+                while (reader.Read())
+                {
+                    topRatedMovie = new Movie();
+                    topRatedMovie.MovieID = reader.GetInt32("MovieID");
+                    topRatedMovie.Title = reader.GetString("Title");
+                    topRatedMovie.Date = reader.GetString("Date");
+                    topRatedMovie.PicturePath = reader.GetString("PicturePath");
+                    topRatedMovie.Link = reader.GetString("Link");
+                    topRatedMovie.Genres = reader.GetString("Genres");
+                    topRatedMovie.Actors = reader.GetString("Actors");
+                    topRatedMovie.Countries = reader.GetString("Countries");
+                }
             }
+
+            connection.Close();
+
+            return topRatedMovie;
+        }
+    
+
+    private void MainForm_Load(object sender, EventArgs e)
+        {
+            ShowRecomendedMovie();
+            conn = new MySqlConnection(connectionString);
+
+            
+            CheckAdminRights(Login, add_film_btn);
 
             IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
 
-            foreach (string actor in actors)
-            {
-                actors_list.Items.Add(actor);
-            }
-
-            ShowInfo(movielist);
-
+            
             starBoxes.Add(grayStar1); starBoxes.Add(grayStar2); starBoxes.Add(grayStar3); starBoxes.Add(grayStar4); starBoxes.Add(grayStar5); starBoxes.Add(grayStar6); starBoxes.Add(grayStar7); starBoxes.Add(grayStar8); starBoxes.Add(grayStar9); starBoxes.Add(grayStar10);
             
             
             StartPosition = FormStartPosition.CenterScreen;
 
-            int buttonOffset = 40; // Размер отступа (30 мм)
+            int buttonOffset = 20; // Размер отступа (30 мм)
             int formWidth = just_panel.Location.X + just_panel.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
@@ -177,6 +287,9 @@ namespace TeamProject2__ListOfRecommendations
         private void profile_pb_Click(object sender, EventArgs e)
         {
             ProfileMenagement profileMenagement = new ProfileMenagement(Login);
+            profileMenagement.StartPosition = FormStartPosition.Manual; // разрешаем задавать позицию формы вручную
+            profileMenagement.Location = new Point(this.Location.X + button1.Location.X + 10, this.Location.Y + button1.Location.Y + 10); // задаем позицию новой формы относительно кнопки
+            profileMenagement.Size = new Size(300, 200); // задаем размеры новой формы
             profileMenagement.Show();
         }
 
@@ -238,9 +351,7 @@ namespace TeamProject2__ListOfRecommendations
         private void change_btn_Click(object sender, EventArgs e)
         {
             closing_panel.Visible = true;
-            isComedyList = false;
-            notindividual = true;
-            
+
             
         }
 
@@ -336,65 +447,7 @@ namespace TeamProject2__ListOfRecommendations
         }
 
 
-        /// <summary>
-        ///  Объединяем столбцы с жанрами, актерами и странами в одну строку, используя функцию GROUP_CONCAT 
-        /// C помощью операторов LEFT JOIN и OR в блоке WHERE выбираем только те фильмы, которые содержат 
-        /// жанр или актера, указанного в таблицах users_favoriteactors или users_favoritegenres для конкретного 
-        /// пользователя.
-        /// Сортируем по рейтингу, добавляем фильмы в List
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
-        public List<Movie> GetMoviesByPreferences(string username)
-        {
-            List<Movie> movies = new List<Movie>();
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                string query = @"SELECT m.MovieID, m.Title, m.Date, m.Rating, m.PicturePath, m.Link, 
-                        GROUP_CONCAT(DISTINCT fg.Genre) as Genres, 
-                        GROUP_CONCAT(DISTINCT fa.Actor) as Actors, 
-                        GROUP_CONCAT(DISTINCT fc.Country) as Countries 
-                        FROM movies m 
-                        LEFT JOIN film_genres fg ON m.MovieID = fg.FilmId 
-                        LEFT JOIN film_actors fa ON m.MovieID = fa.FilmId 
-                        LEFT JOIN film_countries fc ON m.MovieID = fc.FilmId 
-                        LEFT JOIN users_favoriteactors ufa ON fa.Actor = ufa.Actor 
-                        LEFT JOIN users_favoritegenres ufg ON fg.Genre = ufg.Genre 
-                        WHERE ufa.Username = @Username OR ufg.Username = @Username OR m.Rating > 7 
-                        GROUP BY m.MovieID 
-                        ORDER BY m.Rating DESC";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Username", username);
-
-                conn.Open();
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Movie newMovie = new Movie()
-                        {
-                            MovieID = reader.GetInt32("MovieID"),
-                            Title = reader.GetString("Title"),
-                            Date = reader.GetString("Date"),
-                            Rating = reader.GetString("Rating"),
-                            PicturePath = reader.GetString("PicturePath"),
-                            Link = reader.GetString("Link"),
-                            Genres = reader.GetString("Genres"),
-                            Actors = reader.GetString("Actors"),
-                            Countries = reader.GetString("Countries")
-                        };
-
-                        movies.Add(newMovie);
-                        
-                    }
-                }
-            }
-
-            return movies;
-        }
+       
 
         private void film_title_lbl_MouseEnter(object sender, EventArgs e)
         {
@@ -419,31 +472,15 @@ namespace TeamProject2__ListOfRecommendations
 
         private void film_title_lbl_Click(object sender, EventArgs e)
         {
-            if (movies.Count == 0)
-            {
-                MessageBox.Show("К сожалению, в нашем приложении пока нет фильмов, подходящих под ваши предпочтения\nВы можете изменить свои предпотения в разделе <<Мой профиль>> или же ставя оценки фильмам и изменяя характеристики");
-            }
-            else
-            {
-                InfoAboutFilm infoAboutFilm = new InfoAboutFilm(movielist[0].Title, movielist[0].PicturePath, movielist[0].Genres, movielist[0].Actors, movielist[0].Countries, movielist[0].Date, movielist[0].Rating);
-                infoAboutFilm.Show();
-            }
+            Movie movie = GetMovieDetails();
+            InfoAboutFilm infoAboutFilm = new InfoAboutFilm(movie.Title, movie.PicturePath, movie.Genres, movie.Actors, movie.Countries, movie.Date);
+            infoAboutFilm.Show();
         }
 
 
         private void pass_btn_Click(object sender, EventArgs e)
         {
-            movielist.RemoveAt(0);
-
-                if (movielist.Count == 0)
-                {
-                    foreach (Movie movie in movies)
-                    {
-                        movielist.Add(movie);
-                    }
-                }
-                MovieID = movielist[0].MovieID;
-                ShowInfo(movielist);
+            ShowRecomendedMovie();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -523,47 +560,14 @@ namespace TeamProject2__ListOfRecommendations
                 starBoxes[i].Image = Properties.Resources.star;
             }
             Rating = selectedIndex + 1;
+
+
         }
 
         private void star_btn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                for (int i = 0; i <= 9; i++)
-                {
-                    starBoxes[i].Image = Properties.Resources.grayStar;
-                }
-
-                string addUserRatingQuery = "INSERT INTO user_ratings (Username, MovieID, Rating) VALUES (@username, @movieId, @rating)";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(addUserRatingQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@username", Login);
-                        command.Parameters.AddWithValue("@movieId", MovieID);
-                        command.Parameters.AddWithValue("@rating", Rating);
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                string updateMovieRatingQuery = "UPDATE movies SET Rating = (SELECT AVG(Rating) FROM user_ratings WHERE MovieID = @movieId) WHERE MovieID = @movieId";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(updateMovieRatingQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@movieId", MovieID);
-                        command.ExecuteNonQuery();
-                    }
-                }
-                MessageBox.Show("Оценка фильму успешно добавлена");
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка");
-            }
-         }
+            
+        }
             
 
         private void grayStar2_MouseClick(object sender, MouseEventArgs e)
@@ -573,34 +577,15 @@ namespace TeamProject2__ListOfRecommendations
 
         private void collections_btn_Click(object sender, EventArgs e)
         {
-            isComedyList = false;
-            notindividual = false;
-            Collections collections = new Collections(Login);
-            collections.Show();
+            collections_panel.Visible = true;
         }
 
-        public void Filtration()
-        {
-            if (FiltrationMovies.Count == 0)
-            {
-                MessageBox.Show("Ни один из фильмов приложения не подходит под заданные вами параметры");
-            }
-            else
-            {
-                foreach (Movie movie in FiltrationMovies)
-                {
-                    FiltrartionMovieList.Add(movie);
-                }
-            notindividual = true;   
-            ShowInfo(FiltrartionMovieList);
-
-
-            }
-        }
+        
 
        
         private void film_title_lbl_TextChanged(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -659,15 +644,10 @@ namespace TeamProject2__ListOfRecommendations
         private void save_btn_Click(object sender, EventArgs e)
         {
             pass__individual__btn.Visible = false;
-            pass_filtration_btn.Visible = true;
-            notindividual = true;
-            isComedyList = false;
+           
 
 
-            genre_info.Text = "";
-            actors_info.Text = "";
-            countries_info.Text = "";
-            dateinterval_info.Text = "";
+            ClearLbls();
 
             genre_info.Text = string.Join(",", Genres);
             actors_info.Text = string.Join(",", Actors);
@@ -683,7 +663,7 @@ namespace TeamProject2__ListOfRecommendations
                 MySqlCommand command = new MySqlCommand();
                 command.Connection = connection;
 
-                string query = "SELECT Movies.MovieID, Movies.Title, IFNULL(Movies.Date, '') AS Date, IFNULL(Movies.Rating, '') AS Rating, IFNULL(Movies.PicturePath, '') AS PicturePath, IFNULL(Movies.Link, '') AS Link, GROUP_CONCAT(DISTINCT Film_Genres.Genre SEPARATOR ', ') AS Genres, GROUP_CONCAT(DISTINCT Film_Actors.Actor SEPARATOR ', ') AS Actors, GROUP_CONCAT(DISTINCT Film_Countries.Country SEPARATOR ', ') AS Countries FROM Movies " +
+                string query = "SELECT Movies.MovieID, Movies.Title, IFNULL(Movies.Date, '') AS Date,  IFNULL(Movies.PicturePath, '') AS PicturePath, IFNULL(Movies.Link, '') AS Link, GROUP_CONCAT(DISTINCT Film_Genres.Genre SEPARATOR ', ') AS Genres, GROUP_CONCAT(DISTINCT Film_Actors.Actor SEPARATOR ', ') AS Actors, GROUP_CONCAT(DISTINCT Film_Countries.Country SEPARATOR ', ') AS Countries FROM Movies " +
                            "LEFT JOIN Film_Genres ON Movies.MovieID = Film_Genres.FilmID " +
                            "LEFT JOIN Film_Actors ON Movies.MovieID = Film_Actors.FilmID " +
                            "LEFT JOIN Film_Countries ON Movies.MovieID = Film_Countries.FilmID " +
@@ -763,21 +743,19 @@ namespace TeamProject2__ListOfRecommendations
                     m.MovieID = reader.GetInt32("MovieID");
                     m.Title = reader.GetString("Title");
                     m.Date = reader.GetString("Date");
-                    m.Rating = reader.GetString("Rating");
                     m.PicturePath = reader.GetString("PicturePath");
                     m.Link = reader.GetString("Link");
                     m.Genres = reader.GetString("Genres");
                     m.Actors = reader.GetString("Actors");
                     m.Countries = reader.GetString("Countries");
 
-                    FiltrationMovies.Add(m);
+                    
                 }
 
                 reader.Close();
 
                 connection.Close();
             }
-            Filtration();
             
         }
 
@@ -828,40 +806,172 @@ namespace TeamProject2__ListOfRecommendations
             closing_panel.Visible = false;
         }
 
-        private void listBox1_Click(object sender, EventArgs e)
-        {
-            foreach (Movie movie in FiltrationMovies)
-            {
-                listBox1.Items.Add(movie.Title);
-            }
-        }
-
         private void pass_filtration_btn_Click(object sender, EventArgs e)
         {
-            /*ComedyFilmsList.RemoveAt(0);
+           
+            
+        }
 
-            if (ComedyFilmsList.Count == 0)
-            {
-                foreach (Movie movie in ComedyFilms)
-                {
-                    ComedyFilmsList.Add(movie);
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(CollectionMovies[0].Title);
+        }
+
+        // Методы для работы с подброками приложения
+        private void comedy_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate1.Visible = true;
+        }
+
+        private void comedy_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate1.Visible = false;
+        }
+
+        private void adventure_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate2.Visible = true;
+        }
+
+        private void adventure_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate2.Visible = false;
+        }
+
+        private void action_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate3.Visible = true;
+        }
+
+        private void action_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate3.Visible = false;
+        }
+
+        private void fantasy_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate4.Visible = true;
+        }
+
+        private void fantasy_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate4.Visible = false;
+        }
+
+        private void detective_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate5.Visible = true;
+        }
+
+        private void detective_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate5.Visible = false;
+        }
+
+        private void history_btn_MouseEnter(object sender, EventArgs e)
+        {
+            substrate6.Visible = true;
+        }
+
+        private void history_btn_MouseLeave(object sender, EventArgs e)
+        {
+            substrate6.Visible = false;
+        }
+
+        private void comedy_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            CollectionMoviesList.Clear();
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsIndividual = false;
+            IsNotIndividual = true;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Комедия");
+            ShowInfoInLblForCollection();
+        }
+
+        private void adventure_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            CollectionMoviesList.Clear();
+            IsNotIndividual = true;
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsIndividual = false;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Приключенческий фильм");
+            ShowInfoInLblForCollection();
+        }
+
+        private void action_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            IsNotIndividual = true;
+            CollectionMoviesList.Clear();
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsIndividual = false;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Боевик");
+            ShowInfoInLblForCollection();
+        }
+
+        private void fantasy_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            CollectionMoviesList.Clear();
+            IsNotIndividual = true;
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsIndividual = false;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Фантастический фильм");
+            ShowInfoInLblForCollection();
+        }
+
+        private void detective_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            CollectionMoviesList.Clear();
+            IsNotIndividual = true;
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsIndividual = false;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Детектив");
+            ShowInfoInLblForCollection();
+        }
+
+        private void history_btn_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+            CollectionMovies.Clear();
+            CollectionMoviesList.Clear();
+            pass_collection_btn.Visible = true;
+            pass__individual__btn.Visible = false;
+            IsNotIndividual = true;
+            IsIndividual = false;
+            FillFilmsList(CollectionMovies, CollectionMoviesList, "Исторический фильм");
+            ShowInfoInLblForCollection();
+        }
+
+        private void add_country_Click(object sender, EventArgs e)
+        {
+            collections_panel.Visible = false;
+        }
+
+        private void pass_collection_btn_Click(object sender, EventArgs e)
+        {
+            CollectionMoviesList.RemoveAt(0);
+            if (CollectionMoviesList.Count == 0) 
+            { 
+                foreach (Movie movie in CollectionMovies) 
+                { 
+                    CollectionMoviesList.Add(movie);
                 }
             }
-            MovieID = ComedyFilmsList[0].MovieID;
-            ShowInfo(ComedyFilmsList);*/
-
-
-            FiltrartionMovieList.RemoveAt(0);
-
-            if (FiltrartionMovieList.Count == 0)
-            {
-                foreach (Movie movie in FiltrationMovies)
-                {
-                    FiltrartionMovieList.Add(movie);
-                }
-            }
-            MovieID = FiltrartionMovieList[0].MovieID;
-            ShowInfo(FiltrartionMovieList);
+            ShowInfoInLblForCollection();
         }
     }
 }

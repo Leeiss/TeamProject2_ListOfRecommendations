@@ -105,8 +105,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.genres_list = new System.Windows.Forms.ListBox();
             this.search_genre_btn = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.pass_filtration_btn = new System.Windows.Forms.Button();
+            this.pass_collection_btn = new System.Windows.Forms.Button();
+            this.collections_panel = new System.Windows.Forms.Panel();
+            this.add_country = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.adventure_btn = new System.Windows.Forms.PictureBox();
+            this.fantasy_btn = new System.Windows.Forms.PictureBox();
+            this.action_btn = new System.Windows.Forms.PictureBox();
+            this.comedy_btn = new System.Windows.Forms.PictureBox();
+            this.history_btn = new System.Windows.Forms.PictureBox();
+            this.detective_btn = new System.Windows.Forms.PictureBox();
+            this.title_lbl = new System.Windows.Forms.Label();
+            this.substrate1 = new System.Windows.Forms.PictureBox();
+            this.substrate2 = new System.Windows.Forms.PictureBox();
+            this.substrate3 = new System.Windows.Forms.PictureBox();
+            this.substrate4 = new System.Windows.Forms.PictureBox();
+            this.substrate5 = new System.Windows.Forms.PictureBox();
+            this.substrate6 = new System.Windows.Forms.PictureBox();
             this.upper_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
@@ -141,6 +156,19 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.collections_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).BeginInit();
             this.SuspendLayout();
             // 
             // delimeter1
@@ -341,7 +369,7 @@
             // 
             this.film_title_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.film_title_lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.film_title_lbl.Font = new System.Drawing.Font("Stencil", 16.125F);
+            this.film_title_lbl.Font = new System.Drawing.Font("Stencil", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.film_title_lbl.Location = new System.Drawing.Point(408, 130);
             this.film_title_lbl.Name = "film_title_lbl";
             this.film_title_lbl.ReadOnly = true;
@@ -352,7 +380,6 @@
             this.film_title_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.hints.SetToolTip(this.film_title_lbl, "Посмотреть информацию о фильме");
             this.film_title_lbl.Click += new System.EventHandler(this.film_title_lbl_Click);
-            this.film_title_lbl.TextChanged += new System.EventHandler(this.film_title_lbl_TextChanged);
             this.film_title_lbl.MouseEnter += new System.EventHandler(this.film_title_lbl_MouseEnter);
             this.film_title_lbl.MouseLeave += new System.EventHandler(this.film_title_lbl_MouseLeave);
             // 
@@ -533,10 +560,6 @@
             this.list_collections.ForeColor = System.Drawing.Color.DarkGray;
             this.list_collections.FormattingEnabled = true;
             this.list_collections.ItemHeight = 34;
-            this.list_collections.Items.AddRange(new object[] {
-            "Фильмы дня",
-            "Избранное",
-            "Спорт"});
             this.list_collections.Location = new System.Drawing.Point(31, 249);
             this.list_collections.Name = "list_collections";
             this.list_collections.Size = new System.Drawing.Size(322, 442);
@@ -580,12 +603,13 @@
             this.pass__individual__btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pass__individual__btn.Font = new System.Drawing.Font("XO Courser", 14F);
             this.pass__individual__btn.ForeColor = System.Drawing.Color.Silver;
-            this.pass__individual__btn.Location = new System.Drawing.Point(694, 1191);
+            this.pass__individual__btn.Location = new System.Drawing.Point(718, 1191);
             this.pass__individual__btn.Name = "pass__individual__btn";
             this.pass__individual__btn.Size = new System.Drawing.Size(296, 86);
             this.pass__individual__btn.TabIndex = 106;
             this.pass__individual__btn.Text = "Пропуск";
             this.pass__individual__btn.UseVisualStyleBackColor = false;
+            this.pass__individual__btn.Visible = false;
             this.pass__individual__btn.Click += new System.EventHandler(this.pass_btn_Click);
             // 
             // label6
@@ -650,6 +674,7 @@
             this.button2.TabIndex = 105;
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // add_in_compilation_btn
             // 
@@ -805,9 +830,9 @@
             this.closing_panel.Controls.Add(this.panel6);
             this.closing_panel.Controls.Add(this.genres_list);
             this.closing_panel.Controls.Add(this.search_genre_btn);
-            this.closing_panel.Location = new System.Drawing.Point(1323, 216);
+            this.closing_panel.Location = new System.Drawing.Point(1323, 197);
             this.closing_panel.Name = "closing_panel";
-            this.closing_panel.Size = new System.Drawing.Size(556, 1108);
+            this.closing_panel.Size = new System.Drawing.Size(556, 1132);
             this.closing_panel.TabIndex = 112;
             this.closing_panel.Visible = false;
             // 
@@ -1268,29 +1293,219 @@
             this.search_genre_btn.Click += new System.EventHandler(this.search_genre_btn_Click);
             this.search_genre_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_genre_btn_KeyDown);
             // 
-            // listBox1
+            // pass_collection_btn
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(100, 1011);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 179);
-            this.listBox1.TabIndex = 113;
-            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.pass_collection_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pass_collection_btn.Font = new System.Drawing.Font("XO Courser", 14F);
+            this.pass_collection_btn.ForeColor = System.Drawing.Color.Silver;
+            this.pass_collection_btn.Location = new System.Drawing.Point(718, 1191);
+            this.pass_collection_btn.Name = "pass_collection_btn";
+            this.pass_collection_btn.Size = new System.Drawing.Size(296, 86);
+            this.pass_collection_btn.TabIndex = 115;
+            this.pass_collection_btn.Text = "Пропуск";
+            this.pass_collection_btn.UseVisualStyleBackColor = false;
+            this.pass_collection_btn.Visible = false;
+            this.pass_collection_btn.Click += new System.EventHandler(this.pass_collection_btn_Click);
             // 
-            // pass_filtration_btn
+            // collections_panel
             // 
-            this.pass_filtration_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pass_filtration_btn.Font = new System.Drawing.Font("XO Courser", 14F);
-            this.pass_filtration_btn.ForeColor = System.Drawing.Color.Silver;
-            this.pass_filtration_btn.Location = new System.Drawing.Point(694, 1191);
-            this.pass_filtration_btn.Name = "pass_filtration_btn";
-            this.pass_filtration_btn.Size = new System.Drawing.Size(296, 86);
-            this.pass_filtration_btn.TabIndex = 114;
-            this.pass_filtration_btn.Text = "Пропуск";
-            this.pass_filtration_btn.UseVisualStyleBackColor = false;
-            this.pass_filtration_btn.Visible = false;
-            this.pass_filtration_btn.Click += new System.EventHandler(this.pass_filtration_btn_Click);
+            this.collections_panel.Controls.Add(this.add_country);
+            this.collections_panel.Controls.Add(this.panel8);
+            this.collections_panel.Controls.Add(this.adventure_btn);
+            this.collections_panel.Controls.Add(this.fantasy_btn);
+            this.collections_panel.Controls.Add(this.action_btn);
+            this.collections_panel.Controls.Add(this.comedy_btn);
+            this.collections_panel.Controls.Add(this.history_btn);
+            this.collections_panel.Controls.Add(this.detective_btn);
+            this.collections_panel.Controls.Add(this.title_lbl);
+            this.collections_panel.Controls.Add(this.substrate1);
+            this.collections_panel.Controls.Add(this.substrate2);
+            this.collections_panel.Controls.Add(this.substrate3);
+            this.collections_panel.Controls.Add(this.substrate4);
+            this.collections_panel.Controls.Add(this.substrate5);
+            this.collections_panel.Controls.Add(this.substrate6);
+            this.collections_panel.Location = new System.Drawing.Point(12, 291);
+            this.collections_panel.Name = "collections_panel";
+            this.collections_panel.Size = new System.Drawing.Size(1877, 1233);
+            this.collections_panel.TabIndex = 116;
+            this.collections_panel.Visible = false;
+            // 
+            // add_country
+            // 
+            this.add_country.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.add_country.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.add_country.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.add_country.Location = new System.Drawing.Point(1634, 1137);
+            this.add_country.Name = "add_country";
+            this.add_country.Size = new System.Drawing.Size(221, 77);
+            this.add_country.TabIndex = 113;
+            this.add_country.Text = "Выйти из раздела";
+            this.add_country.UseVisualStyleBackColor = false;
+            this.add_country.Visible = false;
+            this.add_country.Click += new System.EventHandler(this.add_country_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Black;
+            this.panel8.Location = new System.Drawing.Point(-10, 177);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1923, 17);
+            this.panel8.TabIndex = 112;
+            // 
+            // adventure_btn
+            // 
+            this.adventure_btn.Image = ((System.Drawing.Image)(resources.GetObject("adventure_btn.Image")));
+            this.adventure_btn.Location = new System.Drawing.Point(764, 283);
+            this.adventure_btn.Name = "adventure_btn";
+            this.adventure_btn.Size = new System.Drawing.Size(285, 286);
+            this.adventure_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.adventure_btn.TabIndex = 100;
+            this.adventure_btn.TabStop = false;
+            this.adventure_btn.Click += new System.EventHandler(this.adventure_btn_Click);
+            this.adventure_btn.MouseEnter += new System.EventHandler(this.adventure_btn_MouseEnter);
+            this.adventure_btn.MouseLeave += new System.EventHandler(this.adventure_btn_MouseLeave);
+            // 
+            // fantasy_btn
+            // 
+            this.fantasy_btn.Image = ((System.Drawing.Image)(resources.GetObject("fantasy_btn.Image")));
+            this.fantasy_btn.Location = new System.Drawing.Point(230, 730);
+            this.fantasy_btn.Name = "fantasy_btn";
+            this.fantasy_btn.Size = new System.Drawing.Size(285, 286);
+            this.fantasy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fantasy_btn.TabIndex = 104;
+            this.fantasy_btn.TabStop = false;
+            this.fantasy_btn.Click += new System.EventHandler(this.fantasy_btn_Click);
+            this.fantasy_btn.MouseEnter += new System.EventHandler(this.fantasy_btn_MouseEnter);
+            this.fantasy_btn.MouseLeave += new System.EventHandler(this.fantasy_btn_MouseLeave);
+            // 
+            // action_btn
+            // 
+            this.action_btn.Image = ((System.Drawing.Image)(resources.GetObject("action_btn.Image")));
+            this.action_btn.Location = new System.Drawing.Point(1314, 283);
+            this.action_btn.Name = "action_btn";
+            this.action_btn.Size = new System.Drawing.Size(285, 286);
+            this.action_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.action_btn.TabIndex = 103;
+            this.action_btn.TabStop = false;
+            this.action_btn.Click += new System.EventHandler(this.action_btn_Click);
+            this.action_btn.MouseEnter += new System.EventHandler(this.action_btn_MouseEnter);
+            this.action_btn.MouseLeave += new System.EventHandler(this.action_btn_MouseLeave);
+            // 
+            // comedy_btn
+            // 
+            this.comedy_btn.Image = ((System.Drawing.Image)(resources.GetObject("comedy_btn.Image")));
+            this.comedy_btn.Location = new System.Drawing.Point(223, 283);
+            this.comedy_btn.Name = "comedy_btn";
+            this.comedy_btn.Size = new System.Drawing.Size(285, 286);
+            this.comedy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.comedy_btn.TabIndex = 102;
+            this.comedy_btn.TabStop = false;
+            this.comedy_btn.Click += new System.EventHandler(this.comedy_btn_Click);
+            this.comedy_btn.MouseEnter += new System.EventHandler(this.comedy_btn_MouseEnter);
+            this.comedy_btn.MouseLeave += new System.EventHandler(this.comedy_btn_MouseLeave);
+            // 
+            // history_btn
+            // 
+            this.history_btn.Image = ((System.Drawing.Image)(resources.GetObject("history_btn.Image")));
+            this.history_btn.Location = new System.Drawing.Point(1321, 730);
+            this.history_btn.Name = "history_btn";
+            this.history_btn.Size = new System.Drawing.Size(285, 286);
+            this.history_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.history_btn.TabIndex = 101;
+            this.history_btn.TabStop = false;
+            this.history_btn.Click += new System.EventHandler(this.history_btn_Click);
+            this.history_btn.MouseEnter += new System.EventHandler(this.history_btn_MouseEnter);
+            this.history_btn.MouseLeave += new System.EventHandler(this.history_btn_MouseLeave);
+            // 
+            // detective_btn
+            // 
+            this.detective_btn.Image = ((System.Drawing.Image)(resources.GetObject("detective_btn.Image")));
+            this.detective_btn.Location = new System.Drawing.Point(764, 730);
+            this.detective_btn.Name = "detective_btn";
+            this.detective_btn.Size = new System.Drawing.Size(285, 286);
+            this.detective_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.detective_btn.TabIndex = 99;
+            this.detective_btn.TabStop = false;
+            this.detective_btn.Click += new System.EventHandler(this.detective_btn_Click);
+            this.detective_btn.MouseEnter += new System.EventHandler(this.detective_btn_MouseEnter);
+            this.detective_btn.MouseLeave += new System.EventHandler(this.detective_btn_MouseLeave);
+            // 
+            // title_lbl
+            // 
+            this.title_lbl.AutoSize = true;
+            this.title_lbl.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_lbl.ForeColor = System.Drawing.Color.Black;
+            this.title_lbl.Location = new System.Drawing.Point(591, 93);
+            this.title_lbl.Name = "title_lbl";
+            this.title_lbl.Size = new System.Drawing.Size(651, 57);
+            this.title_lbl.TabIndex = 97;
+            this.title_lbl.Text = "Н А Ш И     П О Д Б О Р К И";
+            // 
+            // substrate1
+            // 
+            this.substrate1.Image = ((System.Drawing.Image)(resources.GetObject("substrate1.Image")));
+            this.substrate1.Location = new System.Drawing.Point(202, 264);
+            this.substrate1.Name = "substrate1";
+            this.substrate1.Size = new System.Drawing.Size(338, 331);
+            this.substrate1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate1.TabIndex = 105;
+            this.substrate1.TabStop = false;
+            this.substrate1.Visible = false;
+            // 
+            // substrate2
+            // 
+            this.substrate2.Image = ((System.Drawing.Image)(resources.GetObject("substrate2.Image")));
+            this.substrate2.Location = new System.Drawing.Point(739, 260);
+            this.substrate2.Name = "substrate2";
+            this.substrate2.Size = new System.Drawing.Size(338, 331);
+            this.substrate2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate2.TabIndex = 106;
+            this.substrate2.TabStop = false;
+            this.substrate2.Visible = false;
+            // 
+            // substrate3
+            // 
+            this.substrate3.Image = ((System.Drawing.Image)(resources.GetObject("substrate3.Image")));
+            this.substrate3.Location = new System.Drawing.Point(1288, 260);
+            this.substrate3.Name = "substrate3";
+            this.substrate3.Size = new System.Drawing.Size(338, 331);
+            this.substrate3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate3.TabIndex = 107;
+            this.substrate3.TabStop = false;
+            this.substrate3.Visible = false;
+            // 
+            // substrate4
+            // 
+            this.substrate4.Image = ((System.Drawing.Image)(resources.GetObject("substrate4.Image")));
+            this.substrate4.Location = new System.Drawing.Point(208, 710);
+            this.substrate4.Name = "substrate4";
+            this.substrate4.Size = new System.Drawing.Size(338, 331);
+            this.substrate4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate4.TabIndex = 108;
+            this.substrate4.TabStop = false;
+            this.substrate4.Visible = false;
+            // 
+            // substrate5
+            // 
+            this.substrate5.Image = ((System.Drawing.Image)(resources.GetObject("substrate5.Image")));
+            this.substrate5.Location = new System.Drawing.Point(742, 707);
+            this.substrate5.Name = "substrate5";
+            this.substrate5.Size = new System.Drawing.Size(335, 331);
+            this.substrate5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate5.TabIndex = 109;
+            this.substrate5.TabStop = false;
+            this.substrate5.Visible = false;
+            // 
+            // substrate6
+            // 
+            this.substrate6.Image = ((System.Drawing.Image)(resources.GetObject("substrate6.Image")));
+            this.substrate6.Location = new System.Drawing.Point(1296, 708);
+            this.substrate6.Name = "substrate6";
+            this.substrate6.Size = new System.Drawing.Size(338, 331);
+            this.substrate6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate6.TabIndex = 110;
+            this.substrate6.TabStop = false;
+            this.substrate6.Visible = false;
             // 
             // MainForm
             // 
@@ -1298,12 +1513,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1891, 1336);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.collections_panel);
+            this.Controls.Add(this.pass_collection_btn);
             this.Controls.Add(this.closing_panel);
             this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pass__individual__btn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.add_in_compilation_btn);
             this.Controls.Add(this.change_compilation);
@@ -1337,7 +1552,7 @@
             this.Controls.Add(this.grayStar8);
             this.Controls.Add(this.grayStar9);
             this.Controls.Add(this.grayStar10);
-            this.Controls.Add(this.pass_filtration_btn);
+            this.Controls.Add(this.pass__individual__btn);
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
@@ -1386,6 +1601,20 @@
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.collections_panel.ResumeLayout(false);
+            this.collections_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1468,7 +1697,22 @@
         private System.Windows.Forms.TextBox search_genre_btn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button save_btn;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button pass_filtration_btn;
+        private System.Windows.Forms.Button pass_collection_btn;
+        private System.Windows.Forms.Panel collections_panel;
+        private System.Windows.Forms.PictureBox adventure_btn;
+        private System.Windows.Forms.PictureBox fantasy_btn;
+        private System.Windows.Forms.PictureBox action_btn;
+        private System.Windows.Forms.PictureBox comedy_btn;
+        private System.Windows.Forms.PictureBox history_btn;
+        private System.Windows.Forms.PictureBox detective_btn;
+        private System.Windows.Forms.Label title_lbl;
+        private System.Windows.Forms.PictureBox substrate1;
+        private System.Windows.Forms.PictureBox substrate2;
+        private System.Windows.Forms.PictureBox substrate3;
+        private System.Windows.Forms.PictureBox substrate4;
+        private System.Windows.Forms.PictureBox substrate5;
+        private System.Windows.Forms.PictureBox substrate6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button add_country;
     }
 }

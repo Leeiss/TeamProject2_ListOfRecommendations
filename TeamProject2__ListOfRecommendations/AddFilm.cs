@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using TeamProject1_ToDoList.Classes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -32,14 +34,14 @@ namespace TeamProject2__ListOfRecommendations
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
         private void AddFilm_Load(object sender, EventArgs e)
         {
-           IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
+            IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
 
             foreach (string actor in actors)
             {
                 actors_list.Items.Add(actor);
             }
 
-            
+
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
@@ -48,7 +50,7 @@ namespace TeamProject2__ListOfRecommendations
             int buttonOffset = 30;
             int formWidth = add_film_btn.Location.X + add_film_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = add_film_btn.Location.Y + add_film_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
-            this.ClientSize = new Size(formWidth, formHeight); 
+            this.ClientSize = new Size(formWidth, formHeight);
         }
 
         private void YesNoShowBtn()
@@ -172,7 +174,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_film_btn_Click(object sender, EventArgs e)
         {
-            if (!title_tb.Text.Equals("")  && !title_tb.Text.Equals("Введите название") && !link_tb.Text.Equals("") && !link_tb.Text.Equals("Введите ссылку"))
+            if (!title_tb.Text.Equals("") && !title_tb.Text.Equals("Введите название") && !link_tb.Text.Equals("") && !link_tb.Text.Equals("Введите ссылку"))
             {
                 DataBase db = new DataBase();
                 db.OpenConnection();
@@ -208,7 +210,7 @@ namespace TeamProject2__ListOfRecommendations
                 MessageBox.Show("Пожалуйста, заполните все поля");
             }
         }
-        
+
 
         private void AddMovie()
         {
@@ -263,6 +265,7 @@ namespace TeamProject2__ListOfRecommendations
                         }
                     }
                 }
+                connection.Close();
             }
         }
         private void add_actor_btn_MouseEnter(object sender, EventArgs e)
@@ -299,6 +302,7 @@ namespace TeamProject2__ListOfRecommendations
         private void add_actor_in_list_btn_Click(object sender, EventArgs e)
         {
             XElement actors = doc.Element("for_lists").Element("actors");
+
             string actorName = actor_tb.Text;
 
             if (actor_tb.Text.Equals("") || actor_tb.Text.Equals("Введите имя и фамилию актера"))
@@ -313,6 +317,7 @@ namespace TeamProject2__ListOfRecommendations
                 }
                 else
                 {
+                    AddFilmInBD(actor_tb.Text);
                     doc.Element("for_lists").Element("actors").Add(new XElement("actor", actor_tb.Text));
                     doc.Save(Xmlpath);
                     actors_list.Items.Add(actor_tb.Text);
@@ -322,8 +327,39 @@ namespace TeamProject2__ListOfRecommendations
                     add_actor_in_list_btn.Visible = false;
                     actor_tb.Visible = false;
                     MessageBox.Show("Введенные вами данные об актере добавлены в список актеров приложения");
+
+
                 }
             }
+        }
+
+        private void AddFilmInBD(string actorName)
+        {
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+                List<string> userLogins = new List<string>();
+                string selectUsersQuery = "SELECT Login FROM users";
+                MySqlCommand selectUsersCommand = new MySqlCommand(selectUsersQuery, conn);
+                MySqlDataReader selectUsersReader = selectUsersCommand.ExecuteReader();
+                while (selectUsersReader.Read())
+                {
+                    string login = selectUsersReader.GetString(0);
+                    userLogins.Add(login);
+
+                }
+                selectUsersReader.Close();
+
+                foreach (string login in userLogins)
+                {
+                    string insertActorQuery = "INSERT INTO users_actors_rating (Username, Actorname, RatingActor, MarksCount) VALUES (@Username, @Actorname, @RatingActor, @MarksCount)";
+                    MySqlCommand insertActorCommand = new MySqlCommand(insertActorQuery, conn);
+                    insertActorCommand.Parameters.AddWithValue("@Username", login);
+                    insertActorCommand.Parameters.AddWithValue("@Actorname", actorName);
+                    insertActorCommand.Parameters.AddWithValue("@RatingActor", 5);
+                    insertActorCommand.Parameters.AddWithValue("@MarksCount", 0);
+                    int rowsAffected = insertActorCommand.ExecuteNonQuery();
+             
+                }
         }
 
         private void link_tb_Click(object sender, EventArgs e)
@@ -332,3 +368,8 @@ namespace TeamProject2__ListOfRecommendations
         }
     }
 }
+
+
+
+
+

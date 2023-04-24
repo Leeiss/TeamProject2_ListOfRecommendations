@@ -38,11 +38,13 @@
             this.genres_list = new System.Windows.Forms.ListBox();
             this.closing_panel = new System.Windows.Forms.Panel();
             this.go_btn = new System.Windows.Forms.Button();
-            this.next_btn = new System.Windows.Forms.Button();
             this.info_lbl5 = new System.Windows.Forms.Label();
             this.add_genre = new System.Windows.Forms.Button();
             this.add_actor = new System.Windows.Forms.Button();
             this.info_lbl1 = new System.Windows.Forms.Label();
+            this.next_btn = new System.Windows.Forms.Button();
+            this.skip_btn = new System.Windows.Forms.Button();
+            this.search_actor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // info_lbl2
@@ -96,9 +98,9 @@
             this.actors_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.actors_list.FormattingEnabled = true;
             this.actors_list.ItemHeight = 34;
-            this.actors_list.Location = new System.Drawing.Point(103, 453);
+            this.actors_list.Location = new System.Drawing.Point(57, 453);
             this.actors_list.Name = "actors_list";
-            this.actors_list.Size = new System.Drawing.Size(1067, 480);
+            this.actors_list.Size = new System.Drawing.Size(1177, 548);
             this.actors_list.TabIndex = 26;
             this.actors_list.Visible = false;
             this.actors_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.actors_list_DrawItem);
@@ -131,16 +133,16 @@
             "Фантастический фильм",
             "Фильм ужасов",
             "Фильм-катастрофа"});
-            this.genres_list.Location = new System.Drawing.Point(71, 453);
+            this.genres_list.Location = new System.Drawing.Point(57, 453);
             this.genres_list.Name = "genres_list";
-            this.genres_list.Size = new System.Drawing.Size(1163, 514);
+            this.genres_list.Size = new System.Drawing.Size(1177, 548);
             this.genres_list.TabIndex = 22;
             this.genres_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.genres_list_DrawItem);
             this.genres_list.SelectedIndexChanged += new System.EventHandler(this.genres_list_SelectedIndexChanged);
             // 
             // closing_panel
             // 
-            this.closing_panel.Location = new System.Drawing.Point(12, 396);
+            this.closing_panel.Location = new System.Drawing.Point(2, 389);
             this.closing_panel.Name = "closing_panel";
             this.closing_panel.Size = new System.Drawing.Size(1594, 695);
             this.closing_panel.TabIndex = 33;
@@ -158,19 +160,6 @@
             this.go_btn.Visible = false;
             this.go_btn.Click += new System.EventHandler(this.go_btn_Click);
             // 
-            // next_btn
-            // 
-            this.next_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.next_btn.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.next_btn.Location = new System.Drawing.Point(1083, 1032);
-            this.next_btn.Name = "next_btn";
-            this.next_btn.Size = new System.Drawing.Size(218, 52);
-            this.next_btn.TabIndex = 31;
-            this.next_btn.Text = "Далее";
-            this.next_btn.UseVisualStyleBackColor = false;
-            this.next_btn.Visible = false;
-            this.next_btn.Click += new System.EventHandler(this.next_btn_Click);
-            // 
             // info_lbl5
             // 
             this.info_lbl5.AutoSize = true;
@@ -186,7 +175,7 @@
             // 
             this.add_genre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.add_genre.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.add_genre.Location = new System.Drawing.Point(554, 1000);
+            this.add_genre.Location = new System.Drawing.Point(554, 994);
             this.add_genre.Name = "add_genre";
             this.add_genre.Size = new System.Drawing.Size(218, 44);
             this.add_genre.TabIndex = 33;
@@ -219,25 +208,68 @@
             this.info_lbl1.TabIndex = 35;
             this.info_lbl1.Text = "Чтобы создать для вас";
             // 
+            // next_btn
+            // 
+            this.next_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.next_btn.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.next_btn.Location = new System.Drawing.Point(962, 1032);
+            this.next_btn.Name = "next_btn";
+            this.next_btn.Size = new System.Drawing.Size(339, 52);
+            this.next_btn.TabIndex = 36;
+            this.next_btn.Text = "Далее";
+            this.next_btn.UseVisualStyleBackColor = false;
+            this.next_btn.Visible = false;
+            this.next_btn.Click += new System.EventHandler(this.next_btn_Click_1);
+            // 
+            // skip_btn
+            // 
+            this.skip_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.skip_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.skip_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.skip_btn.Location = new System.Drawing.Point(44, 1032);
+            this.skip_btn.Name = "skip_btn";
+            this.skip_btn.Size = new System.Drawing.Size(176, 42);
+            this.skip_btn.TabIndex = 128;
+            this.skip_btn.Text = "Пропустить";
+            this.skip_btn.UseVisualStyleBackColor = false;
+            this.skip_btn.Visible = false;
+            this.skip_btn.Click += new System.EventHandler(this.skip_btn_Click);
+            // 
+            // search_actor
+            // 
+            this.search_actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.search_actor.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.search_actor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.search_actor.Location = new System.Drawing.Point(801, 412);
+            this.search_actor.Name = "search_actor";
+            this.search_actor.Size = new System.Drawing.Size(433, 35);
+            this.search_actor.TabIndex = 129;
+            this.search_actor.Text = "Поиск по списку..";
+            this.search_actor.Visible = false;
+            this.search_actor.Click += new System.EventHandler(this.search_actor_Click);
+            this.search_actor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_actor_KeyDown);
+            // 
             // Preferences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1313, 1096);
+            this.Controls.Add(this.search_actor);
+            this.Controls.Add(this.skip_btn);
             this.Controls.Add(this.add_genre);
             this.Controls.Add(this.add_actor);
             this.Controls.Add(this.info_lbl1);
             this.Controls.Add(this.closing_panel);
-            this.Controls.Add(this.next_btn);
             this.Controls.Add(this.panel_lateral);
             this.Controls.Add(this.info_lbl4);
             this.Controls.Add(this.info_lbl3);
             this.Controls.Add(this.info_lbl2);
-            this.Controls.Add(this.go_btn);
             this.Controls.Add(this.info_lbl5);
+            this.Controls.Add(this.next_btn);
             this.Controls.Add(this.genres_list);
             this.Controls.Add(this.actors_list);
+            this.Controls.Add(this.go_btn);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.Name = "Preferences";
             this.Text = "Ваши предпочтения";
@@ -257,10 +289,12 @@
         private System.Windows.Forms.ListBox genres_list;
         private System.Windows.Forms.Panel closing_panel;
         private System.Windows.Forms.Button go_btn;
-        private System.Windows.Forms.Button next_btn;
         private System.Windows.Forms.Label info_lbl5;
         private System.Windows.Forms.Button add_genre;
         private System.Windows.Forms.Button add_actor;
         private System.Windows.Forms.Label info_lbl1;
+        private System.Windows.Forms.Button next_btn;
+        private System.Windows.Forms.Button skip_btn;
+        private System.Windows.Forms.TextBox search_actor;
     }
 }

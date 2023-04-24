@@ -11,12 +11,10 @@ namespace TeamProject2__ListOfRecommendations
         public int MovieID { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        public string Rating { get; set; }
         public string PicturePath { get; set; }
         public string Link { get; set; }
         public string Genres { get; set; }
         public string Actors { get; set; }
         public string Countries { get; set; }
-
     }
 }

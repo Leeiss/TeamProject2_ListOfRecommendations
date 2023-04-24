@@ -37,23 +37,15 @@ namespace TeamProject2__ListOfRecommendations
             passwordRecovery.Show();
         }
 
-        private void command3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        
         private void change_lbl_Click(object sender, EventArgs e)
         {
-            Preferences preferences = new Preferences(login_lbl.Text);
-            preferences.Tag = "изменить";
-            preferences.Show();
-        }
-
-        private void cancel_lbl_Click(object sender, EventArgs e)
-        {
             this.Close();
+            MainForm mainForm = new MainForm(Login);
+            mainForm.Close();
         }
 
+       
         private void change_lbl_MouseEnter(object sender, EventArgs e)
         {
             command1.Visible = true;
@@ -74,16 +66,7 @@ namespace TeamProject2__ListOfRecommendations
             command2.Visible = false;
         }
 
-        private void cancel_lbl_MouseEnter(object sender, EventArgs e)
-        {
-            command3.Visible = true;
-        }
-
-        private void cancel_lbl_MouseLeave(object sender, EventArgs e)
-        {
-            command3.Visible = false;
-        }
-
+        
         private void ProfileMenagement_Load(object sender, EventArgs e)
         {
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;

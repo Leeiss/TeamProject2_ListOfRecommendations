@@ -36,15 +36,15 @@
             this.password_tb = new System.Windows.Forms.TextBox();
             this.login_tb = new System.Windows.Forms.TextBox();
             this.email_tb = new System.Windows.Forms.TextBox();
-            this.picture_logo = new System.Windows.Forms.PictureBox();
             this.administration_btn = new System.Windows.Forms.Label();
             this.close_panel = new System.Windows.Forms.Panel();
-            this.info_lbl1 = new System.Windows.Forms.Label();
-            this.admin_password_tb = new System.Windows.Forms.TextBox();
-            this.admin_btn = new System.Windows.Forms.Button();
             this.adminrights_btn_cancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).BeginInit();
+            this.admin_btn = new System.Windows.Forms.Button();
+            this.admin_password_tb = new System.Windows.Forms.TextBox();
+            this.info_lbl1 = new System.Windows.Forms.Label();
+            this.picture_logo = new System.Windows.Forms.PictureBox();
             this.close_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // registration_lbl
@@ -136,15 +136,6 @@
             this.email_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.email_tb.Click += new System.EventHandler(this.email_tb_Click);
             // 
-            // picture_logo
-            // 
-            this.picture_logo.Image = ((System.Drawing.Image)(resources.GetObject("picture_logo.Image")));
-            this.picture_logo.Location = new System.Drawing.Point(154, 41);
-            this.picture_logo.Name = "picture_logo";
-            this.picture_logo.Size = new System.Drawing.Size(780, 331);
-            this.picture_logo.TabIndex = 8;
-            this.picture_logo.TabStop = false;
-            // 
             // administration_btn
             // 
             this.administration_btn.AutoSize = true;
@@ -165,36 +156,25 @@
             this.close_panel.Controls.Add(this.admin_btn);
             this.close_panel.Controls.Add(this.admin_password_tb);
             this.close_panel.Controls.Add(this.info_lbl1);
-            this.close_panel.Location = new System.Drawing.Point(27, 440);
+            this.close_panel.Location = new System.Drawing.Point(27, 433);
             this.close_panel.Name = "close_panel";
-            this.close_panel.Size = new System.Drawing.Size(1035, 471);
+            this.close_panel.Size = new System.Drawing.Size(1035, 466);
             this.close_panel.TabIndex = 22;
             this.close_panel.Visible = false;
             // 
-            // info_lbl1
+            // adminrights_btn_cancel
             // 
-            this.info_lbl1.AutoSize = true;
-            this.info_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.info_lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_lbl1.Location = new System.Drawing.Point(241, 75);
-            this.info_lbl1.Name = "info_lbl1";
-            this.info_lbl1.Size = new System.Drawing.Size(537, 33);
-            this.info_lbl1.TabIndex = 23;
-            this.info_lbl1.Text = "Введите пароль администратора";
-            this.info_lbl1.Visible = false;
-            // 
-            // admin_password_tb
-            // 
-            this.admin_password_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.admin_password_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.admin_password_tb.Font = new System.Drawing.Font("XO Courser", 12F);
-            this.admin_password_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.admin_password_tb.Location = new System.Drawing.Point(327, 148);
-            this.admin_password_tb.Name = "admin_password_tb";
-            this.admin_password_tb.Size = new System.Drawing.Size(378, 44);
-            this.admin_password_tb.TabIndex = 74;
-            this.admin_password_tb.TabStop = false;
-            this.admin_password_tb.Visible = false;
+            this.adminrights_btn_cancel.BackColor = System.Drawing.Color.Gray;
+            this.adminrights_btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.adminrights_btn_cancel.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.adminrights_btn_cancel.Location = new System.Drawing.Point(56, 387);
+            this.adminrights_btn_cancel.Name = "adminrights_btn_cancel";
+            this.adminrights_btn_cancel.Size = new System.Drawing.Size(151, 47);
+            this.adminrights_btn_cancel.TabIndex = 75;
+            this.adminrights_btn_cancel.Text = "Отмена";
+            this.adminrights_btn_cancel.UseVisualStyleBackColor = false;
+            this.adminrights_btn_cancel.Visible = false;
+            this.adminrights_btn_cancel.Click += new System.EventHandler(this.adminrights_btn_cancel_Click);
             // 
             // admin_btn
             // 
@@ -210,19 +190,39 @@
             this.admin_btn.Visible = false;
             this.admin_btn.Click += new System.EventHandler(this.admin_btn_Click);
             // 
-            // adminrights_btn_cancel
+            // admin_password_tb
             // 
-            this.adminrights_btn_cancel.BackColor = System.Drawing.Color.Gray;
-            this.adminrights_btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.adminrights_btn_cancel.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.adminrights_btn_cancel.Location = new System.Drawing.Point(56, 387);
-            this.adminrights_btn_cancel.Name = "adminrights_btn_cancel";
-            this.adminrights_btn_cancel.Size = new System.Drawing.Size(151, 47);
-            this.adminrights_btn_cancel.TabIndex = 75;
-            this.adminrights_btn_cancel.Text = "Отмена";
-            this.adminrights_btn_cancel.UseVisualStyleBackColor = false;
-            this.adminrights_btn_cancel.Visible = false;
-            this.adminrights_btn_cancel.Click += new System.EventHandler(this.adminrights_btn_cancel_Click);
+            this.admin_password_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.admin_password_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.admin_password_tb.Font = new System.Drawing.Font("XO Courser", 12F);
+            this.admin_password_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.admin_password_tb.Location = new System.Drawing.Point(327, 148);
+            this.admin_password_tb.Name = "admin_password_tb";
+            this.admin_password_tb.Size = new System.Drawing.Size(378, 44);
+            this.admin_password_tb.TabIndex = 74;
+            this.admin_password_tb.TabStop = false;
+            this.admin_password_tb.Visible = false;
+            // 
+            // info_lbl1
+            // 
+            this.info_lbl1.AutoSize = true;
+            this.info_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.info_lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.info_lbl1.Location = new System.Drawing.Point(241, 75);
+            this.info_lbl1.Name = "info_lbl1";
+            this.info_lbl1.Size = new System.Drawing.Size(537, 33);
+            this.info_lbl1.TabIndex = 23;
+            this.info_lbl1.Text = "Введите пароль администратора";
+            this.info_lbl1.Visible = false;
+            // 
+            // picture_logo
+            // 
+            this.picture_logo.Image = ((System.Drawing.Image)(resources.GetObject("picture_logo.Image")));
+            this.picture_logo.Location = new System.Drawing.Point(154, 41);
+            this.picture_logo.Name = "picture_logo";
+            this.picture_logo.Size = new System.Drawing.Size(780, 331);
+            this.picture_logo.TabIndex = 8;
+            this.picture_logo.TabStop = false;
             // 
             // Registration
             // 
@@ -243,10 +243,11 @@
             this.Controls.Add(this.picture_logo);
             this.Name = "Registration";
             this.Text = "Регистрация";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Registration_FormClosed);
             this.Load += new System.EventHandler(this.Registration_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).EndInit();
             this.close_panel.ResumeLayout(false);
             this.close_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -42,15 +42,11 @@
             this.substrate3 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.image_poster = new System.Windows.Forms.PictureBox();
-            this.info_rating = new System.Windows.Forms.RichTextBox();
-            this.substrate6 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.substrate5.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
             this.substrate3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
-            this.substrate6.SuspendLayout();
             this.SuspendLayout();
             // 
             // info_country
@@ -201,46 +197,12 @@
             this.image_poster.TabIndex = 97;
             this.image_poster.TabStop = false;
             // 
-            // info_rating
-            // 
-            this.info_rating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.info_rating.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.info_rating.Font = new System.Drawing.Font("XO Courser", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.info_rating.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_rating.Location = new System.Drawing.Point(1010, 757);
-            this.info_rating.Name = "info_rating";
-            this.info_rating.ReadOnly = true;
-            this.info_rating.Size = new System.Drawing.Size(302, 102);
-            this.info_rating.TabIndex = 101;
-            this.info_rating.Text = "";
-            // 
-            // substrate6
-            // 
-            this.substrate6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.substrate6.Controls.Add(this.label1);
-            this.substrate6.Location = new System.Drawing.Point(777, 763);
-            this.substrate6.Name = "substrate6";
-            this.substrate6.Size = new System.Drawing.Size(227, 96);
-            this.substrate6.TabIndex = 100;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label1.Location = new System.Drawing.Point(10, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 66);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Рейтинг \r\nприложения";
-            // 
             // InfoAboutFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1374, 914);
-            this.Controls.Add(this.info_rating);
-            this.Controls.Add(this.substrate6);
             this.Controls.Add(this.info_country);
             this.Controls.Add(this.substrate5);
             this.Controls.Add(this.info_title);
@@ -264,8 +226,6 @@
             this.substrate3.ResumeLayout(false);
             this.substrate3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
-            this.substrate6.ResumeLayout(false);
-            this.substrate6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,8 +247,5 @@
         private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.Panel substrate3;
         private System.Windows.Forms.Label year_lbl;
-        private System.Windows.Forms.RichTextBox info_rating;
-        private System.Windows.Forms.Panel substrate6;
-        private System.Windows.Forms.Label label1;
     }
 }

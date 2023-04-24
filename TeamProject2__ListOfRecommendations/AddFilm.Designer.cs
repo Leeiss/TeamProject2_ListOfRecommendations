@@ -655,7 +655,7 @@
             this.closing_actors.Controls.Add(this.cancel_btn2);
             this.closing_actors.Controls.Add(this.add_actor_in_list_btn);
             this.closing_actors.Controls.Add(this.actor_tb);
-            this.closing_actors.Location = new System.Drawing.Point(791, 559);
+            this.closing_actors.Location = new System.Drawing.Point(781, 552);
             this.closing_actors.Name = "closing_actors";
             this.closing_actors.Size = new System.Drawing.Size(620, 262);
             this.closing_actors.TabIndex = 121;

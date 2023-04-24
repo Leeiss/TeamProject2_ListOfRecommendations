@@ -30,18 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileMenagement));
             this.info_lbl = new System.Windows.Forms.Label();
-            this.change_lbl = new System.Windows.Forms.Label();
+            this.cansel_lbl = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.password_lbl = new System.Windows.Forms.Label();
+            this.login_lbl = new System.Windows.Forms.Label();
             this.expand_pb = new System.Windows.Forms.PictureBox();
             this.collapse_pb = new System.Windows.Forms.PictureBox();
             this.frane_expand = new System.Windows.Forms.PictureBox();
             this.frame_collapse = new System.Windows.Forms.PictureBox();
-            this.password_lbl = new System.Windows.Forms.Label();
-            this.cancel_lbl = new System.Windows.Forms.Label();
             this.command1 = new System.Windows.Forms.PictureBox();
             this.command2 = new System.Windows.Forms.PictureBox();
-            this.command3 = new System.Windows.Forms.PictureBox();
-            this.login_lbl = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapse_pb)).BeginInit();
@@ -49,7 +47,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.command3)).BeginInit();
             this.SuspendLayout();
             // 
             // info_lbl
@@ -64,19 +61,19 @@
             this.info_lbl.TabIndex = 17;
             this.info_lbl.Text = "УПРАВЛЕНИЕ ПРОФИЛЕМ";
             // 
-            // change_lbl
+            // cansel_lbl
             // 
-            this.change_lbl.AutoSize = true;
-            this.change_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.change_lbl.ForeColor = System.Drawing.Color.Black;
-            this.change_lbl.Location = new System.Drawing.Point(11, 259);
-            this.change_lbl.Name = "change_lbl";
-            this.change_lbl.Size = new System.Drawing.Size(813, 32);
-            this.change_lbl.TabIndex = 0;
-            this.change_lbl.Text = "Изменить мои предпочтения                      ";
-            this.change_lbl.Click += new System.EventHandler(this.change_lbl_Click);
-            this.change_lbl.MouseEnter += new System.EventHandler(this.change_lbl_MouseEnter);
-            this.change_lbl.MouseLeave += new System.EventHandler(this.change_lbl_MouseLeave);
+            this.cansel_lbl.AutoSize = true;
+            this.cansel_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cansel_lbl.ForeColor = System.Drawing.Color.Black;
+            this.cansel_lbl.Location = new System.Drawing.Point(12, 335);
+            this.cansel_lbl.Name = "cansel_lbl";
+            this.cansel_lbl.Size = new System.Drawing.Size(779, 32);
+            this.cansel_lbl.TabIndex = 0;
+            this.cansel_lbl.Text = "Выйти                                        ";
+            this.cansel_lbl.Click += new System.EventHandler(this.change_lbl_Click);
+            this.cansel_lbl.MouseEnter += new System.EventHandler(this.change_lbl_MouseEnter);
+            this.cansel_lbl.MouseLeave += new System.EventHandler(this.change_lbl_MouseLeave);
             // 
             // panel4
             // 
@@ -91,6 +88,32 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(715, 152);
             this.panel4.TabIndex = 2;
+            // 
+            // password_lbl
+            // 
+            this.password_lbl.AutoSize = true;
+            this.password_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.password_lbl.ForeColor = System.Drawing.Color.Black;
+            this.password_lbl.Location = new System.Drawing.Point(14, 267);
+            this.password_lbl.Name = "password_lbl";
+            this.password_lbl.Size = new System.Drawing.Size(592, 32);
+            this.password_lbl.TabIndex = 1;
+            this.password_lbl.Text = "Изменить пароль                   ";
+            this.password_lbl.Click += new System.EventHandler(this.password_lbl_Click);
+            this.password_lbl.MouseEnter += new System.EventHandler(this.password_lbl_MouseEnter);
+            this.password_lbl.MouseLeave += new System.EventHandler(this.password_lbl_MouseLeave);
+            // 
+            // login_lbl
+            // 
+            this.login_lbl.AutoSize = true;
+            this.login_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.login_lbl.Font = new System.Drawing.Font("Stencil", 13F, System.Drawing.FontStyle.Bold);
+            this.login_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.login_lbl.Location = new System.Drawing.Point(18, 156);
+            this.login_lbl.Name = "login_lbl";
+            this.login_lbl.Size = new System.Drawing.Size(122, 42);
+            this.login_lbl.TabIndex = 23;
+            this.login_lbl.Text = "Логин";
             // 
             // expand_pb
             // 
@@ -134,38 +157,10 @@
             this.frame_collapse.TabStop = false;
             this.frame_collapse.Visible = false;
             // 
-            // password_lbl
-            // 
-            this.password_lbl.AutoSize = true;
-            this.password_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password_lbl.ForeColor = System.Drawing.Color.Black;
-            this.password_lbl.Location = new System.Drawing.Point(14, 318);
-            this.password_lbl.Name = "password_lbl";
-            this.password_lbl.Size = new System.Drawing.Size(592, 32);
-            this.password_lbl.TabIndex = 1;
-            this.password_lbl.Text = "Изменить пароль                   ";
-            this.password_lbl.Click += new System.EventHandler(this.password_lbl_Click);
-            this.password_lbl.MouseEnter += new System.EventHandler(this.password_lbl_MouseEnter);
-            this.password_lbl.MouseLeave += new System.EventHandler(this.password_lbl_MouseLeave);
-            // 
-            // cancel_lbl
-            // 
-            this.cancel_lbl.AutoSize = true;
-            this.cancel_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancel_lbl.ForeColor = System.Drawing.Color.Black;
-            this.cancel_lbl.Location = new System.Drawing.Point(19, 375);
-            this.cancel_lbl.Name = "cancel_lbl";
-            this.cancel_lbl.Size = new System.Drawing.Size(881, 32);
-            this.cancel_lbl.TabIndex = 2;
-            this.cancel_lbl.Text = "Выйти                                              ";
-            this.cancel_lbl.Click += new System.EventHandler(this.cancel_lbl_Click);
-            this.cancel_lbl.MouseEnter += new System.EventHandler(this.cancel_lbl_MouseEnter);
-            this.cancel_lbl.MouseLeave += new System.EventHandler(this.cancel_lbl_MouseLeave);
-            // 
             // command1
             // 
             this.command1.Image = ((System.Drawing.Image)(resources.GetObject("command1.Image")));
-            this.command1.Location = new System.Drawing.Point(-1, 238);
+            this.command1.Location = new System.Drawing.Point(-1, 312);
             this.command1.Name = "command1";
             this.command1.Size = new System.Drawing.Size(667, 70);
             this.command1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -177,7 +172,7 @@
             // command2
             // 
             this.command2.Image = ((System.Drawing.Image)(resources.GetObject("command2.Image")));
-            this.command2.Location = new System.Drawing.Point(-1, 298);
+            this.command2.Location = new System.Drawing.Point(-1, 247);
             this.command2.Name = "command2";
             this.command2.Size = new System.Drawing.Size(667, 70);
             this.command2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -186,30 +181,6 @@
             this.command2.Visible = false;
             this.command2.Click += new System.EventHandler(this.command2_Click);
             // 
-            // command3
-            // 
-            this.command3.Image = ((System.Drawing.Image)(resources.GetObject("command3.Image")));
-            this.command3.Location = new System.Drawing.Point(-1, 357);
-            this.command3.Name = "command3";
-            this.command3.Size = new System.Drawing.Size(667, 70);
-            this.command3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.command3.TabIndex = 5;
-            this.command3.TabStop = false;
-            this.command3.Visible = false;
-            this.command3.Click += new System.EventHandler(this.command3_Click);
-            // 
-            // login_lbl
-            // 
-            this.login_lbl.AutoSize = true;
-            this.login_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.login_lbl.Font = new System.Drawing.Font("Stencil", 13F, System.Drawing.FontStyle.Bold);
-            this.login_lbl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.login_lbl.Location = new System.Drawing.Point(18, 156);
-            this.login_lbl.Name = "login_lbl";
-            this.login_lbl.Size = new System.Drawing.Size(122, 42);
-            this.login_lbl.TabIndex = 23;
-            this.login_lbl.Text = "Логин";
-            // 
             // ProfileMenagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -217,13 +188,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(660, 712);
             this.Controls.Add(this.login_lbl);
-            this.Controls.Add(this.cancel_lbl);
             this.Controls.Add(this.password_lbl);
-            this.Controls.Add(this.change_lbl);
+            this.Controls.Add(this.cansel_lbl);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.command1);
             this.Controls.Add(this.command2);
-            this.Controls.Add(this.command3);
             this.Name = "ProfileMenagement";
             this.Load += new System.EventHandler(this.ProfileMenagement_Load);
             this.panel4.ResumeLayout(false);
@@ -234,7 +203,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.command1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.command3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,17 +211,15 @@
         #endregion
 
         private System.Windows.Forms.Label info_lbl;
-        private System.Windows.Forms.Label change_lbl;
+        private System.Windows.Forms.Label cansel_lbl;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox expand_pb;
         private System.Windows.Forms.PictureBox collapse_pb;
         private System.Windows.Forms.PictureBox frane_expand;
         private System.Windows.Forms.PictureBox frame_collapse;
         private System.Windows.Forms.Label password_lbl;
-        private System.Windows.Forms.Label cancel_lbl;
         private System.Windows.Forms.PictureBox command1;
         private System.Windows.Forms.PictureBox command2;
-        private System.Windows.Forms.PictureBox command3;
         private System.Windows.Forms.Label login_lbl;
     }
 }

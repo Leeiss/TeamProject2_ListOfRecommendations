@@ -11,10 +11,13 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Xml;
 using TeamProject1_ToDoList.Classes;
 using TeamProject2__ListOfRecommendations.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -22,9 +25,13 @@ namespace TeamProject2__ListOfRecommendations
     {
         public Registration(string login)
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
+        List<string> actors = new List<string>();
+        List<string> genres = new List<string>();
         private int AdminRight = 0;
+        private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
+        private string username;
         private void password_tb_Click(object sender, EventArgs e)
         {
             password_tb.Text = "";
@@ -37,6 +44,22 @@ namespace TeamProject2__ListOfRecommendations
 
         private void Registration_Load(object sender, EventArgs e)
         {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("@./../../../ForLists.xml");
+
+            // добавляем все актеры в лист actors
+            foreach (XmlNode actorNode in doc.SelectNodes("//actors/actor"))
+            {
+                actors.Add(actorNode.InnerText);
+            }
+
+            // добавляем все жанры в лист genres
+            foreach (XmlNode genreNode in doc.SelectNodes("//genres/genre"))
+            {
+                genres.Add(genreNode.InnerText);
+            }
+
+
             // Работа с элементами управления на форме
             picture_logo.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -72,7 +95,7 @@ namespace TeamProject2__ListOfRecommendations
             SmtpClient smtp = new SmtpClient("smtp.mail.ru"); // адрес сервера SMTP, на котором наша почта
             smtp.Port = 587; // порт, который использует сервер SMTP, обычно 587 или 465
             smtp.EnableSsl = true; // используем SSL-шифрование для защиты от перехвата данных
-            smtp.Credentials = new System.Net.NetworkCredential("list_of_recomendations@mail.ru", "xqNDEUbgA3y3MqTk3xnu"); // логин и пароль от нашей учетной записи
+            smtp.Credentials = new System.Net.NetworkCredential("list_of_recomendations@mail.ru", "xqNDEUbgA3y3MqTk3xnu"); 
             try
             {
                 smtp.Send(mail);
@@ -88,10 +111,11 @@ namespace TeamProject2__ListOfRecommendations
         {
             if (!login_tb.Text.Equals("") && !password_tb.Text.Equals("") && !email_tb.Text.Equals("") && !login_tb.Text.Equals("Введите логин") && !password_tb.Text.Equals("Введите пароль") && !email_tb.Text.Equals("Введите email"))
             {
+                username = login_tb.Text;
                 DataBase db = new DataBase();
                 db.OpenConnection();
                 MySqlCommand command1 = new MySqlCommand("SELECT * FROM users WHERE login = @Ul ", db.GetConnection()); // создаем объект и передаем команду для вытягивания из бд логина и пароля из бд
-                command1.Parameters.Add("@Ul", MySqlDbType.VarChar).Value = login_tb.Text;
+                command1.Parameters.Add("@Ul", MySqlDbType.VarChar).Value = username;
 
                 MySqlCommand command2 = new MySqlCommand("SELECT * FROM users WHERE email = @UE ", db.GetConnection()); // создаем объект и передаем команду для вытягивания из бд логина и пароля из бд
                 command2.Parameters.Add("@UE", MySqlDbType.VarChar).Value = email_tb.Text;
@@ -109,7 +133,7 @@ namespace TeamProject2__ListOfRecommendations
                 if (table1.Rows.Count == 0 && table2.Rows.Count == 0)
                 {
                     MySqlCommand command = new MySqlCommand("INSERT INTO users (`login`, `password`, `email`, `admin_rights`) VALUES(@login, @password, @email, @admin_rights)", db.GetConnection());
-                    command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login_tb.Text;
+                    command.Parameters.Add("@login", MySqlDbType.VarChar).Value = username;
                     command.Parameters.Add("@password", MySqlDbType.VarChar).Value = password_tb.Text;
                     command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email_tb.Text;
                     command.Parameters.Add("@admin_rights", MySqlDbType.VarChar).Value = AdminRight;
@@ -117,8 +141,7 @@ namespace TeamProject2__ListOfRecommendations
                     if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Отлично! Приступим к подборке рекомендаций");
-                        Preferences preferences = new Preferences(login_tb.Text);
-                        preferences.Tag = "зарегистрироваться";
+                        Preferences preferences = new Preferences(username);
                         SendEmail();
                         preferences.Show();
                     }
@@ -134,11 +157,36 @@ namespace TeamProject2__ListOfRecommendations
                     MessageBox.Show("Введенные вами логин или email уже были раннее зарегестрированы");
                 }
             }
-            else
-            {
-                MessageBox.Show("Некорректно введен логин, пароль и email");
-            }
+            FillWithDefaultEstimates();
+
+
+
         }
+
+
+        private void FillWithDefaultEstimates()
+        {
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            foreach (string genre in genres)
+            {
+                MySqlCommand command = new MySqlCommand("INSERT INTO users_genres_rating (Username, Genrename, RatingGenre, MarksCount) VALUES (@username, @genre, 5, 0)", connection);
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@genre", genre);
+                command.ExecuteNonQuery();
+            }
+
+            foreach (string actor in actors)
+            {
+                MySqlCommand command = new MySqlCommand("INSERT INTO users_actors_rating (Username, Actorname, RatingActor, MarksCount) VALUES (@username, @actor, 5, 0)", connection);
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@actor", actor);
+                command.ExecuteNonQuery();
+            }
+            connection.Close();
+        }
+
+
 
         private void email_tb_Click(object sender, EventArgs e)
         {
@@ -201,6 +249,11 @@ namespace TeamProject2__ListOfRecommendations
             admin_password_tb.Visible = false;
             info_lbl1.Visible = false;
             adminrights_btn_cancel.Visible = false;
+        }
+
+        private void Registration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class InfoAboutFilm : Form
     {
-        public InfoAboutFilm(string Title, string Path, string Genres, string Actors, string Countries, string Date, string Rating)
+        public InfoAboutFilm(string Title, string Path, string Genres, string Actors, string Countries, string Date)
         {
             InitializeComponent();
             info_title.Text = Title.ToUpper();
@@ -21,7 +21,6 @@ namespace TeamProject2__ListOfRecommendations
             info_actors.Text = Actors;
             info_country.Text = Countries;
             info_year.Text = Date;
-            info_rating.Text = Rating;
         }
 
         private void InfoAboutFilm_Load(object sender, EventArgs e)
