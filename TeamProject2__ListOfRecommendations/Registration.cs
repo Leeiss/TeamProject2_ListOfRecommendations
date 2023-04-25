@@ -72,6 +72,7 @@ namespace TeamProject2__ListOfRecommendations
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void SendEmail()
@@ -141,6 +142,9 @@ namespace TeamProject2__ListOfRecommendations
                     if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Отлично! Приступим к подборке рекомендаций");
+                        FillWithDefaultEstimates();
+                        AddAFavoritesFolderForAUser();
+
                         Preferences preferences = new Preferences(username);
                         SendEmail();
                         preferences.Show();
@@ -157,12 +161,34 @@ namespace TeamProject2__ListOfRecommendations
                     MessageBox.Show("Введенные вами логин или email уже были раннее зарегестрированы");
                 }
             }
-            FillWithDefaultEstimates();
+            
 
 
 
         }
 
+        private void AddAFavoritesFolderForAUser()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = connection.CreateCommand();
+
+                command.CommandText = "SELECT ID FROM users WHERE Login = @userLogin";
+                command.Parameters.AddWithValue("@userLogin", username);
+                int userId = (int)command.ExecuteScalar();
+
+                command.CommandText = "INSERT INTO users_collections (ID, Collection_name, User_name) VALUES (@id, @collectionName, @userName)";
+                command.Parameters.AddWithValue("@id", 0);
+                command.Parameters.AddWithValue("@collectionName", "Избранное");
+                command.Parameters.AddWithValue("@userName", username);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+    
 
         private void FillWithDefaultEstimates()
         {

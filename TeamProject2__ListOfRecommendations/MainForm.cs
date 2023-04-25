@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using System.Data;
 using System.Linq;
+using System.Collections;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -20,7 +21,6 @@ namespace TeamProject2__ListOfRecommendations
             InitializeComponent();
             
             connection = new MySqlConnection(connectionString);
-
             Login = login;
         }
         private MySqlConnection conn;
@@ -39,8 +39,13 @@ namespace TeamProject2__ListOfRecommendations
         private List<PictureBox> starBoxes = new List<PictureBox>();
         private List<Movie> CollectionMovies = new List<Movie>();
         private List<Movie> CollectionMoviesList = new List<Movie>();
+        private List<int> CollectionsIds = new List<int>();
+        public string LinkForCollection;
 
-       
+        int formWidth;
+        int formHeight;
+
+
 
 
         private string Date = null;
@@ -67,7 +72,9 @@ namespace TeamProject2__ListOfRecommendations
         {
             try
             {
-                film_title_lbl.Text = CollectionMoviesList[0].Title;
+                string year = CollectionMoviesList[0].Date;
+                year = year.Remove(0, 6);
+                film_title_lbl.Text = $"{CollectionMoviesList[0].Title} ({year})";
                 MovieID = CollectionMoviesList[0].MovieID;
                 Link = CollectionMoviesList[0].Link;
                 picture_poster.Image = Image.FromFile(CollectionMoviesList[0].PicturePath);
@@ -222,11 +229,44 @@ namespace TeamProject2__ListOfRecommendations
 
             return topRatedMovie;
         }
+
+        private void ShowUserCollectionsList()
+        {
+            list_collections.Items.Clear();
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string getCollectionNamesSql = "SELECT ID, Collection_name FROM users_collections WHERE User_name = @username";
+            MySqlCommand getCollectionNamesCmd = new MySqlCommand(getCollectionNamesSql, connection);
+            getCollectionNamesCmd.Parameters.AddWithValue("@username", Login);
+
+            List<string> collectionNames = new List<string>();
+            using (MySqlDataReader reader = getCollectionNamesCmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int collectionId = reader.GetInt32("ID");
+                    string collectionName = reader.GetString("Collection_name");
+                    CollectionsIds.Add(collectionId);
+                    collectionNames.Add(collectionName);
+                }
+            }
+
+            connection.Close();
+
+            foreach (string collectionName in collectionNames)
+            {
+                list_collections.Items.Add(collectionName);
+            }
+        }
     
 
-    private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
+            
             ShowRecomendedMovie();
+            ShowUserCollectionsList();
+            
             conn = new MySqlConnection(connectionString);
 
             
@@ -240,9 +280,9 @@ namespace TeamProject2__ListOfRecommendations
             
             StartPosition = FormStartPosition.CenterScreen;
 
-            int buttonOffset = 20; // Размер отступа (30 мм)
-            int formWidth = just_panel.Location.X + just_panel.Width + buttonOffset; // Вычисляем желаемую ширину формы
-            int formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
+            int buttonOffset = 10; 
+            formWidth = just_panel.Location.X + just_panel.Width + buttonOffset; // Вычисляем желаемую ширину формы
+            formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
 
             
@@ -287,10 +327,8 @@ namespace TeamProject2__ListOfRecommendations
         private void profile_pb_Click(object sender, EventArgs e)
         {
             ProfileMenagement profileMenagement = new ProfileMenagement(Login);
-            profileMenagement.StartPosition = FormStartPosition.Manual; // разрешаем задавать позицию формы вручную
-            profileMenagement.Location = new Point(this.Location.X + button1.Location.X + 10, this.Location.Y + button1.Location.Y + 10); // задаем позицию новой формы относительно кнопки
-            profileMenagement.Size = new Size(300, 200); // задаем размеры новой формы
-            profileMenagement.Show();
+            profileMenagement.Location = new Point(this.Location.X-20, this.Location.Y-20);
+            profileMenagement.ShowDialog(); 
         }
 
 
@@ -357,7 +395,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_in_compilation_btn_Click(object sender, EventArgs e)
         {
-            СhooseCollection chooseASelection = new СhooseCollection();
+            СhooseCollection chooseASelection = new СhooseCollection(Login, MovieID);
             chooseASelection.Show();
         }
 
@@ -367,29 +405,54 @@ namespace TeamProject2__ListOfRecommendations
             addFilm.Show();
         }
 
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            FillListWithCollectionsAgain();
+            CollectionsIds.Clear();
+            ShowUserCollectionsList();
+        } 
+
+        public void FillListWithCollectionsAgain()
+        {
+            list_collections.Items.Clear();
+            ShowUserCollectionsList();
+        }
 
         private void add_compilation_Click(object sender, EventArgs e)
         {
-            CreateCollection createCollection = new CreateCollection();
+            CreateCollection createCollection = new CreateCollection(Login);
             createCollection.Show();
         }
 
 
         private void change_compilation_Click(object sender, EventArgs e)
         {
-            ChangeCollections changeCollections = new ChangeCollections();
+            ChangeCollections changeCollections = new ChangeCollections(Login);
             changeCollections.Show();
         }
 
         private void list_collections_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InfoAboutCollection infoAboutCollection = new InfoAboutCollection();
-            infoAboutCollection.Show();
+            
+            try
+            {
+
+                int index = list_collections.SelectedIndex;
+                int collection_id = CollectionsIds[index];
+                InfoAboutCollection infoAboutCollection = new InfoAboutCollection(Login, collection_id);
+                infoAboutCollection.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Выберите коллекцию");
+            }
+            
+
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
+        public void ShowPanel()
         {
-
+            
         }
 
         private int isAdmin(string login)
@@ -578,6 +641,7 @@ namespace TeamProject2__ListOfRecommendations
         private void collections_btn_Click(object sender, EventArgs e)
         {
             collections_panel.Visible = true;
+            panel_show_collectionfilm.Visible = false;
         }
 
         
@@ -643,8 +707,8 @@ namespace TeamProject2__ListOfRecommendations
 
         private void save_btn_Click(object sender, EventArgs e)
         {
-            pass__individual__btn.Visible = false;
-           
+            pass__individual__btn.Visible = true;
+            pass_collection_btn.Visible = false;
 
 
             ClearLbls();
@@ -756,6 +820,10 @@ namespace TeamProject2__ListOfRecommendations
 
                 connection.Close();
             }
+            if (!dateinterval_info.Text.Equals("") || !genre_info.Text.Equals("") || !countries_info.Text.Equals("") || !actors_info.Text.Equals(""))
+            {
+                reset_stats_btn.Visible = true;
+            }
             
         }
 
@@ -814,7 +882,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(CollectionMovies[0].Title);
+           
         }
 
         // Методы для работы с подброками приложения
@@ -880,6 +948,8 @@ namespace TeamProject2__ListOfRecommendations
 
         private void comedy_btn_Click(object sender, EventArgs e)
         {
+            reset_stats_btn.Visible = true;
+            genre_info.Text = "Комедия";
             collections_panel.Visible = false;
             CollectionMovies.Clear();
             CollectionMoviesList.Clear();
@@ -894,6 +964,8 @@ namespace TeamProject2__ListOfRecommendations
         private void adventure_btn_Click(object sender, EventArgs e)
         {
             collections_panel.Visible = false;
+            genre_info.Text = "Приключенческий фильм";
+            reset_stats_btn.Visible = true;
             CollectionMovies.Clear();
             CollectionMoviesList.Clear();
             IsNotIndividual = true;
@@ -907,6 +979,8 @@ namespace TeamProject2__ListOfRecommendations
         private void action_btn_Click(object sender, EventArgs e)
         {
             collections_panel.Visible = false;
+            reset_stats_btn.Visible = true;
+            genre_info.Text = "Боевик";
             CollectionMovies.Clear();
             IsNotIndividual = true;
             CollectionMoviesList.Clear();
@@ -920,7 +994,9 @@ namespace TeamProject2__ListOfRecommendations
         private void fantasy_btn_Click(object sender, EventArgs e)
         {
             collections_panel.Visible = false;
+            reset_stats_btn.Visible = true;
             CollectionMovies.Clear();
+            genre_info.Text = "Фантастический фильм";
             CollectionMoviesList.Clear();
             IsNotIndividual = true;
             pass_collection_btn.Visible = true;
@@ -935,6 +1011,8 @@ namespace TeamProject2__ListOfRecommendations
             collections_panel.Visible = false;
             CollectionMovies.Clear();
             CollectionMoviesList.Clear();
+            genre_info.Text = "Детектив";
+            reset_stats_btn.Visible = true;
             IsNotIndividual = true;
             pass_collection_btn.Visible = true;
             pass__individual__btn.Visible = false;
@@ -947,7 +1025,9 @@ namespace TeamProject2__ListOfRecommendations
         {
             collections_panel.Visible = false;
             CollectionMovies.Clear();
+            genre_info.Text = "Исторический фильм";
             CollectionMoviesList.Clear();
+            reset_stats_btn.Visible = true;
             pass_collection_btn.Visible = true;
             pass__individual__btn.Visible = false;
             IsNotIndividual = true;
@@ -972,6 +1052,124 @@ namespace TeamProject2__ListOfRecommendations
                 }
             }
             ShowInfoInLblForCollection();
+        }
+
+        private void title_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reset_stats_btn_Click(object sender, EventArgs e)
+        {
+            pass_collection_btn.Visible = false;
+            pass__individual__btn.Visible = true;
+            ShowRecomendedMovie();
+            
+
+        }
+
+        private void reset_stats_btn_MouseEnter(object sender, EventArgs e)
+        {
+            reset_stats_btn.ForeColor = Color.FromArgb(133, 162, 167);
+        }
+
+
+        private void reset_stats_btn_MouseLeave(object sender, EventArgs e)
+        {
+            reset_stats_btn.ForeColor = Color.FromArgb(64, 64, 64);
+        }
+
+        private void add_to_favorites_btn_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            connection.Open();
+
+            string collectionName = "Избранное";
+            string getCollectionIdSql = "SELECT ID FROM users_collections WHERE Collection_name = @collectionName";
+            MySqlCommand getCollectionIdCmd = new MySqlCommand(getCollectionIdSql, connection);
+            getCollectionIdCmd.Parameters.AddWithValue("@collectionName", collectionName);
+            int collectionId = Convert.ToInt32(getCollectionIdCmd.ExecuteScalar());
+
+            string checkMovieSql = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID=@collectionId AND MovieID=@movieId";
+            MySqlCommand checkMovieCmd = new MySqlCommand(checkMovieSql, connection);
+            checkMovieCmd.Parameters.AddWithValue("@collectionId", collectionId);
+            checkMovieCmd.Parameters.AddWithValue("@movieId", MovieID);
+            int count = Convert.ToInt32(checkMovieCmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                MessageBox.Show("Фильм уже в списке ваших любимых");
+                connection.Close();
+                return;
+            }
+
+            string addToCollectionSql = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@collectionId, @movieId)";
+            MySqlCommand addToCollectionCmd = new MySqlCommand(addToCollectionSql, connection);
+            addToCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
+            addToCollectionCmd.Parameters.AddWithValue("@movieId", MovieID);
+            addToCollectionCmd.ExecuteNonQuery();
+
+            connection.Close();
+            MessageBox.Show("Фильм успешно добавлен в список ваших любимых");
+        }
+
+        private void picture_poster_forcollection_MouseEnter(object sender, EventArgs e)
+        {
+            poster_substrate.Visible = true;
+        }
+
+        private void picture_poster_forcollection_MouseLeave(object sender, EventArgs e)
+        {
+            poster_substrate.Visible = false;
+        }
+
+        private void picture_poster_forcollection_Click(object sender, EventArgs e)
+        {
+            Process.Start(LinkForCollection);
+        }
+
+        private void close_showing_collection_film_btn_Click(object sender, EventArgs e)
+        {
+            panel_show_collectionfilm.Visible = false;
+        }
+
+        private void collapse_pb_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void expand_pb_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            expand_pb.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            decrease_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            collapse_pb.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            api_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            collections_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            substrate_collection.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            frame_api.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            frame_collapse.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            frame_decrease.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            frane_expand.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+
+        }
+
+        private void decrease_btn_MouseEnter(object sender, EventArgs e)
+        {
+            frame_decrease.Visible= true;
+        }
+
+        private void decrease_btn_MouseLeave(object sender, EventArgs e)
+        {
+            frame_decrease.Visible = false;
+
+        }
+
+        private void decrease_btn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

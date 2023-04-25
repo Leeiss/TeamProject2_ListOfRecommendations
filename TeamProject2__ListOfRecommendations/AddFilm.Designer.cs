@@ -89,7 +89,7 @@
             this.info_lbl1.AutoSize = true;
             this.info_lbl1.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.info_lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_lbl1.Location = new System.Drawing.Point(458, 73);
+            this.info_lbl1.Location = new System.Drawing.Point(481, 73);
             this.info_lbl1.Name = "info_lbl1";
             this.info_lbl1.Size = new System.Drawing.Size(513, 57);
             this.info_lbl1.TabIndex = 21;

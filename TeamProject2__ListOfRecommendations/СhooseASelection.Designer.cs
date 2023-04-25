@@ -51,9 +51,6 @@
             this.collections_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.collections_list.FormattingEnabled = true;
             this.collections_list.ItemHeight = 36;
-            this.collections_list.Items.AddRange(new object[] {
-            "Избранное ",
-            "Фильмы дня"});
             this.collections_list.Location = new System.Drawing.Point(49, 206);
             this.collections_list.Name = "collections_list";
             this.collections_list.Size = new System.Drawing.Size(617, 364);
@@ -71,6 +68,7 @@
             this.add_btn.Text = "Добавить";
             this.add_btn.UseVisualStyleBackColor = false;
             this.add_btn.Visible = false;
+            this.add_btn.Click += new System.EventHandler(this.add_btn_Click);
             // 
             // СhooseCollection
             // 

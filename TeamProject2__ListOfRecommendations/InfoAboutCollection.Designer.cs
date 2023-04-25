@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.films_list = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.info_lbl1 = new System.Windows.Forms.Label();
+            this.collection_title_lbl = new System.Windows.Forms.Label();
             this.just_panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -47,6 +47,7 @@
             this.go_btn.Text = "Перейти к просмотру";
             this.go_btn.UseVisualStyleBackColor = false;
             this.go_btn.Visible = false;
+            this.go_btn.Click += new System.EventHandler(this.go_btn_Click);
             // 
             // label2
             // 
@@ -66,10 +67,6 @@
             this.films_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.films_list.FormattingEnabled = true;
             this.films_list.ItemHeight = 36;
-            this.films_list.Items.AddRange(new object[] {
-            "Фильм1",
-            "Фильм2",
-            "Фильм3"});
             this.films_list.Location = new System.Drawing.Point(76, 295);
             this.films_list.Name = "films_list";
             this.films_list.Size = new System.Drawing.Size(732, 220);
@@ -84,16 +81,16 @@
             this.panel1.Size = new System.Drawing.Size(1348, 14);
             this.panel1.TabIndex = 107;
             // 
-            // info_lbl1
+            // collection_title_lbl
             // 
-            this.info_lbl1.AutoSize = true;
-            this.info_lbl1.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_lbl1.Location = new System.Drawing.Point(294, 53);
-            this.info_lbl1.Name = "info_lbl1";
-            this.info_lbl1.Size = new System.Drawing.Size(283, 57);
-            this.info_lbl1.TabIndex = 106;
-            this.info_lbl1.Text = "Избранное";
+            this.collection_title_lbl.AutoSize = true;
+            this.collection_title_lbl.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.collection_title_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.collection_title_lbl.Location = new System.Drawing.Point(294, 53);
+            this.collection_title_lbl.Name = "collection_title_lbl";
+            this.collection_title_lbl.Size = new System.Drawing.Size(283, 57);
+            this.collection_title_lbl.TabIndex = 106;
+            this.collection_title_lbl.Text = "Избранное";
             // 
             // just_panel
             // 
@@ -113,7 +110,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.films_list);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.info_lbl1);
+            this.Controls.Add(this.collection_title_lbl);
             this.Name = "InfoAboutCollection";
             this.Text = "Информация по подборке";
             this.Load += new System.EventHandler(this.InfoAboutCollection_Load);
@@ -128,7 +125,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox films_list;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label info_lbl1;
+        private System.Windows.Forms.Label collection_title_lbl;
         private System.Windows.Forms.Panel just_panel;
     }
 }

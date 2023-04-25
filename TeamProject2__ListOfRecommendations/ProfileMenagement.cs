@@ -69,10 +69,7 @@ namespace TeamProject2__ListOfRecommendations
         
         private void ProfileMenagement_Load(object sender, EventArgs e)
         {
-            var screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            var screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

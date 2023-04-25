@@ -29,6 +29,7 @@ namespace TeamProject2__ListOfRecommendations
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

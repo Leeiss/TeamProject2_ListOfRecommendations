@@ -51,6 +51,7 @@ namespace TeamProject2__ListOfRecommendations
             int formWidth = add_film_btn.Location.X + add_film_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = add_film_btn.Location.Y + add_film_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void YesNoShowBtn()

@@ -84,7 +84,8 @@ namespace TeamProject2__ListOfRecommendations
             int buttonOffset = 10;
             int formWidth = go_btn.Location.X + go_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = go_btn.Location.Y + go_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
-            this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
+            this.ClientSize = new Size(formWidth, formHeight);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void go_btn_Click(object sender, EventArgs e)
