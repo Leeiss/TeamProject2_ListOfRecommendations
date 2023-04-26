@@ -37,9 +37,10 @@ namespace TeamProject2__ListOfRecommendations
         private List<string> Actors = new List<string>();
         private List<string> Countries = new List<string>();
         private List<PictureBox> starBoxes = new List<PictureBox>();
-        private List<Movie> CollectionMovies = new List<Movie>();
-        private List<Movie> CollectionMoviesList = new List<Movie>();
-        private List<int> CollectionsIds = new List<int>();
+        private List<Movie> CollectionMovies = new List<Movie>(); //лист для работы с готовыми коллекциями приложения
+        private List<Movie> CollectionMoviesList = new List<Movie>();//лист для работы с готовыми коллекциями приложения
+        private List<int> CollectionsIds = new List<int>();//лист для работы с готовыми коллекциями приложения
+        private List<Movie> TopRatedMovies = new List<Movie>(); //лист, в котором хранится 5 фильмов с самым высоким рейтингом на данный момент
         public string LinkForCollection;
 
         int formWidth;
@@ -58,6 +59,9 @@ namespace TeamProject2__ListOfRecommendations
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
 
+       /// <summary>
+       /// Очищаем все данные по фильму
+       /// </summary>
        private void ClearLbls()
         {
             genre_info.Text = "";
@@ -67,7 +71,9 @@ namespace TeamProject2__ListOfRecommendations
         }     
 
        
-
+        /// <summary>
+        /// Заполняет данными о фильме в основной форме
+        /// </summary>
         private void ShowInfoInLblForCollection()
         {
             try
@@ -85,7 +91,10 @@ namespace TeamProject2__ListOfRecommendations
             }
             
         }
-
+    /// <summary>
+    /// вспомогательный метод, который получает информацию о фильме по его id
+    /// </summary>
+    /// <returns></returns>
         public Movie GetMovieDetails()
         {
             MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations");
@@ -132,6 +141,12 @@ namespace TeamProject2__ListOfRecommendations
             return result_movie;
         }
 
+        /// <summary>
+        /// Вспомогательный метод для коллекций, который находит все фильмы с нужным жанром
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="list1"></param>
+        /// <param name="genre"></param>
         private void FillFilmsList(List<Movie> list, List<Movie> list1, string genre)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -169,31 +184,53 @@ namespace TeamProject2__ListOfRecommendations
             }
         }
 
+        /// <summary>
+        /// Заполняем label-ы информацией по фильму
+        /// </summary>
+        /// <param name="movie"></param>
         private void ShowInfoInLbls(Movie movie)
         {
-            string year = movie.Date;
-            year = year.Remove(0, 6);
-            film_title_lbl.Text = $"{movie.Title} ({year})";
-            Link = movie.Link;
-            picture_poster.Image = Image.FromFile(movie.PicturePath);
-            MovieID = movie.MovieID;
+            if (movie!=null)
+            {
+                string year = movie.Date;
+                year = year.Remove(0, 6);
+                film_title_lbl.Text = $"{movie.Title} ({year})";
+                Link = movie.Link;
+                picture_poster.Image = Image.FromFile(movie.PicturePath);
+                MovieID = movie.MovieID;
+            }
+            else
+            {
+                MessageBox.Show("В приложении еще нет фильмов");
+            }
 
 
         }
 
-        private void ShowRecomendedMovie()
+        /// <summary>
+        /// Показывает информацию по фильму с наивысшим рейтингом
+        /// </summary>
+        private void ShowRecomendedMovie(Movie movie)
         {
             ClearLbls();
-            Movie topRatedMovie = GetTopRatedMovie(Login);
-            ShowInfoInLbls(topRatedMovie);
+            ShowInfoInLbls(movie);
         }
 
-        static Movie GetTopRatedMovie(string userLogin)
+        /// <summary>
+        /// Находит 5 или менее фильмов с самым высоким общим рейтингом
+        /// </summary>
+        /// <param name="userLogin"></param>
+        /// <returns></returns>
+        static List<Movie> GetTopRatedMovie(string userLogin)
         {
             connection.Open();
 
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
+            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
+                "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
+                "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
+                "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
                 "FROM movies m " +
                 "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
                 "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
@@ -204,16 +241,16 @@ namespace TeamProject2__ListOfRecommendations
                 "WHERE u.Login = @userLogin " +
                 "GROUP BY m.MovieID " +
                 "ORDER BY MovieRating DESC " +
-                "LIMIT 1";
-            command.Parameters.AddWithValue("@userLogin", userLogin);
+                "LIMIT 5";
 
-            Movie topRatedMovie = null;
+            command.Parameters.AddWithValue("@userLogin", userLogin);
+            List<Movie> topRatedMovies = new List<Movie>();
 
             using (MySqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    topRatedMovie = new Movie();
+                    Movie topRatedMovie = new Movie();
                     topRatedMovie.MovieID = reader.GetInt32("MovieID");
                     topRatedMovie.Title = reader.GetString("Title");
                     topRatedMovie.Date = reader.GetString("Date");
@@ -222,14 +259,63 @@ namespace TeamProject2__ListOfRecommendations
                     topRatedMovie.Genres = reader.GetString("Genres");
                     topRatedMovie.Actors = reader.GetString("Actors");
                     topRatedMovie.Countries = reader.GetString("Countries");
+
+                    topRatedMovies.Add(topRatedMovie);
+                }
+            }
+
+            // Проверяем, сколько фильмов вернул запрос 
+            if (topRatedMovies.Count < 5)
+            {
+                // Если запрос вернул менее 5 фильмов, выполняем другой запрос, который вернет оставшиеся фильмы с самым высоким рейтингом 
+                int remainingMovies = 5 - topRatedMovies.Count;
+                MySqlCommand command2 = connection.CreateCommand();
+                command2.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                    "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
+                    "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
+                    "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
+                    "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
+                    "FROM movies m " +
+                    "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
+                    "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
+                    "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
+                    "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
+                    "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
+                    "JOIN users u ON u.Login = ugr.Username " +
+                    "WHERE u.Login = @userLogin " +
+                    "GROUP BY m.MovieID " +
+                    "HAVING COUNT(*) = 1 " +  // исключаем уже полученные фильмы 
+                    "ORDER BY MovieRating DESC " +
+                    "LIMIT " + remainingMovies.ToString();
+                command2.Parameters.AddWithValue("@userLogin", userLogin);
+
+                using (MySqlDataReader reader = command2.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Movie topRatedMovie = new Movie();
+                        topRatedMovie.MovieID = reader.GetInt32("MovieID");
+                        topRatedMovie.Title = reader.GetString("Title");
+                        topRatedMovie.Date = reader.GetString("Date");
+                        topRatedMovie.PicturePath = reader.GetString("PicturePath");
+                        topRatedMovie.Link = reader.GetString("Link");
+                        topRatedMovie.Genres = reader.GetString("Genres");
+                        topRatedMovie.Actors = reader.GetString("Actors");
+                        topRatedMovie.Countries = reader.GetString("Countries");
+
+                        topRatedMovies.Add(topRatedMovie);
+                    }
                 }
             }
 
             connection.Close();
 
-            return topRatedMovie;
+            return topRatedMovies;
         }
 
+        /// <summary>
+        /// Выводит информацию по подборкам пользователя в лист
+        /// </summary>
         private void ShowUserCollectionsList()
         {
             list_collections.Items.Clear();
@@ -263,8 +349,17 @@ namespace TeamProject2__ListOfRecommendations
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-            ShowRecomendedMovie();
+            TopRatedMovies.Clear();
+            TopRatedMovies = GetTopRatedMovie(Login);
+            TopRatedMovies = GetTopRatedMovie(Login);
+            if (TopRatedMovies.Count == 0)
+            {
+                MessageBox.Show("К сожалению, у нас пока нет нужных для вас фильмов");
+            }
+            else
+            {
+                ShowRecomendedMovie(TopRatedMovies[0]);
+            }
             ShowUserCollectionsList();
             
             conn = new MySqlConnection(connectionString);
@@ -433,7 +528,6 @@ namespace TeamProject2__ListOfRecommendations
 
         private void list_collections_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             try
             {
 
@@ -454,7 +548,11 @@ namespace TeamProject2__ListOfRecommendations
         {
             
         }
-
+        /// <summary>
+        /// Всполмогательный метод для того, чтобы проверить, является ли пользователь адмимнистатором
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         private int isAdmin(string login)
         {
             connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
@@ -470,6 +568,11 @@ namespace TeamProject2__ListOfRecommendations
             return adminRights;
         }
 
+        /// <summary>
+        ///  Проверяет, является ли пользователь администратором
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="button"></param>
         private void CheckAdminRights(string login, System.Windows.Forms.Button button) // в качестве аргументов передаем логин пользователя и кнопку, видимость которой надо изменить.
         {
             if (isAdmin(login) == 1)
@@ -543,7 +646,12 @@ namespace TeamProject2__ListOfRecommendations
 
         private void pass_btn_Click(object sender, EventArgs e)
         {
-            ShowRecomendedMovie();
+            TopRatedMovies.RemoveAt(0);
+            if (TopRatedMovies.Count == 0)
+            {
+                TopRatedMovies =  GetTopRatedMovie(Login);
+            }
+            ShowRecomendedMovie(TopRatedMovies[0]);
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -627,13 +735,7 @@ namespace TeamProject2__ListOfRecommendations
 
         }
 
-        private void star_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
-            
-
-        private void grayStar2_MouseClick(object sender, MouseEventArgs e)
+         private void grayStar2_MouseClick(object sender, MouseEventArgs e)
         {
             OperationsClickStar();
         }
@@ -647,13 +749,6 @@ namespace TeamProject2__ListOfRecommendations
         
 
        
-        private void film_title_lbl_TextChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-
-
         private void ShowBtn()
         {
             if (SelectGenre || SelectActor || SelectDate1 || SelectCountry)
@@ -874,18 +969,7 @@ namespace TeamProject2__ListOfRecommendations
             closing_panel.Visible = false;
         }
 
-        private void pass_filtration_btn_Click(object sender, EventArgs e)
-        {
-           
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        // Методы для работы с подброками приложения
+         // Методы для работы с подброками приложения
         private void comedy_btn_MouseEnter(object sender, EventArgs e)
         {
             substrate1.Visible = true;
@@ -1035,6 +1119,7 @@ namespace TeamProject2__ListOfRecommendations
             FillFilmsList(CollectionMovies, CollectionMoviesList, "Исторический фильм");
             ShowInfoInLblForCollection();
         }
+        // Методы для работы с подброками приложения (конец)
 
         private void add_country_Click(object sender, EventArgs e)
         {
@@ -1054,18 +1139,12 @@ namespace TeamProject2__ListOfRecommendations
             ShowInfoInLblForCollection();
         }
 
-        private void title_lbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void reset_stats_btn_Click(object sender, EventArgs e)
         {
             pass_collection_btn.Visible = false;
             pass__individual__btn.Visible = true;
-            ShowRecomendedMovie();
-            
-
+            ShowRecomendedMovie(TopRatedMovies[0]);
+        
         }
 
         private void reset_stats_btn_MouseEnter(object sender, EventArgs e)
@@ -1170,6 +1249,11 @@ namespace TeamProject2__ListOfRecommendations
         private void decrease_btn_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void upper_panel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

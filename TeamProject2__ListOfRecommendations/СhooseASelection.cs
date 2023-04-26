@@ -80,38 +80,46 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-
-            string collectionName = collections_list.SelectedItem.ToString();
-            string getCollectionIdSql = "SELECT ID FROM users_collections WHERE Collection_name = @collectionName";
-            MySqlCommand getCollectionIdCmd = new MySqlCommand(getCollectionIdSql, connection);
-            getCollectionIdCmd.Parameters.AddWithValue("@collectionName", collectionName);
-            int collectionId = Convert.ToInt32(getCollectionIdCmd.ExecuteScalar());
-
-            string checkMovieInCollectionSql = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID = @collectionId AND MovieID = @movieId";
-            MySqlCommand checkMovieInCollectionCmd = new MySqlCommand(checkMovieInCollectionSql, connection);
-            checkMovieInCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
-            checkMovieInCollectionCmd.Parameters.AddWithValue("@movieId", MovieId);
-            int count = Convert.ToInt32(checkMovieInCollectionCmd.ExecuteScalar());
-
-            if (count > 0) // Фильм уже есть в коллекции
+            if (MovieId!=0)
             {
-                MessageBox.Show("Фильм уже есть в этой коллекции");
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                string collectionName = collections_list.SelectedItem.ToString();
+                string getCollectionIdSql = "SELECT ID FROM users_collections WHERE Collection_name = @collectionName";
+                MySqlCommand getCollectionIdCmd = new MySqlCommand(getCollectionIdSql, connection);
+                getCollectionIdCmd.Parameters.AddWithValue("@collectionName", collectionName);
+                int collectionId = Convert.ToInt32(getCollectionIdCmd.ExecuteScalar());
+
+                string checkMovieInCollectionSql = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID = @collectionId AND MovieID = @movieId";
+                MySqlCommand checkMovieInCollectionCmd = new MySqlCommand(checkMovieInCollectionSql, connection);
+                checkMovieInCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
+                checkMovieInCollectionCmd.Parameters.AddWithValue("@movieId", MovieId);
+                int count = Convert.ToInt32(checkMovieInCollectionCmd.ExecuteScalar());
+
+                if (count > 0) // Фильм уже есть в коллекции
+                {
+                    MessageBox.Show("Фильм уже есть в этой коллекции");
+                    connection.Close();
+                    this.Close();
+                    return;
+                }
+
+                string addToCollectionSql = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@collectionId, @movieId)";
+                MySqlCommand addToCollectionCmd = new MySqlCommand(addToCollectionSql, connection);
+                addToCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
+                addToCollectionCmd.Parameters.AddWithValue("@movieId", MovieId);
+                addToCollectionCmd.ExecuteNonQuery();
+
                 connection.Close();
+                MessageBox.Show($"Фильм успешно добавлен в коллекцию <<{collections_list.SelectedItem.ToString()}>>");
                 this.Close();
-                return;
             }
-
-            string addToCollectionSql = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@collectionId, @movieId)";
-            MySqlCommand addToCollectionCmd = new MySqlCommand(addToCollectionSql, connection);
-            addToCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
-            addToCollectionCmd.Parameters.AddWithValue("@movieId", MovieId);
-            addToCollectionCmd.ExecuteNonQuery();
-
-            connection.Close();
-            MessageBox.Show($"Фильм успешно добавлен в коллекцию <<{collections_list.SelectedItem.ToString()}>>");
-            this.Close();
+            else
+            {
+                MessageBox.Show("Ошибка добавления фильма");
+            }
+            
         }
     }
 }

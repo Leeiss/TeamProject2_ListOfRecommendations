@@ -34,6 +34,8 @@
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
+            this.decrease_btn = new System.Windows.Forms.PictureBox();
+            this.frame_decrease = new System.Windows.Forms.PictureBox();
             this.collections_btn = new System.Windows.Forms.PictureBox();
             this.api_btn = new System.Windows.Forms.PictureBox();
             this.frame_api = new System.Windows.Forms.PictureBox();
@@ -141,9 +143,9 @@
             this.genres_collectionfilm = new System.Windows.Forms.RichTextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
-            this.decrease_btn = new System.Windows.Forms.PictureBox();
-            this.frame_decrease = new System.Windows.Forms.PictureBox();
             this.upper_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).BeginInit();
@@ -198,8 +200,6 @@
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).BeginInit();
             this.SuspendLayout();
             // 
             // delimeter1
@@ -256,6 +256,32 @@
             this.upper_panel.Name = "upper_panel";
             this.upper_panel.Size = new System.Drawing.Size(2111, 83);
             this.upper_panel.TabIndex = 1;
+            this.upper_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.upper_panel_Paint);
+            // 
+            // decrease_btn
+            // 
+            this.decrease_btn.Image = ((System.Drawing.Image)(resources.GetObject("decrease_btn.Image")));
+            this.decrease_btn.Location = new System.Drawing.Point(1934, 13);
+            this.decrease_btn.Name = "decrease_btn";
+            this.decrease_btn.Size = new System.Drawing.Size(47, 49);
+            this.decrease_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.decrease_btn.TabIndex = 27;
+            this.decrease_btn.TabStop = false;
+            this.hints.SetToolTip(this.decrease_btn, "Свернуть");
+            this.decrease_btn.Click += new System.EventHandler(this.decrease_btn_Click);
+            this.decrease_btn.MouseEnter += new System.EventHandler(this.decrease_btn_MouseEnter);
+            this.decrease_btn.MouseLeave += new System.EventHandler(this.decrease_btn_MouseLeave);
+            // 
+            // frame_decrease
+            // 
+            this.frame_decrease.Image = ((System.Drawing.Image)(resources.GetObject("frame_decrease.Image")));
+            this.frame_decrease.Location = new System.Drawing.Point(1923, 3);
+            this.frame_decrease.Name = "frame_decrease";
+            this.frame_decrease.Size = new System.Drawing.Size(67, 73);
+            this.frame_decrease.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_decrease.TabIndex = 28;
+            this.frame_decrease.TabStop = false;
+            this.frame_decrease.Visible = false;
             // 
             // collections_btn
             // 
@@ -661,7 +687,6 @@
             this.pass__individual__btn.TabIndex = 106;
             this.pass__individual__btn.Text = "Пропуск";
             this.pass__individual__btn.UseVisualStyleBackColor = false;
-            this.pass__individual__btn.Visible = false;
             this.pass__individual__btn.Click += new System.EventHandler(this.pass_btn_Click);
             // 
             // label6
@@ -711,7 +736,6 @@
             this.star_btn.Text = "Оценить";
             this.star_btn.UseVisualStyleBackColor = false;
             this.star_btn.Visible = false;
-            this.star_btn.Click += new System.EventHandler(this.star_btn_Click);
             // 
             // add_to_favorites_btn
             // 
@@ -1361,6 +1385,7 @@
             // 
             // collections_panel
             // 
+            this.collections_panel.Controls.Add(this.panel_show_collectionfilm);
             this.collections_panel.Controls.Add(this.add_country);
             this.collections_panel.Controls.Add(this.panel8);
             this.collections_panel.Controls.Add(this.adventure_btn);
@@ -1376,7 +1401,7 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 86);
+            this.collections_panel.Location = new System.Drawing.Point(2, 1309);
             this.collections_panel.Name = "collections_panel";
             this.collections_panel.Size = new System.Drawing.Size(2119, 1256);
             this.collections_panel.TabIndex = 116;
@@ -1491,7 +1516,6 @@
             this.title_lbl.Size = new System.Drawing.Size(651, 57);
             this.title_lbl.TabIndex = 97;
             this.title_lbl.Text = "Н А Ш И     П О Д Б О Р К И";
-            this.title_lbl.Click += new System.EventHandler(this.title_lbl_Click);
             // 
             // substrate1
             // 
@@ -1590,7 +1614,7 @@
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel10);
-            this.panel_show_collectionfilm.Location = new System.Drawing.Point(-1, 84);
+            this.panel_show_collectionfilm.Location = new System.Drawing.Point(10, 1231);
             this.panel_show_collectionfilm.Name = "panel_show_collectionfilm";
             this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1244);
             this.panel_show_collectionfilm.TabIndex = 118;
@@ -1773,41 +1797,14 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "Страна";
             // 
-            // decrease_btn
-            // 
-            this.decrease_btn.Image = ((System.Drawing.Image)(resources.GetObject("decrease_btn.Image")));
-            this.decrease_btn.Location = new System.Drawing.Point(1934, 13);
-            this.decrease_btn.Name = "decrease_btn";
-            this.decrease_btn.Size = new System.Drawing.Size(47, 49);
-            this.decrease_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.decrease_btn.TabIndex = 27;
-            this.decrease_btn.TabStop = false;
-            this.hints.SetToolTip(this.decrease_btn, "Свернуть");
-            this.decrease_btn.Click += new System.EventHandler(this.decrease_btn_Click);
-            this.decrease_btn.MouseEnter += new System.EventHandler(this.decrease_btn_MouseEnter);
-            this.decrease_btn.MouseLeave += new System.EventHandler(this.decrease_btn_MouseLeave);
-            // 
-            // frame_decrease
-            // 
-            this.frame_decrease.Image = ((System.Drawing.Image)(resources.GetObject("frame_decrease.Image")));
-            this.frame_decrease.Location = new System.Drawing.Point(1923, 3);
-            this.frame_decrease.Name = "frame_decrease";
-            this.frame_decrease.Size = new System.Drawing.Size(67, 73);
-            this.frame_decrease.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_decrease.TabIndex = 28;
-            this.frame_decrease.TabStop = false;
-            this.frame_decrease.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(2098, 1336);
-            this.Controls.Add(this.panel_show_collectionfilm);
             this.Controls.Add(this.reset_stats_btn);
             this.Controls.Add(this.collections_panel);
-            this.Controls.Add(this.pass_collection_btn);
             this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
             this.Controls.Add(this.label6);
@@ -1846,6 +1843,7 @@
             this.Controls.Add(this.grayStar10);
             this.Controls.Add(this.pass__individual__btn);
             this.Controls.Add(this.closing_panel);
+            this.Controls.Add(this.pass_collection_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
@@ -1853,6 +1851,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.upper_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).EndInit();
@@ -1922,8 +1922,6 @@
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

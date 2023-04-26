@@ -143,8 +143,18 @@ namespace TeamProject2__ListOfRecommendations
                 form1.date_collectionfilm.Text = movie.Date;
                 form1.actors_collectionfilm.Text = movie.Actors;
                 form1.countries_collectionfilm.Text = movie.Countries;
-                form1.picture_poster_forcollection.Image = System.Drawing.Image.FromFile(movie.PicturePath);
-                
+                try
+                {
+
+                    form1.picture_poster_forcollection.Image = System.Drawing.Image.FromFile(movie.PicturePath);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Некорректный адрес изображения");
+                }
+
+
             }
             this.Close();
             form1.Activate();

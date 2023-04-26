@@ -47,13 +47,11 @@ namespace TeamProject2__ListOfRecommendations
             XmlDocument doc = new XmlDocument();
             doc.Load("@./../../../ForLists.xml");
 
-            // добавляем все актеры в лист actors
             foreach (XmlNode actorNode in doc.SelectNodes("//actors/actor"))
             {
                 actors.Add(actorNode.InnerText);
             }
 
-            // добавляем все жанры в лист genres
             foreach (XmlNode genreNode in doc.SelectNodes("//genres/genre"))
             {
                 genres.Add(genreNode.InnerText);
@@ -192,6 +190,8 @@ namespace TeamProject2__ListOfRecommendations
 
         private void FillWithDefaultEstimates()
         {
+            
+
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
             foreach (string genre in genres)
@@ -212,7 +212,7 @@ namespace TeamProject2__ListOfRecommendations
             connection.Close();
         }
 
-
+        
 
         private void email_tb_Click(object sender, EventArgs e)
         {
