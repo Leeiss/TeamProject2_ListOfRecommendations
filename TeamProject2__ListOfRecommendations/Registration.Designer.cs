@@ -43,16 +43,16 @@
             this.send_kod_email = new System.Windows.Forms.Button();
             this.email_password = new System.Windows.Forms.TextBox();
             this.info_email_lbl = new System.Windows.Forms.Label();
-            this.hide_btn1 = new System.Windows.Forms.PictureBox();
-            this.show_btn1 = new System.Windows.Forms.PictureBox();
             this.adminrights_btn_cancel = new System.Windows.Forms.Button();
             this.admin_btn = new System.Windows.Forms.Button();
             this.admin_password_tb = new System.Windows.Forms.TextBox();
             this.info_lbl1 = new System.Windows.Forms.Label();
+            this.go_to_email = new System.Windows.Forms.Button();
+            this.hide_btn1 = new System.Windows.Forms.PictureBox();
+            this.show_btn1 = new System.Windows.Forms.PictureBox();
             this.picture_logo = new System.Windows.Forms.PictureBox();
             this.hide_btn = new System.Windows.Forms.PictureBox();
             this.show_btn = new System.Windows.Forms.PictureBox();
-            this.go_to_email = new System.Windows.Forms.Button();
             this.close_panel.SuspendLayout();
             this.email_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hide_btn1)).BeginInit();
@@ -245,30 +245,6 @@
             this.info_email_lbl.Text = "Подтвердите адрес электронной почты \r\nкодом, который мы вам отправили";
             this.info_email_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // hide_btn1
-            // 
-            this.hide_btn1.Image = ((System.Drawing.Image)(resources.GetObject("hide_btn1.Image")));
-            this.hide_btn1.Location = new System.Drawing.Point(732, 143);
-            this.hide_btn1.Name = "hide_btn1";
-            this.hide_btn1.Size = new System.Drawing.Size(79, 55);
-            this.hide_btn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hide_btn1.TabIndex = 24;
-            this.hide_btn1.TabStop = false;
-            this.hide_btn1.Visible = false;
-            this.hide_btn1.Click += new System.EventHandler(this.hide_btn1_Click);
-            // 
-            // show_btn1
-            // 
-            this.show_btn1.Image = ((System.Drawing.Image)(resources.GetObject("show_btn1.Image")));
-            this.show_btn1.Location = new System.Drawing.Point(732, 143);
-            this.show_btn1.Name = "show_btn1";
-            this.show_btn1.Size = new System.Drawing.Size(79, 55);
-            this.show_btn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.show_btn1.TabIndex = 23;
-            this.show_btn1.TabStop = false;
-            this.show_btn1.Visible = false;
-            this.show_btn1.Click += new System.EventHandler(this.show_btn1_Click);
-            // 
             // adminrights_btn_cancel
             // 
             this.adminrights_btn_cancel.BackColor = System.Drawing.Color.Gray;
@@ -323,6 +299,42 @@
             this.info_lbl1.Text = "Введите пароль администратора";
             this.info_lbl1.Visible = false;
             // 
+            // go_to_email
+            // 
+            this.go_to_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
+            this.go_to_email.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.go_to_email.Location = new System.Drawing.Point(848, 857);
+            this.go_to_email.Name = "go_to_email";
+            this.go_to_email.Size = new System.Drawing.Size(204, 47);
+            this.go_to_email.TabIndex = 25;
+            this.go_to_email.Text = "Далее";
+            this.go_to_email.UseVisualStyleBackColor = false;
+            this.go_to_email.Click += new System.EventHandler(this.go_to_email_Click);
+            // 
+            // hide_btn1
+            // 
+            this.hide_btn1.Image = ((System.Drawing.Image)(resources.GetObject("hide_btn1.Image")));
+            this.hide_btn1.Location = new System.Drawing.Point(732, 143);
+            this.hide_btn1.Name = "hide_btn1";
+            this.hide_btn1.Size = new System.Drawing.Size(79, 55);
+            this.hide_btn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hide_btn1.TabIndex = 24;
+            this.hide_btn1.TabStop = false;
+            this.hide_btn1.Visible = false;
+            this.hide_btn1.Click += new System.EventHandler(this.hide_btn1_Click);
+            // 
+            // show_btn1
+            // 
+            this.show_btn1.Image = ((System.Drawing.Image)(resources.GetObject("show_btn1.Image")));
+            this.show_btn1.Location = new System.Drawing.Point(732, 143);
+            this.show_btn1.Name = "show_btn1";
+            this.show_btn1.Size = new System.Drawing.Size(79, 55);
+            this.show_btn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.show_btn1.TabIndex = 23;
+            this.show_btn1.TabStop = false;
+            this.show_btn1.Visible = false;
+            this.show_btn1.Click += new System.EventHandler(this.show_btn1_Click);
+            // 
             // picture_logo
             // 
             this.picture_logo.Image = ((System.Drawing.Image)(resources.GetObject("picture_logo.Image")));
@@ -356,18 +368,6 @@
             this.show_btn.Visible = false;
             this.show_btn.Click += new System.EventHandler(this.show_btn_Click);
             // 
-            // go_to_email
-            // 
-            this.go_to_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
-            this.go_to_email.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.go_to_email.Location = new System.Drawing.Point(848, 857);
-            this.go_to_email.Name = "go_to_email";
-            this.go_to_email.Size = new System.Drawing.Size(204, 47);
-            this.go_to_email.TabIndex = 25;
-            this.go_to_email.Text = "Далее";
-            this.go_to_email.UseVisualStyleBackColor = false;
-            this.go_to_email.Click += new System.EventHandler(this.go_to_email_Click);
-            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -388,6 +388,7 @@
             this.Controls.Add(this.administration_btn);
             this.Controls.Add(this.go_to_email);
             this.Controls.Add(this.cancel_btn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registration";
             this.Text = "Регистрация";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Registration_FormClosed);

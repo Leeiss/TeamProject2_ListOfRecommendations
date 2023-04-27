@@ -219,6 +219,7 @@
             this.Controls.Add(this.go_btn);
             this.Controls.Add(this.forgotpassword_btn);
             this.Controls.Add(this.registration_btn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PasswordRecovery";
             this.Text = "Восстановление пароля";
             this.Load += new System.EventHandler(this.PasswordRecovery_Load);

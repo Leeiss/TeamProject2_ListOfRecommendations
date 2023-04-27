@@ -43,7 +43,6 @@
             this.substrate5 = new System.Windows.Forms.Panel();
             this.country_lbl = new System.Windows.Forms.Label();
             this.info_title = new System.Windows.Forms.Label();
-            this.image_poster = new System.Windows.Forms.PictureBox();
             this.info_mark = new System.Windows.Forms.RichTextBox();
             this.info_year = new System.Windows.Forms.RichTextBox();
             this.info_actors = new System.Windows.Forms.RichTextBox();
@@ -57,15 +56,16 @@
             this.substrate3 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.search_tb = new System.Windows.Forms.TextBox();
+            this.image_poster = new System.Windows.Forms.PictureBox();
             this.search_btn1 = new System.Windows.Forms.Button();
             this.frame_searching = new System.Windows.Forms.PictureBox();
             this.closing_panel.SuspendLayout();
             this.substrate5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
             this.substrate4.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
             this.substrate3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             this.SuspendLayout();
             // 
@@ -219,14 +219,6 @@
             this.info_title.Text = "фильм";
             this.info_title.Visible = false;
             // 
-            // image_poster
-            // 
-            this.image_poster.Location = new System.Drawing.Point(69, 126);
-            this.image_poster.Name = "image_poster";
-            this.image_poster.Size = new System.Drawing.Size(656, 767);
-            this.image_poster.TabIndex = 85;
-            this.image_poster.TabStop = false;
-            // 
             // info_mark
             // 
             this.info_mark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -371,6 +363,14 @@
             this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
             this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
             // 
+            // image_poster
+            // 
+            this.image_poster.Location = new System.Drawing.Point(69, 126);
+            this.image_poster.Name = "image_poster";
+            this.image_poster.Size = new System.Drawing.Size(656, 767);
+            this.image_poster.TabIndex = 85;
+            this.image_poster.TabStop = false;
+            // 
             // search_btn1
             // 
             this.search_btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
@@ -406,6 +406,7 @@
             this.Controls.Add(this.panel_lateral);
             this.Controls.Add(this.info_lbl3);
             this.Controls.Add(this.info_lbl2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "APISearch";
             this.Text = "Поиск фильмов";
             this.Load += new System.EventHandler(this.APISearch_Load);
@@ -413,7 +414,6 @@
             this.closing_panel.PerformLayout();
             this.substrate5.ResumeLayout(false);
             this.substrate5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
             this.substrate4.ResumeLayout(false);
             this.substrate4.PerformLayout();
             this.substrate2.ResumeLayout(false);
@@ -422,6 +422,7 @@
             this.substrate1.PerformLayout();
             this.substrate3.ResumeLayout(false);
             this.substrate3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

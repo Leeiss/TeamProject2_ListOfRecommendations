@@ -310,9 +310,6 @@
             // 
             // title_film_fromcollection
             // 
-            this.title_film_fromcollection.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.title_film_fromcollection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.title_film_fromcollection.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.title_film_fromcollection.Font = new System.Drawing.Font("Stencil", 18.125F, System.Drawing.FontStyle.Bold);

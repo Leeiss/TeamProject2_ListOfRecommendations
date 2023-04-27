@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoAboutCollection));
             this.go_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.films_list = new System.Windows.Forms.ListBox();
@@ -111,6 +112,7 @@
             this.Controls.Add(this.films_list);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.collection_title_lbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoAboutCollection";
             this.Text = "Информация по подборке";
             this.Load += new System.EventHandler(this.InfoAboutCollection_Load);

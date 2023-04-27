@@ -162,6 +162,7 @@
             this.Controls.Add(this.password_lbl);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.command2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProfileMenagement";
             this.Load += new System.EventHandler(this.ProfileMenagement_Load);
             this.panel4.ResumeLayout(false);

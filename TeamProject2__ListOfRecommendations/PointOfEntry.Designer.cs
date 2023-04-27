@@ -37,12 +37,12 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.login_tb = new System.Windows.Forms.TextBox();
             this.password_tb = new System.Windows.Forms.TextBox();
+            this.hide_btn = new System.Windows.Forms.PictureBox();
             this.show_btn = new System.Windows.Forms.PictureBox();
             this.picture_logo = new System.Windows.Forms.PictureBox();
-            this.hide_btn = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.show_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).BeginInit();
             this.SuspendLayout();
             // 
             // info_lbl
@@ -134,6 +134,18 @@
             this.password_tb.MouseEnter += new System.EventHandler(this.password_tb_MouseEnter);
             this.password_tb.MouseLeave += new System.EventHandler(this.password_tb_MouseLeave);
             // 
+            // hide_btn
+            // 
+            this.hide_btn.Image = ((System.Drawing.Image)(resources.GetObject("hide_btn.Image")));
+            this.hide_btn.Location = new System.Drawing.Point(826, 562);
+            this.hide_btn.Name = "hide_btn";
+            this.hide_btn.Size = new System.Drawing.Size(79, 55);
+            this.hide_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hide_btn.TabIndex = 8;
+            this.hide_btn.TabStop = false;
+            this.hide_btn.Visible = false;
+            this.hide_btn.Click += new System.EventHandler(this.hide_btn_Click);
+            // 
             // show_btn
             // 
             this.show_btn.Image = ((System.Drawing.Image)(resources.GetObject("show_btn.Image")));
@@ -155,18 +167,6 @@
             this.picture_logo.TabIndex = 0;
             this.picture_logo.TabStop = false;
             // 
-            // hide_btn
-            // 
-            this.hide_btn.Image = ((System.Drawing.Image)(resources.GetObject("hide_btn.Image")));
-            this.hide_btn.Location = new System.Drawing.Point(826, 562);
-            this.hide_btn.Name = "hide_btn";
-            this.hide_btn.Size = new System.Drawing.Size(79, 55);
-            this.hide_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hide_btn.TabIndex = 8;
-            this.hide_btn.TabStop = false;
-            this.hide_btn.Visible = false;
-            this.hide_btn.Click += new System.EventHandler(this.hide_btn_Click);
-            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -182,12 +182,13 @@
             this.Controls.Add(this.login_tb);
             this.Controls.Add(this.info_lbl);
             this.Controls.Add(this.picture_logo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Authorization";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Authorization_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.show_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
