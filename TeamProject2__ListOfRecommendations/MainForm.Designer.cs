@@ -310,13 +310,17 @@
             // 
             // title_film_fromcollection
             // 
+            this.title_film_fromcollection.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.title_film_fromcollection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.title_film_fromcollection.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.title_film_fromcollection.Font = new System.Drawing.Font("Stencil", 18.125F, System.Drawing.FontStyle.Bold);
             this.title_film_fromcollection.Location = new System.Drawing.Point(1018, 113);
+            this.title_film_fromcollection.Multiline = true;
             this.title_film_fromcollection.Name = "title_film_fromcollection";
             this.title_film_fromcollection.ReadOnly = true;
-            this.title_film_fromcollection.Size = new System.Drawing.Size(1010, 58);
+            this.title_film_fromcollection.Size = new System.Drawing.Size(1010, 149);
             this.title_film_fromcollection.TabIndex = 112;
             this.title_film_fromcollection.TabStop = false;
             this.title_film_fromcollection.Text = "НАЗВАНИЕ ФИЛЬМА";
@@ -1140,6 +1144,9 @@
             // 
             // panel_show_collectionfilm
             // 
+            this.panel_show_collectionfilm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_show_collectionfilm.Controls.Add(this.close_showing_collection_film_btn);
             this.panel_show_collectionfilm.Controls.Add(this.title_film_fromcollection);
             this.panel_show_collectionfilm.Controls.Add(this.date_collectionfilm);

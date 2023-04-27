@@ -235,6 +235,7 @@
     <Compile Include="СhooseASelection.Designer.cs">
       <DependentUpon>СhooseASelection.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\безфото.png" />
     <None Include="Resources\раскрыть.png" />
     <None Include="Resources\скрыть.png" />
     <EmbeddedResource Include="AddFilm.resx">

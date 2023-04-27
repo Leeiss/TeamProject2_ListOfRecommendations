@@ -210,10 +210,10 @@
             this.films_in_collection_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.films_in_collection_list.FormattingEnabled = true;
             this.films_in_collection_list.ItemHeight = 32;
-            this.films_in_collection_list.Location = new System.Drawing.Point(823, 276);
+            this.films_in_collection_list.Location = new System.Drawing.Point(813, 276);
             this.films_in_collection_list.Name = "films_in_collection_list";
-            this.films_in_collection_list.Size = new System.Drawing.Size(302, 228);
-            this.films_in_collection_list.TabIndex = 102;
+            this.films_in_collection_list.Size = new System.Drawing.Size(312, 228);
+            this.films_in_collection_list.TabIndex = 103;
             this.films_in_collection_list.Visible = false;
             this.films_in_collection_list.SelectedIndexChanged += new System.EventHandler(this.films_in_collection_list_SelectedIndexChanged);
             // 

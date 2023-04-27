@@ -31,7 +31,6 @@
             this.info_country = new System.Windows.Forms.RichTextBox();
             this.substrate5 = new System.Windows.Forms.Panel();
             this.country_lbl = new System.Windows.Forms.Label();
-            this.info_title = new System.Windows.Forms.Label();
             this.info_year = new System.Windows.Forms.RichTextBox();
             this.info_actors = new System.Windows.Forms.RichTextBox();
             this.info_genre = new System.Windows.Forms.RichTextBox();
@@ -42,6 +41,7 @@
             this.substrate3 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.image_poster = new System.Windows.Forms.PictureBox();
+            this.info_title = new System.Windows.Forms.TextBox();
             this.substrate5.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
@@ -80,17 +80,6 @@
             this.country_lbl.Size = new System.Drawing.Size(123, 33);
             this.country_lbl.TabIndex = 9;
             this.country_lbl.Text = "Страны";
-            // 
-            // info_title
-            // 
-            this.info_title.AutoSize = true;
-            this.info_title.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_title.Location = new System.Drawing.Point(768, 88);
-            this.info_title.Name = "info_title";
-            this.info_title.Size = new System.Drawing.Size(183, 57);
-            this.info_title.TabIndex = 88;
-            this.info_title.Text = "фильм";
             // 
             // info_year
             // 
@@ -197,15 +186,27 @@
             this.image_poster.TabIndex = 97;
             this.image_poster.TabStop = false;
             // 
+            // info_title
+            // 
+            this.info_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.info_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.info_title.Font = new System.Drawing.Font("Stencil", 16F, System.Drawing.FontStyle.Bold);
+            this.info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.info_title.Location = new System.Drawing.Point(765, 92);
+            this.info_title.Multiline = true;
+            this.info_title.Name = "info_title";
+            this.info_title.Size = new System.Drawing.Size(547, 114);
+            this.info_title.TabIndex = 100;
+            // 
             // InfoAboutFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1374, 914);
+            this.Controls.Add(this.info_title);
             this.Controls.Add(this.info_country);
             this.Controls.Add(this.substrate5);
-            this.Controls.Add(this.info_title);
             this.Controls.Add(this.image_poster);
             this.Controls.Add(this.info_year);
             this.Controls.Add(this.info_actors);
@@ -236,7 +237,6 @@
         private System.Windows.Forms.RichTextBox info_country;
         private System.Windows.Forms.Panel substrate5;
         private System.Windows.Forms.Label country_lbl;
-        private System.Windows.Forms.Label info_title;
         private System.Windows.Forms.PictureBox image_poster;
         private System.Windows.Forms.RichTextBox info_year;
         private System.Windows.Forms.RichTextBox info_actors;
@@ -247,5 +247,6 @@
         private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.Panel substrate3;
         private System.Windows.Forms.Label year_lbl;
+        private System.Windows.Forms.TextBox info_title;
     }
 }

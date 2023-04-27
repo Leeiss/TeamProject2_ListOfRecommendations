@@ -16,7 +16,14 @@ namespace TeamProject2__ListOfRecommendations
         {
             InitializeComponent();
             info_title.Text = Title.ToUpper();
-            image_poster.Image = Image.FromFile(Path);
+            try
+            {
+                image_poster.Image = Image.FromFile(Path);
+            }
+            catch
+            {
+                image_poster.Image = Properties.Resources.безфото;
+            }
             info_genre.Text = Genres;
             info_actors.Text = Actors;
             info_country.Text = Countries;

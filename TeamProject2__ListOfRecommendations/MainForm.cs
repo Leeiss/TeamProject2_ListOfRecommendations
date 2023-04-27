@@ -195,7 +195,15 @@ namespace TeamProject2__ListOfRecommendations
                 year = year.Remove(0, 6);
                 film_title_lbl.Text = $"{movie.Title} ({year})";
                 Link = movie.Link;
-                picture_poster.Image = Image.FromFile(movie.PicturePath);
+                try
+                {
+                    picture_poster.Image = Image.FromFile(movie.PicturePath);
+                }
+                catch
+                {
+                    MessageBox.Show("К сожалению, путь к постеру фильма устарел или неправильно добавлен, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
+                    picture_poster.Image = Properties.Resources.безфото;
+                }
                 MovieID = movie.MovieID;
             }
             else
@@ -653,7 +661,14 @@ namespace TeamProject2__ListOfRecommendations
 
         private void picture_poster_Click(object sender, EventArgs e)
         {
-            Process.Start(Link);
+            try
+            {
+                Process.Start(Link);
+            }
+            catch
+            {
+                MessageBox.Show("К сожалению, ссылка на даннный фильм устарела или неправильно добавлена, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
+            }
         }
 
         private void substrate_picture1_Click(object sender, EventArgs e)

@@ -127,38 +127,46 @@ namespace TeamProject2__ListOfRecommendations
         private void go_btn_Click(object sender, EventArgs e)
         {
             int index = films_list.SelectedIndex;
-            int movieId = ints[index];
-            Movie movie = GetMovieById(movieId);
-            MainForm form1 = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
-            if (form1 != null)
+            if (index == -1) 
             {
-                
-                string year = movie.Date;
-                form1.close_showing_collection_film_btn.Visible = true;
-                year = year.Remove(0, 6);
-                form1.collections_panel.Visible = false;
-                form1.panel_show_collectionfilm.Visible = true;
-                form1.LinkForCollection = movie.Link;
-                form1.title_film_fromcollection.Text = $"{movie.Title.ToUpper()} ({year})";
-                form1.genres_collectionfilm.Text = movie.Genres;
-                form1.date_collectionfilm.Text = movie.Date;
-                form1.actors_collectionfilm.Text = movie.Actors;
-                form1.countries_collectionfilm.Text = movie.Countries;
-                try
-                {
-
-                    form1.picture_poster_forcollection.Image = System.Drawing.Image.FromFile(movie.PicturePath);
-
-                }
-                catch
-                {
-                    MessageBox.Show("Некорректный адрес изображения");
-                }
-
-
+                MessageBox.Show("Выберите фильм");
             }
-            this.Close();
-            form1.Activate();
+            else
+            {
+                int movieId = ints[index];
+                Movie movie = GetMovieById(movieId);
+                MainForm form1 = Application.OpenForms.OfType<MainForm>().FirstOrDefault();
+                if (form1 != null)
+                {
+
+                    string year = movie.Date;
+                    form1.close_showing_collection_film_btn.Visible = true;
+                    year = year.Remove(0, 6);
+                    form1.collections_panel.Visible = false;
+                    form1.panel_show_collectionfilm.Visible = true;
+                    form1.LinkForCollection = movie.Link;
+                    form1.title_film_fromcollection.Text = $"{movie.Title.ToUpper()} ({year})";
+                    form1.genres_collectionfilm.Text = movie.Genres;
+                    form1.date_collectionfilm.Text = movie.Date;
+                    form1.actors_collectionfilm.Text = movie.Actors;
+                    form1.countries_collectionfilm.Text = movie.Countries;
+                    try
+                    {
+
+                        form1.picture_poster_forcollection.Image = System.Drawing.Image.FromFile(movie.PicturePath);
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Некорректный адрес изображения");
+                    }
+
+
+                }
+                this.Close();
+                form1.Activate();
+            }
+            
         }
     }
 }
