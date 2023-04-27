@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileMenagement));
             this.info_lbl = new System.Windows.Forms.Label();
-            this.cansel_lbl = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.password_lbl = new System.Windows.Forms.Label();
             this.login_lbl = new System.Windows.Forms.Label();
@@ -38,14 +37,12 @@
             this.collapse_pb = new System.Windows.Forms.PictureBox();
             this.frane_expand = new System.Windows.Forms.PictureBox();
             this.frame_collapse = new System.Windows.Forms.PictureBox();
-            this.command1 = new System.Windows.Forms.PictureBox();
             this.command2 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapse_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.command1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,20 +57,6 @@
             this.info_lbl.Size = new System.Drawing.Size(541, 47);
             this.info_lbl.TabIndex = 17;
             this.info_lbl.Text = "УПРАВЛЕНИЕ ПРОФИЛЕМ";
-            // 
-            // cansel_lbl
-            // 
-            this.cansel_lbl.AutoSize = true;
-            this.cansel_lbl.Font = new System.Drawing.Font("XO Courser", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cansel_lbl.ForeColor = System.Drawing.Color.Black;
-            this.cansel_lbl.Location = new System.Drawing.Point(12, 335);
-            this.cansel_lbl.Name = "cansel_lbl";
-            this.cansel_lbl.Size = new System.Drawing.Size(779, 32);
-            this.cansel_lbl.TabIndex = 0;
-            this.cansel_lbl.Text = "Выйти                                        ";
-            this.cansel_lbl.Click += new System.EventHandler(this.change_lbl_Click);
-            this.cansel_lbl.MouseEnter += new System.EventHandler(this.change_lbl_MouseEnter);
-            this.cansel_lbl.MouseLeave += new System.EventHandler(this.change_lbl_MouseLeave);
             // 
             // panel4
             // 
@@ -157,18 +140,6 @@
             this.frame_collapse.TabStop = false;
             this.frame_collapse.Visible = false;
             // 
-            // command1
-            // 
-            this.command1.Image = ((System.Drawing.Image)(resources.GetObject("command1.Image")));
-            this.command1.Location = new System.Drawing.Point(-1, 312);
-            this.command1.Name = "command1";
-            this.command1.Size = new System.Drawing.Size(667, 70);
-            this.command1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.command1.TabIndex = 3;
-            this.command1.TabStop = false;
-            this.command1.Visible = false;
-            this.command1.Click += new System.EventHandler(this.command1_Click);
-            // 
             // command2
             // 
             this.command2.Image = ((System.Drawing.Image)(resources.GetObject("command2.Image")));
@@ -186,12 +157,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
-            this.ClientSize = new System.Drawing.Size(660, 712);
+            this.ClientSize = new System.Drawing.Size(660, 587);
             this.Controls.Add(this.login_lbl);
             this.Controls.Add(this.password_lbl);
-            this.Controls.Add(this.cansel_lbl);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.command1);
             this.Controls.Add(this.command2);
             this.Name = "ProfileMenagement";
             this.Load += new System.EventHandler(this.ProfileMenagement_Load);
@@ -201,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.collapse_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.command1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.command2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,14 +179,12 @@
         #endregion
 
         private System.Windows.Forms.Label info_lbl;
-        private System.Windows.Forms.Label cansel_lbl;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox expand_pb;
         private System.Windows.Forms.PictureBox collapse_pb;
         private System.Windows.Forms.PictureBox frane_expand;
         private System.Windows.Forms.PictureBox frame_collapse;
         private System.Windows.Forms.Label password_lbl;
-        private System.Windows.Forms.PictureBox command1;
         private System.Windows.Forms.PictureBox command2;
         private System.Windows.Forms.Label login_lbl;
     }

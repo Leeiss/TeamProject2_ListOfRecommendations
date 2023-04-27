@@ -176,7 +176,7 @@
             this.close_panel.Controls.Add(this.admin_btn);
             this.close_panel.Controls.Add(this.admin_password_tb);
             this.close_panel.Controls.Add(this.info_lbl1);
-            this.close_panel.Location = new System.Drawing.Point(6, 3);
+            this.close_panel.Location = new System.Drawing.Point(12, 428);
             this.close_panel.Name = "close_panel";
             this.close_panel.Size = new System.Drawing.Size(1057, 476);
             this.close_panel.TabIndex = 22;
@@ -184,7 +184,6 @@
             // 
             // email_panel
             // 
-            this.email_panel.Controls.Add(this.close_panel);
             this.email_panel.Controls.Add(this.again_btn);
             this.email_panel.Controls.Add(this.email_password);
             this.email_panel.Controls.Add(this.info_email_lbl);
@@ -376,6 +375,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.CancelButton = this.cancel_btn;
             this.ClientSize = new System.Drawing.Size(1074, 923);
+            this.Controls.Add(this.close_panel);
             this.Controls.Add(this.email_panel);
             this.Controls.Add(this.registration_lbl);
             this.Controls.Add(this.picture_logo);

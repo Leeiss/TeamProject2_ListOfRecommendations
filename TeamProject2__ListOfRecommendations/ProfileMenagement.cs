@@ -46,17 +46,6 @@ namespace TeamProject2__ListOfRecommendations
             
         }
 
-       
-        private void change_lbl_MouseEnter(object sender, EventArgs e)
-        {
-            command1.Visible = true;
-        }
-
-        private void change_lbl_MouseLeave(object sender, EventArgs e)
-        {
-            command1.Visible = false;
-        }
-
         private void password_lbl_MouseEnter(object sender, EventArgs e)
         {
             command2.Visible = true;
