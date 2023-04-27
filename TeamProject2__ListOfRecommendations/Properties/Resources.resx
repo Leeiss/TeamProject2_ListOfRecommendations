@@ -121,13 +121,19 @@
   <data name="к письму 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\к письму 2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="скрыть" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\скрыть.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="grayStar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grayStar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="к письму" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\к письму.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grayStar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grayStar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="раскрыть" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\раскрыть.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

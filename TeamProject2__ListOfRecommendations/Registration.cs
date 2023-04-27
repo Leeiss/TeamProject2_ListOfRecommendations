@@ -32,6 +32,8 @@ namespace TeamProject2__ListOfRecommendations
         private int AdminRight = 0;
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
         private string username;
+        private string password;
+
         private void password_tb_Click(object sender, EventArgs e)
         {
             password_tb.Text = "";
@@ -61,10 +63,10 @@ namespace TeamProject2__ListOfRecommendations
             // Работа с элементами управления на форме
             picture_logo.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            int buttonOffset = 10; // Размер отступа (10 мм)
-            int formWidth = go_btn.Location.X + go_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
-            int formHeight = go_btn.Location.Y + go_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
-            this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
+            int buttonOffset = 10; 
+            int formWidth = go_to_email.Location.X + go_to_email.Width + buttonOffset; 
+            int formHeight = go_to_email.Location.Y + go_to_email.Height + buttonOffset; 
+            this.ClientSize = new Size(formWidth, formHeight); 
 
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -94,7 +96,7 @@ namespace TeamProject2__ListOfRecommendations
             SmtpClient smtp = new SmtpClient("smtp.mail.ru"); // адрес сервера SMTP, на котором наша почта
             smtp.Port = 587; // порт, который использует сервер SMTP, обычно 587 или 465
             smtp.EnableSsl = true; // используем SSL-шифрование для защиты от перехвата данных
-            smtp.Credentials = new System.Net.NetworkCredential("list_of_recomendations@mail.ru", "xqNDEUbgA3y3MqTk3xnu"); 
+            smtp.Credentials = new System.Net.NetworkCredential("list_of_recomendations@mail.ru", "xqNDEUbgA3y3MqTk3xnu");
             try
             {
                 smtp.Send(mail);
@@ -159,10 +161,10 @@ namespace TeamProject2__ListOfRecommendations
                     MessageBox.Show("Введенные вами логин или email уже были раннее зарегестрированы");
                 }
             }
-            
-
-
-
+            else
+            {
+                MessageBox.Show("Введите все данные");
+            }
         }
 
         private void AddAFavoritesFolderForAUser()
@@ -186,11 +188,11 @@ namespace TeamProject2__ListOfRecommendations
                 connection.Close();
             }
         }
-    
+
 
         private void FillWithDefaultEstimates()
         {
-            
+
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
@@ -212,7 +214,7 @@ namespace TeamProject2__ListOfRecommendations
             connection.Close();
         }
 
-        
+
 
         private void email_tb_Click(object sender, EventArgs e)
         {
@@ -229,13 +231,14 @@ namespace TeamProject2__ListOfRecommendations
             administration_btn.ForeColor = Color.FromArgb(197, 210, 219);
         }
 
-       private void administration_btn_MouseLeave(object sender, EventArgs e)
+        private void administration_btn_MouseLeave(object sender, EventArgs e)
         {
             administration_btn.ForeColor = Color.FromArgb(133, 162, 167);
         }
 
         private void administration_btn_Click(object sender, EventArgs e)
         {
+            email_panel.Visible = false;
             close_panel.Visible = true;
             admin_btn.Visible = true;
             admin_password_tb.Visible = true;
@@ -252,7 +255,7 @@ namespace TeamProject2__ListOfRecommendations
             adminrights_btn_cancel.Visible = false;
 
 
-            if (admin_password_tb.Text.Equals(string.Empty)) 
+            if (admin_password_tb.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Вы ничего не ввели");
             }
@@ -279,8 +282,148 @@ namespace TeamProject2__ListOfRecommendations
 
         private void Registration_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
+        }
+
+        private void hide_btn_Click(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '\0';
+            hide_btn.Visible = false;
+            show_btn.Visible = true;
+        }
+
+        private void show_btn_Click(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '*';
+            hide_btn.Visible = true;
+            show_btn.Visible = false;
+        }
+
+        private void password_tb_TextChanged(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '*';
+            hide_btn.Visible = true;
+        }
+
+        private void hide_btn1_Click(object sender, EventArgs e)
+        {
+            admin_password_tb.PasswordChar = '\0';
+            hide_btn1.Visible = false;
+            show_btn1.Visible = true;
+        }
+
+        private void show_btn1_Click(object sender, EventArgs e)
+        {
+            admin_password_tb.PasswordChar = '*';
+            hide_btn1.Visible = true;
+            show_btn1.Visible = false;
+        }
+
+        private void admin_password_tb_TextChanged(object sender, EventArgs e)
+        {
+            admin_password_tb.PasswordChar = '*';
+            hide_btn1.Visible = true;
+        }
+
+        private void again_btn_Click(object sender, EventArgs e)
+        {
+            email_panel.Visible = false;
+            admin_password_tb.Text = "";
+        }
+
+        /// <summary>
+        /// Отправляем email с кодом
+        /// </summary>
+        /// <param name="toEmail"></param>
+        /// <param name="newPassword"></param>
+        public void SendEmail(string toEmail, string newPassword)
+        {
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("list_of_recomendations@mail.ru", "Приложение Список рекомендаций");
+            try
+            {
+                mail.To.Add(new MailAddress(toEmail));
+            }
+            catch
+            {
+                MessageBox.Show("Такого почтового ящика не существует");
+            }
+            // адрес получателя
+            mail.Subject = "Список рекомендаций: подтверждение почты";
+            mail.Body = $"Ваш код для подтверждения почты: {newPassword}. Если аккаунт создаете не вы, то, пожалуйста, игнорируйте это письмо";
+
+            SmtpClient smtp = new SmtpClient("smtp.mail.ru"); // адрес сервера SMTP, на котором наша почта
+            smtp.Port = 587; // порт, который использует сервер SMTP, обычно 587 или 465
+            smtp.EnableSsl = true; // используем SSL-шифрование для защиты от перехвата данных
+            smtp.Credentials = new System.Net.NetworkCredential("list_of_recomendations@mail.ru", "xqNDEUbgA3y3MqTk3xnu"); // логин и пароль от нашей учетной записи
+            try
+            {
+                smtp.Send(mail);
+            }
+            catch
+            {
+                email_panel.Visible=false;
+            }
+        }
+
+
+        /// <summary>
+        /// генерируем случайный код
+        /// </summary>
+        /// <returns></returns>
+        public static string GeneratePassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var random = new Random();
+            var password = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+            return password;
+        }
+
+        private void login_tb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void go_to_email_Click(object sender, EventArgs e)
+        {
+            email_panel.Visible = true;
+            close_panel.Visible = false;
+            if (!login_tb.Text.Equals("") && !password_tb.Text.Equals("") && !email_tb.Text.Equals("") && !login_tb.Text.Equals("Введите логин") && !password_tb.Text.Equals("Введите пароль") && !email_tb.Text.Equals("Введите email"))
+            {
+                email_panel.Visible = true;
+                string email = email_tb.Text;
+                if (string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Введите email");
+                    return;
+                }
+                else
+                {
+                    password = GeneratePassword();
+                    SendEmail(email, password);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите все данные");
+                email_panel.Visible = false;
+            }
+        }
+
+        private void send_kod_email_Click(object sender, EventArgs e)
+        {
+            if (email_password.Text == password)
+            {
+                MessageBox.Show("Почтовый ящик подтвержден");
+                go_btn.Visible= true;
+            }
+            else
+            {
+                MessageBox.Show("Введенный вами код неверный");
+            }
         }
     }
 }
-
+                    
+                        
+   

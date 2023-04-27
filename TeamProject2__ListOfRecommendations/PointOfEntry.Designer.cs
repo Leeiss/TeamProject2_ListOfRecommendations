@@ -37,8 +37,12 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.login_tb = new System.Windows.Forms.TextBox();
             this.password_tb = new System.Windows.Forms.TextBox();
+            this.show_btn = new System.Windows.Forms.PictureBox();
             this.picture_logo = new System.Windows.Forms.PictureBox();
+            this.hide_btn = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.show_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).BeginInit();
             this.SuspendLayout();
             // 
             // info_lbl
@@ -126,8 +130,21 @@
             this.password_tb.Text = "Введите пароль";
             this.password_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.password_tb.Click += new System.EventHandler(this.password_tb_Click);
+            this.password_tb.TextChanged += new System.EventHandler(this.password_tb_TextChanged);
             this.password_tb.MouseEnter += new System.EventHandler(this.password_tb_MouseEnter);
             this.password_tb.MouseLeave += new System.EventHandler(this.password_tb_MouseLeave);
+            // 
+            // show_btn
+            // 
+            this.show_btn.Image = ((System.Drawing.Image)(resources.GetObject("show_btn.Image")));
+            this.show_btn.Location = new System.Drawing.Point(826, 562);
+            this.show_btn.Name = "show_btn";
+            this.show_btn.Size = new System.Drawing.Size(79, 55);
+            this.show_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.show_btn.TabIndex = 7;
+            this.show_btn.TabStop = false;
+            this.show_btn.Visible = false;
+            this.show_btn.Click += new System.EventHandler(this.show_btn_Click);
             // 
             // picture_logo
             // 
@@ -138,12 +155,26 @@
             this.picture_logo.TabIndex = 0;
             this.picture_logo.TabStop = false;
             // 
+            // hide_btn
+            // 
+            this.hide_btn.Image = ((System.Drawing.Image)(resources.GetObject("hide_btn.Image")));
+            this.hide_btn.Location = new System.Drawing.Point(826, 562);
+            this.hide_btn.Name = "hide_btn";
+            this.hide_btn.Size = new System.Drawing.Size(79, 55);
+            this.hide_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hide_btn.TabIndex = 8;
+            this.hide_btn.TabStop = false;
+            this.hide_btn.Visible = false;
+            this.hide_btn.Click += new System.EventHandler(this.hide_btn_Click);
+            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1089, 810);
+            this.Controls.Add(this.hide_btn);
+            this.Controls.Add(this.show_btn);
             this.Controls.Add(this.go_btn);
             this.Controls.Add(this.forgotpassword_btn);
             this.Controls.Add(this.registration_btn);
@@ -154,7 +185,9 @@
             this.Name = "Authorization";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Authorization_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.show_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hide_btn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +203,8 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.TextBox login_tb;
         private System.Windows.Forms.TextBox password_tb;
+        private System.Windows.Forms.PictureBox show_btn;
+        private System.Windows.Forms.PictureBox hide_btn;
     }
 }
 

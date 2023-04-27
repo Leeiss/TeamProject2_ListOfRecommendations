@@ -33,7 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.collections_list = new System.Windows.Forms.ListBox();
-            this.films_in_collection_list = new System.Windows.Forms.ListBox();
             this.delete_film_btn = new System.Windows.Forms.Button();
             this.delete_collection = new System.Windows.Forms.Button();
             this.all_films_collection_list = new System.Windows.Forms.ListBox();
@@ -42,6 +41,7 @@
             this.info_lbl3 = new System.Windows.Forms.Label();
             this.info_lbl2 = new System.Windows.Forms.Label();
             this.add_film_btn = new System.Windows.Forms.Button();
+            this.films_in_collection_list = new System.Windows.Forms.ListBox();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,20 +96,6 @@
             this.collections_list.Size = new System.Drawing.Size(311, 196);
             this.collections_list.TabIndex = 84;
             this.collections_list.SelectedIndexChanged += new System.EventHandler(this.collections_list_SelectedIndexChanged);
-            // 
-            // films_in_collection_list
-            // 
-            this.films_in_collection_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.films_in_collection_list.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.films_in_collection_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.films_in_collection_list.FormattingEnabled = true;
-            this.films_in_collection_list.ItemHeight = 32;
-            this.films_in_collection_list.Location = new System.Drawing.Point(813, 281);
-            this.films_in_collection_list.Name = "films_in_collection_list";
-            this.films_in_collection_list.Size = new System.Drawing.Size(302, 228);
-            this.films_in_collection_list.TabIndex = 89;
-            this.films_in_collection_list.Visible = false;
-            this.films_in_collection_list.SelectedIndexChanged += new System.EventHandler(this.films_in_collection_list_SelectedIndexChanged);
             // 
             // delete_film_btn
             // 
@@ -217,12 +203,27 @@
             this.add_film_btn.Visible = false;
             this.add_film_btn.Click += new System.EventHandler(this.add_film_btn_Click);
             // 
+            // films_in_collection_list
+            // 
+            this.films_in_collection_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.films_in_collection_list.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.films_in_collection_list.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.films_in_collection_list.FormattingEnabled = true;
+            this.films_in_collection_list.ItemHeight = 32;
+            this.films_in_collection_list.Location = new System.Drawing.Point(823, 276);
+            this.films_in_collection_list.Name = "films_in_collection_list";
+            this.films_in_collection_list.Size = new System.Drawing.Size(302, 228);
+            this.films_in_collection_list.TabIndex = 102;
+            this.films_in_collection_list.Visible = false;
+            this.films_in_collection_list.SelectedIndexChanged += new System.EventHandler(this.films_in_collection_list_SelectedIndexChanged);
+            // 
             // ChangeCollections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1392, 1009);
+            this.Controls.Add(this.films_in_collection_list);
             this.Controls.Add(this.add_film_btn);
             this.Controls.Add(this.info_lbl2);
             this.Controls.Add(this.info_lbl3);
@@ -231,7 +232,6 @@
             this.Controls.Add(this.all_films_collection_list);
             this.Controls.Add(this.delete_collection);
             this.Controls.Add(this.delete_film_btn);
-            this.Controls.Add(this.films_in_collection_list);
             this.Controls.Add(this.collections_list);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.info_lbl1);
@@ -253,7 +253,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label info_lbl1;
         private System.Windows.Forms.ListBox collections_list;
-        private System.Windows.Forms.ListBox films_in_collection_list;
         private System.Windows.Forms.Button delete_film_btn;
         private System.Windows.Forms.Button delete_collection;
         private System.Windows.Forms.ListBox all_films_collection_list;
@@ -262,5 +261,6 @@
         private System.Windows.Forms.Label info_lbl3;
         private System.Windows.Forms.Label info_lbl2;
         private System.Windows.Forms.Button add_film_btn;
+        private System.Windows.Forms.ListBox films_in_collection_list;
     }
 }

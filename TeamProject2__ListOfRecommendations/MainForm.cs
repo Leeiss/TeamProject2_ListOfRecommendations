@@ -1262,7 +1262,6 @@ namespace TeamProject2__ListOfRecommendations
 
         private void pass_collection_btn_Click(object sender, EventArgs e)
         {
-            int selectedIndex = starBoxes.IndexOf((PictureBox)sender);
             for (int i = 0; i <= 9; i++)
             {
                 starBoxes[i].Image = Properties.Resources.grayStar;
@@ -1567,6 +1566,7 @@ namespace TeamProject2__ListOfRecommendations
         {
             try
             {
+                close_showing_collection_film_btn.Visible = false;
                 pass__individual__btn.Visible = false;
                 pass_filtration_btn.Visible = false;
                 pass_collection_btn.Visible=false;

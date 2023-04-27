@@ -1644,11 +1644,11 @@
             // 
             this.close_showing_collection_film_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(210)))), ((int)(((byte)(219)))));
             this.close_showing_collection_film_btn.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.close_showing_collection_film_btn.Location = new System.Drawing.Point(1661, 1115);
+            this.close_showing_collection_film_btn.Location = new System.Drawing.Point(1786, 1115);
             this.close_showing_collection_film_btn.Name = "close_showing_collection_film_btn";
-            this.close_showing_collection_film_btn.Size = new System.Drawing.Size(397, 99);
+            this.close_showing_collection_film_btn.Size = new System.Drawing.Size(272, 99);
             this.close_showing_collection_film_btn.TabIndex = 127;
-            this.close_showing_collection_film_btn.Text = "Выйти из режима просмотра фильма подборки";
+            this.close_showing_collection_film_btn.Text = "Выйти из режима просмотра фильма\r\n";
             this.close_showing_collection_film_btn.UseVisualStyleBackColor = false;
             this.close_showing_collection_film_btn.Click += new System.EventHandler(this.close_showing_collection_film_btn_Click);
             // 
@@ -2106,7 +2106,6 @@
         public System.Windows.Forms.RichTextBox countries_collectionfilm;
         public System.Windows.Forms.RichTextBox actors_collectionfilm;
         public System.Windows.Forms.RichTextBox genres_collectionfilm;
-        private System.Windows.Forms.Button close_showing_collection_film_btn;
         public System.Windows.Forms.TextBox title_film_fromcollection;
         public System.Windows.Forms.PictureBox picture_poster_forcollection;
         public System.Windows.Forms.Panel collections_panel;
@@ -2116,5 +2115,6 @@
         private System.Windows.Forms.TextBox search_tb;
         private System.Windows.Forms.PictureBox frame_searching;
         private System.Windows.Forms.ListBox search_results_lb;
+        public System.Windows.Forms.Button close_showing_collection_film_btn;
     }
 }

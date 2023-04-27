@@ -30,6 +30,8 @@ namespace TeamProject2__ListOfRecommendations
             registration_btn.Visible = false;
             password_tb.Visible = false;
             login_tb.Visible = false;
+            hide_btn.Visible = false;
+            show_btn.Visible = false;
             this.Controls.Add(info_lbl);
             timer.Start();
         }
@@ -147,6 +149,28 @@ namespace TeamProject2__ListOfRecommendations
         {
             PasswordRecovery passwordRecovery = new PasswordRecovery(login_tb.Text);
             passwordRecovery.Show();
+        }
+
+        private void show_btn_Click(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '*';
+            hide_btn.Visible = true;
+            show_btn.Visible = false;
+            
+
+        }
+
+        private void hide_btn_Click(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '\0';
+            hide_btn.Visible = false;
+            show_btn.Visible = true;
+        }
+
+        private void password_tb_TextChanged(object sender, EventArgs e)
+        {
+            password_tb.PasswordChar = '*';
+            hide_btn.Visible = true;
         }
     }
 }

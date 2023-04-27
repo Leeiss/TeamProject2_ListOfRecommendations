@@ -40,9 +40,10 @@ namespace TeamProject2__ListOfRecommendations
         
         private void change_lbl_Click(object sender, EventArgs e)
         {
-            this.Close();
             MainForm mainForm = new MainForm(Login);
             mainForm.Close();
+            this.Close();
+            
         }
 
        

@@ -134,6 +134,7 @@ namespace TeamProject2__ListOfRecommendations
             {
                 
                 string year = movie.Date;
+                form1.close_showing_collection_film_btn.Visible = true;
                 year = year.Remove(0, 6);
                 form1.collections_panel.Visible = false;
                 form1.panel_show_collectionfilm.Visible = true;

@@ -108,7 +108,7 @@ namespace TeamProject2__ListOfRecommendations
                 command.ExecuteNonQuery();
             }
             connection.Close();
-            MessageBox.Show("Ваши предпочтения учтены, поздравляем вас с полной регистрацией");
+            MessageBox.Show("Ваши предпочтения учтены, поздравляем вас с полной регистрацией!");
             this.Close();
             Registration registration = new Registration(Login);
             registration.Close();

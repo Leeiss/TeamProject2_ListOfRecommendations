@@ -256,29 +256,36 @@ namespace TeamProject2__ListOfRecommendations
             int collectionId = collectionIds[index1];
 
             int index2 = films_in_collection_list.SelectedIndex;
-            
+            if (index2<0)
+            {
+                MessageBox.Show("Выберите фильм");
+            }
+            else
+            {
                 int movieIdToRemove = collectionfilmsIds[index2];
                 string queryRemoveMovieFromCollection = "DELETE FROM movies_collections WHERE CollectionID = @CollectionID AND MovieID = @MovieID";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            using (MySqlCommand commandRemove = new MySqlCommand(queryRemoveMovieFromCollection, connection))
-            {
-                commandRemove.Parameters.AddWithValue("@CollectionID", collectionId);
-                commandRemove.Parameters.AddWithValue("@MovieID", movieIdToRemove);
-                connection.Open();
-
-                int rowsAffected = commandRemove.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlCommand commandRemove = new MySqlCommand(queryRemoveMovieFromCollection, connection))
                 {
-                    MessageBox.Show($"Фильм <<{films_in_collection_list.SelectedItem.ToString()}>> удален из подборки <<{collections_list.SelectedItem.ToString()}>>");
-                    films_in_collection_list.Items.Clear();
-                    FillCollectionFilmsList();
-                }
+                    commandRemove.Parameters.AddWithValue("@CollectionID", collectionId);
+                    commandRemove.Parameters.AddWithValue("@MovieID", movieIdToRemove);
+                    connection.Open();
 
+                    int rowsAffected = commandRemove.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show($"Фильм <<{films_in_collection_list.SelectedItem.ToString()}>> удален из подборки <<{collections_list.SelectedItem.ToString()}>>");
+                        films_in_collection_list.Items.Clear();
+                        FillCollectionFilmsList();
+                    }
+
+                }
+                films_in_collection_list.Items.Clear();
+                FillCollectionFilmsList();
             }
-            films_in_collection_list.Items.Clear();
-            FillCollectionFilmsList();
+               
 
         }
 
