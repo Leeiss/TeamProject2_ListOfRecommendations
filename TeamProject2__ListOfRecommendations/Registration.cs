@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Xml;
 using TeamProject1_ToDoList.Classes;
 using TeamProject2__ListOfRecommendations.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -420,6 +421,36 @@ namespace TeamProject2__ListOfRecommendations
             else
             {
                 MessageBox.Show("Введенный вами код неверный");
+            }
+        }
+
+        private void login_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                password_tb.Text = "";
+                password_tb.Select();
+            }
+        }
+
+        private void password_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                email_tb.Text = "";
+                email_tb.Select();
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                login_tb.Select();
+            }
+        }
+
+        private void email_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                password_tb.Select();
             }
         }
     }

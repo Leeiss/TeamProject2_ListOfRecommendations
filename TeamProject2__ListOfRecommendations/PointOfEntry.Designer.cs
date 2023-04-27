@@ -114,6 +114,7 @@
             this.login_tb.Text = "Введите логин";
             this.login_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.login_tb.Click += new System.EventHandler(this.login_tb_Click);
+            this.login_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.login_tb_KeyDown);
             this.login_tb.MouseEnter += new System.EventHandler(this.login_tb_MouseEnter);
             this.login_tb.MouseLeave += new System.EventHandler(this.login_tb_MouseLeave);
             // 
@@ -131,6 +132,7 @@
             this.password_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.password_tb.Click += new System.EventHandler(this.password_tb_Click);
             this.password_tb.TextChanged += new System.EventHandler(this.password_tb_TextChanged);
+            this.password_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_tb_KeyDown);
             this.password_tb.MouseEnter += new System.EventHandler(this.password_tb_MouseEnter);
             this.password_tb.MouseLeave += new System.EventHandler(this.password_tb_MouseLeave);
             // 

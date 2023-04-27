@@ -35,6 +35,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
             this.search_tb = new System.Windows.Forms.TextBox();
+            this.decrease_btn = new System.Windows.Forms.PictureBox();
+            this.frame_decrease = new System.Windows.Forms.PictureBox();
+            this.frame_searching = new System.Windows.Forms.PictureBox();
+            this.collections_btn = new System.Windows.Forms.PictureBox();
+            this.api_btn = new System.Windows.Forms.PictureBox();
+            this.frame_api = new System.Windows.Forms.PictureBox();
+            this.expand_pb = new System.Windows.Forms.PictureBox();
+            this.collapse_pb = new System.Windows.Forms.PictureBox();
+            this.profile_pb = new System.Windows.Forms.PictureBox();
+            this.logo_pb = new System.Windows.Forms.PictureBox();
+            this.frane_expand = new System.Windows.Forms.PictureBox();
+            this.frame_collapse = new System.Windows.Forms.PictureBox();
+            this.frame_profile = new System.Windows.Forms.PictureBox();
+            this.substrate_collection = new System.Windows.Forms.PictureBox();
             this.just_panel = new System.Windows.Forms.Panel();
             this.hints = new System.Windows.Forms.ToolTip(this.components);
             this.film_title_lbl = new System.Windows.Forms.TextBox();
@@ -60,6 +74,7 @@
             this.pass__individual__btn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.substrate_picture1 = new System.Windows.Forms.Panel();
+            this.picture_poster = new System.Windows.Forms.PictureBox();
             this.star_btn = new System.Windows.Forms.Button();
             this.closing_panel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -86,11 +101,25 @@
             this.collections_panel = new System.Windows.Forms.Panel();
             this.add_country = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.adventure_btn = new System.Windows.Forms.PictureBox();
+            this.fantasy_btn = new System.Windows.Forms.PictureBox();
+            this.action_btn = new System.Windows.Forms.PictureBox();
+            this.comedy_btn = new System.Windows.Forms.PictureBox();
+            this.history_btn = new System.Windows.Forms.PictureBox();
+            this.detective_btn = new System.Windows.Forms.PictureBox();
             this.title_lbl = new System.Windows.Forms.Label();
+            this.substrate1 = new System.Windows.Forms.PictureBox();
+            this.substrate2 = new System.Windows.Forms.PictureBox();
+            this.substrate3 = new System.Windows.Forms.PictureBox();
+            this.substrate4 = new System.Windows.Forms.PictureBox();
+            this.substrate5 = new System.Windows.Forms.PictureBox();
+            this.substrate6 = new System.Windows.Forms.PictureBox();
             this.panel_show_collectionfilm = new System.Windows.Forms.Panel();
             this.close_showing_collection_film_btn = new System.Windows.Forms.Button();
             this.date_collectionfilm = new System.Windows.Forms.RichTextBox();
             this.substate_for_frame = new System.Windows.Forms.Panel();
+            this.picture_poster_forcollection = new System.Windows.Forms.PictureBox();
+            this.poster_substrate = new System.Windows.Forms.PictureBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.countries_collectionfilm = new System.Windows.Forms.RichTextBox();
@@ -105,37 +134,8 @@
             this.reset_stats_btn = new System.Windows.Forms.Label();
             this.pass_filtration_btn = new System.Windows.Forms.Button();
             this.search_results_lb = new System.Windows.Forms.ListBox();
-            this.picture_poster_forcollection = new System.Windows.Forms.PictureBox();
-            this.poster_substrate = new System.Windows.Forms.PictureBox();
-            this.adventure_btn = new System.Windows.Forms.PictureBox();
-            this.fantasy_btn = new System.Windows.Forms.PictureBox();
-            this.action_btn = new System.Windows.Forms.PictureBox();
-            this.comedy_btn = new System.Windows.Forms.PictureBox();
-            this.history_btn = new System.Windows.Forms.PictureBox();
-            this.detective_btn = new System.Windows.Forms.PictureBox();
-            this.substrate1 = new System.Windows.Forms.PictureBox();
-            this.substrate2 = new System.Windows.Forms.PictureBox();
-            this.substrate3 = new System.Windows.Forms.PictureBox();
-            this.substrate4 = new System.Windows.Forms.PictureBox();
-            this.substrate5 = new System.Windows.Forms.PictureBox();
-            this.substrate6 = new System.Windows.Forms.PictureBox();
             this.add_to_favorites_btn = new System.Windows.Forms.Button();
             this.add_in_compilation_btn = new System.Windows.Forms.Button();
-            this.decrease_btn = new System.Windows.Forms.PictureBox();
-            this.frame_decrease = new System.Windows.Forms.PictureBox();
-            this.frame_searching = new System.Windows.Forms.PictureBox();
-            this.collections_btn = new System.Windows.Forms.PictureBox();
-            this.api_btn = new System.Windows.Forms.PictureBox();
-            this.frame_api = new System.Windows.Forms.PictureBox();
-            this.expand_pb = new System.Windows.Forms.PictureBox();
-            this.collapse_pb = new System.Windows.Forms.PictureBox();
-            this.profile_pb = new System.Windows.Forms.PictureBox();
-            this.logo_pb = new System.Windows.Forms.PictureBox();
-            this.frane_expand = new System.Windows.Forms.PictureBox();
-            this.frame_collapse = new System.Windows.Forms.PictureBox();
-            this.frame_profile = new System.Windows.Forms.PictureBox();
-            this.substrate_collection = new System.Windows.Forms.PictureBox();
-            this.picture_poster = new System.Windows.Forms.PictureBox();
             this.substrate_picture = new System.Windows.Forms.PictureBox();
             this.grayStar1 = new System.Windows.Forms.PictureBox();
             this.grayStar2 = new System.Windows.Forms.PictureBox();
@@ -148,37 +148,6 @@
             this.grayStar9 = new System.Windows.Forms.PictureBox();
             this.grayStar10 = new System.Windows.Forms.PictureBox();
             this.upper_panel.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.frame1.SuspendLayout();
-            this.substrate_picture1.SuspendLayout();
-            this.closing_panel.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.collections_panel.SuspendLayout();
-            this.panel_show_collectionfilm.SuspendLayout();
-            this.substate_for_frame.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_poster_forcollection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
@@ -193,7 +162,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.frame1.SuspendLayout();
+            this.substrate_picture1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).BeginInit();
+            this.closing_panel.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.collections_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).BeginInit();
+            this.panel_show_collectionfilm.SuspendLayout();
+            this.substate_for_frame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_poster_forcollection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).BeginInit();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar2)).BeginInit();
@@ -271,9 +271,9 @@
             this.search_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_tb.Font = new System.Drawing.Font("XO Courser", 10F);
             this.search_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.search_tb.Location = new System.Drawing.Point(1029, 21);
+            this.search_tb.Location = new System.Drawing.Point(1029, 18);
             this.search_tb.Name = "search_tb";
-            this.search_tb.Size = new System.Drawing.Size(423, 38);
+            this.search_tb.Size = new System.Drawing.Size(427, 38);
             this.search_tb.TabIndex = 125;
             this.search_tb.TabStop = false;
             this.search_tb.Text = "Поиск фильмов..";
@@ -282,6 +282,180 @@
             this.search_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_tb_KeyDown);
             this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
             this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
+            // 
+            // decrease_btn
+            // 
+            this.decrease_btn.Image = ((System.Drawing.Image)(resources.GetObject("decrease_btn.Image")));
+            this.decrease_btn.Location = new System.Drawing.Point(1934, 13);
+            this.decrease_btn.Name = "decrease_btn";
+            this.decrease_btn.Size = new System.Drawing.Size(47, 49);
+            this.decrease_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.decrease_btn.TabIndex = 27;
+            this.decrease_btn.TabStop = false;
+            this.hints.SetToolTip(this.decrease_btn, "Свернуть");
+            this.decrease_btn.Click += new System.EventHandler(this.decrease_btn_Click);
+            this.decrease_btn.MouseEnter += new System.EventHandler(this.decrease_btn_MouseEnter);
+            this.decrease_btn.MouseLeave += new System.EventHandler(this.decrease_btn_MouseLeave);
+            // 
+            // frame_decrease
+            // 
+            this.frame_decrease.Image = ((System.Drawing.Image)(resources.GetObject("frame_decrease.Image")));
+            this.frame_decrease.Location = new System.Drawing.Point(1923, 3);
+            this.frame_decrease.Name = "frame_decrease";
+            this.frame_decrease.Size = new System.Drawing.Size(67, 73);
+            this.frame_decrease.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_decrease.TabIndex = 28;
+            this.frame_decrease.TabStop = false;
+            this.frame_decrease.Visible = false;
+            // 
+            // frame_searching
+            // 
+            this.frame_searching.Image = ((System.Drawing.Image)(resources.GetObject("frame_searching.Image")));
+            this.frame_searching.Location = new System.Drawing.Point(1024, 7);
+            this.frame_searching.Name = "frame_searching";
+            this.frame_searching.Size = new System.Drawing.Size(435, 62);
+            this.frame_searching.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_searching.TabIndex = 127;
+            this.frame_searching.TabStop = false;
+            this.frame_searching.Visible = false;
+            // 
+            // collections_btn
+            // 
+            this.collections_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.collections_btn.Image = ((System.Drawing.Image)(resources.GetObject("collections_btn.Image")));
+            this.collections_btn.Location = new System.Drawing.Point(1556, 8);
+            this.collections_btn.Name = "collections_btn";
+            this.collections_btn.Size = new System.Drawing.Size(85, 63);
+            this.collections_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.collections_btn.TabIndex = 25;
+            this.collections_btn.TabStop = false;
+            this.hints.SetToolTip(this.collections_btn, "Коллекции приложения");
+            this.collections_btn.Click += new System.EventHandler(this.collections_btn_Click);
+            this.collections_btn.MouseEnter += new System.EventHandler(this.collections_btn_MouseEnter);
+            this.collections_btn.MouseLeave += new System.EventHandler(this.collections_btn_MouseLeave);
+            // 
+            // api_btn
+            // 
+            this.api_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.api_btn.Image = ((System.Drawing.Image)(resources.GetObject("api_btn.Image")));
+            this.api_btn.Location = new System.Drawing.Point(1683, 13);
+            this.api_btn.Name = "api_btn";
+            this.api_btn.Size = new System.Drawing.Size(118, 50);
+            this.api_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.api_btn.TabIndex = 23;
+            this.api_btn.TabStop = false;
+            this.hints.SetToolTip(this.api_btn, "Поиск фильмов сервисом AMDb API");
+            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
+            this.api_btn.MouseEnter += new System.EventHandler(this.api_btn_MouseEnter);
+            this.api_btn.MouseLeave += new System.EventHandler(this.api_btn_MouseLeave);
+            // 
+            // frame_api
+            // 
+            this.frame_api.Image = ((System.Drawing.Image)(resources.GetObject("frame_api.Image")));
+            this.frame_api.Location = new System.Drawing.Point(1677, 8);
+            this.frame_api.Name = "frame_api";
+            this.frame_api.Size = new System.Drawing.Size(137, 69);
+            this.frame_api.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_api.TabIndex = 24;
+            this.frame_api.TabStop = false;
+            this.frame_api.Visible = false;
+            // 
+            // expand_pb
+            // 
+            this.expand_pb.Image = ((System.Drawing.Image)(resources.GetObject("expand_pb.Image")));
+            this.expand_pb.Location = new System.Drawing.Point(2012, 14);
+            this.expand_pb.Name = "expand_pb";
+            this.expand_pb.Size = new System.Drawing.Size(48, 48);
+            this.expand_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.expand_pb.TabIndex = 2;
+            this.expand_pb.TabStop = false;
+            this.hints.SetToolTip(this.expand_pb, "На весь экран");
+            this.expand_pb.Click += new System.EventHandler(this.expand_pb_Click);
+            this.expand_pb.MouseEnter += new System.EventHandler(this.expand_pb_MouseEnter);
+            this.expand_pb.MouseLeave += new System.EventHandler(this.expand_pb_MouseLeave);
+            // 
+            // collapse_pb
+            // 
+            this.collapse_pb.Image = ((System.Drawing.Image)(resources.GetObject("collapse_pb.Image")));
+            this.collapse_pb.Location = new System.Drawing.Point(1844, 9);
+            this.collapse_pb.Name = "collapse_pb";
+            this.collapse_pb.Size = new System.Drawing.Size(60, 60);
+            this.collapse_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.collapse_pb.TabIndex = 3;
+            this.collapse_pb.TabStop = false;
+            this.hints.SetToolTip(this.collapse_pb, "Свернуть");
+            this.collapse_pb.Click += new System.EventHandler(this.collapse_pb_Click);
+            this.collapse_pb.MouseEnter += new System.EventHandler(this.collapse_pb_MouseEnter);
+            this.collapse_pb.MouseLeave += new System.EventHandler(this.collapse_pb_MouseLeave);
+            // 
+            // profile_pb
+            // 
+            this.profile_pb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.profile_pb.Image = ((System.Drawing.Image)(resources.GetObject("profile_pb.Image")));
+            this.profile_pb.Location = new System.Drawing.Point(28, 11);
+            this.profile_pb.Name = "profile_pb";
+            this.profile_pb.Size = new System.Drawing.Size(63, 60);
+            this.profile_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profile_pb.TabIndex = 4;
+            this.profile_pb.TabStop = false;
+            this.hints.SetToolTip(this.profile_pb, "Мой профиль");
+            this.profile_pb.Click += new System.EventHandler(this.profile_pb_Click);
+            this.profile_pb.MouseEnter += new System.EventHandler(this.profile_pb_MouseEnter);
+            this.profile_pb.MouseLeave += new System.EventHandler(this.profile_pb_MouseLeave);
+            // 
+            // logo_pb
+            // 
+            this.logo_pb.Image = ((System.Drawing.Image)(resources.GetObject("logo_pb.Image")));
+            this.logo_pb.Location = new System.Drawing.Point(125, 17);
+            this.logo_pb.Name = "logo_pb";
+            this.logo_pb.Size = new System.Drawing.Size(472, 50);
+            this.logo_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo_pb.TabIndex = 0;
+            this.logo_pb.TabStop = false;
+            // 
+            // frane_expand
+            // 
+            this.frane_expand.Image = ((System.Drawing.Image)(resources.GetObject("frane_expand.Image")));
+            this.frane_expand.Location = new System.Drawing.Point(2003, 2);
+            this.frane_expand.Name = "frane_expand";
+            this.frane_expand.Size = new System.Drawing.Size(67, 73);
+            this.frane_expand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frane_expand.TabIndex = 22;
+            this.frane_expand.TabStop = false;
+            this.frane_expand.Visible = false;
+            // 
+            // frame_collapse
+            // 
+            this.frame_collapse.Image = ((System.Drawing.Image)(resources.GetObject("frame_collapse.Image")));
+            this.frame_collapse.Location = new System.Drawing.Point(1842, 4);
+            this.frame_collapse.Name = "frame_collapse";
+            this.frame_collapse.Size = new System.Drawing.Size(67, 73);
+            this.frame_collapse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_collapse.TabIndex = 21;
+            this.frame_collapse.TabStop = false;
+            this.frame_collapse.Visible = false;
+            // 
+            // frame_profile
+            // 
+            this.frame_profile.Image = ((System.Drawing.Image)(resources.GetObject("frame_profile.Image")));
+            this.frame_profile.Location = new System.Drawing.Point(26, 5);
+            this.frame_profile.Name = "frame_profile";
+            this.frame_profile.Size = new System.Drawing.Size(67, 73);
+            this.frame_profile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_profile.TabIndex = 20;
+            this.frame_profile.TabStop = false;
+            this.frame_profile.Visible = false;
+            // 
+            // substrate_collection
+            // 
+            this.substrate_collection.Image = ((System.Drawing.Image)(resources.GetObject("substrate_collection.Image")));
+            this.substrate_collection.Location = new System.Drawing.Point(1546, 3);
+            this.substrate_collection.Name = "substrate_collection";
+            this.substrate_collection.Size = new System.Drawing.Size(107, 76);
+            this.substrate_collection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate_collection.TabIndex = 26;
+            this.substrate_collection.TabStop = false;
+            this.substrate_collection.Visible = false;
             // 
             // just_panel
             // 
@@ -574,6 +748,18 @@
             this.substrate_picture1.Click += new System.EventHandler(this.substrate_picture1_Click);
             this.substrate_picture1.MouseEnter += new System.EventHandler(this.substrate_picture1_MouseEnter);
             this.substrate_picture1.MouseLeave += new System.EventHandler(this.substrate_picture1_MouseLeave);
+            // 
+            // picture_poster
+            // 
+            this.picture_poster.Location = new System.Drawing.Point(33, 26);
+            this.picture_poster.Name = "picture_poster";
+            this.picture_poster.Size = new System.Drawing.Size(560, 687);
+            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picture_poster.TabIndex = 81;
+            this.picture_poster.TabStop = false;
+            this.picture_poster.Click += new System.EventHandler(this.picture_poster_Click);
+            this.picture_poster.MouseEnter += new System.EventHandler(this.picture_poster_MouseEnter);
+            this.picture_poster.MouseLeave += new System.EventHandler(this.picture_poster_MouseLeave);
             // 
             // star_btn
             // 
@@ -1128,6 +1314,84 @@
             this.panel8.Size = new System.Drawing.Size(2137, 17);
             this.panel8.TabIndex = 112;
             // 
+            // adventure_btn
+            // 
+            this.adventure_btn.Image = ((System.Drawing.Image)(resources.GetObject("adventure_btn.Image")));
+            this.adventure_btn.Location = new System.Drawing.Point(925, 308);
+            this.adventure_btn.Name = "adventure_btn";
+            this.adventure_btn.Size = new System.Drawing.Size(285, 286);
+            this.adventure_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.adventure_btn.TabIndex = 100;
+            this.adventure_btn.TabStop = false;
+            this.adventure_btn.Click += new System.EventHandler(this.adventure_btn_Click);
+            this.adventure_btn.MouseEnter += new System.EventHandler(this.adventure_btn_MouseEnter);
+            this.adventure_btn.MouseLeave += new System.EventHandler(this.adventure_btn_MouseLeave);
+            // 
+            // fantasy_btn
+            // 
+            this.fantasy_btn.Image = ((System.Drawing.Image)(resources.GetObject("fantasy_btn.Image")));
+            this.fantasy_btn.Location = new System.Drawing.Point(391, 755);
+            this.fantasy_btn.Name = "fantasy_btn";
+            this.fantasy_btn.Size = new System.Drawing.Size(285, 286);
+            this.fantasy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fantasy_btn.TabIndex = 104;
+            this.fantasy_btn.TabStop = false;
+            this.fantasy_btn.Click += new System.EventHandler(this.fantasy_btn_Click);
+            this.fantasy_btn.MouseEnter += new System.EventHandler(this.fantasy_btn_MouseEnter);
+            this.fantasy_btn.MouseLeave += new System.EventHandler(this.fantasy_btn_MouseLeave);
+            // 
+            // action_btn
+            // 
+            this.action_btn.Image = ((System.Drawing.Image)(resources.GetObject("action_btn.Image")));
+            this.action_btn.Location = new System.Drawing.Point(1475, 308);
+            this.action_btn.Name = "action_btn";
+            this.action_btn.Size = new System.Drawing.Size(285, 286);
+            this.action_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.action_btn.TabIndex = 103;
+            this.action_btn.TabStop = false;
+            this.action_btn.Click += new System.EventHandler(this.action_btn_Click);
+            this.action_btn.MouseEnter += new System.EventHandler(this.action_btn_MouseEnter);
+            this.action_btn.MouseLeave += new System.EventHandler(this.action_btn_MouseLeave);
+            // 
+            // comedy_btn
+            // 
+            this.comedy_btn.Image = ((System.Drawing.Image)(resources.GetObject("comedy_btn.Image")));
+            this.comedy_btn.Location = new System.Drawing.Point(384, 308);
+            this.comedy_btn.Name = "comedy_btn";
+            this.comedy_btn.Size = new System.Drawing.Size(285, 286);
+            this.comedy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.comedy_btn.TabIndex = 102;
+            this.comedy_btn.TabStop = false;
+            this.comedy_btn.Click += new System.EventHandler(this.comedy_btn_Click);
+            this.comedy_btn.MouseEnter += new System.EventHandler(this.comedy_btn_MouseEnter);
+            this.comedy_btn.MouseLeave += new System.EventHandler(this.comedy_btn_MouseLeave);
+            // 
+            // history_btn
+            // 
+            this.history_btn.Image = ((System.Drawing.Image)(resources.GetObject("history_btn.Image")));
+            this.history_btn.Location = new System.Drawing.Point(1482, 755);
+            this.history_btn.Name = "history_btn";
+            this.history_btn.Size = new System.Drawing.Size(285, 286);
+            this.history_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.history_btn.TabIndex = 101;
+            this.history_btn.TabStop = false;
+            this.history_btn.Click += new System.EventHandler(this.history_btn_Click);
+            this.history_btn.MouseEnter += new System.EventHandler(this.history_btn_MouseEnter);
+            this.history_btn.MouseLeave += new System.EventHandler(this.history_btn_MouseLeave);
+            // 
+            // detective_btn
+            // 
+            this.detective_btn.Image = ((System.Drawing.Image)(resources.GetObject("detective_btn.Image")));
+            this.detective_btn.Location = new System.Drawing.Point(925, 755);
+            this.detective_btn.Name = "detective_btn";
+            this.detective_btn.Size = new System.Drawing.Size(285, 286);
+            this.detective_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.detective_btn.TabIndex = 99;
+            this.detective_btn.TabStop = false;
+            this.detective_btn.Click += new System.EventHandler(this.detective_btn_Click);
+            this.detective_btn.MouseEnter += new System.EventHandler(this.detective_btn_MouseEnter);
+            this.detective_btn.MouseLeave += new System.EventHandler(this.detective_btn_MouseLeave);
+            // 
             // title_lbl
             // 
             this.title_lbl.AutoSize = true;
@@ -1138,6 +1402,72 @@
             this.title_lbl.Size = new System.Drawing.Size(651, 57);
             this.title_lbl.TabIndex = 97;
             this.title_lbl.Text = "Н А Ш И     П О Д Б О Р К И";
+            // 
+            // substrate1
+            // 
+            this.substrate1.Image = ((System.Drawing.Image)(resources.GetObject("substrate1.Image")));
+            this.substrate1.Location = new System.Drawing.Point(363, 289);
+            this.substrate1.Name = "substrate1";
+            this.substrate1.Size = new System.Drawing.Size(338, 331);
+            this.substrate1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate1.TabIndex = 105;
+            this.substrate1.TabStop = false;
+            this.substrate1.Visible = false;
+            // 
+            // substrate2
+            // 
+            this.substrate2.Image = ((System.Drawing.Image)(resources.GetObject("substrate2.Image")));
+            this.substrate2.Location = new System.Drawing.Point(900, 285);
+            this.substrate2.Name = "substrate2";
+            this.substrate2.Size = new System.Drawing.Size(338, 331);
+            this.substrate2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate2.TabIndex = 106;
+            this.substrate2.TabStop = false;
+            this.substrate2.Visible = false;
+            // 
+            // substrate3
+            // 
+            this.substrate3.Image = ((System.Drawing.Image)(resources.GetObject("substrate3.Image")));
+            this.substrate3.Location = new System.Drawing.Point(1449, 285);
+            this.substrate3.Name = "substrate3";
+            this.substrate3.Size = new System.Drawing.Size(338, 331);
+            this.substrate3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate3.TabIndex = 107;
+            this.substrate3.TabStop = false;
+            this.substrate3.Visible = false;
+            // 
+            // substrate4
+            // 
+            this.substrate4.Image = ((System.Drawing.Image)(resources.GetObject("substrate4.Image")));
+            this.substrate4.Location = new System.Drawing.Point(369, 735);
+            this.substrate4.Name = "substrate4";
+            this.substrate4.Size = new System.Drawing.Size(338, 331);
+            this.substrate4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate4.TabIndex = 108;
+            this.substrate4.TabStop = false;
+            this.substrate4.Visible = false;
+            // 
+            // substrate5
+            // 
+            this.substrate5.Image = ((System.Drawing.Image)(resources.GetObject("substrate5.Image")));
+            this.substrate5.Location = new System.Drawing.Point(903, 732);
+            this.substrate5.Name = "substrate5";
+            this.substrate5.Size = new System.Drawing.Size(335, 331);
+            this.substrate5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate5.TabIndex = 109;
+            this.substrate5.TabStop = false;
+            this.substrate5.Visible = false;
+            // 
+            // substrate6
+            // 
+            this.substrate6.Image = ((System.Drawing.Image)(resources.GetObject("substrate6.Image")));
+            this.substrate6.Location = new System.Drawing.Point(1457, 733);
+            this.substrate6.Name = "substrate6";
+            this.substrate6.Size = new System.Drawing.Size(338, 331);
+            this.substrate6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.substrate6.TabIndex = 110;
+            this.substrate6.TabStop = false;
+            this.substrate6.Visible = false;
             // 
             // panel_show_collectionfilm
             // 
@@ -1197,6 +1527,29 @@
             this.substate_for_frame.Name = "substate_for_frame";
             this.substate_for_frame.Size = new System.Drawing.Size(841, 1002);
             this.substate_for_frame.TabIndex = 111;
+            // 
+            // picture_poster_forcollection
+            // 
+            this.picture_poster_forcollection.Location = new System.Drawing.Point(34, 33);
+            this.picture_poster_forcollection.Name = "picture_poster_forcollection";
+            this.picture_poster_forcollection.Size = new System.Drawing.Size(770, 944);
+            this.picture_poster_forcollection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picture_poster_forcollection.TabIndex = 81;
+            this.picture_poster_forcollection.TabStop = false;
+            this.picture_poster_forcollection.Click += new System.EventHandler(this.picture_poster_forcollection_Click);
+            this.picture_poster_forcollection.MouseEnter += new System.EventHandler(this.picture_poster_forcollection_MouseEnter);
+            this.picture_poster_forcollection.MouseLeave += new System.EventHandler(this.picture_poster_forcollection_MouseLeave);
+            // 
+            // poster_substrate
+            // 
+            this.poster_substrate.Image = ((System.Drawing.Image)(resources.GetObject("poster_substrate.Image")));
+            this.poster_substrate.Location = new System.Drawing.Point(88, 87);
+            this.poster_substrate.Name = "poster_substrate";
+            this.poster_substrate.Size = new System.Drawing.Size(915, 1079);
+            this.poster_substrate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.poster_substrate.TabIndex = 110;
+            this.poster_substrate.TabStop = false;
+            this.poster_substrate.Visible = false;
             // 
             // panel13
             // 
@@ -1351,183 +1704,17 @@
             // search_results_lb
             // 
             this.search_results_lb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.search_results_lb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_results_lb.Font = new System.Drawing.Font("XO Courser", 10F);
             this.search_results_lb.ForeColor = System.Drawing.SystemColors.MenuBar;
             this.search_results_lb.FormattingEnabled = true;
             this.search_results_lb.ItemHeight = 30;
-            this.search_results_lb.Location = new System.Drawing.Point(1026, 66);
+            this.search_results_lb.Location = new System.Drawing.Point(1032, 66);
             this.search_results_lb.Name = "search_results_lb";
-            this.search_results_lb.Size = new System.Drawing.Size(435, 94);
+            this.search_results_lb.Size = new System.Drawing.Size(430, 92);
             this.search_results_lb.TabIndex = 128;
             this.search_results_lb.Visible = false;
             this.search_results_lb.SelectedIndexChanged += new System.EventHandler(this.search_results_lb_SelectedIndexChanged);
-            // 
-            // picture_poster_forcollection
-            // 
-            this.picture_poster_forcollection.Location = new System.Drawing.Point(34, 33);
-            this.picture_poster_forcollection.Name = "picture_poster_forcollection";
-            this.picture_poster_forcollection.Size = new System.Drawing.Size(770, 944);
-            this.picture_poster_forcollection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picture_poster_forcollection.TabIndex = 81;
-            this.picture_poster_forcollection.TabStop = false;
-            this.picture_poster_forcollection.Click += new System.EventHandler(this.picture_poster_forcollection_Click);
-            this.picture_poster_forcollection.MouseEnter += new System.EventHandler(this.picture_poster_forcollection_MouseEnter);
-            this.picture_poster_forcollection.MouseLeave += new System.EventHandler(this.picture_poster_forcollection_MouseLeave);
-            // 
-            // poster_substrate
-            // 
-            this.poster_substrate.Image = ((System.Drawing.Image)(resources.GetObject("poster_substrate.Image")));
-            this.poster_substrate.Location = new System.Drawing.Point(88, 87);
-            this.poster_substrate.Name = "poster_substrate";
-            this.poster_substrate.Size = new System.Drawing.Size(915, 1079);
-            this.poster_substrate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.poster_substrate.TabIndex = 110;
-            this.poster_substrate.TabStop = false;
-            this.poster_substrate.Visible = false;
-            // 
-            // adventure_btn
-            // 
-            this.adventure_btn.Image = ((System.Drawing.Image)(resources.GetObject("adventure_btn.Image")));
-            this.adventure_btn.Location = new System.Drawing.Point(925, 308);
-            this.adventure_btn.Name = "adventure_btn";
-            this.adventure_btn.Size = new System.Drawing.Size(285, 286);
-            this.adventure_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.adventure_btn.TabIndex = 100;
-            this.adventure_btn.TabStop = false;
-            this.adventure_btn.Click += new System.EventHandler(this.adventure_btn_Click);
-            this.adventure_btn.MouseEnter += new System.EventHandler(this.adventure_btn_MouseEnter);
-            this.adventure_btn.MouseLeave += new System.EventHandler(this.adventure_btn_MouseLeave);
-            // 
-            // fantasy_btn
-            // 
-            this.fantasy_btn.Image = ((System.Drawing.Image)(resources.GetObject("fantasy_btn.Image")));
-            this.fantasy_btn.Location = new System.Drawing.Point(391, 755);
-            this.fantasy_btn.Name = "fantasy_btn";
-            this.fantasy_btn.Size = new System.Drawing.Size(285, 286);
-            this.fantasy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fantasy_btn.TabIndex = 104;
-            this.fantasy_btn.TabStop = false;
-            this.fantasy_btn.Click += new System.EventHandler(this.fantasy_btn_Click);
-            this.fantasy_btn.MouseEnter += new System.EventHandler(this.fantasy_btn_MouseEnter);
-            this.fantasy_btn.MouseLeave += new System.EventHandler(this.fantasy_btn_MouseLeave);
-            // 
-            // action_btn
-            // 
-            this.action_btn.Image = ((System.Drawing.Image)(resources.GetObject("action_btn.Image")));
-            this.action_btn.Location = new System.Drawing.Point(1475, 308);
-            this.action_btn.Name = "action_btn";
-            this.action_btn.Size = new System.Drawing.Size(285, 286);
-            this.action_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.action_btn.TabIndex = 103;
-            this.action_btn.TabStop = false;
-            this.action_btn.Click += new System.EventHandler(this.action_btn_Click);
-            this.action_btn.MouseEnter += new System.EventHandler(this.action_btn_MouseEnter);
-            this.action_btn.MouseLeave += new System.EventHandler(this.action_btn_MouseLeave);
-            // 
-            // comedy_btn
-            // 
-            this.comedy_btn.Image = ((System.Drawing.Image)(resources.GetObject("comedy_btn.Image")));
-            this.comedy_btn.Location = new System.Drawing.Point(384, 308);
-            this.comedy_btn.Name = "comedy_btn";
-            this.comedy_btn.Size = new System.Drawing.Size(285, 286);
-            this.comedy_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.comedy_btn.TabIndex = 102;
-            this.comedy_btn.TabStop = false;
-            this.comedy_btn.Click += new System.EventHandler(this.comedy_btn_Click);
-            this.comedy_btn.MouseEnter += new System.EventHandler(this.comedy_btn_MouseEnter);
-            this.comedy_btn.MouseLeave += new System.EventHandler(this.comedy_btn_MouseLeave);
-            // 
-            // history_btn
-            // 
-            this.history_btn.Image = ((System.Drawing.Image)(resources.GetObject("history_btn.Image")));
-            this.history_btn.Location = new System.Drawing.Point(1482, 755);
-            this.history_btn.Name = "history_btn";
-            this.history_btn.Size = new System.Drawing.Size(285, 286);
-            this.history_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.history_btn.TabIndex = 101;
-            this.history_btn.TabStop = false;
-            this.history_btn.Click += new System.EventHandler(this.history_btn_Click);
-            this.history_btn.MouseEnter += new System.EventHandler(this.history_btn_MouseEnter);
-            this.history_btn.MouseLeave += new System.EventHandler(this.history_btn_MouseLeave);
-            // 
-            // detective_btn
-            // 
-            this.detective_btn.Image = ((System.Drawing.Image)(resources.GetObject("detective_btn.Image")));
-            this.detective_btn.Location = new System.Drawing.Point(925, 755);
-            this.detective_btn.Name = "detective_btn";
-            this.detective_btn.Size = new System.Drawing.Size(285, 286);
-            this.detective_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.detective_btn.TabIndex = 99;
-            this.detective_btn.TabStop = false;
-            this.detective_btn.Click += new System.EventHandler(this.detective_btn_Click);
-            this.detective_btn.MouseEnter += new System.EventHandler(this.detective_btn_MouseEnter);
-            this.detective_btn.MouseLeave += new System.EventHandler(this.detective_btn_MouseLeave);
-            // 
-            // substrate1
-            // 
-            this.substrate1.Image = ((System.Drawing.Image)(resources.GetObject("substrate1.Image")));
-            this.substrate1.Location = new System.Drawing.Point(363, 289);
-            this.substrate1.Name = "substrate1";
-            this.substrate1.Size = new System.Drawing.Size(338, 331);
-            this.substrate1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate1.TabIndex = 105;
-            this.substrate1.TabStop = false;
-            this.substrate1.Visible = false;
-            // 
-            // substrate2
-            // 
-            this.substrate2.Image = ((System.Drawing.Image)(resources.GetObject("substrate2.Image")));
-            this.substrate2.Location = new System.Drawing.Point(900, 285);
-            this.substrate2.Name = "substrate2";
-            this.substrate2.Size = new System.Drawing.Size(338, 331);
-            this.substrate2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate2.TabIndex = 106;
-            this.substrate2.TabStop = false;
-            this.substrate2.Visible = false;
-            // 
-            // substrate3
-            // 
-            this.substrate3.Image = ((System.Drawing.Image)(resources.GetObject("substrate3.Image")));
-            this.substrate3.Location = new System.Drawing.Point(1449, 285);
-            this.substrate3.Name = "substrate3";
-            this.substrate3.Size = new System.Drawing.Size(338, 331);
-            this.substrate3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate3.TabIndex = 107;
-            this.substrate3.TabStop = false;
-            this.substrate3.Visible = false;
-            // 
-            // substrate4
-            // 
-            this.substrate4.Image = ((System.Drawing.Image)(resources.GetObject("substrate4.Image")));
-            this.substrate4.Location = new System.Drawing.Point(369, 735);
-            this.substrate4.Name = "substrate4";
-            this.substrate4.Size = new System.Drawing.Size(338, 331);
-            this.substrate4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate4.TabIndex = 108;
-            this.substrate4.TabStop = false;
-            this.substrate4.Visible = false;
-            // 
-            // substrate5
-            // 
-            this.substrate5.Image = ((System.Drawing.Image)(resources.GetObject("substrate5.Image")));
-            this.substrate5.Location = new System.Drawing.Point(903, 732);
-            this.substrate5.Name = "substrate5";
-            this.substrate5.Size = new System.Drawing.Size(335, 331);
-            this.substrate5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate5.TabIndex = 109;
-            this.substrate5.TabStop = false;
-            this.substrate5.Visible = false;
-            // 
-            // substrate6
-            // 
-            this.substrate6.Image = ((System.Drawing.Image)(resources.GetObject("substrate6.Image")));
-            this.substrate6.Location = new System.Drawing.Point(1457, 733);
-            this.substrate6.Name = "substrate6";
-            this.substrate6.Size = new System.Drawing.Size(338, 331);
-            this.substrate6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate6.TabIndex = 110;
-            this.substrate6.TabStop = false;
-            this.substrate6.Visible = false;
             // 
             // add_to_favorites_btn
             // 
@@ -1558,192 +1745,6 @@
             this.add_in_compilation_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.add_in_compilation_btn.UseVisualStyleBackColor = false;
             this.add_in_compilation_btn.Click += new System.EventHandler(this.add_in_compilation_btn_Click);
-            // 
-            // decrease_btn
-            // 
-            this.decrease_btn.Image = ((System.Drawing.Image)(resources.GetObject("decrease_btn.Image")));
-            this.decrease_btn.Location = new System.Drawing.Point(1934, 13);
-            this.decrease_btn.Name = "decrease_btn";
-            this.decrease_btn.Size = new System.Drawing.Size(47, 49);
-            this.decrease_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.decrease_btn.TabIndex = 27;
-            this.decrease_btn.TabStop = false;
-            this.hints.SetToolTip(this.decrease_btn, "Свернуть");
-            this.decrease_btn.Click += new System.EventHandler(this.decrease_btn_Click);
-            this.decrease_btn.MouseEnter += new System.EventHandler(this.decrease_btn_MouseEnter);
-            this.decrease_btn.MouseLeave += new System.EventHandler(this.decrease_btn_MouseLeave);
-            // 
-            // frame_decrease
-            // 
-            this.frame_decrease.Image = ((System.Drawing.Image)(resources.GetObject("frame_decrease.Image")));
-            this.frame_decrease.Location = new System.Drawing.Point(1923, 3);
-            this.frame_decrease.Name = "frame_decrease";
-            this.frame_decrease.Size = new System.Drawing.Size(67, 73);
-            this.frame_decrease.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_decrease.TabIndex = 28;
-            this.frame_decrease.TabStop = false;
-            this.frame_decrease.Visible = false;
-            // 
-            // frame_searching
-            // 
-            this.frame_searching.Image = ((System.Drawing.Image)(resources.GetObject("frame_searching.Image")));
-            this.frame_searching.Location = new System.Drawing.Point(1023, 7);
-            this.frame_searching.Name = "frame_searching";
-            this.frame_searching.Size = new System.Drawing.Size(435, 62);
-            this.frame_searching.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_searching.TabIndex = 127;
-            this.frame_searching.TabStop = false;
-            this.frame_searching.Visible = false;
-            // 
-            // collections_btn
-            // 
-            this.collections_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.collections_btn.Image = ((System.Drawing.Image)(resources.GetObject("collections_btn.Image")));
-            this.collections_btn.Location = new System.Drawing.Point(1556, 8);
-            this.collections_btn.Name = "collections_btn";
-            this.collections_btn.Size = new System.Drawing.Size(85, 63);
-            this.collections_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.collections_btn.TabIndex = 25;
-            this.collections_btn.TabStop = false;
-            this.hints.SetToolTip(this.collections_btn, "Коллекции приложения");
-            this.collections_btn.Click += new System.EventHandler(this.collections_btn_Click);
-            this.collections_btn.MouseEnter += new System.EventHandler(this.collections_btn_MouseEnter);
-            this.collections_btn.MouseLeave += new System.EventHandler(this.collections_btn_MouseLeave);
-            // 
-            // api_btn
-            // 
-            this.api_btn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.api_btn.Image = ((System.Drawing.Image)(resources.GetObject("api_btn.Image")));
-            this.api_btn.Location = new System.Drawing.Point(1685, 17);
-            this.api_btn.Name = "api_btn";
-            this.api_btn.Size = new System.Drawing.Size(118, 50);
-            this.api_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.api_btn.TabIndex = 23;
-            this.api_btn.TabStop = false;
-            this.hints.SetToolTip(this.api_btn, "Поиск фильмов сервисом AMDb API");
-            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
-            this.api_btn.MouseEnter += new System.EventHandler(this.api_btn_MouseEnter);
-            this.api_btn.MouseLeave += new System.EventHandler(this.api_btn_MouseLeave);
-            // 
-            // frame_api
-            // 
-            this.frame_api.Image = ((System.Drawing.Image)(resources.GetObject("frame_api.Image")));
-            this.frame_api.Location = new System.Drawing.Point(1677, 8);
-            this.frame_api.Name = "frame_api";
-            this.frame_api.Size = new System.Drawing.Size(137, 69);
-            this.frame_api.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_api.TabIndex = 24;
-            this.frame_api.TabStop = false;
-            this.frame_api.Visible = false;
-            // 
-            // expand_pb
-            // 
-            this.expand_pb.Image = ((System.Drawing.Image)(resources.GetObject("expand_pb.Image")));
-            this.expand_pb.Location = new System.Drawing.Point(2012, 14);
-            this.expand_pb.Name = "expand_pb";
-            this.expand_pb.Size = new System.Drawing.Size(48, 48);
-            this.expand_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.expand_pb.TabIndex = 2;
-            this.expand_pb.TabStop = false;
-            this.hints.SetToolTip(this.expand_pb, "На весь экран");
-            this.expand_pb.Click += new System.EventHandler(this.expand_pb_Click);
-            this.expand_pb.MouseEnter += new System.EventHandler(this.expand_pb_MouseEnter);
-            this.expand_pb.MouseLeave += new System.EventHandler(this.expand_pb_MouseLeave);
-            // 
-            // collapse_pb
-            // 
-            this.collapse_pb.Image = ((System.Drawing.Image)(resources.GetObject("collapse_pb.Image")));
-            this.collapse_pb.Location = new System.Drawing.Point(1844, 9);
-            this.collapse_pb.Name = "collapse_pb";
-            this.collapse_pb.Size = new System.Drawing.Size(60, 60);
-            this.collapse_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.collapse_pb.TabIndex = 3;
-            this.collapse_pb.TabStop = false;
-            this.hints.SetToolTip(this.collapse_pb, "Свернуть");
-            this.collapse_pb.Click += new System.EventHandler(this.collapse_pb_Click);
-            this.collapse_pb.MouseEnter += new System.EventHandler(this.collapse_pb_MouseEnter);
-            this.collapse_pb.MouseLeave += new System.EventHandler(this.collapse_pb_MouseLeave);
-            // 
-            // profile_pb
-            // 
-            this.profile_pb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.profile_pb.Image = ((System.Drawing.Image)(resources.GetObject("profile_pb.Image")));
-            this.profile_pb.Location = new System.Drawing.Point(28, 11);
-            this.profile_pb.Name = "profile_pb";
-            this.profile_pb.Size = new System.Drawing.Size(63, 60);
-            this.profile_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profile_pb.TabIndex = 4;
-            this.profile_pb.TabStop = false;
-            this.hints.SetToolTip(this.profile_pb, "Мой профиль");
-            this.profile_pb.Click += new System.EventHandler(this.profile_pb_Click);
-            this.profile_pb.MouseEnter += new System.EventHandler(this.profile_pb_MouseEnter);
-            this.profile_pb.MouseLeave += new System.EventHandler(this.profile_pb_MouseLeave);
-            // 
-            // logo_pb
-            // 
-            this.logo_pb.Image = ((System.Drawing.Image)(resources.GetObject("logo_pb.Image")));
-            this.logo_pb.Location = new System.Drawing.Point(125, 17);
-            this.logo_pb.Name = "logo_pb";
-            this.logo_pb.Size = new System.Drawing.Size(472, 50);
-            this.logo_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo_pb.TabIndex = 0;
-            this.logo_pb.TabStop = false;
-            // 
-            // frane_expand
-            // 
-            this.frane_expand.Image = ((System.Drawing.Image)(resources.GetObject("frane_expand.Image")));
-            this.frane_expand.Location = new System.Drawing.Point(2003, 2);
-            this.frane_expand.Name = "frane_expand";
-            this.frane_expand.Size = new System.Drawing.Size(67, 73);
-            this.frane_expand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frane_expand.TabIndex = 22;
-            this.frane_expand.TabStop = false;
-            this.frane_expand.Visible = false;
-            // 
-            // frame_collapse
-            // 
-            this.frame_collapse.Image = ((System.Drawing.Image)(resources.GetObject("frame_collapse.Image")));
-            this.frame_collapse.Location = new System.Drawing.Point(1842, 4);
-            this.frame_collapse.Name = "frame_collapse";
-            this.frame_collapse.Size = new System.Drawing.Size(67, 73);
-            this.frame_collapse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_collapse.TabIndex = 21;
-            this.frame_collapse.TabStop = false;
-            this.frame_collapse.Visible = false;
-            // 
-            // frame_profile
-            // 
-            this.frame_profile.Image = ((System.Drawing.Image)(resources.GetObject("frame_profile.Image")));
-            this.frame_profile.Location = new System.Drawing.Point(26, 5);
-            this.frame_profile.Name = "frame_profile";
-            this.frame_profile.Size = new System.Drawing.Size(67, 73);
-            this.frame_profile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_profile.TabIndex = 20;
-            this.frame_profile.TabStop = false;
-            this.frame_profile.Visible = false;
-            // 
-            // substrate_collection
-            // 
-            this.substrate_collection.Image = ((System.Drawing.Image)(resources.GetObject("substrate_collection.Image")));
-            this.substrate_collection.Location = new System.Drawing.Point(1546, 3);
-            this.substrate_collection.Name = "substrate_collection";
-            this.substrate_collection.Size = new System.Drawing.Size(107, 76);
-            this.substrate_collection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.substrate_collection.TabIndex = 26;
-            this.substrate_collection.TabStop = false;
-            this.substrate_collection.Visible = false;
-            // 
-            // picture_poster
-            // 
-            this.picture_poster.Location = new System.Drawing.Point(33, 26);
-            this.picture_poster.Name = "picture_poster";
-            this.picture_poster.Size = new System.Drawing.Size(560, 687);
-            this.picture_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picture_poster.TabIndex = 81;
-            this.picture_poster.TabStop = false;
-            this.picture_poster.Click += new System.EventHandler(this.picture_poster_Click);
-            this.picture_poster.MouseEnter += new System.EventHandler(this.picture_poster_MouseEnter);
-            this.picture_poster.MouseLeave += new System.EventHandler(this.picture_poster_MouseLeave);
             // 
             // substrate_picture
             // 
@@ -1924,52 +1925,6 @@
             this.Click += new System.EventHandler(this.MainForm_Click);
             this.upper_panel.ResumeLayout(false);
             this.upper_panel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.frame1.ResumeLayout(false);
-            this.frame1.PerformLayout();
-            this.substrate_picture1.ResumeLayout(false);
-            this.closing_panel.ResumeLayout(false);
-            this.closing_panel.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.collections_panel.ResumeLayout(false);
-            this.collections_panel.PerformLayout();
-            this.panel_show_collectionfilm.ResumeLayout(false);
-            this.panel_show_collectionfilm.PerformLayout();
-            this.substate_for_frame.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_poster_forcollection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
@@ -1984,7 +1939,53 @@
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.frame1.ResumeLayout(false);
+            this.frame1.PerformLayout();
+            this.substrate_picture1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picture_poster)).EndInit();
+            this.closing_panel.ResumeLayout(false);
+            this.closing_panel.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.collections_panel.ResumeLayout(false);
+            this.collections_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.adventure_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fantasy_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.action_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comedy_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.history_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detective_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.substrate6)).EndInit();
+            this.panel_show_collectionfilm.ResumeLayout(false);
+            this.panel_show_collectionfilm.PerformLayout();
+            this.substate_for_frame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picture_poster_forcollection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grayStar2)).EndInit();

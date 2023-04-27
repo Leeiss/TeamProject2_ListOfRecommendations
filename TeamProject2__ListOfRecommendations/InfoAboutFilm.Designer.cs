@@ -196,8 +196,10 @@
             this.info_title.Location = new System.Drawing.Point(765, 92);
             this.info_title.Multiline = true;
             this.info_title.Name = "info_title";
+            this.info_title.ReadOnly = true;
             this.info_title.Size = new System.Drawing.Size(547, 114);
             this.info_title.TabIndex = 100;
+            this.info_title.TabStop = false;
             // 
             // InfoAboutFilm
             // 

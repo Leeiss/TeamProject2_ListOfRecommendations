@@ -23,7 +23,7 @@ namespace TeamProject2__ListOfRecommendations
         {
             InitializeComponent();
             timer = new Timer();
-            timer.Interval = 500; 
+            timer.Interval = 500;
             timer.Tick += new EventHandler(timer_Tick);
             info_lbl.Visible = false;
             go_btn.Visible = false;
@@ -39,7 +39,7 @@ namespace TeamProject2__ListOfRecommendations
         private void Authorization_Load(object sender, EventArgs e)
         {
             picture_logo.SizeMode = PictureBoxSizeMode.StretchImage;
-            
+
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
@@ -53,14 +53,14 @@ namespace TeamProject2__ListOfRecommendations
             String passUser = password_tb.Text;
 
             DataBase db = new DataBase();
-            
+
             MySqlCommand command = new MySqlCommand("SELECT * FROM users WHERE  login = @uL AND password = @uP", db.GetConnection()); // создаем объект и передаем команду для вытягивания из бд логина и пароля из бд
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            adapter.SelectCommand = command; 
+            adapter.SelectCommand = command;
 
 
             DataTable table = new DataTable();
@@ -156,7 +156,7 @@ namespace TeamProject2__ListOfRecommendations
             password_tb.PasswordChar = '*';
             hide_btn.Visible = true;
             show_btn.Visible = false;
-            
+
 
         }
 
@@ -171,6 +171,24 @@ namespace TeamProject2__ListOfRecommendations
         {
             password_tb.PasswordChar = '*';
             hide_btn.Visible = true;
+        }
+
+        private void login_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                password_tb.Text = "";
+                password_tb.Select();
+            }
+
+        }
+
+        private void password_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+               login_tb.Select();
+            }
         }
     }
 }
