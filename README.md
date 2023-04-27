@@ -2,7 +2,7 @@
 :ballot_box_with_check: [Техническое задание]()  :ballot_box_with_check: [Презентация]()  :ballot_box_with_check: [Баг-репорт]()  
   
 Финальная версия проекта [здесь]()
-____
+
 Участники проекта  
 Аналитик: [Azat](https://github.com/Baby1ner)   
 Разработчик: [Leisan](https://github.com/Leeiss)     
