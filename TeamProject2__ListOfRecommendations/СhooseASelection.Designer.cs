@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(СhooseCollection));
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.collections_list = new System.Windows.Forms.ListBox();
             this.add_btn = new System.Windows.Forms.Button();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.add_btn);
             this.Controls.Add(this.collections_list);
             this.Controls.Add(this.info_lbl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "СhooseCollection";
             this.Text = "Выбор подборки";
             this.Load += new System.EventHandler(this.СhooseCollection_Load);

@@ -218,7 +218,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoAboutFilm";
-            this.Text = "InfoAboutFilm";
+            this.Text = "Информация о фильме";
             this.Load += new System.EventHandler(this.InfoAboutFilm_Load);
             this.substrate5.ResumeLayout(false);
             this.substrate5.PerformLayout();
