@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -34,6 +35,7 @@ namespace TeamProject2__ListOfRecommendations
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
         private void AddFilm_Load(object sender, EventArgs e)
         {
+            selected_date.MaxDate = DateTime.Now;
             IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
 
             foreach (string actor in actors)
@@ -77,11 +79,11 @@ namespace TeamProject2__ListOfRecommendations
             search_actor.Text = string.Empty;
         }
 
-        private void SearchInList(ListBox list, string searchText)
+        private void SearchInList(System.Windows.Forms.ListBox list, string searchText)
         {
             int index = list.FindString(searchText);
 
-            if (index != ListBox.NoMatches)
+            if (index != System.Windows.Forms.ListBox.NoMatches)
             {
                 list.SelectedIndex = index;
             }
@@ -144,26 +146,47 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_genre_Click(object sender, EventArgs e)
         {
-            GenreSelect = true;
-            Genres.Add(genres_list.SelectedItem.ToString());
-            MessageBox.Show("Выбранный вами жанр добавлен в информацию о жанрах фильма");
-            YesNoShowBtn();
+            if (!Genres.Contains(genres_list.SelectedItem))
+            {
+                GenreSelect = true;
+                Genres.Add(genres_list.SelectedItem.ToString());
+                MessageBox.Show("Выбранный вами жанр добавлен в информацию о жанрах фильма");
+                YesNoShowBtn();
+            }
+            else
+            {
+                MessageBox.Show("Данный жанр уже был добавлен");
+            }
         }
 
         private void add_country_Click(object sender, EventArgs e)
         {
-            CountrySelect = true;
-            Countries.Add((string)countries_list.SelectedItem);
-            MessageBox.Show("Выбранная вами страна добавлена в информацию странах-производителях фильма");
-            YesNoShowBtn();
+            if (!Countries.Contains(countries_list.SelectedItem))
+            {
+                CountrySelect = true;
+                Countries.Add((string)countries_list.SelectedItem);
+                MessageBox.Show("Выбранная вами страна добавлена в информацию странах-производителях фильма");
+                YesNoShowBtn();
+            }
+            else
+            {
+                MessageBox.Show("Данная страна уже была добавлена");
+            }
         }
 
         private void add_actor_Click(object sender, EventArgs e)
         {
-            ActorSelect = true;
+            if (!Actors.Contains(actors_list.SelectedItem))
+            {
+                ActorSelect = true;
             Actors.Add((string)actors_list.SelectedItem);
             MessageBox.Show("Выбранное вами имя актера добавлено в информацию об актерах фильма");
             YesNoShowBtn();
+            }
+            else
+            {
+                MessageBox.Show("Данный жанр уже был добавлен");
+            }
         }
 
         private void selected_date_ValueChanged(object sender, EventArgs e)
@@ -204,6 +227,7 @@ namespace TeamProject2__ListOfRecommendations
                 else
                 {
                     MessageBox.Show("Данный фильм уже добавлен в приложение");
+                    this.Close();
                 }
             }
             else

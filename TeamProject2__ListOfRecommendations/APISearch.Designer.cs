@@ -43,6 +43,7 @@
             this.substrate5 = new System.Windows.Forms.Panel();
             this.country_lbl = new System.Windows.Forms.Label();
             this.info_title = new System.Windows.Forms.Label();
+            this.image_poster = new System.Windows.Forms.PictureBox();
             this.info_mark = new System.Windows.Forms.RichTextBox();
             this.info_year = new System.Windows.Forms.RichTextBox();
             this.info_actors = new System.Windows.Forms.RichTextBox();
@@ -56,16 +57,15 @@
             this.substrate3 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.search_tb = new System.Windows.Forms.TextBox();
-            this.image_poster = new System.Windows.Forms.PictureBox();
             this.search_btn1 = new System.Windows.Forms.Button();
             this.frame_searching = new System.Windows.Forms.PictureBox();
             this.closing_panel.SuspendLayout();
             this.substrate5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
             this.substrate4.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
             this.substrate3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +130,7 @@
             this.info_lbl4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
             this.info_lbl4.Location = new System.Drawing.Point(74, 396);
             this.info_lbl4.Name = "info_lbl4";
-            this.info_lbl4.Size = new System.Drawing.Size(1352, 400);
+            this.info_lbl4.Size = new System.Drawing.Size(1176, 320);
             this.info_lbl4.TabIndex = 43;
             this.info_lbl4.Text = resources.GetString("info_lbl4.Text");
             // 
@@ -156,7 +156,7 @@
             this.closing_panel.Controls.Add(this.search_tb);
             this.closing_panel.Controls.Add(this.search_btn1);
             this.closing_panel.Controls.Add(this.frame_searching);
-            this.closing_panel.Location = new System.Drawing.Point(12, 1);
+            this.closing_panel.Location = new System.Drawing.Point(2, 2);
             this.closing_panel.Name = "closing_panel";
             this.closing_panel.Size = new System.Drawing.Size(1484, 930);
             this.closing_panel.TabIndex = 44;
@@ -218,6 +218,14 @@
             this.info_title.TabIndex = 45;
             this.info_title.Text = "фильм";
             this.info_title.Visible = false;
+            // 
+            // image_poster
+            // 
+            this.image_poster.Location = new System.Drawing.Point(69, 126);
+            this.image_poster.Name = "image_poster";
+            this.image_poster.Size = new System.Drawing.Size(656, 767);
+            this.image_poster.TabIndex = 85;
+            this.image_poster.TabStop = false;
             // 
             // info_mark
             // 
@@ -363,14 +371,6 @@
             this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
             this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
             // 
-            // image_poster
-            // 
-            this.image_poster.Location = new System.Drawing.Point(69, 126);
-            this.image_poster.Name = "image_poster";
-            this.image_poster.Size = new System.Drawing.Size(656, 767);
-            this.image_poster.TabIndex = 85;
-            this.image_poster.TabStop = false;
-            // 
             // search_btn1
             // 
             this.search_btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
@@ -413,6 +413,7 @@
             this.closing_panel.PerformLayout();
             this.substrate5.ResumeLayout(false);
             this.substrate5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
             this.substrate4.ResumeLayout(false);
             this.substrate4.PerformLayout();
             this.substrate2.ResumeLayout(false);
@@ -421,7 +422,6 @@
             this.substrate1.PerformLayout();
             this.substrate3.ResumeLayout(false);
             this.substrate3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image_poster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -116,18 +117,33 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_genre_Click(object sender, EventArgs e)
         {
-            Genres.Add(genres_list.SelectedItem.ToString());
-            MessageBox.Show($"Жанр фильма <<{genres_list.SelectedItem.ToString()}>> добавился в список ваших любимых");
-            next_btn.Visible = true;
+            if (!Genres.Contains(genres_list.SelectedItem))
+            {
+                Genres.Add(genres_list.SelectedItem.ToString());
+                MessageBox.Show($"Жанр фильма <<{genres_list.SelectedItem.ToString()}>> добавился в список ваших любимых");
+                next_btn.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show($"Жанр фильма <<{genres_list.SelectedItem.ToString()}>> уже был добавлен в список ваших любимых");
+            }
 
         }
 
         private void add_actor_Click(object sender, EventArgs e)
         {
-            next_btn.Visible = false;
-            Actors.Add(actors_list.SelectedItem.ToString());
-            go_btn.Visible = true;
-            MessageBox.Show($"Актер {actors_list.SelectedItem.ToString()} добавился в список ваших любимых актеров");
+            if (!Actors.Contains(actors_list.SelectedItem))
+            {
+                next_btn.Visible = false;
+                Actors.Add(actors_list.SelectedItem.ToString());
+                go_btn.Visible = true;
+                MessageBox.Show($"Актер {actors_list.SelectedItem.ToString()} добавился в список ваших любимых актеров");
+            }
+            else
+            {
+                MessageBox.Show($"Актер {actors_list.SelectedItem.ToString()} уже был добавлен в список ваших любимых актеров");
+
+            }
 
         }
 

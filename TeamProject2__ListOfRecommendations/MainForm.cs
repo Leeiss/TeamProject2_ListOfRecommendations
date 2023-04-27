@@ -8,18 +8,21 @@ using System.Xml.Linq;
 using System.Data;
 using System.Linq;
 using System.Collections;
+using MySqlX.XDevAPI.Relational;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Deployment.Internal;
 
 namespace TeamProject2__ListOfRecommendations
 {
 
     public partial class MainForm : Form
     {
-        
-       
+
+
         public MainForm(string login)
         {
             InitializeComponent();
-            
+
             connection = new MySqlConnection(connectionString);
             Login = login;
         }
@@ -31,7 +34,7 @@ namespace TeamProject2__ListOfRecommendations
         private bool SelectActor = false;
         private bool SelectCountry = false;
         private bool IsIndividual = true;//если подборка фильмов происходит на основе предпочтений пользователя
-        private bool IsNotIndividual = false;//есди подборка фильма происходит из готовых коллекций (коллекций приложения по жанрам)
+        private bool IsNotIndividual = false;//если подборка фильма происходит из готовых коллекций (коллекций приложения по жанрам)
 
         private List<string> Genres = new List<string>();
         private List<string> Actors = new List<string>();
@@ -41,13 +44,17 @@ namespace TeamProject2__ListOfRecommendations
         private List<Movie> CollectionMoviesList = new List<Movie>();//лист для работы с готовыми коллекциями приложения
         private List<int> CollectionsIds = new List<int>();//лист для работы с готовыми коллекциями приложения
         private List<Movie> TopRatedMovies = new List<Movie>(); //лист, в котором хранится 5 фильмов с самым высоким рейтингом на данный момент
+        private List<Movie> TopRatedFilteredMovies = new List<Movie>(); //лист, в котором хранится 5 фильмов с самым высоким рейтингом с конкретными характеристиками
+        List<int> Searching_movieIds = new List<int>();
+        private string datelbl;
+        private string actorslbl;
+        private string countrieslbl;
+        private string genreslbl;
         public string LinkForCollection;
+        
 
         int formWidth;
         int formHeight;
-
-
-
 
         private string Date = null;
         public string Login;
@@ -59,18 +66,8 @@ namespace TeamProject2__ListOfRecommendations
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
 
-       /// <summary>
-       /// Очищаем все данные по фильму
-       /// </summary>
-       private void ClearLbls()
-        {
-            genre_info.Text = "";
-            actors_info.Text = "";
-            countries_info.Text = "";
-            dateinterval_info.Text = "";
-        }     
 
-       
+
         /// <summary>
         /// Заполняет данными о фильме в основной форме
         /// </summary>
@@ -89,12 +86,12 @@ namespace TeamProject2__ListOfRecommendations
             {
                 MessageBox.Show("В базе данных приложения еще нет фильмов с таким жанром");
             }
-            
+
         }
-    /// <summary>
-    /// вспомогательный метод, который получает информацию о фильме по его id
-    /// </summary>
-    /// <returns></returns>
+        /// <summary>
+        /// вспомогательный метод, который получает информацию о фильме по его id
+        /// </summary>
+        /// <returns></returns>
         public Movie GetMovieDetails()
         {
             MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations");
@@ -102,7 +99,7 @@ namespace TeamProject2__ListOfRecommendations
 
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = @"
-        SELECT movies.Title, movies.PicturePath, movies.Date,
+        SELECT movies.Title, movies.PicturePath, movies.Link, movies.Date,
             GROUP_CONCAT(DISTINCT film_genres.Genre SEPARATOR ', ') AS Genres,
             GROUP_CONCAT(DISTINCT film_actors.Actor SEPARATOR ', ') AS Actors,
             GROUP_CONCAT(DISTINCT film_countries.Country SEPARATOR ', ') AS Countries
@@ -121,6 +118,7 @@ namespace TeamProject2__ListOfRecommendations
             {
                 reader.Read();
                 string title = reader.GetString("Title");
+                string link = reader.GetString("Link");
                 string path = reader.GetString("PicturePath");
                 string date = reader.GetString("Date");
                 string genres = reader.IsDBNull(reader.GetOrdinal("Genres")) ? "" : reader.GetString("Genres");
@@ -131,6 +129,7 @@ namespace TeamProject2__ListOfRecommendations
                 result_movie.Title = title;
                 result_movie.PicturePath = path;
                 result_movie.Genres = genres;
+                result_movie.Link = link;
                 result_movie.Actors = actors;
                 result_movie.Countries = countries;
             }
@@ -190,7 +189,7 @@ namespace TeamProject2__ListOfRecommendations
         /// <param name="movie"></param>
         private void ShowInfoInLbls(Movie movie)
         {
-            if (movie!=null)
+            if (movie != null)
             {
                 string year = movie.Date;
                 year = year.Remove(0, 6);
@@ -212,7 +211,6 @@ namespace TeamProject2__ListOfRecommendations
         /// </summary>
         private void ShowRecomendedMovie(Movie movie)
         {
-            ClearLbls();
             ShowInfoInLbls(movie);
         }
 
@@ -313,6 +311,53 @@ namespace TeamProject2__ListOfRecommendations
             return topRatedMovies;
         }
 
+        static List<Movie> AllMovies(string userLogin)
+        {
+            connection.Open();
+
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
+                "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
+                "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
+                "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as Rating " + // добавленное поле Rating
+                "FROM movies m " +
+                "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
+                "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
+                "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
+                "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
+                "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
+                "JOIN users u ON u.Login = ugr.Username " +
+                "WHERE u.Login = @userLogin " +
+                "GROUP BY m.MovieID ";
+
+            command.Parameters.AddWithValue("@userLogin", userLogin);
+            List<Movie> allMovies = new List<Movie>();
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Movie topRatedMovie = new Movie();
+                    topRatedMovie.MovieID = reader.GetInt32("MovieID");
+                    topRatedMovie.Title = reader.GetString("Title");
+                    topRatedMovie.Date = reader.GetString("Date");
+                    topRatedMovie.PicturePath = reader.GetString("PicturePath");
+                    topRatedMovie.Link = reader.GetString("Link");
+                    topRatedMovie.Genres = reader.GetString("Genres");
+                    topRatedMovie.Actors = reader.GetString("Actors");
+                    topRatedMovie.Countries = reader.GetString("Countries");
+                    topRatedMovie.OverallRating = reader.GetDouble("Rating");
+
+                    allMovies.Add(topRatedMovie);
+                }
+            }
+
+            connection.Close();
+
+            return allMovies;
+        }
+
         /// <summary>
         /// Выводит информацию по подборкам пользователя в лист
         /// </summary>
@@ -345,10 +390,14 @@ namespace TeamProject2__ListOfRecommendations
                 list_collections.Items.Add(collectionName);
             }
         }
-    
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+
+            DateTime dt = DateTime.Now;
+            date1.MaxDate = dt;
             TopRatedMovies.Clear();
             TopRatedMovies = GetTopRatedMovie(Login);
             TopRatedMovies = GetTopRatedMovie(Login);
@@ -361,26 +410,29 @@ namespace TeamProject2__ListOfRecommendations
                 ShowRecomendedMovie(TopRatedMovies[0]);
             }
             ShowUserCollectionsList();
-            
+
             conn = new MySqlConnection(connectionString);
 
-            
+
             CheckAdminRights(Login, add_film_btn);
 
             IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
+            foreach (string actor in actors)
+            {
+                actors_list.Items.Add(actor);
+            }
 
-            
             starBoxes.Add(grayStar1); starBoxes.Add(grayStar2); starBoxes.Add(grayStar3); starBoxes.Add(grayStar4); starBoxes.Add(grayStar5); starBoxes.Add(grayStar6); starBoxes.Add(grayStar7); starBoxes.Add(grayStar8); starBoxes.Add(grayStar9); starBoxes.Add(grayStar10);
-            
-            
+
+
             StartPosition = FormStartPosition.CenterScreen;
 
-            int buttonOffset = 10; 
+            int buttonOffset = 10;
             formWidth = just_panel.Location.X + just_panel.Width + buttonOffset; // Вычисляем желаемую ширину формы
             formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
 
-            
+
         }
 
         private void profile_pb_MouseEnter(object sender, EventArgs e)
@@ -422,8 +474,8 @@ namespace TeamProject2__ListOfRecommendations
         private void profile_pb_Click(object sender, EventArgs e)
         {
             ProfileMenagement profileMenagement = new ProfileMenagement(Login);
-            profileMenagement.Location = new Point(this.Location.X-20, this.Location.Y-20);
-            profileMenagement.ShowDialog(); 
+            profileMenagement.Location = new Point(this.Location.X - 20, this.Location.Y - 20);
+            profileMenagement.ShowDialog();
         }
 
 
@@ -483,9 +535,14 @@ namespace TeamProject2__ListOfRecommendations
 
         private void change_btn_Click(object sender, EventArgs e)
         {
+            Actors.Clear();
+            Genres.Clear();
+            Date = null;
+            Countries.Clear();
             closing_panel.Visible = true;
+            if (TopRatedFilteredMovies != null)
+                TopRatedFilteredMovies.Clear();
 
-            
         }
 
         private void add_in_compilation_btn_Click(object sender, EventArgs e)
@@ -505,7 +562,7 @@ namespace TeamProject2__ListOfRecommendations
             FillListWithCollectionsAgain();
             CollectionsIds.Clear();
             ShowUserCollectionsList();
-        } 
+        }
 
         public void FillListWithCollectionsAgain()
         {
@@ -540,16 +597,13 @@ namespace TeamProject2__ListOfRecommendations
             {
                 MessageBox.Show("Выберите коллекцию");
             }
-            
+
 
         }
 
-        public void ShowPanel()
-        {
-            
-        }
+
         /// <summary>
-        /// Всполмогательный метод для того, чтобы проверить, является ли пользователь адмимнистатором
+        /// Вспомогательный метод для того, чтобы проверить, является ли пользователь администратором
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
@@ -613,12 +667,12 @@ namespace TeamProject2__ListOfRecommendations
         }
 
 
-       
+
 
         private void film_title_lbl_MouseEnter(object sender, EventArgs e)
         {
             film_title_lbl.ForeColor = Color.FromArgb(133, 162, 167);
-            
+
         }
 
         private void film_title_lbl_MouseLeave(object sender, EventArgs e)
@@ -643,21 +697,24 @@ namespace TeamProject2__ListOfRecommendations
             infoAboutFilm.Show();
         }
 
+        
 
         private void pass_btn_Click(object sender, EventArgs e)
         {
             TopRatedMovies.RemoveAt(0);
             if (TopRatedMovies.Count == 0)
             {
-                TopRatedMovies =  GetTopRatedMovie(Login);
+                TopRatedMovies = GetTopRatedMovie(Login);
             }
             ShowRecomendedMovie(TopRatedMovies[0]);
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
+
+
         }
 
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            
-        }
 
         private void picture_poster_MouseLeave(object sender, EventArgs e)
         {
@@ -666,6 +723,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void grayStar1_Click(object sender, EventArgs e)
         {
+
             OperationsClickStar();
         }
 
@@ -726,16 +784,18 @@ namespace TeamProject2__ListOfRecommendations
         private void StarBox_Click(object sender, EventArgs e)
         {
             int selectedIndex = starBoxes.IndexOf((PictureBox)sender);
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
             for (int i = 0; i <= selectedIndex; i++)
             {
                 starBoxes[i].Image = Properties.Resources.star;
             }
             Rating = selectedIndex + 1;
-
-
         }
 
-         private void grayStar2_MouseClick(object sender, MouseEventArgs e)
+        private void grayStar2_MouseClick(object sender, MouseEventArgs e)
         {
             OperationsClickStar();
         }
@@ -746,9 +806,6 @@ namespace TeamProject2__ListOfRecommendations
             panel_show_collectionfilm.Visible = false;
         }
 
-        
-
-       
         private void ShowBtn()
         {
             if (SelectGenre || SelectActor || SelectDate1 || SelectCountry)
@@ -776,6 +833,7 @@ namespace TeamProject2__ListOfRecommendations
             Genres.Add(genres_list.SelectedItem.ToString());
             SelectGenre = true;
             ShowBtn();
+            MessageBox.Show($"Жанр <<{genres_list.SelectedItem.ToString()}>> добавлен в список характеристик фильма");
 
         }
 
@@ -784,6 +842,8 @@ namespace TeamProject2__ListOfRecommendations
             Countries.Add(countries_list.SelectedItem.ToString());
             SelectCountry = true;
             ShowBtn();
+            MessageBox.Show($"Страна <<{countries_list.SelectedItem.ToString()}>> добавлена в список характеристик фильма");
+
         }
 
         private void date1_ValueChanged(object sender, EventArgs e)
@@ -791,6 +851,8 @@ namespace TeamProject2__ListOfRecommendations
             SelectDate1 = true;
             Date = date1.Value.ToString("dd.MM.yyyy");
             ShowBtn();
+            MessageBox.Show($"Дата <<{Date}>> добавлена в список характеристик фильма");
+
         }
 
         private void add_actor_btn_Click(object sender, EventArgs e)
@@ -798,23 +860,13 @@ namespace TeamProject2__ListOfRecommendations
             Actors.Add(actors_list.SelectedItem.ToString());
             SelectActor = true;
             ShowBtn();
+            MessageBox.Show($"Актер <<{actors_list.SelectedItem.ToString()}>> добавлен в список характеристик фильма");
+
         }
 
-        private void save_btn_Click(object sender, EventArgs e)
+        private List<int> GetFilteredMoviesIds()
         {
-            pass__individual__btn.Visible = true;
-            pass_collection_btn.Visible = false;
-
-
-            ClearLbls();
-
-            genre_info.Text = string.Join(",", Genres);
-            actors_info.Text = string.Join(",", Actors);
-            countries_info.Text = string.Join(",", Countries);
-            dateinterval_info.Text = Date;
-
-
-            closing_panel.Visible = false;
+            List<int> ids = new List<int>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
@@ -897,29 +949,105 @@ namespace TeamProject2__ListOfRecommendations
 
                 while (reader.Read())
                 {
-                    Movie m = new Movie();
+                    ids.Add(reader.GetInt32("MovieID"));
 
-                    m.MovieID = reader.GetInt32("MovieID");
-                    m.Title = reader.GetString("Title");
-                    m.Date = reader.GetString("Date");
-                    m.PicturePath = reader.GetString("PicturePath");
-                    m.Link = reader.GetString("Link");
-                    m.Genres = reader.GetString("Genres");
-                    m.Actors = reader.GetString("Actors");
-                    m.Countries = reader.GetString("Countries");
-
-                    
                 }
 
                 reader.Close();
 
                 connection.Close();
+                return ids;
             }
+        }
+
+
+        /// <summary>
+        /// Метод, возвращающий лист с фильмами с наивысшими рейтингами, подходящие под конкретные характеристики
+        /// </summary>
+        private List<Movie> GetRatedFiltredMovies()
+        {
+            List<Movie> allMovies = AllMovies(Login);
+            List<int> Ids = GetFilteredMoviesIds();
+            List<Movie> movies = new List<Movie>();
+            if (Ids.Count > 0 && Ids.Count >= 5)
+            {
+                foreach (int id in Ids)
+                {
+                    foreach (Movie movie in allMovies)
+                    {
+                        if (movie.MovieID == id)
+                            movies.Add(movie);
+                    }
+                }
+                List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
+                List<Movie> resultlist = resultlist1.GetRange(0, 5);
+
+                return resultlist;
+            }
+            else if (Ids.Count > 0 && Ids.Count < 5)
+            {
+                foreach (int id in Ids)
+                {
+                    foreach (Movie movie in allMovies)
+                    {
+                        if (movie.MovieID == id)
+                            movies.Add(movie);
+                    }
+                }
+                List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
+                return resultlist1;
+            }
+
+            else
+            {
+
+                return null;
+            }
+        }
+
+        private void save_btn_Click(object sender, EventArgs e)
+        {
+
+            pass__individual__btn.Visible = false;
+            pass_filtration_btn.Visible = true;
+            pass_collection_btn.Visible = false;
+            closing_panel.Visible = false;
+
+            genre_info.Text = string.Join(",", Genres);
+            actors_info.Text = string.Join(",", Actors);
+            countries_info.Text = string.Join(",", Countries);
+            dateinterval_info.Text = Date;
+
+            if (TopRatedFilteredMovies != null)
+                TopRatedFilteredMovies.Clear();
+            TopRatedFilteredMovies = GetRatedFiltredMovies();
+            if (TopRatedFilteredMovies == null)
+            {
+                MessageBox.Show("К сожалению, не нашлось фильмов с такими характеристиками");
+            }
+            else
+            {
+                ShowRecomendedMovie(TopRatedFilteredMovies[0]);
+            }
+            datelbl = Date;
+            actorslbl = string.Join(",", Actors);
+            countrieslbl = string.Join(",", Countries);
+            genreslbl = string.Join(",", Genres);
+
+            dateinterval_info.Text = Date;
+            genre_info.Text = string.Join(",", Genres);
+            actors_info.Text = string.Join(",", Actors);
+            countries_info.Text = string.Join(",", Countries);
             if (!dateinterval_info.Text.Equals("") || !genre_info.Text.Equals("") || !countries_info.Text.Equals("") || !actors_info.Text.Equals(""))
             {
                 reset_stats_btn.Visible = true;
             }
-            
+            actors_list.ClearSelected();
+            genres_list.ClearSelected();
+            countries_list.ClearSelected();
+            date1.Text = null;
+            date1.Text = date1.MaxDate.ToString();
+
         }
 
         private void search_genre_btn_Click(object sender, EventArgs e)
@@ -969,7 +1097,7 @@ namespace TeamProject2__ListOfRecommendations
             closing_panel.Visible = false;
         }
 
-         // Методы для работы с подброками приложения
+        // Методы для работы с подброками приложения
         private void comedy_btn_MouseEnter(object sender, EventArgs e)
         {
             substrate1.Visible = true;
@@ -1037,6 +1165,7 @@ namespace TeamProject2__ListOfRecommendations
             collections_panel.Visible = false;
             CollectionMovies.Clear();
             CollectionMoviesList.Clear();
+            pass_filtration_btn.Visible = false;
             pass_collection_btn.Visible = true;
             pass__individual__btn.Visible = false;
             IsIndividual = false;
@@ -1054,6 +1183,7 @@ namespace TeamProject2__ListOfRecommendations
             CollectionMoviesList.Clear();
             IsNotIndividual = true;
             pass_collection_btn.Visible = true;
+            pass_filtration_btn.Visible = false;
             pass__individual__btn.Visible = false;
             IsIndividual = false;
             FillFilmsList(CollectionMovies, CollectionMoviesList, "Приключенческий фильм");
@@ -1066,6 +1196,7 @@ namespace TeamProject2__ListOfRecommendations
             reset_stats_btn.Visible = true;
             genre_info.Text = "Боевик";
             CollectionMovies.Clear();
+            pass_filtration_btn.Visible = false;
             IsNotIndividual = true;
             CollectionMoviesList.Clear();
             pass_collection_btn.Visible = true;
@@ -1083,6 +1214,7 @@ namespace TeamProject2__ListOfRecommendations
             genre_info.Text = "Фантастический фильм";
             CollectionMoviesList.Clear();
             IsNotIndividual = true;
+            pass_filtration_btn.Visible = false;
             pass_collection_btn.Visible = true;
             pass__individual__btn.Visible = false;
             IsIndividual = false;
@@ -1097,6 +1229,7 @@ namespace TeamProject2__ListOfRecommendations
             CollectionMoviesList.Clear();
             genre_info.Text = "Детектив";
             reset_stats_btn.Visible = true;
+            pass_filtration_btn.Visible = false;
             IsNotIndividual = true;
             pass_collection_btn.Visible = true;
             pass__individual__btn.Visible = false;
@@ -1113,6 +1246,7 @@ namespace TeamProject2__ListOfRecommendations
             CollectionMoviesList.Clear();
             reset_stats_btn.Visible = true;
             pass_collection_btn.Visible = true;
+            pass_filtration_btn.Visible = false;
             pass__individual__btn.Visible = false;
             IsNotIndividual = true;
             IsIndividual = false;
@@ -1128,11 +1262,17 @@ namespace TeamProject2__ListOfRecommendations
 
         private void pass_collection_btn_Click(object sender, EventArgs e)
         {
+            int selectedIndex = starBoxes.IndexOf((PictureBox)sender);
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
+
             CollectionMoviesList.RemoveAt(0);
-            if (CollectionMoviesList.Count == 0) 
-            { 
-                foreach (Movie movie in CollectionMovies) 
-                { 
+            if (CollectionMoviesList.Count == 0)
+            {
+                foreach (Movie movie in CollectionMovies)
+                {
                     CollectionMoviesList.Add(movie);
                 }
             }
@@ -1141,10 +1281,14 @@ namespace TeamProject2__ListOfRecommendations
 
         private void reset_stats_btn_Click(object sender, EventArgs e)
         {
+            dateinterval_info.Text = "";
+            genre_info.Text = "";
+            actors_info.Text = "";
+            countries_info.Text = "";
             pass_collection_btn.Visible = false;
             pass__individual__btn.Visible = true;
             ShowRecomendedMovie(TopRatedMovies[0]);
-        
+
         }
 
         private void reset_stats_btn_MouseEnter(object sender, EventArgs e)
@@ -1237,7 +1381,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void decrease_btn_MouseEnter(object sender, EventArgs e)
         {
-            frame_decrease.Visible= true;
+            frame_decrease.Visible = true;
         }
 
         private void decrease_btn_MouseLeave(object sender, EventArgs e)
@@ -1254,6 +1398,211 @@ namespace TeamProject2__ListOfRecommendations
         private void upper_panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pass_filtration_btn_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = starBoxes.IndexOf((PictureBox)sender);
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
+
+            dateinterval_info.Text = datelbl;
+            genre_info.Text = genreslbl;
+            actors_info.Text = actorslbl;
+            countries_info.Text = countrieslbl;
+            if (TopRatedFilteredMovies != null)
+                TopRatedFilteredMovies.RemoveAt(0);
+            if (TopRatedFilteredMovies.Count == 0)
+            {
+                TopRatedFilteredMovies = GetRatedFiltredMovies();
+            }
+            ShowRecomendedMovie(TopRatedFilteredMovies[0]);
+        }
+
+
+        private void star_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(connectionString);
+
+
+                string commandText = "UPDATE users_actors_rating " +
+                                     "SET RatingActor = (RatingActor * (MarksCount + 1) + @Rating) / (MarksCount + 2), " +
+                                     "MarksCount = MarksCount + 1 " +
+                                     "WHERE Username = @Username AND Actorname IN (" +
+                                     "SELECT Actor FROM film_actors WHERE FilmId = @FilmId)";
+                MySqlCommand command = new MySqlCommand(commandText, connection);
+
+                command.Parameters.AddWithValue("@Rating", Rating);
+                command.Parameters.AddWithValue("@Username", Login);
+                command.Parameters.AddWithValue("@FilmId", MovieID);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+
+                commandText = "UPDATE users_genres_rating " +
+                              "SET RatingGenre = (RatingGenre * (MarksCount + 1) + @Rating) / (MarksCount + 2), " +
+                              "MarksCount = MarksCount + 1 " +
+                              "WHERE Username = @Username AND Genrename IN (" +
+                              "SELECT Genre FROM film_genres WHERE FilmId = @FilmId)";
+                command = new MySqlCommand(commandText, connection);
+                command.Parameters.AddWithValue("@Rating", Rating);
+                command.Parameters.AddWithValue("@Username", Login);
+                command.Parameters.AddWithValue("@FilmId", MovieID);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Оценка фильму поставлена");
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+            
+        }
+            private void label10_Click(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        private void search_tb_Click(object sender, EventArgs e)
+        {
+            search_tb.Text = "";
+        }
+
+        private void search_tb_MouseEnter(object sender, EventArgs e)
+        {
+            frame_searching.Visible = true;
+        }
+
+        private void search_tb_MouseLeave(object sender, EventArgs e)
+        {
+            frame_searching.Visible = false;
+        }
+
+
+        private void search_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                if (search_tb.Text.Equals(""))
+            {
+                MessageBox.Show("Некорректный запрос");
+            }
+            else
+            {
+                string searchText = search_tb.Text.Trim();
+                    string query = "SELECT MovieID, Title FROM movies WHERE Title LIKE @SearchText";
+                    search_results_lb.Items.Clear();
+
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            int movieId = reader.GetInt32(0);
+                            string title = reader.GetString(1);
+                            search_results_lb.Items.Add(title);
+                            Searching_movieIds.Add(movieId);
+                        }
+                        reader.Close();
+                    }
+                    if (search_results_lb==null)
+                    {
+                        MessageBox.Show("Ничего не найдено");
+                    }
+                    else
+                    {
+                        search_results_lb.Visible = true;
+                    }
+                } 
+            }
+        }
+
+        private void search_tb_TextChanged(object sender, EventArgs e)
+        {
+            if (search_tb.Text == "")
+            {
+                pass__individual__btn.Visible = true;
+                if (TopRatedMovies.Count == 0)
+                {
+                    MessageBox.Show("К сожалению, у нас пока нет нужных для вас фильмов");
+                }
+                else
+                {
+                    panel_show_collectionfilm.Visible = false;
+                    ShowRecomendedMovie(TopRatedMovies[0]);
+                }
+            }
+        }
+
+        private void MainForm_Click(object sender, EventArgs e)
+        {
+            if (search_results_lb.Visible)
+            {
+                if (!search_results_lb.Bounds.Contains(this.PointToClient(Cursor.Position)))
+                {
+                    search_results_lb.Visible=false;
+                    search_results_lb.Text = "Поиск фильмов..";
+                    pass__individual__btn.Visible = true;
+                    
+
+                }
+            }
+            
+        }
+            
+        private void search_results_lb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                pass__individual__btn.Visible = false;
+                pass_filtration_btn.Visible = false;
+                pass_collection_btn.Visible=false;
+                int index = search_results_lb.SelectedIndex;
+                search_results_lb.Visible = false;
+                int id = Searching_movieIds[index];
+                MovieID = id;
+                panel_show_collectionfilm.Visible = true;
+                Movie movie = GetMovieDetails();
+                string year = movie.Date;
+                year = year.Remove(0, 6);
+                collections_panel.Visible = false;
+                panel_show_collectionfilm.Visible = true;
+                LinkForCollection = movie.Link;
+                title_film_fromcollection.Text = $"{movie.Title.ToUpper()} ({year})";
+                genres_collectionfilm.Text = movie.Genres;
+                date_collectionfilm.Text = movie.Date;
+                actors_collectionfilm.Text = movie.Actors;
+                countries_collectionfilm.Text = movie.Countries;
+                try
+                {
+
+                    picture_poster_forcollection.Image = System.Drawing.Image.FromFile(movie.PicturePath);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Некорректный адрес изображения");
+                }
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Ничего не найдено");
+            }
         }
     }
 }

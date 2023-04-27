@@ -16,5 +16,6 @@ namespace TeamProject2__ListOfRecommendations
         public string Genres { get; set; }
         public string Actors { get; set; }
         public string Countries { get; set; }
+        public double OverallRating { get; set; }
     }
 }

@@ -34,8 +34,10 @@
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
+            this.search_tb = new System.Windows.Forms.TextBox();
             this.decrease_btn = new System.Windows.Forms.PictureBox();
             this.frame_decrease = new System.Windows.Forms.PictureBox();
+            this.frame_searching = new System.Windows.Forms.PictureBox();
             this.collections_btn = new System.Windows.Forms.PictureBox();
             this.api_btn = new System.Windows.Forms.PictureBox();
             this.frame_api = new System.Windows.Forms.PictureBox();
@@ -125,7 +127,6 @@
             this.substrate4 = new System.Windows.Forms.PictureBox();
             this.substrate5 = new System.Windows.Forms.PictureBox();
             this.substrate6 = new System.Windows.Forms.PictureBox();
-            this.reset_stats_btn = new System.Windows.Forms.Label();
             this.panel_show_collectionfilm = new System.Windows.Forms.Panel();
             this.close_showing_collection_film_btn = new System.Windows.Forms.Button();
             this.date_collectionfilm = new System.Windows.Forms.RichTextBox();
@@ -143,9 +144,13 @@
             this.genres_collectionfilm = new System.Windows.Forms.RichTextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.reset_stats_btn = new System.Windows.Forms.Label();
+            this.pass_filtration_btn = new System.Windows.Forms.Button();
+            this.search_results_lb = new System.Windows.Forms.ListBox();
             this.upper_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).BeginInit();
@@ -239,8 +244,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.upper_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.upper_panel.Controls.Add(this.search_tb);
             this.upper_panel.Controls.Add(this.decrease_btn);
             this.upper_panel.Controls.Add(this.frame_decrease);
+            this.upper_panel.Controls.Add(this.frame_searching);
             this.upper_panel.Controls.Add(this.collections_btn);
             this.upper_panel.Controls.Add(this.api_btn);
             this.upper_panel.Controls.Add(this.frame_api);
@@ -257,6 +264,24 @@
             this.upper_panel.Size = new System.Drawing.Size(2111, 83);
             this.upper_panel.TabIndex = 1;
             this.upper_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.upper_panel_Paint);
+            // 
+            // search_tb
+            // 
+            this.search_tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
+            this.search_tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.search_tb.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.search_tb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.search_tb.Location = new System.Drawing.Point(1029, 21);
+            this.search_tb.Name = "search_tb";
+            this.search_tb.Size = new System.Drawing.Size(423, 38);
+            this.search_tb.TabIndex = 125;
+            this.search_tb.TabStop = false;
+            this.search_tb.Text = "Поиск фильмов..";
+            this.search_tb.Click += new System.EventHandler(this.search_tb_Click);
+            this.search_tb.TextChanged += new System.EventHandler(this.search_tb_TextChanged);
+            this.search_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_tb_KeyDown);
+            this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
+            this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
             // 
             // decrease_btn
             // 
@@ -282,6 +307,17 @@
             this.frame_decrease.TabIndex = 28;
             this.frame_decrease.TabStop = false;
             this.frame_decrease.Visible = false;
+            // 
+            // frame_searching
+            // 
+            this.frame_searching.Image = ((System.Drawing.Image)(resources.GetObject("frame_searching.Image")));
+            this.frame_searching.Location = new System.Drawing.Point(1023, 7);
+            this.frame_searching.Name = "frame_searching";
+            this.frame_searching.Size = new System.Drawing.Size(435, 62);
+            this.frame_searching.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.frame_searching.TabIndex = 127;
+            this.frame_searching.TabStop = false;
+            this.frame_searching.Visible = false;
             // 
             // collections_btn
             // 
@@ -423,7 +459,7 @@
             // 
             // just_panel
             // 
-            this.just_panel.Location = new System.Drawing.Point(2013, 1256);
+            this.just_panel.Location = new System.Drawing.Point(2034, 1256);
             this.just_panel.Name = "just_panel";
             this.just_panel.Size = new System.Drawing.Size(52, 47);
             this.just_panel.TabIndex = 19;
@@ -736,6 +772,7 @@
             this.star_btn.Text = "Оценить";
             this.star_btn.UseVisualStyleBackColor = false;
             this.star_btn.Visible = false;
+            this.star_btn.Click += new System.EventHandler(this.star_btn_Click);
             // 
             // add_to_favorites_btn
             // 
@@ -906,7 +943,7 @@
             this.closing_panel.Controls.Add(this.panel6);
             this.closing_panel.Controls.Add(this.genres_list);
             this.closing_panel.Controls.Add(this.search_genre_btn);
-            this.closing_panel.Location = new System.Drawing.Point(1529, 171);
+            this.closing_panel.Location = new System.Drawing.Point(1521, 192);
             this.closing_panel.Name = "closing_panel";
             this.closing_panel.Size = new System.Drawing.Size(556, 1132);
             this.closing_panel.TabIndex = 112;
@@ -1385,7 +1422,6 @@
             // 
             // collections_panel
             // 
-            this.collections_panel.Controls.Add(this.panel_show_collectionfilm);
             this.collections_panel.Controls.Add(this.add_country);
             this.collections_panel.Controls.Add(this.panel8);
             this.collections_panel.Controls.Add(this.adventure_btn);
@@ -1401,7 +1437,7 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 1309);
+            this.collections_panel.Location = new System.Drawing.Point(2, 89);
             this.collections_panel.Name = "collections_panel";
             this.collections_panel.Size = new System.Drawing.Size(2119, 1256);
             this.collections_panel.TabIndex = 116;
@@ -1583,23 +1619,6 @@
             this.substrate6.TabStop = false;
             this.substrate6.Visible = false;
             // 
-            // reset_stats_btn
-            // 
-            this.reset_stats_btn.AutoSize = true;
-            this.reset_stats_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.reset_stats_btn.Font = new System.Drawing.Font("Stencil", 10.125F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reset_stats_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.reset_stats_btn.Location = new System.Drawing.Point(1802, 875);
-            this.reset_stats_btn.Name = "reset_stats_btn";
-            this.reset_stats_btn.Size = new System.Drawing.Size(227, 64);
-            this.reset_stats_btn.TabIndex = 117;
-            this.reset_stats_btn.Text = "Сбросить \r\nхарактеристики";
-            this.reset_stats_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.reset_stats_btn.Visible = false;
-            this.reset_stats_btn.Click += new System.EventHandler(this.reset_stats_btn_Click);
-            this.reset_stats_btn.MouseEnter += new System.EventHandler(this.reset_stats_btn_MouseEnter);
-            this.reset_stats_btn.MouseLeave += new System.EventHandler(this.reset_stats_btn_MouseLeave);
-            // 
             // panel_show_collectionfilm
             // 
             this.panel_show_collectionfilm.Controls.Add(this.close_showing_collection_film_btn);
@@ -1614,7 +1633,7 @@
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel10);
-            this.panel_show_collectionfilm.Location = new System.Drawing.Point(10, 1231);
+            this.panel_show_collectionfilm.Location = new System.Drawing.Point(2, 86);
             this.panel_show_collectionfilm.Name = "panel_show_collectionfilm";
             this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1244);
             this.panel_show_collectionfilm.TabIndex = 118;
@@ -1796,6 +1815,52 @@
             this.label10.Size = new System.Drawing.Size(123, 33);
             this.label10.TabIndex = 9;
             this.label10.Text = "Страна";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // reset_stats_btn
+            // 
+            this.reset_stats_btn.AutoSize = true;
+            this.reset_stats_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.reset_stats_btn.Font = new System.Drawing.Font("Stencil", 10.125F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reset_stats_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.reset_stats_btn.Location = new System.Drawing.Point(1802, 875);
+            this.reset_stats_btn.Name = "reset_stats_btn";
+            this.reset_stats_btn.Size = new System.Drawing.Size(227, 64);
+            this.reset_stats_btn.TabIndex = 117;
+            this.reset_stats_btn.Text = "Сбросить \r\nхарактеристики";
+            this.reset_stats_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.reset_stats_btn.Visible = false;
+            this.reset_stats_btn.Click += new System.EventHandler(this.reset_stats_btn_Click);
+            this.reset_stats_btn.MouseEnter += new System.EventHandler(this.reset_stats_btn_MouseEnter);
+            this.reset_stats_btn.MouseLeave += new System.EventHandler(this.reset_stats_btn_MouseLeave);
+            // 
+            // pass_filtration_btn
+            // 
+            this.pass_filtration_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pass_filtration_btn.Font = new System.Drawing.Font("XO Courser", 14F);
+            this.pass_filtration_btn.ForeColor = System.Drawing.Color.Silver;
+            this.pass_filtration_btn.Location = new System.Drawing.Point(850, 1188);
+            this.pass_filtration_btn.Name = "pass_filtration_btn";
+            this.pass_filtration_btn.Size = new System.Drawing.Size(296, 86);
+            this.pass_filtration_btn.TabIndex = 118;
+            this.pass_filtration_btn.Text = "Пропуск";
+            this.pass_filtration_btn.UseVisualStyleBackColor = false;
+            this.pass_filtration_btn.Visible = false;
+            this.pass_filtration_btn.Click += new System.EventHandler(this.pass_filtration_btn_Click);
+            // 
+            // search_results_lb
+            // 
+            this.search_results_lb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.search_results_lb.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.search_results_lb.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.search_results_lb.FormattingEnabled = true;
+            this.search_results_lb.ItemHeight = 30;
+            this.search_results_lb.Location = new System.Drawing.Point(1026, 66);
+            this.search_results_lb.Name = "search_results_lb";
+            this.search_results_lb.Size = new System.Drawing.Size(435, 94);
+            this.search_results_lb.TabIndex = 128;
+            this.search_results_lb.Visible = false;
+            this.search_results_lb.SelectedIndexChanged += new System.EventHandler(this.search_results_lb_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -1803,7 +1868,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(2098, 1336);
-            this.Controls.Add(this.reset_stats_btn);
+            this.Controls.Add(this.panel_show_collectionfilm);
+            this.Controls.Add(this.search_results_lb);
+            this.Controls.Add(this.closing_panel);
             this.Controls.Add(this.collections_panel);
             this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
@@ -1841,18 +1908,21 @@
             this.Controls.Add(this.grayStar8);
             this.Controls.Add(this.grayStar9);
             this.Controls.Add(this.grayStar10);
+            this.Controls.Add(this.pass_filtration_btn);
             this.Controls.Add(this.pass__individual__btn);
-            this.Controls.Add(this.closing_panel);
             this.Controls.Add(this.pass_collection_btn);
+            this.Controls.Add(this.reset_stats_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
+            this.Click += new System.EventHandler(this.MainForm_Click);
             this.upper_panel.ResumeLayout(false);
+            this.upper_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).EndInit();
@@ -2042,5 +2112,9 @@
         public System.Windows.Forms.Panel collections_panel;
         private System.Windows.Forms.PictureBox decrease_btn;
         private System.Windows.Forms.PictureBox frame_decrease;
+        public System.Windows.Forms.Button pass_filtration_btn;
+        private System.Windows.Forms.TextBox search_tb;
+        private System.Windows.Forms.PictureBox frame_searching;
+        private System.Windows.Forms.ListBox search_results_lb;
     }
 }

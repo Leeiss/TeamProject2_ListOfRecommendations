@@ -118,9 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="info_lbl4.Text" xml:space="preserve">
-    <value>Вы можете использовать найденные данные о фильме, если захотите добавить фильм в 
-приложении
-
+    <value>
 Важно! Для того, чтобы ваш запрос был успешен, придерживайтесь правил:
 1) Пишите названия фильмов на английском
 2) Не пишите рядом с названием фильма год его выпуска
