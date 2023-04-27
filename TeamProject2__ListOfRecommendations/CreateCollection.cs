@@ -186,9 +186,6 @@ namespace TeamProject2__ListOfRecommendations
             }
         }
 
-        private void CreateCollection_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
+        
     }
 }

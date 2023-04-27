@@ -188,7 +188,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateCollection";
             this.Text = "Создание подборки";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateCollection_FormClosing);
             this.Load += new System.EventHandler(this.CreateCollection_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

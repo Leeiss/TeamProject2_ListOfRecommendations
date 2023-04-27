@@ -161,7 +161,6 @@
             this.closing_panel.Size = new System.Drawing.Size(1484, 930);
             this.closing_panel.TabIndex = 44;
             this.closing_panel.Visible = false;
-            this.closing_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.closing_panel_Paint);
             // 
             // show_plot_btn
             // 
