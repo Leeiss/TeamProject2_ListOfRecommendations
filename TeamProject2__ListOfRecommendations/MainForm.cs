@@ -848,7 +848,6 @@ namespace TeamProject2__ListOfRecommendations
             Genres.Add(genres_list.SelectedItem.ToString());
             SelectGenre = true;
             ShowBtn();
-            MessageBox.Show($"Жанр <<{genres_list.SelectedItem.ToString()}>> добавлен в список характеристик фильма");
 
         }
 
@@ -857,7 +856,6 @@ namespace TeamProject2__ListOfRecommendations
             Countries.Add(countries_list.SelectedItem.ToString());
             SelectCountry = true;
             ShowBtn();
-            MessageBox.Show($"Страна <<{countries_list.SelectedItem.ToString()}>> добавлена в список характеристик фильма");
 
         }
 
@@ -866,7 +864,6 @@ namespace TeamProject2__ListOfRecommendations
             SelectDate1 = true;
             Date = date1.Value.ToString("dd.MM.yyyy");
             ShowBtn();
-            MessageBox.Show($"Дата <<{Date}>> добавлена в список характеристик фильма");
 
         }
 
@@ -875,7 +872,6 @@ namespace TeamProject2__ListOfRecommendations
             Actors.Add(actors_list.SelectedItem.ToString());
             SelectActor = true;
             ShowBtn();
-            MessageBox.Show($"Актер <<{actors_list.SelectedItem.ToString()}>> добавлен в список характеристик фильма");
 
         }
 
@@ -1416,7 +1412,6 @@ namespace TeamProject2__ListOfRecommendations
 
         private void pass_filtration_btn_Click(object sender, EventArgs e)
         {
-            int selectedIndex = starBoxes.IndexOf((PictureBox)sender);
             for (int i = 0; i <= 9; i++)
             {
                 starBoxes[i].Image = Properties.Resources.grayStar;

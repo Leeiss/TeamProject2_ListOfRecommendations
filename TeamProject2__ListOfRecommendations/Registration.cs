@@ -90,7 +90,7 @@ namespace TeamProject2__ListOfRecommendations
             }
             // адрес получателя
             mail.Subject = "Добро пожаловать в Список рекомендаций!"; ;
-            mail.Body = $"{login_tb.Text}, поздравляем тебя с успешной регистрацией!" + Environment.NewLine + "Мы рады приветствовать вас в нашем приложении. Вы можете приступать к выбору фильма, созданию подборок и к добавлению фильмов!";
+            mail.Body = $"{login_tb.Text}, поздравляем Вас с успешной регистрацией!" + Environment.NewLine + "Мы рады приветствовать вас в нашем приложении. Вы можете приступать к выбору фильмов и созданиям подборок!";
             mail.Attachments.Add(new Attachment(@".\..\..\Resources\к письму.jpg"));
 
             SmtpClient smtp = new SmtpClient("smtp.mail.ru"); // адрес сервера SMTP, на котором наша почта

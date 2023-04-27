@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFilm));
             this.upper_panel = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.substrate1 = new System.Windows.Forms.Panel();
@@ -770,6 +771,7 @@
             this.Controls.Add(this.substrate1);
             this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.info_lbl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddFilm";
             this.Text = "Добавление фильма";
             this.Load += new System.EventHandler(this.AddFilm_Load);
