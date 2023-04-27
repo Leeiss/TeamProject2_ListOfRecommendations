@@ -21,21 +21,16 @@ _____
  :white_check_mark:  Поиск фильмов с использованием API.
   
 _____
-### Структура. Экраны
-Авторизация и регистрация  
-Подбор (главный экран)  
-Изменение характеристик   
-Добавление своего фильма  
-Просмотр подборки  
-Создание новой подборки  
-Добавление рекомендуемого фильма в подборку  
-Изменение подборок  
-
-  
+### Содержание
+[Авторизация/Регистрация](#1)   
+[Работа приложения](#2)  
++ [Рекомендации](#5)  
++ [Подборки](#3)  
++ [Поиск фильмов](#4)    
 ______
 
  
-    
+<a name="1"></a>    
 ## Авторизация/Регистрация  
 <img src="https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/develop/TeamProject2__ListOfRecommendations/Resources/%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%B8%20%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F.png" alt="Основное окно" width="800"/>
 <br> 
@@ -55,10 +50,12 @@ ______
     
 __________
      
+<a name="2"></a>   
 ## Работа приложения  
   <br> 
-     
-### Рекомендации
+<a name="5"></a>  
+
+### Рекомендации    
 Пользователь, войдя в приложение, видит фильмы, которые с большей вероятностью могут ему понравиться.    
 Оценивания фильм, пользователь дает понять, насколько сильно он хочет, чтобы данный фильм вновь попал ему в рекомендацию. Также пользователь может сделать пропуск, чтобы увидеть следущий фильм.
 <img src="https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/develop/TeamProject2__ListOfRecommendations/Resources/%D0%BF%D1%80%D0%BE%D0%BF%D1%83%D1%81%D0%BA%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%BE%D0%B2.png" alt="Основное окно" width="1100"/>  
@@ -76,6 +73,7 @@ __________
 <img src="https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/develop/TeamProject2__ListOfRecommendations/Resources/%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20%D0%BF%D0%BE%20%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B5.png" alt="Основное окно" width="1100"/>   
  <br> 
     
+<a name="3"></a>
 ### Подборки
 Также пользователь может создавать подборки. После регистрации у пользователя только одна подборка - "Избранное".
    
@@ -102,7 +100,8 @@ __________
 <img src="https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/develop/TeamProject2__ListOfRecommendations/Resources/%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F.png" alt="Основное окно" width="1100"/>   
 <br>    
  <br> 
-        
+    
+<a name="4"></a>
 ### Поиск фильмов в приложении представлен 2 способами   
 + Поиск фильмов из базы данных приложения  
 
