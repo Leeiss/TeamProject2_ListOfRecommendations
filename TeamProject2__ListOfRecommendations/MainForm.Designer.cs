@@ -1668,7 +1668,6 @@
             this.label10.Size = new System.Drawing.Size(123, 33);
             this.label10.TabIndex = 9;
             this.label10.Text = "Страна";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // reset_stats_btn
             // 
