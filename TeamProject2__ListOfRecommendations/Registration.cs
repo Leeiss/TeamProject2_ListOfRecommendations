@@ -49,22 +49,30 @@ namespace TeamProject2__ListOfRecommendations
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("@./../../../ForLists.xml");
-
-            foreach (XmlNode actorNode in doc.SelectNodes("//actors/actor"))
+            try
             {
-                actors.Add(actorNode.InnerText);
-            }
+                XmlDocument doc = new XmlDocument();
+                doc.Load("@./../../../ForLists.xml");
 
-            foreach (XmlNode genreNode in doc.SelectNodes("//genres/genre"))
+                foreach (XmlNode actorNode in doc.SelectNodes("//actors/actor"))
+                {
+                    actors.Add(actorNode.InnerText);
+                }
+
+                foreach (XmlNode genreNode in doc.SelectNodes("//genres/genre"))
+                {
+                    genres.Add(genreNode.InnerText);
+                }
+                logger.Info("Получены данные с xml файлов");
+            }
+            catch (Exception ex)
             {
-                genres.Add(genreNode.InnerText);
+                logger.Error("Проблемы с xml файлом: " + ex);
             }
+        
 
-
-            // Работа с элементами управления на форме
-            picture_logo.SizeMode = PictureBoxSizeMode.StretchImage;
+    // Работа с элементами управления на форме
+    picture_logo.SizeMode = PictureBoxSizeMode.StretchImage;
 
             int buttonOffset = 10; 
             int formWidth = go_to_email.Location.X + go_to_email.Width + buttonOffset; 
@@ -113,7 +121,8 @@ namespace TeamProject2__ListOfRecommendations
 
         private void go_btn_Click(object sender, EventArgs e)
         {
-            if (!login_tb.Text.Equals("") && !password_tb.Text.Equals("") && !email_tb.Text.Equals("") && !login_tb.Text.Equals("Введите логин") && !password_tb.Text.Equals("Введите пароль") && !email_tb.Text.Equals("Введите email"))
+            try{
+                if (!login_tb.Text.Equals("") && !password_tb.Text.Equals("") && !email_tb.Text.Equals("") && !login_tb.Text.Equals("Введите логин") && !password_tb.Text.Equals("Введите пароль") && !email_tb.Text.Equals("Введите email"))
             {
                 username = login_tb.Text;
                 DataBase db = new DataBase();
@@ -167,11 +176,18 @@ namespace TeamProject2__ListOfRecommendations
             else
             {
                 MessageBox.Show("Введите все данные");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Проблемы с базой данных: " + ex);
             }
         }
 
         private void AddAFavoritesFolderForAUser()
         {
+            try
+            {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
@@ -189,6 +205,12 @@ namespace TeamProject2__ListOfRecommendations
                 command.ExecuteNonQuery();
 
                 connection.Close();
+                }
+                logger.Info("Фильм добавлен в избранное");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Не удается добавить фильм в избранное: " + ex);
             }
         }
 
@@ -196,25 +218,33 @@ namespace TeamProject2__ListOfRecommendations
         private void FillWithDefaultEstimates()
         {
 
-
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-            foreach (string genre in genres)
+            try
             {
-                MySqlCommand command = new MySqlCommand("INSERT INTO users_genres_rating (Username, Genrename, RatingGenre, MarksCount) VALUES (@username, @genre, 5, 0)", connection);
-                command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@genre", genre);
-                command.ExecuteNonQuery();
-            }
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+                foreach (string genre in genres)
+                {
+                    MySqlCommand command = new MySqlCommand("INSERT INTO users_genres_rating (Username, Genrename, RatingGenre, MarksCount) VALUES (@username, @genre, 5, 0)", connection);
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@genre", genre);
+                    command.ExecuteNonQuery();
+                }
 
-            foreach (string actor in actors)
-            {
-                MySqlCommand command = new MySqlCommand("INSERT INTO users_actors_rating (Username, Actorname, RatingActor, MarksCount) VALUES (@username, @actor, 5, 0)", connection);
-                command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@actor", actor);
-                command.ExecuteNonQuery();
+                foreach (string actor in actors)
+                {
+                    MySqlCommand command = new MySqlCommand("INSERT INTO users_actors_rating (Username, Actorname, RatingActor, MarksCount) VALUES (@username, @actor, 5, 0)", connection);
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@actor", actor);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+
+                logger.Info("Дефолтные оценки актерам и жанрам проставлены");
             }
-            connection.Close();
+            catch (Exception ex)
+            {
+                logger.Error("Проблема с базой данных: " + ex);
+            }
         }
 
 

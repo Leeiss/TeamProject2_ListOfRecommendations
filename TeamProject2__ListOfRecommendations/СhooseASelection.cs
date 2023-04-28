@@ -42,29 +42,38 @@ namespace TeamProject2__ListOfRecommendations
 
         private void FillListboxWithSelections()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-
-
-            string getCollectionNamesSql = "SELECT Collection_name FROM users_collections WHERE User_name = @username";
-            MySqlCommand getCollectionNamesCmd = new MySqlCommand(getCollectionNamesSql, connection);
-            getCollectionNamesCmd.Parameters.AddWithValue("@username", Login);
-
-            List<string> collectionNames = new List<string>();
-            using (MySqlDataReader reader = getCollectionNamesCmd.ExecuteReader())
+            try
             {
-                while (reader.Read())
+
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+
+                string getCollectionNamesSql = "SELECT Collection_name FROM users_collections WHERE User_name = @username";
+                MySqlCommand getCollectionNamesCmd = new MySqlCommand(getCollectionNamesSql, connection);
+                getCollectionNamesCmd.Parameters.AddWithValue("@username", Login);
+
+                List<string> collectionNames = new List<string>();
+                using (MySqlDataReader reader = getCollectionNamesCmd.ExecuteReader())
                 {
-                    string collectionName = reader.GetString("Collection_name");
-                    collectionNames.Add(collectionName);
+                    while (reader.Read())
+                    {
+                        string collectionName = reader.GetString("Collection_name");
+                        collectionNames.Add(collectionName);
+                    }
                 }
+
+                connection.Close();
+
+                foreach (string collectionName in collectionNames)
+                {
+                    collections_list.Items.Add(collectionName);
+                }
+                logger.Info("Лист с подборками пользователя успешно заполнился");
             }
-
-            connection.Close();
-
-            foreach (string collectionName in collectionNames)
+            catch (Exception ex)
             {
-                collections_list.Items.Add(collectionName);
+                logger.Error("Не удается получить доступ к подборкам пользователя: " + ex);
             }
         }
 
@@ -82,7 +91,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            if (MovieId!=0)
+           if (MovieId!=0)
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
@@ -116,11 +125,14 @@ namespace TeamProject2__ListOfRecommendations
                 connection.Close();
                 MessageBox.Show($"Фильм успешно добавлен в коллекцию <<{collections_list.SelectedItem.ToString()}>>");
                 this.Close();
+                logger.Info("Добавление фильма в подборку произошело успешно");
             }
             else
             {
                 MessageBox.Show("Ошибка добавления фильма");
+                logger.Error("Ошибка добавления фильма");
             }
+
             
         }
     }

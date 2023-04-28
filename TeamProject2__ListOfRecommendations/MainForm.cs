@@ -7,12 +7,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using System.Data;
 using System.Linq;
-using System.Collections;
-using MySqlX.XDevAPI.Relational;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Deployment.Internal;
 using NLog;
-using NLog.Config;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -1061,7 +1056,7 @@ namespace TeamProject2__ListOfRecommendations
                 }
                 List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
                 List<Movie> resultlist = resultlist1.GetRange(0, 5);
-                logger.Info("Фильмы с конкретыми характеристиками отсортированы по общему рейтингу");
+                logger.Info("Фильмы с конкретными характеристиками отсортированы по общему рейтингу");
 
                 return resultlist;
             }
@@ -1076,7 +1071,7 @@ namespace TeamProject2__ListOfRecommendations
                     }
                 }
                 List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
-                logger.Info("Фильмы с конкретыми характеристиками отсортированы по общему рейтингу");
+                logger.Info("Фильмы с конкретными характеристиками отсортированы по общему рейтингу");
 
                 return resultlist1;
             }
@@ -1386,37 +1381,45 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_to_favorites_btn_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            connection.Open();
-
-            string collectionName = "Избранное";
-            string getCollectionIdSql = "SELECT ID FROM users_collections WHERE Collection_name = @collectionName";
-            MySqlCommand getCollectionIdCmd = new MySqlCommand(getCollectionIdSql, connection);
-            getCollectionIdCmd.Parameters.AddWithValue("@collectionName", collectionName);
-            int collectionId = Convert.ToInt32(getCollectionIdCmd.ExecuteScalar());
-
-            string checkMovieSql = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID=@collectionId AND MovieID=@movieId";
-            MySqlCommand checkMovieCmd = new MySqlCommand(checkMovieSql, connection);
-            checkMovieCmd.Parameters.AddWithValue("@collectionId", collectionId);
-            checkMovieCmd.Parameters.AddWithValue("@movieId", MovieID);
-            int count = Convert.ToInt32(checkMovieCmd.ExecuteScalar());
-
-            if (count > 0)
+            try
             {
-                MessageBox.Show("Фильм уже в списке ваших любимых");
+                MySqlConnection connection = new MySqlConnection(connectionString);
+
+                connection.Open();
+
+                string collectionName = "Избранное";
+                string getCollectionIdSql = "SELECT ID FROM users_collections WHERE Collection_name = @collectionName";
+                MySqlCommand getCollectionIdCmd = new MySqlCommand(getCollectionIdSql, connection);
+                getCollectionIdCmd.Parameters.AddWithValue("@collectionName", collectionName);
+                int collectionId = Convert.ToInt32(getCollectionIdCmd.ExecuteScalar());
+
+                string checkMovieSql = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID=@collectionId AND MovieID=@movieId";
+                MySqlCommand checkMovieCmd = new MySqlCommand(checkMovieSql, connection);
+                checkMovieCmd.Parameters.AddWithValue("@collectionId", collectionId);
+                checkMovieCmd.Parameters.AddWithValue("@movieId", MovieID);
+                int count = Convert.ToInt32(checkMovieCmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Фильм уже в списке ваших любимых");
+                    connection.Close();
+                    return;
+                }
+
+                string addToCollectionSql = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@collectionId, @movieId)";
+                MySqlCommand addToCollectionCmd = new MySqlCommand(addToCollectionSql, connection);
+                addToCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
+                addToCollectionCmd.Parameters.AddWithValue("@movieId", MovieID);
+                addToCollectionCmd.ExecuteNonQuery();
+
                 connection.Close();
-                return;
+                MessageBox.Show("Фильм успешно добавлен в список ваших любимых");
             }
-
-            string addToCollectionSql = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@collectionId, @movieId)";
-            MySqlCommand addToCollectionCmd = new MySqlCommand(addToCollectionSql, connection);
-            addToCollectionCmd.Parameters.AddWithValue("@collectionId", collectionId);
-            addToCollectionCmd.Parameters.AddWithValue("@movieId", MovieID);
-            addToCollectionCmd.ExecuteNonQuery();
-
-            connection.Close();
-            MessageBox.Show("Фильм успешно добавлен в список ваших любимых");
+            catch
+            {
+                logger.Error("Пользователь не может добавить фильм в избранное");
+            }
+           
         }
 
         private void picture_poster_forcollection_MouseEnter(object sender, EventArgs e)
@@ -1538,21 +1541,16 @@ namespace TeamProject2__ListOfRecommendations
                 command.ExecuteNonQuery();
                 connection.Close();
                 MessageBox.Show("Оценка фильму поставлена");
+                logger.Info("Поставлена оценка фильму c id" + MovieID);
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Ошибка");
+                logger.Error(ex);
             }
             
         }
-            private void label10_Click(object sender, EventArgs e)
-        {
-            
-
-            
-        }
-
-        private void search_tb_Click(object sender, EventArgs e)
+       private void search_tb_Click(object sender, EventArgs e)
         {
             search_tb.Text = "";
         }
@@ -1570,44 +1568,53 @@ namespace TeamProject2__ListOfRecommendations
 
         private void search_tb_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (e.KeyCode == Keys.Enter)
+            try
             {
+                if (e.KeyCode == Keys.Enter)
+                {
 
-                if (search_tb.Text.Equals(""))
-            {
-                MessageBox.Show("Некорректный запрос");
-            }
-            else
-            {
-                string searchText = search_tb.Text.Trim();
-                    string query = "SELECT MovieID, Title FROM movies WHERE Title LIKE @SearchText";
-                    search_results_lb.Items.Clear();
-
-                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    if (search_tb.Text.Equals(""))
                     {
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            int movieId = reader.GetInt32(0);
-                            string title = reader.GetString(1);
-                            search_results_lb.Items.Add(title);
-                            Searching_movieIds.Add(movieId);
-                        }
-                        reader.Close();
-                    }
-                    if (search_results_lb==null)
-                    {
-                        MessageBox.Show("Ничего не найдено");
+                        MessageBox.Show("Некорректный запрос");
                     }
                     else
                     {
-                        search_results_lb.Visible = true;
+                        string searchText = search_tb.Text.Trim();
+                        string query = "SELECT MovieID, Title FROM movies WHERE Title LIKE @SearchText";
+                        search_results_lb.Items.Clear();
+
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
+                            MySqlDataReader reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                int movieId = reader.GetInt32(0);
+                                string title = reader.GetString(1);
+                                search_results_lb.Items.Add(title);
+                                Searching_movieIds.Add(movieId);
+                            }
+                            reader.Close();
+                        }
+                        if (search_results_lb == null)
+                        {
+                            MessageBox.Show("Ничего не найдено");
+                        }
+                        else
+                        {
+                            search_results_lb.Visible = true;
+                        }
+
+                        logger.Info("Совершился поиск фильма");
                     }
-                } 
+                }
+            
+            }
+            catch
+            {
+                logger.Error("Не работает поиск фильмов");
             }
         }
 
@@ -1677,6 +1684,7 @@ namespace TeamProject2__ListOfRecommendations
                 catch
                 {
                     MessageBox.Show("Некорректный адрес изображения");
+                    logger.Warn("У фильма некорректный путь к фотографии постера");
                 }
 
 

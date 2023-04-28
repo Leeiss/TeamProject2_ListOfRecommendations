@@ -36,9 +36,9 @@ namespace TeamProject2__ListOfRecommendations
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
 
-            int buttonOffset = 10; 
-            int formWidth = ok_btn.Location.X + ok_btn.Width + buttonOffset; 
-            int formHeight = ok_btn.Location.Y + ok_btn.Height + buttonOffset; 
+            int buttonOffset = 10;
+            int formWidth = ok_btn.Location.X + ok_btn.Width + buttonOffset;
+            int formHeight = ok_btn.Location.Y + ok_btn.Height + buttonOffset;
             this.ClientSize = new Size(formWidth, formHeight);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
@@ -55,93 +55,115 @@ namespace TeamProject2__ListOfRecommendations
 
         private void FillCollectionList()
         {
-            string query = "SELECT Collection_name, ID FROM users_collections WHERE User_name = @UserName";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            using (MySqlCommand command = new MySqlCommand(query, connection))
+            try
             {
-                command.Parameters.AddWithValue("@UserName", Login);
-                connection.Open();
+                string query = "SELECT Collection_name, ID FROM users_collections WHERE User_name = @UserName";
 
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    while (reader.Read())
-                    {
-                        string collectionName = reader.GetString("Collection_name");
-                        int collectionId = reader.GetInt32("ID");
+                    command.Parameters.AddWithValue("@UserName", Login);
+                    connection.Open();
 
-                        collections_list.Items.Add(collectionName);
-                        collectionIds.Add(collectionId);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string collectionName = reader.GetString("Collection_name");
+                            int collectionId = reader.GetInt32("ID");
+
+                            collections_list.Items.Add(collectionName);
+                            collectionIds.Add(collectionId);
+                        }
                     }
                 }
+                logger.Info("Лист с подборками пользователя успешно заполнен");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Не удается заполнить лист с подборками: " + ex);
             }
         }
 
-
         private void FillFilmsList()
         {
-            string queryAllMovies = "SELECT MovieID, Title FROM movies";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            using (MySqlCommand command = new MySqlCommand(queryAllMovies, connection))
+            try
             {
-                connection.Open();
+                string queryAllMovies = "SELECT MovieID, Title FROM movies";
 
-                DataTable resultTable = new DataTable();
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlCommand command = new MySqlCommand(queryAllMovies, connection))
                 {
-                    adapter.Fill(resultTable);
-                }
-                List<int> movieIds = new List<int>();
+                    connection.Open();
 
-                foreach (DataRow row in resultTable.Rows)
-                {
-                    int movieId = Convert.ToInt32(row["MovieID"]);
-                    string movieTitle = row["Title"].ToString();
-                    all_films_collection_list.Items.Add(movieTitle);
-                    allfilmsIds.Add(movieId);
+                    DataTable resultTable = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(resultTable);
+                    }
+                    List<int> movieIds = new List<int>();
+
+                    foreach (DataRow row in resultTable.Rows)
+                    {
+                        int movieId = Convert.ToInt32(row["MovieID"]);
+                        string movieTitle = row["Title"].ToString();
+                        all_films_collection_list.Items.Add(movieTitle);
+                        allfilmsIds.Add(movieId);
+                    }
                 }
+                logger.Info("Лист с фильмами успешно заполнен");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Не удается заполнить лист с фильмами: " + ex);
             }
         }
 
         private void FillCollectionFilmsList()
         {
-            int index = collections_list.SelectedIndex;
-            int collectionId = collectionIds[index];
-            string queryAllMoviesInCollection = "SELECT movies.MovieID, movies.Title FROM movies JOIN movies_collections " +
-                                                "ON movies.MovieID = movies_collections.MovieID " +
-                                                "WHERE movies_collections.CollectionID = @CollectionID";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            using (MySqlCommand commandMovies = new MySqlCommand(queryAllMoviesInCollection, connection))
+            try
             {
-                commandMovies.Parameters.AddWithValue("@CollectionID", collectionId);
-                connection.Open();
+                int index = collections_list.SelectedIndex;
+                int collectionId = collectionIds[index];
+                string queryAllMoviesInCollection = "SELECT movies.MovieID, movies.Title FROM movies JOIN movies_collections " +
+                                                    "ON movies.MovieID = movies_collections.MovieID " +
+                                                    "WHERE movies_collections.CollectionID = @CollectionID";
 
-                using (MySqlDataReader reader = commandMovies.ExecuteReader())
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlCommand commandMovies = new MySqlCommand(queryAllMoviesInCollection, connection))
                 {
-                    while (reader.Read())
-                    {
-                        int movieId = reader.GetInt32(0);
-                        string movieTitle = reader.GetString(1);
+                    commandMovies.Parameters.AddWithValue("@CollectionID", collectionId);
+                    connection.Open();
 
-                        films_in_collection_list.Items.Add(movieTitle);
-                        collectionfilmsIds.Add(movieId);
+                    using (MySqlDataReader reader = commandMovies.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int movieId = reader.GetInt32(0);
+                            string movieTitle = reader.GetString(1);
+
+                            films_in_collection_list.Items.Add(movieTitle);
+                            collectionfilmsIds.Add(movieId);
+                        }
+                    }
+
+                    string queryCollectionName = "SELECT Collection_name FROM users_collections WHERE User_name = @UserName AND ID = @CollectionId";
+
+                    using (MySqlCommand commandCollectionName = new MySqlCommand(queryCollectionName, connection))
+                    {
+                        commandCollectionName.Parameters.AddWithValue("@UserName", Login);
+                        commandCollectionName.Parameters.AddWithValue("@CollectionId", collectionId);
+
+                        string collectionName = commandCollectionName.ExecuteScalar().ToString();
+
                     }
                 }
-
-                string queryCollectionName = "SELECT Collection_name FROM users_collections WHERE User_name = @UserName AND ID = @CollectionId";
-
-                using (MySqlCommand commandCollectionName = new MySqlCommand(queryCollectionName, connection))
-                {
-                    commandCollectionName.Parameters.AddWithValue("@UserName", Login);
-                    commandCollectionName.Parameters.AddWithValue("@CollectionId", collectionId);
-
-                    string collectionName = commandCollectionName.ExecuteScalar().ToString();
-
-                }
+                logger.Info("Лист с фильмами подборки пользователя успешно заполнен");
             }
-
+            catch (Exception ex)
+            {
+                logger.Error("Не удается заполнить лист фильмами подборки: " + ex);
+            }
         }
 
         private void collections_list_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,140 +230,172 @@ namespace TeamProject2__ListOfRecommendations
 
         private void delete_collection_Click(object sender, EventArgs e)
         {
-            if (!collections_list.SelectedItem.ToString().Equals("Избранное"))
+            try
             {
-                int index = collections_list.SelectedIndex;
-                int collectionId = collectionIds[index];
-
-                string query = "DELETE FROM users_collections WHERE User_name = @UserName AND ID = @CollectionId";
-
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                if (!collections_list.SelectedItem.ToString().Equals("Избранное"))
                 {
-                    command.Parameters.AddWithValue("@UserName", Login);
-                    command.Parameters.AddWithValue("@CollectionId", collectionId);
-                    connection.Open();
+                    int index = collections_list.SelectedIndex;
+                    int collectionId = collectionIds[index];
 
-                    int rowsAffected = command.ExecuteNonQuery();
+                    string query = "DELETE FROM users_collections WHERE User_name = @UserName AND ID = @CollectionId";
+
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserName", Login);
+                        command.Parameters.AddWithValue("@CollectionId", collectionId);
+                        connection.Open();
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                    RemoveRelationship(collectionId);
+                    MessageBox.Show("Подборка удалена");
+                    collections_list.Items.Clear();
+                    allfilmsIds.Clear();
+                    collectionIds.Clear();
+                    FillCollectionList();
                 }
-                RemoveRelationship(collectionId);
-                MessageBox.Show("Подборка удалена");
-                collections_list.Items.Clear();
-                allfilmsIds.Clear();
-                collectionIds.Clear();
-                FillCollectionList();
+                else
+                    MessageBox.Show("Вы не можете удалить папку <<Избранное>>");
+
+                logger.Info("Процесс удаления коллекции запустился");
             }
-            else
-                MessageBox.Show("Вы не можете удалить папку <<Избранное>>");
+            catch (Exception ex)
+            {
+                logger.Error("Не удается удалить коллекцию: " + ex);
+            }
         }
 
         private void RemoveRelationship(int id)
         {
-            string query = "DELETE FROM movies_collections WHERE CollectionID = @CollectionID";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            using (MySqlCommand command = new MySqlCommand(query, connection))
+            try
             {
-                command.Parameters.AddWithValue("@CollectionID", id);
-                connection.Open();
-                command.ExecuteNonQuery();
+                string query = "DELETE FROM movies_collections WHERE CollectionID = @CollectionID";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CollectionID", id);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                logger.Info("Подборка успешно удалена");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Не удается удалить подборку: " + ex);
             }
         }
 
 
         private void delete_film_btn_Click(object sender, EventArgs e)
         {
-            FillCollectionFilmsList();
-
-            int index1 = collections_list.SelectedIndex;
-            int collectionId = collectionIds[index1];
-            int index2 = films_in_collection_list.SelectedIndex;
-            if (films_in_collection_list.SelectedIndex < 0)
+            try
             {
-                MessageBox.Show("Выберите фильм");
-                films_in_collection_list.Items.Clear();
                 FillCollectionFilmsList();
-            }
-            else
-            {
-                int movieIdToRemove = collectionfilmsIds[index2];
 
-                string queryRemoveMovieFromCollection = "DELETE FROM movies_collections WHERE CollectionID = @CollectionID AND MovieID = @MovieID";
-
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (MySqlCommand commandRemove = new MySqlCommand(queryRemoveMovieFromCollection, connection))
+                int index1 = collections_list.SelectedIndex;
+                int collectionId = collectionIds[index1];
+                int index2 = films_in_collection_list.SelectedIndex;
+                if (films_in_collection_list.SelectedIndex < 0)
                 {
-                    commandRemove.Parameters.AddWithValue("@CollectionID", collectionId);
-                    commandRemove.Parameters.AddWithValue("@MovieID", movieIdToRemove);
-                    connection.Open();
+                    MessageBox.Show("Выберите фильм");
+                    films_in_collection_list.Items.Clear();
+                    FillCollectionFilmsList();
+                }
+                else
+                {
+                    int movieIdToRemove = collectionfilmsIds[index2];
 
-                    int rowsAffected = commandRemove.ExecuteNonQuery();
+                    string queryRemoveMovieFromCollection = "DELETE FROM movies_collections WHERE CollectionID = @CollectionID AND MovieID = @MovieID";
 
-                    if (rowsAffected > 0)
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    using (MySqlCommand commandRemove = new MySqlCommand(queryRemoveMovieFromCollection, connection))
                     {
-                        MessageBox.Show($"Фильм <<{films_in_collection_list.SelectedItem.ToString()}>> удален из подборки <<{collections_list.SelectedItem.ToString()}>>");
-                        films_in_collection_list.Items.Clear();
-                        FillCollectionFilmsList();
+                        commandRemove.Parameters.AddWithValue("@CollectionID", collectionId);
+                        commandRemove.Parameters.AddWithValue("@MovieID", movieIdToRemove);
+                        connection.Open();
+
+                        int rowsAffected = commandRemove.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show($"Фильм <<{films_in_collection_list.SelectedItem.ToString()}>> удален из подборки <<{collections_list.SelectedItem.ToString()}>>");
+                            films_in_collection_list.Items.Clear();
+                            FillCollectionFilmsList();
+                        }
+
                     }
+                    films_in_collection_list.Items.Clear();
+                    FillCollectionFilmsList();
 
                 }
-                films_in_collection_list.Items.Clear();
-                FillCollectionFilmsList();
+                logger.Info("Фильм успешно удален");
             }
-             
-
+            catch (Exception ex)
+            {
+                logger.Error("Не удается удалить фильм: " + ex);
+            }
         }
 
         private void add_film_btn_Click(object sender, EventArgs e)
         {
-            films_in_collection_list.Items.Clear();
-            FillCollectionFilmsList();
-
-            int index1 = collections_list.SelectedIndex;
-            int collectionId = collectionIds[index1];
-
-            int index2 = all_films_collection_list.SelectedIndex;
-            if (all_films_collection_list.SelectedIndex < 0)
+            try
             {
-                MessageBox.Show("Выберите фильм");
                 films_in_collection_list.Items.Clear();
                 FillCollectionFilmsList();
+
+                int index1 = collections_list.SelectedIndex;
+                int collectionId = collectionIds[index1];
+
+                int index2 = all_films_collection_list.SelectedIndex;
+                if (all_films_collection_list.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Выберите фильм");
+                    films_in_collection_list.Items.Clear();
+                    FillCollectionFilmsList();
+                }
+                else
+                {
+                    int movieIdToAdd = allfilmsIds[index2];
+
+                    string queryCheckMovieInCollection = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID = @CollectionID AND MovieID = @MovieID";
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    using (MySqlCommand command = new MySqlCommand(queryCheckMovieInCollection, connection))
+                    {
+                        command.Parameters.AddWithValue("@CollectionID", collectionId);
+                        command.Parameters.AddWithValue("@MovieID", movieIdToAdd);
+                        connection.Open();
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        if (count > 0)
+                        {
+                            MessageBox.Show($"Фильм <<{all_films_collection_list.SelectedItem.ToString()}>> уже есть в подборке <<{collections_list.SelectedItem.ToString()}>>");
+                            return;
+                        }
+                    }
+
+                    string queryAddMovieToCollection = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@CollectionID, @MovieID)";
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    using (MySqlCommand command = new MySqlCommand(queryAddMovieToCollection, connection))
+                    {
+                        command.Parameters.AddWithValue("@CollectionID", collectionId);
+                        command.Parameters.AddWithValue("@MovieID", movieIdToAdd);
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show($"Фильм <<{all_films_collection_list.SelectedItem.ToString()}>> добавлен в подборку <<{collections_list.SelectedItem.ToString()}>>");
+                            films_in_collection_list.Items.Clear();
+                            FillCollectionFilmsList();
+                        }
+                    }
+                }
+                logger.Info("Процесс добавления фильма запущен");
             }
-            else
+            catch (Exception ex)
             {
-                int movieIdToAdd = allfilmsIds[index2];
-
-                string queryCheckMovieInCollection = "SELECT COUNT(*) FROM movies_collections WHERE CollectionID = @CollectionID AND MovieID = @MovieID";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (MySqlCommand command = new MySqlCommand(queryCheckMovieInCollection, connection))
-                {
-                    command.Parameters.AddWithValue("@CollectionID", collectionId);
-                    command.Parameters.AddWithValue("@MovieID", movieIdToAdd);
-                    connection.Open();
-                    int count = Convert.ToInt32(command.ExecuteScalar());
-                    if (count > 0)
-                    {
-                        MessageBox.Show($"Фильм <<{all_films_collection_list.SelectedItem.ToString()}>> уже есть в подборке <<{collections_list.SelectedItem.ToString()}>>");
-                        return;
-                    }
-                }
-
-                string queryAddMovieToCollection = "INSERT INTO movies_collections (CollectionID, MovieID) VALUES (@CollectionID, @MovieID)";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (MySqlCommand command = new MySqlCommand(queryAddMovieToCollection, connection))
-                {
-                    command.Parameters.AddWithValue("@CollectionID", collectionId);
-                    command.Parameters.AddWithValue("@MovieID", movieIdToAdd);
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show($"Фильм <<{all_films_collection_list.SelectedItem.ToString()}>> добавлен в подборку <<{collections_list.SelectedItem.ToString()}>>");
-                        films_in_collection_list.Items.Clear();
-                        FillCollectionFilmsList();
-                    }
-                }
+                logger.Error("Не удается добавить фильм: " + ex);
             }
         }
     }

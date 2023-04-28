@@ -26,9 +26,9 @@ namespace TeamProject2__ListOfRecommendations
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
 
         private List<string> MovieTitles = new List<string>();
-        private List <int> MovieIds = new List<int>();
-        private List <int> SelectedMovies = new List<int>();
-        private List <string> SelectedMoviesTitles = new List<string>();
+        private List<int> MovieIds = new List<int>();
+        private List<int> SelectedMovies = new List<int>();
+        private List<string> SelectedMoviesTitles = new List<string>();
         private int id;
 
         private void CreateCollection_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace TeamProject2__ListOfRecommendations
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point((screenWidth - this.Width) / 2, (screenHeight - this.Height) / 2);
 
-            int buttonOffset = 30; 
+            int buttonOffset = 30;
             int formWidth = ok_btn.Location.X + ok_btn.Width + buttonOffset; // Вычисляем желаемую ширину формы
             int formHeight = ok_btn.Location.Y + ok_btn.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight);
@@ -79,9 +79,10 @@ namespace TeamProject2__ListOfRecommendations
 
         }
 
-        private void CreateUserCollection(List <int> movieIds)
+        private void CreateUserCollection(List<int> movieIds)
         {
-            
+            try
+            {
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
 
@@ -108,9 +109,13 @@ namespace TeamProject2__ListOfRecommendations
                 }
 
                 connection.Close();
-            
-        }    
-            
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка с подключением к базе данных :" + ex);
+            }
+        }
+    
 
         private void add_film_btn_Click(object sender, EventArgs e)
         {
@@ -151,24 +156,31 @@ namespace TeamProject2__ListOfRecommendations
 
         private void FillLists()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            connection.Open();
-
-            string getMoviesSql = "SELECT * FROM movies";
-            MySqlCommand getMoviesCommand = new MySqlCommand(getMoviesSql, connection);
-            MySqlDataReader reader = getMoviesCommand.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                int movieId = reader.GetInt32(0);
-                string title = reader.GetString(1);
+                MySqlConnection connection = new MySqlConnection(connectionString);
 
-                MovieTitles.Add(title);
-                MovieIds.Add(movieId);
+                connection.Open();
+
+                string getMoviesSql = "SELECT * FROM movies";
+                MySqlCommand getMoviesCommand = new MySqlCommand(getMoviesSql, connection);
+                MySqlDataReader reader = getMoviesCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int movieId = reader.GetInt32(0);
+                    string title = reader.GetString(1);
+
+                    MovieTitles.Add(title);
+                    MovieIds.Add(movieId);
+                }
+
+                connection.Close();
             }
-
-            connection.Close();
+            catch (Exception ex) 
+            {
+                logger.Error("Ошибка с подключением к базе данных :"+ex);
+            }
         }
 
         private void ok_btn_Click(object sender, EventArgs e)

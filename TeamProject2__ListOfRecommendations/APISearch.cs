@@ -77,43 +77,51 @@ namespace TeamProject2__ListOfRecommendations
 
         private async void search_btn1_Click(object sender, EventArgs e)
         {
-            string title = search_tb.Text.Trim();
-            if (string.IsNullOrWhiteSpace(title))
+            try
             {
-                MessageBox.Show("Пожалуйста, введите запрос");
-                return;
-            }
-
-            string requestUrl = $"{OmdbBaseUrl}?apikey={OmdbApiKey}&t={title}";//GET-запрос к API, в качестве параметра API-ключ и название фильма
-            using (var httpClient = new HttpClient())
-            {
-                string responseJson = await httpClient.GetStringAsync(requestUrl);
-
-                //сериализуем в объект OmdbMovie при помощи метода DeserializeObject из библиотеки Newtonsoft.Json
-                var movie = JsonConvert.DeserializeObject<OmdbMovie>(responseJson); 
-
-                if (movie == null)
+                string title = search_tb.Text.Trim();
+                if (string.IsNullOrWhiteSpace(title))
                 {
-                    MessageBox.Show($" Не найден фильм с названием '{title}'.");
+                    MessageBox.Show("Пожалуйста, введите запрос");
                     return;
                 }
-                info_title.Visible = true;
-                info_title.Text = movie.Title;
-                info_year.Text = movie.Year;
-                info_mark.Text = movie.ImdbRating;
-                info_actors.Text = movie.Actors;
-                info_genre.Text = movie.Genre;
-                info_country.Text = movie.Country;
-                plot = movie.Plot;
 
-                if (!string.IsNullOrWhiteSpace(movie.Poster))
+                string requestUrl = $"{OmdbBaseUrl}?apikey={OmdbApiKey}&t={title}";//GET-запрос к API, в качестве параметра API-ключ и название фильма
+                using (var httpClient = new HttpClient())
                 {
-                    image_poster.Load(movie.Poster);
+                    string responseJson = await httpClient.GetStringAsync(requestUrl);
+
+                    //сериализуем в объект OmdbMovie при помощи метода DeserializeObject из библиотеки Newtonsoft.Json
+                    var movie = JsonConvert.DeserializeObject<OmdbMovie>(responseJson);
+
+                    if (movie == null)
+                    {
+                        MessageBox.Show($" Не найден фильм с названием '{title}'.");
+                        return;
+                    }
+                    info_title.Visible = true;
+                    info_title.Text = movie.Title;
+                    info_year.Text = movie.Year;
+                    info_mark.Text = movie.ImdbRating;
+                    info_actors.Text = movie.Actors;
+                    info_genre.Text = movie.Genre;
+                    info_country.Text = movie.Country;
+                    plot = movie.Plot;
+
+                    if (!string.IsNullOrWhiteSpace(movie.Poster))
+                    {
+                        image_poster.Load(movie.Poster);
+                    }
+                    else
+                    {
+                        image_poster.Image = null;
+                    }
                 }
-                else
-                {
-                    image_poster.Image = null;
-                }
+                logger.Info("Поиск по api выполнился успешно");
+            }
+            catch (Exception ex) 
+            {
+                logger.Error("Ошибка запроса с использованием api: "+ex);
             }
         }
 

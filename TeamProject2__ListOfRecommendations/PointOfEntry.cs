@@ -51,35 +51,42 @@ namespace TeamProject2__ListOfRecommendations
 
         private void go_btn_Click(object sender, EventArgs e)
         {
-            String loginUser = login_tb.Text;
-            String passUser = password_tb.Text;
-
-            DataBase db = new DataBase();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM users WHERE  login = @uL AND password = @uP", db.GetConnection()); // создаем объект и передаем команду для вытягивания из бд логина и пароля из бд
-            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            adapter.SelectCommand = command;
-
-
-            DataTable table = new DataTable();
-
-            adapter.Fill(table);
-            if (table.Rows.Count > 0)
+            try
             {
-                ProfileMenagement profileMenagement = new ProfileMenagement(loginUser);
-                MainForm mainForm = new MainForm(loginUser);
-                mainForm.ShowDialog();
-                logger.Log(LogLevel.Info, "Пользователь зарегистрировался");
+                String loginUser = login_tb.Text;
+                String passUser = password_tb.Text;
+
+                DataBase db = new DataBase();
+
+                MySqlCommand command = new MySqlCommand("SELECT * FROM users WHERE  login = @uL AND password = @uP", db.GetConnection()); // создаем объект и передаем команду для вытягивания из бд логина и пароля из бд
+                command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+                command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                adapter.SelectCommand = command;
+
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+                if (table.Rows.Count > 0)
+                {
+                    ProfileMenagement profileMenagement = new ProfileMenagement(loginUser);
+                    MainForm mainForm = new MainForm(loginUser);
+                    mainForm.ShowDialog();
+                    logger.Log(LogLevel.Info, "Произошла регистрация пользователя");
+                }
+
+                else
+                {
+                    MessageBox.Show("Пользователь с такими данными не найден!");
+                    forgotpassword_btn.Visible = true;
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Пользователь с такими данными не найден!");
-                forgotpassword_btn.Visible = true;
+                logger.Error("Не удается зарегистрировать пользователя: " + ex);
             }
 
         }

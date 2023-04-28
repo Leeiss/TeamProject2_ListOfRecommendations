@@ -46,31 +46,39 @@ namespace TeamProject2__ListOfRecommendations
 
         private void FillList()
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
 
-                string query = @"SELECT m.MovieID, m.Title FROM movies_collections mc
+                    string query = @"SELECT m.MovieID, m.Title FROM movies_collections mc
                        JOIN movies m ON mc.MovieID = m.MovieID
                        JOIN users_collections uc ON mc.CollectionID = uc.ID
                        JOIN users u ON uc.User_name = u.Login
                        WHERE uc.ID = @collectionId AND u.Login = @login";
 
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@collectionId", CollectionId);
-                command.Parameters.AddWithValue("@login", Login);
-                MySqlDataReader reader = command.ExecuteReader();
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@collectionId", CollectionId);
+                    command.Parameters.AddWithValue("@login", Login);
+                    MySqlDataReader reader = command.ExecuteReader();
 
-                films_list.Items.Clear();
+                    films_list.Items.Clear();
 
-                while (reader.Read())
-                {
-                    int movieId = reader.GetInt32(0);
-                    string title = reader.GetString(1);
-                    films_list.Items.Add(title);
-                    ints.Add(movieId);
+                    while (reader.Read())
+                    {
+                        int movieId = reader.GetInt32(0);
+                        string title = reader.GetString(1);
+                        films_list.Items.Add(title);
+                        ints.Add(movieId);
+                    }
+                    connection.Close();
+                    logger.Info("Получили фильмы подборки");
                 }
-                connection.Close();
+            }
+            catch
+            {
+                logger.Error("Не удается получить фильмы подборки");
             }
         }
 
@@ -123,6 +131,7 @@ namespace TeamProject2__ListOfRecommendations
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                logger.Error("Ошибка в получении id фильмов из базы данных : " + ex);
             }
             return movie;
         }
@@ -161,6 +170,7 @@ namespace TeamProject2__ListOfRecommendations
                     catch
                     {
                         MessageBox.Show("Некорректный адрес изображения");
+                        logger.Warn("У постера фильма некорректный адрес изображения");
                     }
 
 

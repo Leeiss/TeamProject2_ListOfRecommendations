@@ -66,10 +66,18 @@ namespace TeamProject2__ListOfRecommendations
 
         private void Preferences_Load(object sender, EventArgs e)
         {
-            IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
-            foreach (string actor in actors)
+            try
             {
-                actors_list.Items.Add(actor);
+                IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
+                foreach (string actor in actors)
+                {
+                    actors_list.Items.Add(actor);
+                }
+                logger.Info("Лист с актерами успешно заполнился");
+            }
+            catch 
+            {
+                logger.Info("Проблемы с xml-файлом: не удается заполнить лист с актерами");
             }
 
             genres_list.DrawMode = DrawMode.OwnerDrawFixed;
@@ -93,28 +101,36 @@ namespace TeamProject2__ListOfRecommendations
 
         private void go_btn_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-            foreach (string genre in Genres)
+            try
             {
-                MySqlCommand command = new MySqlCommand("UPDATE users_genres_rating SET RatingGenre = 8 WHERE Username = @username AND Genrename = @genre", connection);
-                command.Parameters.AddWithValue("@username", Login);
-                command.Parameters.AddWithValue("@genre", genre);
-                command.ExecuteNonQuery();
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+                foreach (string genre in Genres)
+                {
+                    MySqlCommand command = new MySqlCommand("UPDATE users_genres_rating SET RatingGenre = 8 WHERE Username = @username AND Genrename = @genre", connection);
+                    command.Parameters.AddWithValue("@username", Login);
+                    command.Parameters.AddWithValue("@genre", genre);
+                    command.ExecuteNonQuery();
+                }
+                foreach (string actor in Actors)
+                {
+                    MySqlCommand command = new MySqlCommand("UPDATE users_actors_rating SET RatingActor = 8 WHERE Username = @username AND Actorname = @actor", connection);
+                    command.Parameters.AddWithValue("@username", Login);
+                    command.Parameters.AddWithValue("@actor", actor);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+                MessageBox.Show("Ваши предпочтения учтены, поздравляем вас с полной регистрацией!");
+                logger.Info("Выполнена полная регистрация");
+                this.Close();
+                Registration registration = new Registration(Login);
+                registration.Close();
             }
-            foreach (string actor in Actors)
-            {
-                MySqlCommand command = new MySqlCommand("UPDATE users_actors_rating SET RatingActor = 8 WHERE Username = @username AND Actorname = @actor", connection);
-                command.Parameters.AddWithValue("@username", Login);
-                command.Parameters.AddWithValue("@actor", actor);
-                command.ExecuteNonQuery();
-            }
-            connection.Close();
-            MessageBox.Show("Ваши предпочтения учтены, поздравляем вас с полной регистрацией!");
-            this.Close();
-            Registration registration = new Registration(Login);
-            registration.Close();
 
+            catch (Exception ex)
+            {
+                logger.Error("Не удается зарегистрировать пользователя: " + ex);
+            }
         }
 
         private void add_genre_Click(object sender, EventArgs e)

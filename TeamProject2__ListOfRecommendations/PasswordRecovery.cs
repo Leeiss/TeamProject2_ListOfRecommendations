@@ -102,76 +102,84 @@ namespace TeamProject2__ListOfRecommendations
         }
         private void email_tb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)13) // Проверяем, что нажата клавиша Enter
+            try
             {
-                email = email_tb.Text;
-
-                if (string.IsNullOrEmpty(email))
+                if (e.KeyChar == (char)13)
                 {
-                    MessageBox.Show("Введите email");
-                    return;
-                }
+                    email = email_tb.Text;
 
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string selectQuery = $"SELECT * FROM `users` WHERE email='{email}'";
-
-                    MySqlCommand command = new MySqlCommand("SELECT id FROM users WHERE email = @Email", connection);
-                    command.Parameters.AddWithValue("@Email", email);
-
-                    object result = command.ExecuteScalar();
-                    if (result == null)
+                    if (string.IsNullOrEmpty(email))
                     {
-                        MessageBox.Show("Введенный вами email неверен");
-                    }
-                    else
-                    {
-                        int id = (int)command.ExecuteScalar();
-
+                        MessageBox.Show("Введите email");
+                        return;
                     }
 
-                    MySqlCommand command1 = new MySqlCommand(selectQuery, connection);
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
-                        if (!reader.HasRows)
+                        connection.Open();
+                        string selectQuery = $"SELECT * FROM `users` WHERE email='{email}'";
+
+                        MySqlCommand command = new MySqlCommand("SELECT id FROM users WHERE email = @Email", connection);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        object result = command.ExecuteScalar();
+                        if (result == null)
                         {
-                            return;
-                        }
-
-                        reader.Read();
-                        newPassword = GeneratePassword();
-                        userId = reader.GetInt32(0); // id пользователя в таблице
-                        info_lbl.Visible = false;
-                        email_tb.Visible = false;
-                        reader.Close();
-
-                        MySqlCommand command2 = new MySqlCommand("SELECT id FROM users WHERE login = @Login AND email = @Email", connection);
-                        command2.Parameters.AddWithValue("@Email", email);
-                        command2.Parameters.AddWithValue("@Login", Login);
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter();
-                        adapter.SelectCommand = command2; // выполняем команду
-                        DataTable table = new DataTable();
-                        
-                        adapter.Fill(table);// записываем данные в объект класса DataTable
-                        if (table.Rows.Count > 0)
-                        {
-                            MessageBox.Show("На указанный email был отправлен код подтверждения");
-                            information_lbl.Visible = true;
-                            cod_tb.Visible = true;
-                            send_btn.Visible = true;
-
-                            SendEmail(email, newPassword);
+                            MessageBox.Show("Введенный вами email неверен");
                         }
                         else
                         {
-                            MessageBox.Show("Пользователя с такими логином и email нет");
+                            int id = (int)command.ExecuteScalar();
+
                         }
+
+                        MySqlCommand command1 = new MySqlCommand(selectQuery, connection);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (!reader.HasRows)
+                            {
+                                return;
+                            }
+
+                            reader.Read();
+                            newPassword = GeneratePassword();
+                            userId = reader.GetInt32(0); // id пользователя в таблице
+                            info_lbl.Visible = false;
+                            email_tb.Visible = false;
+                            reader.Close();
+
+                            MySqlCommand command2 = new MySqlCommand("SELECT id FROM users WHERE login = @Login AND email = @Email", connection);
+                            command2.Parameters.AddWithValue("@Email", email);
+                            command2.Parameters.AddWithValue("@Login", Login);
+
+                            MySqlDataAdapter adapter = new MySqlDataAdapter();
+                            adapter.SelectCommand = command2; // выполняем команду
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);// записываем данные в объект класса DataTable
+                            if (table.Rows.Count > 0)
+                            {
+                                MessageBox.Show("На указанный email был отправлен код подтверждения");
+                                information_lbl.Visible = true;
+                                cod_tb.Visible = true;
+                                send_btn.Visible = true;
+
+                                SendEmail(email, newPassword);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Пользователя с такими логином и email нет");
+                            }
+                        }
+                        connection.Close();
                     }
-                    connection.Close();
                 }
+                logger.Info("Часть процесса подтверждения почты прошла успешно");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Ошибка с подключением к базе данных :" + ex);
             }
         }
 
@@ -207,6 +215,7 @@ namespace TeamProject2__ListOfRecommendations
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ошибка: " + ex.Message);
+                    logger.Error("Проблемы с подключением к базе данных: " + ex.Message);
                 }
 
             }
@@ -230,13 +239,16 @@ namespace TeamProject2__ListOfRecommendations
                     command = new MySqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Пароль успешно изменен");
+                    logger.Info("Пользователь изменил пароль");
                     connection.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ошибка: " + ex.Message);
+                    logger.Error("Проблемы с подключением к базе данных: " + ex.Message);
                 }
             }
+            
         }
 
     }
