@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateCollection));
             this.name_tb = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.title_lbl = new System.Windows.Forms.Label();
+            this.upper_panel = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.films_lbl = new System.Windows.Forms.Label();
             this.search_film_tb = new System.Windows.Forms.TextBox();
             this.films_list = new System.Windows.Forms.ListBox();
             this.add_film_btn = new System.Windows.Forms.Button();
@@ -61,30 +61,30 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.title_lbl);
             this.panel4.Location = new System.Drawing.Point(29, 222);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(311, 68);
             this.panel4.TabIndex = 76;
             // 
-            // label4
+            // title_lbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.label4.Location = new System.Drawing.Point(9, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 33);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Название";
+            this.title_lbl.AutoSize = true;
+            this.title_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.title_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.title_lbl.Location = new System.Drawing.Point(9, 18);
+            this.title_lbl.Name = "title_lbl";
+            this.title_lbl.Size = new System.Drawing.Size(159, 33);
+            this.title_lbl.TabIndex = 9;
+            this.title_lbl.Text = "Название";
             // 
-            // panel1
+            // upper_panel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel1.Location = new System.Drawing.Point(-34, 156);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1348, 14);
-            this.panel1.TabIndex = 75;
+            this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.upper_panel.Location = new System.Drawing.Point(-34, 156);
+            this.upper_panel.Name = "upper_panel";
+            this.upper_panel.Size = new System.Drawing.Size(1348, 14);
+            this.upper_panel.TabIndex = 75;
             // 
             // info_lbl1
             // 
@@ -100,22 +100,22 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.films_lbl);
             this.panel2.Location = new System.Drawing.Point(29, 356);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(311, 68);
             this.panel2.TabIndex = 77;
             // 
-            // label1
+            // films_lbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.label1.Location = new System.Drawing.Point(9, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 33);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Фильмы подборки";
+            this.films_lbl.AutoSize = true;
+            this.films_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.films_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.films_lbl.Location = new System.Drawing.Point(9, 18);
+            this.films_lbl.Name = "films_lbl";
+            this.films_lbl.Size = new System.Drawing.Size(285, 33);
+            this.films_lbl.TabIndex = 9;
+            this.films_lbl.Text = "Фильмы подборки";
             // 
             // search_film_tb
             // 
@@ -183,7 +183,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.name_tb);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.info_lbl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateCollection";
@@ -202,11 +202,11 @@
 
         private System.Windows.Forms.TextBox name_tb;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label title_lbl;
+        private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.Label info_lbl1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label films_lbl;
         private System.Windows.Forms.TextBox search_film_tb;
         private System.Windows.Forms.ListBox films_list;
         private System.Windows.Forms.Button add_film_btn;

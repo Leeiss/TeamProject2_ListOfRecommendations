@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.delimeter1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.stats_lbl = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
             this.search_tb = new System.Windows.Forms.TextBox();
             this.decrease_btn = new System.Windows.Forms.PictureBox();
@@ -54,11 +54,11 @@
             this.film_title_lbl = new System.Windows.Forms.TextBox();
             this.title_film_fromcollection = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.country_lbl3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.actors_lbl2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.genre_lbl1 = new System.Windows.Forms.Label();
             this.frame1 = new System.Windows.Forms.Panel();
             this.year_lbl = new System.Windows.Forms.Label();
             this.delimeter2 = new System.Windows.Forms.Panel();
@@ -72,29 +72,29 @@
             this.add_compilation = new System.Windows.Forms.Button();
             this.change_compilation = new System.Windows.Forms.Button();
             this.pass__individual__btn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.select_mark_lbl = new System.Windows.Forms.Label();
             this.substrate_picture1 = new System.Windows.Forms.Panel();
             this.picture_poster = new System.Windows.Forms.PictureBox();
             this.star_btn = new System.Windows.Forms.Button();
             this.closing_panel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
             this.add_actor_btn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.date_lbl1 = new System.Windows.Forms.Label();
             this.add_country_btn = new System.Windows.Forms.Button();
             this.add_genre_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.actors_lbl = new System.Windows.Forms.Label();
             this.search_actor_tb = new System.Windows.Forms.TextBox();
             this.date1 = new System.Windows.Forms.DateTimePicker();
             this.actors_list = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.country_lbl = new System.Windows.Forms.Label();
             this.search_country_tb = new System.Windows.Forms.TextBox();
             this.countries_list = new System.Windows.Forms.ListBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.genre_lbl2 = new System.Windows.Forms.Label();
             this.genres_list = new System.Windows.Forms.ListBox();
             this.search_genre_btn = new System.Windows.Forms.TextBox();
             this.pass_collection_btn = new System.Windows.Forms.Button();
@@ -121,16 +121,16 @@
             this.picture_poster_forcollection = new System.Windows.Forms.PictureBox();
             this.poster_substrate = new System.Windows.Forms.PictureBox();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.date_lbl = new System.Windows.Forms.Label();
             this.countries_collectionfilm = new System.Windows.Forms.RichTextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.genre_panel = new System.Windows.Forms.Panel();
+            this.genre_lbl = new System.Windows.Forms.Label();
             this.actors_collectionfilm = new System.Windows.Forms.RichTextBox();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.actors_lbl1 = new System.Windows.Forms.Label();
             this.genres_collectionfilm = new System.Windows.Forms.RichTextBox();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.country_lbl1 = new System.Windows.Forms.Label();
             this.reset_stats_btn = new System.Windows.Forms.Label();
             this.pass_filtration_btn = new System.Windows.Forms.Button();
             this.search_results_lb = new System.Windows.Forms.ListBox();
@@ -191,7 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picture_poster_forcollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).BeginInit();
             this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
+            this.genre_panel.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_picture)).BeginInit();
@@ -227,16 +227,16 @@
             this.info_lbl1.TabIndex = 16;
             this.info_lbl1.Text = "М О И   П О Д Б О Р К И";
             // 
-            // label2
+            // stats_lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Stencil", 13F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1546, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(502, 42);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Х А Р А К Т Е Р И С Т И К И";
+            this.stats_lbl.AutoSize = true;
+            this.stats_lbl.Font = new System.Drawing.Font("Stencil", 13F, System.Drawing.FontStyle.Bold);
+            this.stats_lbl.ForeColor = System.Drawing.Color.Black;
+            this.stats_lbl.Location = new System.Drawing.Point(1546, 118);
+            this.stats_lbl.Name = "stats_lbl";
+            this.stats_lbl.Size = new System.Drawing.Size(502, 42);
+            this.stats_lbl.TabIndex = 18;
+            this.stats_lbl.Text = "Х А Р А К Т Е Р И С Т И К И";
             // 
             // upper_panel
             // 
@@ -501,59 +501,59 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.country_lbl3);
             this.panel3.Location = new System.Drawing.Point(1569, 651);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(190, 96);
             this.panel3.TabIndex = 63;
             // 
-            // label3
+            // country_lbl3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label3.Location = new System.Drawing.Point(9, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 33);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Страна";
+            this.country_lbl3.AutoSize = true;
+            this.country_lbl3.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.country_lbl3.Location = new System.Drawing.Point(9, 17);
+            this.country_lbl3.Name = "country_lbl3";
+            this.country_lbl3.Size = new System.Drawing.Size(123, 33);
+            this.country_lbl3.TabIndex = 9;
+            this.country_lbl3.Text = "Страна";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.actors_lbl2);
             this.panel5.Location = new System.Drawing.Point(1569, 510);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(190, 102);
             this.panel5.TabIndex = 67;
             // 
-            // label5
+            // actors_lbl2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label5.Location = new System.Drawing.Point(9, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 33);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Актеры";
+            this.actors_lbl2.AutoSize = true;
+            this.actors_lbl2.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.actors_lbl2.Location = new System.Drawing.Point(9, 16);
+            this.actors_lbl2.Name = "actors_lbl2";
+            this.actors_lbl2.Size = new System.Drawing.Size(123, 33);
+            this.actors_lbl2.TabIndex = 9;
+            this.actors_lbl2.Text = "Актеры";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.genre_lbl1);
             this.panel4.Location = new System.Drawing.Point(1569, 387);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(190, 102);
             this.panel4.TabIndex = 65;
             // 
-            // label4
+            // genre_lbl1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label4.Location = new System.Drawing.Point(9, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 33);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Жанр";
+            this.genre_lbl1.AutoSize = true;
+            this.genre_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.genre_lbl1.Location = new System.Drawing.Point(9, 19);
+            this.genre_lbl1.Name = "genre_lbl1";
+            this.genre_lbl1.Size = new System.Drawing.Size(87, 33);
+            this.genre_lbl1.TabIndex = 9;
+            this.genre_lbl1.Text = "Жанр";
             // 
             // frame1
             // 
@@ -726,16 +726,16 @@
             this.pass__individual__btn.UseVisualStyleBackColor = false;
             this.pass__individual__btn.Click += new System.EventHandler(this.pass_btn_Click);
             // 
-            // label6
+            // select_mark_lbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Stencil", 13.125F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(863, 953);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(311, 42);
-            this.label6.TabIndex = 107;
-            this.label6.Text = "Выберите оценку";
+            this.select_mark_lbl.AutoSize = true;
+            this.select_mark_lbl.Font = new System.Drawing.Font("Stencil", 13.125F);
+            this.select_mark_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.select_mark_lbl.Location = new System.Drawing.Point(863, 953);
+            this.select_mark_lbl.Name = "select_mark_lbl";
+            this.select_mark_lbl.Size = new System.Drawing.Size(311, 42);
+            this.select_mark_lbl.TabIndex = 107;
+            this.select_mark_lbl.Text = "Выберите оценку";
             // 
             // substrate_picture1
             // 
@@ -777,7 +777,7 @@
             // 
             // closing_panel
             // 
-            this.closing_panel.Controls.Add(this.button1);
+            this.closing_panel.Controls.Add(this.cancel_btn);
             this.closing_panel.Controls.Add(this.save_btn);
             this.closing_panel.Controls.Add(this.add_actor_btn);
             this.closing_panel.Controls.Add(this.panel7);
@@ -799,18 +799,18 @@
             this.closing_panel.TabIndex = 112;
             this.closing_panel.Visible = false;
             // 
-            // button1
+            // cancel_btn
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.Font = new System.Drawing.Font("XO Courser", 8F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.button1.Location = new System.Drawing.Point(387, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 42);
-            this.button1.TabIndex = 130;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cancel_btn.BackColor = System.Drawing.Color.Gray;
+            this.cancel_btn.Font = new System.Drawing.Font("XO Courser", 8F);
+            this.cancel_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.cancel_btn.Location = new System.Drawing.Point(387, 14);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(157, 42);
+            this.cancel_btn.TabIndex = 130;
+            this.cancel_btn.Text = "Отмена";
+            this.cancel_btn.UseVisualStyleBackColor = false;
+            this.cancel_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // save_btn
             // 
@@ -843,21 +843,21 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.date_lbl1);
             this.panel7.Location = new System.Drawing.Point(10, 49);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(188, 102);
             this.panel7.TabIndex = 115;
             // 
-            // label9
+            // date_lbl1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label9.Location = new System.Drawing.Point(12, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 66);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Дата \r\nвыхода";
+            this.date_lbl1.AutoSize = true;
+            this.date_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.date_lbl1.Location = new System.Drawing.Point(12, 16);
+            this.date_lbl1.Name = "date_lbl1";
+            this.date_lbl1.Size = new System.Drawing.Size(123, 66);
+            this.date_lbl1.TabIndex = 9;
+            this.date_lbl1.Text = "Дата \r\nвыхода";
             // 
             // add_country_btn
             // 
@@ -891,21 +891,21 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.actors_lbl);
             this.panel2.Location = new System.Drawing.Point(10, 530);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(188, 102);
             this.panel2.TabIndex = 121;
             // 
-            // label7
+            // actors_lbl
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label7.Location = new System.Drawing.Point(15, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(123, 33);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Актеры";
+            this.actors_lbl.AutoSize = true;
+            this.actors_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.actors_lbl.Location = new System.Drawing.Point(15, 17);
+            this.actors_lbl.Name = "actors_lbl";
+            this.actors_lbl.Size = new System.Drawing.Size(123, 33);
+            this.actors_lbl.TabIndex = 9;
+            this.actors_lbl.Text = "Актеры";
             // 
             // search_actor_tb
             // 
@@ -946,21 +946,21 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.country_lbl);
             this.panel1.Location = new System.Drawing.Point(10, 796);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(188, 96);
             this.panel1.TabIndex = 117;
             // 
-            // label1
+            // country_lbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 33);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Страна";
+            this.country_lbl.AutoSize = true;
+            this.country_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.country_lbl.Location = new System.Drawing.Point(15, 17);
+            this.country_lbl.Name = "country_lbl";
+            this.country_lbl.Size = new System.Drawing.Size(123, 33);
+            this.country_lbl.TabIndex = 9;
+            this.country_lbl.Text = "Страна";
             // 
             // search_country_tb
             // 
@@ -1197,21 +1197,21 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.genre_lbl2);
             this.panel6.Location = new System.Drawing.Point(10, 245);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(188, 102);
             this.panel6.TabIndex = 119;
             // 
-            // label8
+            // genre_lbl2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label8.Location = new System.Drawing.Point(15, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 33);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Жанр";
+            this.genre_lbl2.AutoSize = true;
+            this.genre_lbl2.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.genre_lbl2.Location = new System.Drawing.Point(15, 17);
+            this.genre_lbl2.Name = "genre_lbl2";
+            this.genre_lbl2.Size = new System.Drawing.Size(87, 33);
+            this.genre_lbl2.TabIndex = 9;
+            this.genre_lbl2.Text = "Жанр";
             // 
             // genres_list
             // 
@@ -1481,7 +1481,7 @@
             this.panel_show_collectionfilm.Controls.Add(this.poster_substrate);
             this.panel_show_collectionfilm.Controls.Add(this.panel13);
             this.panel_show_collectionfilm.Controls.Add(this.countries_collectionfilm);
-            this.panel_show_collectionfilm.Controls.Add(this.panel12);
+            this.panel_show_collectionfilm.Controls.Add(this.genre_panel);
             this.panel_show_collectionfilm.Controls.Add(this.actors_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
@@ -1554,21 +1554,21 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel13.Controls.Add(this.label13);
+            this.panel13.Controls.Add(this.date_lbl);
             this.panel13.Location = new System.Drawing.Point(1246, 317);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(220, 102);
             this.panel13.TabIndex = 119;
             // 
-            // label13
+            // date_lbl
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label13.Location = new System.Drawing.Point(3, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(123, 66);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "Дата\r\nвыхода\r\n";
+            this.date_lbl.AutoSize = true;
+            this.date_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.date_lbl.Location = new System.Drawing.Point(3, 19);
+            this.date_lbl.Name = "date_lbl";
+            this.date_lbl.Size = new System.Drawing.Size(123, 66);
+            this.date_lbl.TabIndex = 9;
+            this.date_lbl.Text = "Дата\r\nвыхода\r\n";
             // 
             // countries_collectionfilm
             // 
@@ -1584,24 +1584,24 @@
             this.countries_collectionfilm.TabStop = false;
             this.countries_collectionfilm.Text = "";
             // 
-            // panel12
+            // genre_panel
             // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel12.Controls.Add(this.label12);
-            this.panel12.Location = new System.Drawing.Point(1246, 492);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(220, 102);
-            this.panel12.TabIndex = 121;
+            this.genre_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.genre_panel.Controls.Add(this.genre_lbl);
+            this.genre_panel.Location = new System.Drawing.Point(1246, 492);
+            this.genre_panel.Name = "genre_panel";
+            this.genre_panel.Size = new System.Drawing.Size(220, 102);
+            this.genre_panel.TabIndex = 121;
             // 
-            // label12
+            // genre_lbl
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label12.Location = new System.Drawing.Point(9, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 33);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Жанр";
+            this.genre_lbl.AutoSize = true;
+            this.genre_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.genre_lbl.Location = new System.Drawing.Point(9, 19);
+            this.genre_lbl.Name = "genre_lbl";
+            this.genre_lbl.Size = new System.Drawing.Size(87, 33);
+            this.genre_lbl.TabIndex = 9;
+            this.genre_lbl.Text = "Жанр";
             // 
             // actors_collectionfilm
             // 
@@ -1620,21 +1620,21 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel11.Controls.Add(this.label11);
+            this.panel11.Controls.Add(this.actors_lbl1);
             this.panel11.Location = new System.Drawing.Point(1246, 701);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(220, 102);
             this.panel11.TabIndex = 122;
             // 
-            // label11
+            // actors_lbl1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label11.Location = new System.Drawing.Point(9, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 33);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Актеры";
+            this.actors_lbl1.AutoSize = true;
+            this.actors_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.actors_lbl1.Location = new System.Drawing.Point(9, 16);
+            this.actors_lbl1.Name = "actors_lbl1";
+            this.actors_lbl1.Size = new System.Drawing.Size(123, 33);
+            this.actors_lbl1.TabIndex = 9;
+            this.actors_lbl1.Text = "Актеры";
             // 
             // genres_collectionfilm
             // 
@@ -1653,21 +1653,21 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel10.Controls.Add(this.label10);
+            this.panel10.Controls.Add(this.country_lbl1);
             this.panel10.Location = new System.Drawing.Point(1246, 900);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(220, 96);
             this.panel10.TabIndex = 120;
             // 
-            // label10
+            // country_lbl1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label10.Location = new System.Drawing.Point(9, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 33);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Страна";
+            this.country_lbl1.AutoSize = true;
+            this.country_lbl1.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.country_lbl1.Location = new System.Drawing.Point(9, 17);
+            this.country_lbl1.Name = "country_lbl1";
+            this.country_lbl1.Size = new System.Drawing.Size(123, 33);
+            this.country_lbl1.TabIndex = 9;
+            this.country_lbl1.Text = "Страна";
             // 
             // reset_stats_btn
             // 
@@ -1878,7 +1878,7 @@
             this.Controls.Add(this.collections_panel);
             this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.select_mark_lbl);
             this.Controls.Add(this.add_to_favorites_btn);
             this.Controls.Add(this.add_in_compilation_btn);
             this.Controls.Add(this.change_compilation);
@@ -1896,7 +1896,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.frame1);
             this.Controls.Add(this.upper_panel);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.stats_lbl);
             this.Controls.Add(this.info_lbl1);
             this.Controls.Add(this.delimeter2);
             this.Controls.Add(this.delimeter1);
@@ -1979,8 +1979,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.poster_substrate)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
+            this.genre_panel.ResumeLayout(false);
+            this.genre_panel.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -2005,7 +2005,7 @@
 
         private System.Windows.Forms.Panel delimeter1;
         private System.Windows.Forms.Label info_lbl1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label stats_lbl;
         private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.PictureBox logo_pb;
         private System.Windows.Forms.PictureBox expand_pb;
@@ -2017,11 +2017,11 @@
         private System.Windows.Forms.PictureBox frame_collapse;
         private System.Windows.Forms.ToolTip hints;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label country_lbl3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label actors_lbl2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label genre_lbl1;
         private System.Windows.Forms.Panel frame1;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.Panel delimeter2;
@@ -2048,7 +2048,7 @@
         private System.Windows.Forms.Button pass__individual__btn;
         private System.Windows.Forms.PictureBox api_btn;
         private System.Windows.Forms.PictureBox frame_api;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label select_mark_lbl;
         private System.Windows.Forms.PictureBox substrate_collection;
         private System.Windows.Forms.PictureBox collections_btn;
         private System.Windows.Forms.TextBox film_title_lbl;
@@ -2060,23 +2060,23 @@
         private System.Windows.Forms.Panel closing_panel;
         private System.Windows.Forms.Button add_actor_btn;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label date_lbl1;
         private System.Windows.Forms.Button add_country_btn;
         private System.Windows.Forms.Button add_genre_btn;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label actors_lbl;
         private System.Windows.Forms.TextBox search_actor_tb;
         private System.Windows.Forms.DateTimePicker date1;
         private System.Windows.Forms.ListBox actors_list;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label country_lbl;
         private System.Windows.Forms.TextBox search_country_tb;
         private System.Windows.Forms.ListBox countries_list;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label genre_lbl2;
         private System.Windows.Forms.ListBox genres_list;
         private System.Windows.Forms.TextBox search_genre_btn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.Button pass_collection_btn;
         private System.Windows.Forms.PictureBox adventure_btn;
@@ -2099,13 +2099,13 @@
         private System.Windows.Forms.Panel substate_for_frame;
         private System.Windows.Forms.PictureBox poster_substrate;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label date_lbl;
+        private System.Windows.Forms.Panel genre_panel;
+        private System.Windows.Forms.Label genre_lbl;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label actors_lbl1;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label country_lbl1;
         public System.Windows.Forms.RichTextBox date_collectionfilm;
         public System.Windows.Forms.RichTextBox countries_collectionfilm;
         public System.Windows.Forms.RichTextBox actors_collectionfilm;

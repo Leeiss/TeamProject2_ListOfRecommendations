@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoAboutCollection));
             this.go_btn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.films_panel = new System.Windows.Forms.Label();
             this.films_list = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.upper_panel = new System.Windows.Forms.Panel();
             this.collection_title_lbl = new System.Windows.Forms.Label();
             this.just_panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -50,16 +50,16 @@
             this.go_btn.Visible = false;
             this.go_btn.Click += new System.EventHandler(this.go_btn_Click);
             // 
-            // label2
+            // films_panel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("XO Courser", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.label2.Location = new System.Drawing.Point(71, 247);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(253, 30);
-            this.label2.TabIndex = 105;
-            this.label2.Text = "Фильмы подборки";
+            this.films_panel.AutoSize = true;
+            this.films_panel.Font = new System.Drawing.Font("XO Courser", 10F);
+            this.films_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.films_panel.Location = new System.Drawing.Point(71, 247);
+            this.films_panel.Name = "films_panel";
+            this.films_panel.Size = new System.Drawing.Size(253, 30);
+            this.films_panel.TabIndex = 105;
+            this.films_panel.Text = "Фильмы подборки";
             // 
             // films_list
             // 
@@ -74,13 +74,13 @@
             this.films_list.TabIndex = 108;
             this.films_list.SelectedIndexChanged += new System.EventHandler(this.films_list_SelectedIndexChanged);
             // 
-            // panel1
+            // upper_panel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
-            this.panel1.Location = new System.Drawing.Point(-94, 134);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1348, 14);
-            this.panel1.TabIndex = 107;
+            this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.upper_panel.Location = new System.Drawing.Point(-94, 134);
+            this.upper_panel.Name = "upper_panel";
+            this.upper_panel.Size = new System.Drawing.Size(1348, 14);
+            this.upper_panel.TabIndex = 107;
             // 
             // collection_title_lbl
             // 
@@ -108,9 +108,9 @@
             this.ClientSize = new System.Drawing.Size(880, 760);
             this.Controls.Add(this.just_panel);
             this.Controls.Add(this.go_btn);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.films_panel);
             this.Controls.Add(this.films_list);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.upper_panel);
             this.Controls.Add(this.collection_title_lbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoAboutCollection";
@@ -124,9 +124,9 @@
         #endregion
 
         private System.Windows.Forms.Button go_btn;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label films_panel;
         private System.Windows.Forms.ListBox films_list;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.Label collection_title_lbl;
         private System.Windows.Forms.Panel just_panel;
     }

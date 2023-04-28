@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeCollections));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.select_collection_lbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.info_lbl1 = new System.Windows.Forms.Label();
             this.collections_list = new System.Windows.Forms.ListBox();
@@ -49,22 +49,22 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.select_collection_lbl);
             this.panel4.Location = new System.Drawing.Point(33, 250);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(357, 68);
             this.panel4.TabIndex = 72;
             // 
-            // label4
+            // select_collection_lbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("XO Courser", 11F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.label4.Location = new System.Drawing.Point(9, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(321, 33);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Выберите подборку";
+            this.select_collection_lbl.AutoSize = true;
+            this.select_collection_lbl.Font = new System.Drawing.Font("XO Courser", 11F);
+            this.select_collection_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
+            this.select_collection_lbl.Location = new System.Drawing.Point(9, 18);
+            this.select_collection_lbl.Name = "select_collection_lbl";
+            this.select_collection_lbl.Size = new System.Drawing.Size(321, 33);
+            this.select_collection_lbl.TabIndex = 9;
+            this.select_collection_lbl.Text = "Выберите подборку";
             // 
             // panel1
             // 
@@ -251,7 +251,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label select_collection_lbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label info_lbl1;
         private System.Windows.Forms.ListBox collections_list;

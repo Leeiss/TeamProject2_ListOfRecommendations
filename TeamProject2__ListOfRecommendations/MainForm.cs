@@ -84,7 +84,7 @@ namespace TeamProject2__ListOfRecommendations
             catch (Exception ex) 
             {
                 MessageBox.Show("В базе данных приложения еще нет фильмов с таким жанром");
-                logger.Warn("В базе данных нет фильмов с нужным рейтингом" + ex.Message);
+                logger.Warn("В базе данных нет фильмов с нужным рейтингом: " + ex.Message);
             }
 
         }

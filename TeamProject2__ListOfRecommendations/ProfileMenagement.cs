@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -61,6 +62,26 @@ namespace TeamProject2__ListOfRecommendations
         private void ProfileMenagement_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        private void support_service_lbl_Click(object sender, EventArgs e)
+        {
+            string subject = "Запрос на поддержку";
+            string email = "list_of_recomendations@mail.ru";
+            string mailtoCommand = string.Format("mailto:{0}?subject={1}", email, subject);
+            
+
+            Process.Start(mailtoCommand);
+        }
+
+        private void support_service_lbl_MouseEnter(object sender, EventArgs e)
+        {
+            command1.Visible = true;
+        }
+
+        private void support_service_lbl_MouseLeave(object sender, EventArgs e)
+        {
+            command1.Visible = false;
         }
     }
 }
