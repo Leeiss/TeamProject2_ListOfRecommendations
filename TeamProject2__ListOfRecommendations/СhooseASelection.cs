@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace TeamProject2__ListOfRecommendations
         }
         private string Login;
         private int MovieId;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
         private void СhooseCollection_Load(object sender, EventArgs e)
         {

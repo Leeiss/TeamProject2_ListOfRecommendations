@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace TeamProject2__ListOfRecommendations
         private List<int> ints = new List<int>();
         private string Login;
         private int CollectionId;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
 
         private void InfoAboutCollection_Load(object sender, EventArgs e)

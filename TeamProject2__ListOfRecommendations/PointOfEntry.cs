@@ -14,11 +14,13 @@ using System.Windows.Forms;
 using TeamProject1_ToDoList.Classes;
 using System.Net;
 using System.Net.Mail;
+using NLog;
 
 namespace TeamProject2__ListOfRecommendations
 {
     public partial class Authorization : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public Authorization()
         {
             InitializeComponent();
@@ -71,6 +73,7 @@ namespace TeamProject2__ListOfRecommendations
                 ProfileMenagement profileMenagement = new ProfileMenagement(loginUser);
                 MainForm mainForm = new MainForm(loginUser);
                 mainForm.ShowDialog();
+                logger.Log(LogLevel.Info, "Пользователь зарегистрировался");
             }
 
             else

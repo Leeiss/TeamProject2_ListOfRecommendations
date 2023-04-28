@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace TeamProject2__ListOfRecommendations
         private const string OmdbBaseUrl = "http://www.omdbapi.com/";
         private const string OmdbApiKey = "d012c630"; //API-ключ
         string plot;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public APISearch()
         {
             InitializeComponent();

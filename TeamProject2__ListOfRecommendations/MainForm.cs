@@ -11,6 +11,8 @@ using System.Collections;
 using MySqlX.XDevAPI.Relational;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Deployment.Internal;
+using NLog;
+using NLog.Config;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -28,7 +30,8 @@ namespace TeamProject2__ListOfRecommendations
         }
         private MySqlConnection conn;
         private static MySqlConnection connection;
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        
         private bool SelectDate1 = false;
         private bool SelectGenre = false;
         private bool SelectActor = false;
@@ -81,10 +84,12 @@ namespace TeamProject2__ListOfRecommendations
                 MovieID = CollectionMoviesList[0].MovieID;
                 Link = CollectionMoviesList[0].Link;
                 picture_poster.Image = Image.FromFile(CollectionMoviesList[0].PicturePath);
+                logger.Info("Элементы главной формы заполнились данными о фильме из коллекции");
             }
-            catch
+            catch (Exception ex) 
             {
                 MessageBox.Show("В базе данных приложения еще нет фильмов с таким жанром");
+                logger.Warn("В базе данных нет фильмов с нужным рейтингом" + ex.Message);
             }
 
         }
@@ -94,8 +99,11 @@ namespace TeamProject2__ListOfRecommendations
         /// <returns></returns>
         public Movie GetMovieDetails()
         {
-            MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations");
-            connection.Open();
+            try
+            {
+                MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations");
+                connection.Open();
+            
 
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = @"
@@ -125,6 +133,7 @@ namespace TeamProject2__ListOfRecommendations
                 string actors = reader.IsDBNull(reader.GetOrdinal("Actors")) ? "" : reader.GetString("Actors");
                 string countries = reader.IsDBNull(reader.GetOrdinal("Countries")) ? "" : reader.GetString("Countries");
 
+
                 result_movie.Date = date;
                 result_movie.Title = title;
                 result_movie.PicturePath = path;
@@ -136,8 +145,16 @@ namespace TeamProject2__ListOfRecommendations
             reader.Close();
 
             connection.Close();
+                logger.Info("Успешно получены данные фильма по его id");   
 
             return result_movie;
+            }
+            catch
+            {
+                logger.Error("Нет подключения к базе данных");
+                return null;
+            }
+
         }
 
         /// <summary>
@@ -181,6 +198,7 @@ namespace TeamProject2__ListOfRecommendations
             {
                 list1.Add(movie);
             }
+            logger.Info("Найдены все фильмы с нужным жанром");
         }
 
         /// <summary>
@@ -199,10 +217,11 @@ namespace TeamProject2__ListOfRecommendations
                 {
                     picture_poster.Image = Image.FromFile(movie.PicturePath);
                 }
-                catch
+                catch (Exception ex)
                 {
                     MessageBox.Show("К сожалению, путь к постеру фильма устарел или неправильно добавлен, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
                     picture_poster.Image = Properties.Resources.безфото;
+                    logger.Warn("У постера неправильный путь: " + ex.Message);
                 }
                 MovieID = movie.MovieID;
             }
@@ -229,54 +248,12 @@ namespace TeamProject2__ListOfRecommendations
         /// <returns></returns>
         static List<Movie> GetTopRatedMovie(string userLogin)
         {
-            connection.Open();
-
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
-                "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
-                "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
-                "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
-                "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
-                "FROM movies m " +
-                "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
-                "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
-                "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
-                "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
-                "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
-                "JOIN users u ON u.Login = ugr.Username " +
-                "WHERE u.Login = @userLogin " +
-                "GROUP BY m.MovieID " +
-                "ORDER BY MovieRating DESC " +
-                "LIMIT 5";
-
-            command.Parameters.AddWithValue("@userLogin", userLogin);
-            List<Movie> topRatedMovies = new List<Movie>();
-
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                while (reader.Read())
-                {
-                    Movie topRatedMovie = new Movie();
-                    topRatedMovie.MovieID = reader.GetInt32("MovieID");
-                    topRatedMovie.Title = reader.GetString("Title");
-                    topRatedMovie.Date = reader.GetString("Date");
-                    topRatedMovie.PicturePath = reader.GetString("PicturePath");
-                    topRatedMovie.Link = reader.GetString("Link");
-                    topRatedMovie.Genres = reader.GetString("Genres");
-                    topRatedMovie.Actors = reader.GetString("Actors");
-                    topRatedMovie.Countries = reader.GetString("Countries");
+                connection.Open();
 
-                    topRatedMovies.Add(topRatedMovie);
-                }
-            }
-
-            // Проверяем, сколько фильмов вернул запрос 
-            if (topRatedMovies.Count < 5)
-            {
-                // Если запрос вернул менее 5 фильмов, выполняем другой запрос, который вернет оставшиеся фильмы с самым высоким рейтингом 
-                int remainingMovies = 5 - topRatedMovies.Count;
-                MySqlCommand command2 = connection.CreateCommand();
-                command2.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
                     "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
                     "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
                     "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
@@ -290,12 +267,13 @@ namespace TeamProject2__ListOfRecommendations
                     "JOIN users u ON u.Login = ugr.Username " +
                     "WHERE u.Login = @userLogin " +
                     "GROUP BY m.MovieID " +
-                    "HAVING COUNT(*) = 1 " +  // исключаем уже полученные фильмы 
                     "ORDER BY MovieRating DESC " +
-                    "LIMIT " + remainingMovies.ToString();
-                command2.Parameters.AddWithValue("@userLogin", userLogin);
+                    "LIMIT 5";
 
-                using (MySqlDataReader reader = command2.ExecuteReader())
+                command.Parameters.AddWithValue("@userLogin", userLogin);
+                List<Movie> topRatedMovies = new List<Movie>();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -312,58 +290,119 @@ namespace TeamProject2__ListOfRecommendations
                         topRatedMovies.Add(topRatedMovie);
                     }
                 }
+
+                // Проверяем, сколько фильмов вернул запрос 
+                if (topRatedMovies.Count < 5)
+                {
+                    // Если запрос вернул менее 5 фильмов, выполняем другой запрос, который вернет оставшиеся фильмы с самым высоким рейтингом 
+                    int remainingMovies = 5 - topRatedMovies.Count;
+                    MySqlCommand command2 = connection.CreateCommand();
+                    command2.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                        "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
+                        "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
+                        "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
+                        "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as MovieRating " +
+                        "FROM movies m " +
+                        "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
+                        "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
+                        "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
+                        "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
+                        "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
+                        "JOIN users u ON u.Login = ugr.Username " +
+                        "WHERE u.Login = @userLogin " +
+                        "GROUP BY m.MovieID " +
+                        "HAVING COUNT(*) = 1 " +  // исключаем уже полученные фильмы 
+                        "ORDER BY MovieRating DESC " +
+                        "LIMIT " + remainingMovies.ToString();
+                    command2.Parameters.AddWithValue("@userLogin", userLogin);
+
+                    using (MySqlDataReader reader = command2.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Movie topRatedMovie = new Movie();
+                            topRatedMovie.MovieID = reader.GetInt32("MovieID");
+                            topRatedMovie.Title = reader.GetString("Title");
+                            topRatedMovie.Date = reader.GetString("Date");
+                            topRatedMovie.PicturePath = reader.GetString("PicturePath");
+                            topRatedMovie.Link = reader.GetString("Link");
+                            topRatedMovie.Genres = reader.GetString("Genres");
+                            topRatedMovie.Actors = reader.GetString("Actors");
+                            topRatedMovie.Countries = reader.GetString("Countries");
+
+                            topRatedMovies.Add(topRatedMovie);
+                        }
+                    }
+                }
+
+                connection.Close();
+                logger.Info("Успешно получены рекомендуемы для пользователя фильмы");
+                return topRatedMovies;
             }
-
-            connection.Close();
-
-            return topRatedMovies;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка");
+                logger.Error("Не удается получить рекомендуемые фильмы для пользователя: "+ex.Message);
+                return null;
+                
+            }
+            
         }
 
         static List<Movie> AllMovies(string userLogin)
         {
-            connection.Open();
-
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
-                "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
-                "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
-                "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
-                "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as Rating " + // добавленное поле Rating
-                "FROM movies m " +
-                "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
-                "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
-                "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
-                "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
-                "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
-                "JOIN users u ON u.Login = ugr.Username " +
-                "WHERE u.Login = @userLogin " +
-                "GROUP BY m.MovieID ";
-
-            command.Parameters.AddWithValue("@userLogin", userLogin);
-            List<Movie> allMovies = new List<Movie>();
-
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                connection.Open();
+
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT m.MovieID, m.Title, m.Date, m.PicturePath, m.Link, " +
+                    "GROUP_CONCAT(DISTINCT fg.Genre SEPARATOR ', ') as Genres, " +
+                    "GROUP_CONCAT(DISTINCT fa.Actor SEPARATOR ', ') as Actors, " +
+                    "GROUP_CONCAT(DISTINCT fc.Country SEPARATOR ', ') as Countries, " +
+                    "AVG(ugr.RatingGenre) + AVG(uar.RatingActor) as Rating " + // добавленное поле Rating
+                    "FROM movies m " +
+                    "JOIN film_genres fg ON m.MovieID = fg.FilmID " +
+                    "JOIN film_actors fa ON m.MovieID = fa.FilmID " +
+                    "JOIN film_countries fc ON m.MovieID = fc.FilmID " +
+                    "JOIN users_genres_rating ugr ON fg.Genre = ugr.Genrename " +
+                    "JOIN users_actors_rating uar ON fa.Actor = uar.Actorname " +
+                    "JOIN users u ON u.Login = ugr.Username " +
+                    "WHERE u.Login = @userLogin " +
+                    "GROUP BY m.MovieID ";
+
+                command.Parameters.AddWithValue("@userLogin", userLogin);
+                List<Movie> allMovies = new List<Movie>();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    Movie topRatedMovie = new Movie();
-                    topRatedMovie.MovieID = reader.GetInt32("MovieID");
-                    topRatedMovie.Title = reader.GetString("Title");
-                    topRatedMovie.Date = reader.GetString("Date");
-                    topRatedMovie.PicturePath = reader.GetString("PicturePath");
-                    topRatedMovie.Link = reader.GetString("Link");
-                    topRatedMovie.Genres = reader.GetString("Genres");
-                    topRatedMovie.Actors = reader.GetString("Actors");
-                    topRatedMovie.Countries = reader.GetString("Countries");
-                    topRatedMovie.OverallRating = reader.GetDouble("Rating");
+                    while (reader.Read())
+                    {
+                        Movie topRatedMovie = new Movie();
+                        topRatedMovie.MovieID = reader.GetInt32("MovieID");
+                        topRatedMovie.Title = reader.GetString("Title");
+                        topRatedMovie.Date = reader.GetString("Date");
+                        topRatedMovie.PicturePath = reader.GetString("PicturePath");
+                        topRatedMovie.Link = reader.GetString("Link");
+                        topRatedMovie.Genres = reader.GetString("Genres");
+                        topRatedMovie.Actors = reader.GetString("Actors");
+                        topRatedMovie.Countries = reader.GetString("Countries");
+                        topRatedMovie.OverallRating = reader.GetDouble("Rating");
 
-                    allMovies.Add(topRatedMovie);
+                        allMovies.Add(topRatedMovie);
+                    }
                 }
+
+                connection.Close();
+                logger.Info("Данные о фильмах приложения успешно выгружены");
+                return allMovies;
             }
-
-            connection.Close();
-
-            return allMovies;
+            catch (Exception ex)
+            {
+                logger.Error("Не удается получить фильмы с базы данных: " + ex);
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -371,39 +410,46 @@ namespace TeamProject2__ListOfRecommendations
         /// </summary>
         private void ShowUserCollectionsList()
         {
-            list_collections.Items.Clear();
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-
-            string getCollectionNamesSql = "SELECT ID, Collection_name FROM users_collections WHERE User_name = @username";
-            MySqlCommand getCollectionNamesCmd = new MySqlCommand(getCollectionNamesSql, connection);
-            getCollectionNamesCmd.Parameters.AddWithValue("@username", Login);
-
-            List<string> collectionNames = new List<string>();
-            using (MySqlDataReader reader = getCollectionNamesCmd.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                list_collections.Items.Clear();
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                string getCollectionNamesSql = "SELECT ID, Collection_name FROM users_collections WHERE User_name = @username";
+                MySqlCommand getCollectionNamesCmd = new MySqlCommand(getCollectionNamesSql, connection);
+                getCollectionNamesCmd.Parameters.AddWithValue("@username", Login);
+
+                List<string> collectionNames = new List<string>();
+                using (MySqlDataReader reader = getCollectionNamesCmd.ExecuteReader())
                 {
-                    int collectionId = reader.GetInt32("ID");
-                    string collectionName = reader.GetString("Collection_name");
-                    CollectionsIds.Add(collectionId);
-                    collectionNames.Add(collectionName);
+                    while (reader.Read())
+                    {
+                        int collectionId = reader.GetInt32("ID");
+                        string collectionName = reader.GetString("Collection_name");
+                        CollectionsIds.Add(collectionId);
+                        collectionNames.Add(collectionName);
+                    }
                 }
+
+                connection.Close();
+
+                foreach (string collectionName in collectionNames)
+                {
+                    list_collections.Items.Add(collectionName);
+                }
+                logger.Info("Информация по подборкам пользователя успешно получена");
             }
-
-            connection.Close();
-
-            foreach (string collectionName in collectionNames)
+            catch
             {
-                list_collections.Items.Add(collectionName);
+                logger.Error("Не удается получить подборки пользователя");
             }
+            
         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-
             DateTime dt = DateTime.Now;
             date1.MaxDate = dt;
             TopRatedMovies.Clear();
@@ -412,6 +458,7 @@ namespace TeamProject2__ListOfRecommendations
             if (TopRatedMovies.Count == 0)
             {
                 MessageBox.Show("К сожалению, у нас пока нет нужных для вас фильмов");
+                logger.Info("Не удается получить список рекомендуемых фильмов для пользователя");
             }
             else
             {
@@ -617,17 +664,27 @@ namespace TeamProject2__ListOfRecommendations
         /// <returns></returns>
         private int isAdmin(string login)
         {
-            connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-            string query = $"SELECT admin_rights FROM users WHERE Login='{login}'";
-            MySqlCommand command = new MySqlCommand(query, connection);
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            int adminRights = reader.GetInt32("admin_rights");
-            reader.Close();
-            connection.Close();
-            return adminRights;
+            try
+            {
+                connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+                string query = $"SELECT admin_rights FROM users WHERE Login='{login}'";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                int adminRights = reader.GetInt32("admin_rights");
+                reader.Close();
+                connection.Close();
+                logger.Info("Права админа для пользователя проверены");
+
+                return adminRights;
+            }
+            catch
+            {
+                logger.Error("Не удается получить данные о правах админа из-за ошибки в базе данных");
+                return 0;
+            }
         }
 
         /// <summary>
@@ -664,10 +721,12 @@ namespace TeamProject2__ListOfRecommendations
             try
             {
                 Process.Start(Link);
+                logger.Info("Переход по ссылке на фильм был успешен");
             }
             catch
             {
                 MessageBox.Show("К сожалению, ссылка на даннный фильм устарела или неправильно добавлена, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
+                logger.Error("Ссылка на фильм недействительна");
             }
         }
 
@@ -877,97 +936,106 @@ namespace TeamProject2__ListOfRecommendations
 
         private List<int> GetFilteredMoviesIds()
         {
-            List<int> ids = new List<int>();
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                MySqlCommand command = new MySqlCommand();
-                command.Connection = connection;
-
-                string query = "SELECT Movies.MovieID, Movies.Title, IFNULL(Movies.Date, '') AS Date,  IFNULL(Movies.PicturePath, '') AS PicturePath, IFNULL(Movies.Link, '') AS Link, GROUP_CONCAT(DISTINCT Film_Genres.Genre SEPARATOR ', ') AS Genres, GROUP_CONCAT(DISTINCT Film_Actors.Actor SEPARATOR ', ') AS Actors, GROUP_CONCAT(DISTINCT Film_Countries.Country SEPARATOR ', ') AS Countries FROM Movies " +
-                           "LEFT JOIN Film_Genres ON Movies.MovieID = Film_Genres.FilmID " +
-                           "LEFT JOIN Film_Actors ON Movies.MovieID = Film_Actors.FilmID " +
-                           "LEFT JOIN Film_Countries ON Movies.MovieID = Film_Countries.FilmID " +
-                           "WHERE ((";
-
-                if (Genres.Count > 0)
+                List<int> ids = new List<int>();
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    for (int i = 0; i < Genres.Count; i++)
+                    connection.Open();
+
+                    MySqlCommand command = new MySqlCommand();
+                    command.Connection = connection;
+
+                    string query = "SELECT Movies.MovieID, Movies.Title, IFNULL(Movies.Date, '') AS Date,  IFNULL(Movies.PicturePath, '') AS PicturePath, IFNULL(Movies.Link, '') AS Link, GROUP_CONCAT(DISTINCT Film_Genres.Genre SEPARATOR ', ') AS Genres, GROUP_CONCAT(DISTINCT Film_Actors.Actor SEPARATOR ', ') AS Actors, GROUP_CONCAT(DISTINCT Film_Countries.Country SEPARATOR ', ') AS Countries FROM Movies " +
+                               "LEFT JOIN Film_Genres ON Movies.MovieID = Film_Genres.FilmID " +
+                               "LEFT JOIN Film_Actors ON Movies.MovieID = Film_Actors.FilmID " +
+                               "LEFT JOIN Film_Countries ON Movies.MovieID = Film_Countries.FilmID " +
+                               "WHERE ((";
+
+                    if (Genres.Count > 0)
                     {
-                        if (i == 0)
+                        for (int i = 0; i < Genres.Count; i++)
                         {
-                            query += "Film_Genres.Genre LIKE '%" + Genres[i].Trim() + "%'";
-                        }
-                        else
-                        {
-                            query += " OR Film_Genres.Genre LIKE '%" + Genres[i].Trim() + "%'";
+                            if (i == 0)
+                            {
+                                query += "Film_Genres.Genre LIKE '%" + Genres[i].Trim() + "%'";
+                            }
+                            else
+                            {
+                                query += " OR Film_Genres.Genre LIKE '%" + Genres[i].Trim() + "%'";
+                            }
                         }
                     }
-                }
-                else
-                {
-                    query += "1";
-                }
-                query += ") AND (";
-                if (Countries.Count > 0)
-                {
-                    for (int i = 0; i < Countries.Count; i++)
+                    else
                     {
-                        if (i == 0)
+                        query += "1";
+                    }
+                    query += ") AND (";
+                    if (Countries.Count > 0)
+                    {
+                        for (int i = 0; i < Countries.Count; i++)
                         {
-                            query += "Film_Countries.Country LIKE '%" + Countries[i].Trim() + "%'";
-                        }
-                        else
-                        {
-                            query += " OR Film_Countries.Country LIKE '%" + Countries[i].Trim() + "%'";
+                            if (i == 0)
+                            {
+                                query += "Film_Countries.Country LIKE '%" + Countries[i].Trim() + "%'";
+                            }
+                            else
+                            {
+                                query += " OR Film_Countries.Country LIKE '%" + Countries[i].Trim() + "%'";
+                            }
                         }
                     }
-                }
-                else
-                {
-                    query += "1";
-                }
-                query += ") AND (";
-                if (Actors.Count > 0)
-                {
-                    for (int i = 0; i < Actors.Count; i++)
+                    else
                     {
-                        if (i == 0)
+                        query += "1";
+                    }
+                    query += ") AND (";
+                    if (Actors.Count > 0)
+                    {
+                        for (int i = 0; i < Actors.Count; i++)
                         {
-                            query += "Film_Actors.Actor LIKE '%" + Actors[i].Trim() + "%'";
-                        }
-                        else
-                        {
-                            query += " OR Film_Actors.Actor LIKE '%" + Actors[i].Trim() + "%'";
+                            if (i == 0)
+                            {
+                                query += "Film_Actors.Actor LIKE '%" + Actors[i].Trim() + "%'";
+                            }
+                            else
+                            {
+                                query += " OR Film_Actors.Actor LIKE '%" + Actors[i].Trim() + "%'";
+                            }
                         }
                     }
+                    else
+                    {
+                        query += "1";
+                    }
+                    query += ")";
+                    if (!string.IsNullOrEmpty(Date))
+                    {
+                        query += " AND (Movies.Date = '" + Date + "')";
+                    }
+                    query += ") GROUP BY Movies.MovieID";
+
+                    command.CommandText = query;
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ids.Add(reader.GetInt32("MovieID"));
+
+                    }
+
+                    reader.Close();
+
+                    connection.Close();
+                    logger.Info("Получен список id фильмов, подходящих под нужные характеристики");
+                    return ids;
                 }
-                else
-                {
-                    query += "1";
-                }
-                query += ")";
-                if (!string.IsNullOrEmpty(Date))
-                {
-                    query += " AND (Movies.Date = '" + Date + "')";
-                }
-                query += ") GROUP BY Movies.MovieID";
-
-                command.CommandText = query;
-
-                MySqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    ids.Add(reader.GetInt32("MovieID"));
-
-                }
-
-                reader.Close();
-
-                connection.Close();
-                return ids;
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Не удается сделать фильтрацию фильмов: "+ex);
+                return null;
             }
         }
 
@@ -977,6 +1045,7 @@ namespace TeamProject2__ListOfRecommendations
         /// </summary>
         private List<Movie> GetRatedFiltredMovies()
         {
+           
             List<Movie> allMovies = AllMovies(Login);
             List<int> Ids = GetFilteredMoviesIds();
             List<Movie> movies = new List<Movie>();
@@ -992,6 +1061,7 @@ namespace TeamProject2__ListOfRecommendations
                 }
                 List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
                 List<Movie> resultlist = resultlist1.GetRange(0, 5);
+                logger.Info("Фильмы с конкретыми характеристиками отсортированы по общему рейтингу");
 
                 return resultlist;
             }
@@ -1006,12 +1076,14 @@ namespace TeamProject2__ListOfRecommendations
                     }
                 }
                 List<Movie> resultlist1 = movies.OrderBy(m => m.OverallRating).ToList();
+                logger.Info("Фильмы с конкретыми характеристиками отсортированы по общему рейтингу");
+
                 return resultlist1;
             }
 
             else
             {
-
+                logger.Info("Не найдены фильмы с введенными характеристиками");
                 return null;
             }
         }

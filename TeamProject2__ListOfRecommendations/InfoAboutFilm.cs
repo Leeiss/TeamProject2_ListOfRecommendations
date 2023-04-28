@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace TeamProject2__ListOfRecommendations
 {
     public partial class InfoAboutFilm : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public InfoAboutFilm(string Title, string Path, string Genres, string Actors, string Countries, string Date)
         {
             InitializeComponent();

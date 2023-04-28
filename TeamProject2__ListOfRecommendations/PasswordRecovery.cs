@@ -15,6 +15,7 @@ using TeamProject1_ToDoList.Classes;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Net.Configuration;
+using NLog;
 
 namespace TeamProject2__ListOfRecommendations
 {
@@ -29,6 +30,7 @@ namespace TeamProject2__ListOfRecommendations
         public string newPassword;
         public string email;
         public int userId;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
         private void PasswordRecovery_Load(object sender, EventArgs e)
         {

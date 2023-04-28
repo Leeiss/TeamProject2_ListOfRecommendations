@@ -1,10 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -33,17 +35,26 @@ namespace TeamProject2__ListOfRecommendations
         private List<string> Countries = new List<string>();
         private string Xmlpath = "@./../../../ForLists.xml";
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         private void AddFilm_Load(object sender, EventArgs e)
         {
             selected_date.MaxDate = DateTime.Now;
-            IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
-
-            foreach (string actor in actors)
+            try
             {
-                actors_list.Items.Add(actor);
+                IEnumerable<string> actors = doc.Element("for_lists").Element("actors").Elements("actor").Select(x => x.Value);
+
+                foreach (string actor in actors)
+                {
+                    actors_list.Items.Add(actor);
+                }
+                logger.Info("Список актеров добавлен в лист");
             }
-
-
+            catch (Exception ex) 
+            { 
+                logger.Error("Проблемы с xml-файлом: "+ex.ToString());
+            }
+            
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
             this.StartPosition = FormStartPosition.Manual;
@@ -134,14 +145,23 @@ namespace TeamProject2__ListOfRecommendations
 
         private void select_poster_btn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                ImageSelect = true;
-                selectedFile = fileDialog.FileName;
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ImageSelect = true;
+                    selectedFile = fileDialog.FileName;
+                }
+                YesNoShowBtn();
+                logger.Info("Добавлен фильм в базу данных");
             }
-            YesNoShowBtn();
+            catch (Exception ex)
+            {
+                logger.Error("Не удается добавить фильм: "+ex);
+            }
+           
         }
 
         private void add_genre_Click(object sender, EventArgs e)
@@ -239,58 +259,66 @@ namespace TeamProject2__ListOfRecommendations
 
         private void AddMovie()
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`, `Link`) VALUES(@Title, @Date, @PicturePath, @Link)";
-                using (MySqlCommand command = new MySqlCommand(insertFilmQuery, connection))
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    command.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
-                    command.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
-                    command.Parameters.Add("@PicturePath", MySqlDbType.VarChar).Value = selectedFile;
-                    command.Parameters.Add("@Link", MySqlDbType.VarChar).Value = link_tb.Text;
+                    connection.Open();
 
-                    command.ExecuteNonQuery();
-                    int filmId = Convert.ToInt32(command.LastInsertedId);
-
-                    string insertGenreQuery = "INSERT INTO film_genres (Genre, FilmId) VALUES (@Genre, @FilmId)";
-                    using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
+                    string insertFilmQuery = "INSERT INTO movies (`Title`, `Date` , `PicturePath`, `Link`) VALUES(@Title, @Date, @PicturePath, @Link)";
+                    using (MySqlCommand command = new MySqlCommand(insertFilmQuery, connection))
                     {
-                        foreach (string genre in Genres)
+                        command.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
+                        command.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
+                        command.Parameters.Add("@PicturePath", MySqlDbType.VarChar).Value = selectedFile;
+                        command.Parameters.Add("@Link", MySqlDbType.VarChar).Value = link_tb.Text;
+
+                        command.ExecuteNonQuery();
+                        int filmId = Convert.ToInt32(command.LastInsertedId);
+
+                        string insertGenreQuery = "INSERT INTO film_genres (Genre, FilmId) VALUES (@Genre, @FilmId)";
+                        using (MySqlCommand genreCommand = new MySqlCommand(insertGenreQuery, connection))
                         {
-                            genreCommand.Parameters.Clear();
-                            genreCommand.Parameters.AddWithValue("@FilmId", filmId);
-                            genreCommand.Parameters.AddWithValue("@Genre", genre);
-                            genreCommand.ExecuteNonQuery();
+                            foreach (string genre in Genres)
+                            {
+                                genreCommand.Parameters.Clear();
+                                genreCommand.Parameters.AddWithValue("@FilmId", filmId);
+                                genreCommand.Parameters.AddWithValue("@Genre", genre);
+                                genreCommand.ExecuteNonQuery();
+                            }
+                        }
+
+                        string insertActorQuery = "INSERT INTO film_actors (Actor, FilmId) VALUES (@Actor, @FilmId)";
+                        using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
+                        {
+                            foreach (string actor in Actors)
+                            {
+                                actorCommand.Parameters.Clear();
+                                actorCommand.Parameters.AddWithValue("@FilmId", filmId);
+                                actorCommand.Parameters.AddWithValue("@Actor", actor);
+                                actorCommand.ExecuteNonQuery();
+                            }
+                        }
+
+                        string insertCountryQuery = "INSERT INTO film_countries (Country, FilmId) VALUES (@Country, @FilmId)";
+                        using (MySqlCommand countryCommand = new MySqlCommand(insertCountryQuery, connection))
+                        {
+                            foreach (string country in Countries)
+                            {
+                                countryCommand.Parameters.Clear();
+                                countryCommand.Parameters.AddWithValue("@FilmId", filmId);
+                                countryCommand.Parameters.AddWithValue("@Country", country);
+                                countryCommand.ExecuteNonQuery();
+                            }
                         }
                     }
-
-                    string insertActorQuery = "INSERT INTO film_actors (Actor, FilmId) VALUES (@Actor, @FilmId)";
-                    using (MySqlCommand actorCommand = new MySqlCommand(insertActorQuery, connection))
-                    {
-                        foreach (string actor in Actors)
-                        {
-                            actorCommand.Parameters.Clear();
-                            actorCommand.Parameters.AddWithValue("@FilmId", filmId);
-                            actorCommand.Parameters.AddWithValue("@Actor", actor);
-                            actorCommand.ExecuteNonQuery();
-                        }
-                    }
-
-                    string insertCountryQuery = "INSERT INTO film_countries (Country, FilmId) VALUES (@Country, @FilmId)";
-                    using (MySqlCommand countryCommand = new MySqlCommand(insertCountryQuery, connection))
-                    {
-                        foreach (string country in Countries)
-                        {
-                            countryCommand.Parameters.Clear();
-                            countryCommand.Parameters.AddWithValue("@FilmId", filmId);
-                            countryCommand.Parameters.AddWithValue("@Country", country);
-                            countryCommand.ExecuteNonQuery();
-                        }
-                    }
+                    connection.Close();
+                    logger.Info("Фильм успешно добавлен");
                 }
-                connection.Close();
+            }
+            catch
+            {
+                logger.Error("Ошибка в добавлении фильма");
             }
         }
         private void add_actor_btn_MouseEnter(object sender, EventArgs e)
@@ -326,40 +354,48 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_actor_in_list_btn_Click(object sender, EventArgs e)
         {
-            XElement actors = doc.Element("for_lists").Element("actors");
-
-            string actorName = actor_tb.Text;
-
-            if (actor_tb.Text.Equals("") || actor_tb.Text.Equals("Введите имя и фамилию актера"))
+            try
             {
-                MessageBox.Show("Введите имя и фамилию актера");
-            }
-            else
-            {
-                if (actors.Descendants().Any(c => c.Value.Equals(actorName)))
+                XElement actors = doc.Element("for_lists").Element("actors");
+
+                string actorName = actor_tb.Text;
+
+                if (actor_tb.Text.Equals("") || actor_tb.Text.Equals("Введите имя и фамилию актера"))
                 {
-                    MessageBox.Show("Данный актер уже есть в списке");
+                    MessageBox.Show("Введите имя и фамилию актера");
                 }
                 else
                 {
-                    AddFilmInBD(actor_tb.Text);
-                    doc.Element("for_lists").Element("actors").Add(new XElement("actor", actor_tb.Text));
-                    doc.Save(Xmlpath);
-                    actors_list.Items.Add(actor_tb.Text);
+                    if (actors.Descendants().Any(c => c.Value.Equals(actorName)))
+                    {
+                        MessageBox.Show("Данный актер уже есть в списке");
+                    }
+                    else
+                    {
+                        AddFilmInBD(actor_tb.Text);
+                        doc.Element("for_lists").Element("actors").Add(new XElement("actor", actor_tb.Text));
+                        doc.Save(Xmlpath);
+                        actors_list.Items.Add(actor_tb.Text);
 
-                    closing_actors.Visible = false;
-                    cancel_btn2.Visible = false;
-                    add_actor_in_list_btn.Visible = false;
-                    actor_tb.Visible = false;
-                    MessageBox.Show("Введенные вами данные об актере добавлены в список актеров приложения");
-
-
+                        closing_actors.Visible = false;
+                        cancel_btn2.Visible = false;
+                        add_actor_in_list_btn.Visible = false;
+                        actor_tb.Visible = false;
+                        MessageBox.Show("Введенные вами данные об актере добавлены в список актеров приложения");
+                    }
                 }
+                logger.Info("Процесс добавления актеров прошел успешно");
+            }
+            catch
+            {
+                logger.Error("Проблемы с xml-файлом");
             }
         }
 
         private void AddFilmInBD(string actorName)
         {
+            try
+            {
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 conn.Open();
                 List<string> userLogins = new List<string>();
@@ -383,8 +419,13 @@ namespace TeamProject2__ListOfRecommendations
                     insertActorCommand.Parameters.AddWithValue("@RatingActor", 5);
                     insertActorCommand.Parameters.AddWithValue("@MarksCount", 0);
                     int rowsAffected = insertActorCommand.ExecuteNonQuery();
-             
+
                 }
+            }
+            catch
+            {
+                logger.Error("Не удается добавить фильм в базу данных");
+            }
         }
 
         private void link_tb_Click(object sender, EventArgs e)

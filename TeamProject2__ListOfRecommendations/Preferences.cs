@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +19,7 @@ namespace TeamProject2__ListOfRecommendations
     {
 
         private List<Label> labels;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         XDocument doc = XDocument.Load("@./../../../ForLists.xml");
         private List<string> Genres = new List<string>();
         private List<string> Actors = new List<string>();

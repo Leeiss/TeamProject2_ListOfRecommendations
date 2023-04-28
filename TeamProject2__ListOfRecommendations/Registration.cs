@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,7 @@ namespace TeamProject2__ListOfRecommendations
         List<string> actors = new List<string>();
         List<string> genres = new List<string>();
         private int AdminRight = 0;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private string connectionString = "server=localhost;port=3306;username=root;password=root;database=teamproject_listofrecommendations";
         private string username;
         private string password;
