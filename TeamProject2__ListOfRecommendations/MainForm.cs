@@ -518,18 +518,7 @@ namespace TeamProject2__ListOfRecommendations
         }
 
 
-        private void expand_pb_MouseEnter(object sender, EventArgs e)
-        {
-            frane_expand.Visible = true;
-        }
-
-
-        private void expand_pb_MouseLeave(object sender, EventArgs e)
-        {
-            frane_expand.Visible = false;
-        }
-
-
+       
         private void profile_pb_Click(object sender, EventArgs e)
         {
             ProfileMenagement profileMenagement = new ProfileMenagement(Login);
@@ -1521,34 +1510,6 @@ namespace TeamProject2__ListOfRecommendations
         private void collapse_pb_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void expand_pb_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            expand_pb.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            decrease_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            collapse_pb.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            api_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            collections_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            substrate_collection.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            frame_api.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            frame_collapse.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            frame_decrease.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            frane_expand.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-
-
-        }
-
-        private void decrease_btn_MouseEnter(object sender, EventArgs e)
-        {
-            frame_decrease.Visible = true;
-        }
-
-        private void decrease_btn_MouseLeave(object sender, EventArgs e)
-        {
-            frame_decrease.Visible = false;
-
         }
 
         private void decrease_btn_Click(object sender, EventArgs e)

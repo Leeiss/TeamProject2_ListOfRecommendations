@@ -35,17 +35,13 @@
             this.stats_lbl = new System.Windows.Forms.Label();
             this.upper_panel = new System.Windows.Forms.Panel();
             this.search_tb = new System.Windows.Forms.TextBox();
-            this.decrease_btn = new System.Windows.Forms.PictureBox();
-            this.frame_decrease = new System.Windows.Forms.PictureBox();
             this.frame_searching = new System.Windows.Forms.PictureBox();
             this.collections_btn = new System.Windows.Forms.PictureBox();
             this.api_btn = new System.Windows.Forms.PictureBox();
             this.frame_api = new System.Windows.Forms.PictureBox();
-            this.expand_pb = new System.Windows.Forms.PictureBox();
             this.collapse_pb = new System.Windows.Forms.PictureBox();
             this.profile_pb = new System.Windows.Forms.PictureBox();
             this.logo_pb = new System.Windows.Forms.PictureBox();
-            this.frane_expand = new System.Windows.Forms.PictureBox();
             this.frame_collapse = new System.Windows.Forms.PictureBox();
             this.frame_profile = new System.Windows.Forms.PictureBox();
             this.substrate_collection = new System.Windows.Forms.PictureBox();
@@ -148,17 +144,13 @@
             this.grayStar9 = new System.Windows.Forms.PictureBox();
             this.grayStar10 = new System.Windows.Forms.PictureBox();
             this.upper_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapse_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profile_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo_pb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).BeginInit();
@@ -245,17 +237,13 @@
             this.upper_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.upper_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upper_panel.Controls.Add(this.search_tb);
-            this.upper_panel.Controls.Add(this.decrease_btn);
-            this.upper_panel.Controls.Add(this.frame_decrease);
             this.upper_panel.Controls.Add(this.frame_searching);
             this.upper_panel.Controls.Add(this.collections_btn);
             this.upper_panel.Controls.Add(this.api_btn);
             this.upper_panel.Controls.Add(this.frame_api);
-            this.upper_panel.Controls.Add(this.expand_pb);
             this.upper_panel.Controls.Add(this.collapse_pb);
             this.upper_panel.Controls.Add(this.profile_pb);
             this.upper_panel.Controls.Add(this.logo_pb);
-            this.upper_panel.Controls.Add(this.frane_expand);
             this.upper_panel.Controls.Add(this.frame_collapse);
             this.upper_panel.Controls.Add(this.frame_profile);
             this.upper_panel.Controls.Add(this.substrate_collection);
@@ -282,31 +270,6 @@
             this.search_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_tb_KeyDown);
             this.search_tb.MouseEnter += new System.EventHandler(this.search_tb_MouseEnter);
             this.search_tb.MouseLeave += new System.EventHandler(this.search_tb_MouseLeave);
-            // 
-            // decrease_btn
-            // 
-            this.decrease_btn.Image = ((System.Drawing.Image)(resources.GetObject("decrease_btn.Image")));
-            this.decrease_btn.Location = new System.Drawing.Point(1934, 13);
-            this.decrease_btn.Name = "decrease_btn";
-            this.decrease_btn.Size = new System.Drawing.Size(47, 49);
-            this.decrease_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.decrease_btn.TabIndex = 27;
-            this.decrease_btn.TabStop = false;
-            this.hints.SetToolTip(this.decrease_btn, "Свернуть");
-            this.decrease_btn.Click += new System.EventHandler(this.decrease_btn_Click);
-            this.decrease_btn.MouseEnter += new System.EventHandler(this.decrease_btn_MouseEnter);
-            this.decrease_btn.MouseLeave += new System.EventHandler(this.decrease_btn_MouseLeave);
-            // 
-            // frame_decrease
-            // 
-            this.frame_decrease.Image = ((System.Drawing.Image)(resources.GetObject("frame_decrease.Image")));
-            this.frame_decrease.Location = new System.Drawing.Point(1923, 3);
-            this.frame_decrease.Name = "frame_decrease";
-            this.frame_decrease.Size = new System.Drawing.Size(67, 73);
-            this.frame_decrease.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frame_decrease.TabIndex = 28;
-            this.frame_decrease.TabStop = false;
-            this.frame_decrease.Visible = false;
             // 
             // frame_searching
             // 
@@ -360,24 +323,10 @@
             this.frame_api.TabStop = false;
             this.frame_api.Visible = false;
             // 
-            // expand_pb
-            // 
-            this.expand_pb.Image = ((System.Drawing.Image)(resources.GetObject("expand_pb.Image")));
-            this.expand_pb.Location = new System.Drawing.Point(2012, 14);
-            this.expand_pb.Name = "expand_pb";
-            this.expand_pb.Size = new System.Drawing.Size(48, 48);
-            this.expand_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.expand_pb.TabIndex = 2;
-            this.expand_pb.TabStop = false;
-            this.hints.SetToolTip(this.expand_pb, "На весь экран");
-            this.expand_pb.Click += new System.EventHandler(this.expand_pb_Click);
-            this.expand_pb.MouseEnter += new System.EventHandler(this.expand_pb_MouseEnter);
-            this.expand_pb.MouseLeave += new System.EventHandler(this.expand_pb_MouseLeave);
-            // 
             // collapse_pb
             // 
             this.collapse_pb.Image = ((System.Drawing.Image)(resources.GetObject("collapse_pb.Image")));
-            this.collapse_pb.Location = new System.Drawing.Point(1844, 9);
+            this.collapse_pb.Location = new System.Drawing.Point(2000, 7);
             this.collapse_pb.Name = "collapse_pb";
             this.collapse_pb.Size = new System.Drawing.Size(60, 60);
             this.collapse_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -413,21 +362,10 @@
             this.logo_pb.TabIndex = 0;
             this.logo_pb.TabStop = false;
             // 
-            // frane_expand
-            // 
-            this.frane_expand.Image = ((System.Drawing.Image)(resources.GetObject("frane_expand.Image")));
-            this.frane_expand.Location = new System.Drawing.Point(2003, 2);
-            this.frane_expand.Name = "frane_expand";
-            this.frane_expand.Size = new System.Drawing.Size(67, 73);
-            this.frane_expand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frane_expand.TabIndex = 22;
-            this.frane_expand.TabStop = false;
-            this.frane_expand.Visible = false;
-            // 
             // frame_collapse
             // 
             this.frame_collapse.Image = ((System.Drawing.Image)(resources.GetObject("frame_collapse.Image")));
-            this.frame_collapse.Location = new System.Drawing.Point(1842, 4);
+            this.frame_collapse.Location = new System.Drawing.Point(1998, 2);
             this.frame_collapse.Name = "frame_collapse";
             this.frame_collapse.Size = new System.Drawing.Size(67, 73);
             this.frame_collapse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1926,17 +1864,13 @@
             this.Click += new System.EventHandler(this.MainForm_Click);
             this.upper_panel.ResumeLayout(false);
             this.upper_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.decrease_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frame_decrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.api_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_api)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.expand_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapse_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profile_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo_pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frane_expand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_collapse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.frame_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.substrate_collection)).EndInit();
@@ -2010,12 +1944,10 @@
         private System.Windows.Forms.Label stats_lbl;
         private System.Windows.Forms.Panel upper_panel;
         private System.Windows.Forms.PictureBox logo_pb;
-        private System.Windows.Forms.PictureBox expand_pb;
         private System.Windows.Forms.PictureBox profile_pb;
         private System.Windows.Forms.PictureBox collapse_pb;
         private System.Windows.Forms.Panel just_panel;
         private System.Windows.Forms.PictureBox frame_profile;
-        private System.Windows.Forms.PictureBox frane_expand;
         private System.Windows.Forms.PictureBox frame_collapse;
         private System.Windows.Forms.ToolTip hints;
         private System.Windows.Forms.Panel panel3;
@@ -2115,8 +2047,6 @@
         public System.Windows.Forms.TextBox title_film_fromcollection;
         public System.Windows.Forms.PictureBox picture_poster_forcollection;
         public System.Windows.Forms.Panel collections_panel;
-        private System.Windows.Forms.PictureBox decrease_btn;
-        private System.Windows.Forms.PictureBox frame_decrease;
         public System.Windows.Forms.Button pass_filtration_btn;
         private System.Windows.Forms.TextBox search_tb;
         private System.Windows.Forms.PictureBox frame_searching;
