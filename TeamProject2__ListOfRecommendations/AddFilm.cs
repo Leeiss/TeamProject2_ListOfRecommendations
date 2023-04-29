@@ -205,7 +205,7 @@ namespace TeamProject2__ListOfRecommendations
             }
             else
             {
-                MessageBox.Show("Данный жанр уже был добавлен");
+                MessageBox.Show("Данный актер уже был добавлен");
             }
         }
 

@@ -44,6 +44,7 @@ namespace TeamProject2__ListOfRecommendations
         private List<Movie> TopRatedMovies = new List<Movie>(); //лист, в котором хранится 5 фильмов с самым высоким рейтингом на данный момент
         private List<Movie> TopRatedFilteredMovies = new List<Movie>(); //лист, в котором хранится 5 фильмов с самым высоким рейтингом с конкретными характеристиками
         List<int> Searching_movieIds = new List<int>();
+        List<int> Ids = new List<int>();
         private string datelbl;
         private string actorslbl;
         private string countrieslbl;
@@ -214,7 +215,15 @@ namespace TeamProject2__ListOfRecommendations
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("К сожалению, путь к постеру фильма устарел или неправильно добавлен, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
+                    DialogResult result = MessageBox.Show("К сожалению, путь к постеру фильма устарел или неправильно добавлен.Хотите сообщить службе поддержки об этой проблеме", "Отсутствие постера", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        string subject = $"Отсутствие постера у фильма {film_title_lbl.Text}";
+                        string email = "list_of_recomendations@mail.ru";
+                        string mailtoCommand = string.Format("mailto:{0}?subject={1}", email, subject);
+                        Process.Start(mailtoCommand);
+                    }
                     picture_poster.Image = Properties.Resources.безфото;
                     logger.Warn("У постера неправильный путь: " + ex.Message);
                 }
@@ -585,6 +594,18 @@ namespace TeamProject2__ListOfRecommendations
 
         private void change_btn_Click(object sender, EventArgs e)
         {
+            search_genre_btn.Text = "Поиск по списку..";
+            search_actor_tb.Text = "Поиск по списку..";
+            search_country_tb.Text = "Поиск по списку..";
+            star_btn.Visible = false;
+            actors_list.SelectedItem = null;
+            genres_list.SelectedItem = null;
+            countries_list.SelectedItem = null;
+            date1.Text = date1.MaxDate.ToString();
+            add_actor_btn.Visible = false;
+            add_country_btn.Visible = false;
+            add_genre_btn.Visible = false;
+            Ids.Clear();
             Actors.Clear();
             Genres.Clear();
             Date = null;
@@ -720,7 +741,15 @@ namespace TeamProject2__ListOfRecommendations
             }
             catch
             {
-                MessageBox.Show("К сожалению, ссылка на даннный фильм устарела или неправильно добавлена, вы можете сообщить нам об этой ошибке, написав на нашу почту list_of_recomendations@mail.ru");
+                DialogResult result = MessageBox.Show("К сожалению, ссылка на данный фильм устарела или неправильно добавлена.Хотите сообщить службе поддержки об этой проблеме", "Отсутствие ссылки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string subject = $"Отсутствие cсылки у фильма";
+                    string email = "list_of_recomendations@mail.ru";
+                    string mailtoCommand = string.Format("mailto:{0}?subject={1}", email, subject);
+                    Process.Start(mailtoCommand);
+                }
                 logger.Error("Ссылка на фильм недействительна");
             }
         }
@@ -780,7 +809,7 @@ namespace TeamProject2__ListOfRecommendations
             {
                 starBoxes[i].Image = Properties.Resources.grayStar;
             }
-
+            star_btn.Visible = false;
 
         }
 
@@ -871,6 +900,10 @@ namespace TeamProject2__ListOfRecommendations
 
         private void collections_btn_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
             collections_panel.Visible = true;
             panel_show_collectionfilm.Visible = false;
         }
@@ -899,17 +932,34 @@ namespace TeamProject2__ListOfRecommendations
 
         private void add_genre_btn_Click(object sender, EventArgs e)
         {
-            Genres.Add(genres_list.SelectedItem.ToString());
-            SelectGenre = true;
-            ShowBtn();
+            if (!Genres.Contains((genres_list.SelectedItem.ToString())))
+            {
+                Genres.Add(genres_list.SelectedItem.ToString());
+                SelectGenre = true;
+                ShowBtn();
+                MessageBox.Show("Жанр добавлен в характеристики фильмов");
+
+            }
+            else
+            {
+                MessageBox.Show("Данный жанр уже была добавлен в характеристики фильмов");
+            }
 
         }
 
         private void add_country_btn_Click(object sender, EventArgs e)
         {
-            Countries.Add(countries_list.SelectedItem.ToString());
-            SelectCountry = true;
-            ShowBtn();
+            if (!Countries.Contains((countries_list.SelectedItem.ToString())))
+            {
+                Countries.Add(countries_list.SelectedItem.ToString());
+                SelectCountry = true;
+                ShowBtn();
+                MessageBox.Show("Страна добавлена в характеристики фильмов");
+            }
+            else
+            { 
+                MessageBox.Show("Данная страна уже была добавлена в характеристики фильмов");
+            }
 
         }
 
@@ -917,15 +967,24 @@ namespace TeamProject2__ListOfRecommendations
         {
             SelectDate1 = true;
             Date = date1.Value.ToString("dd.MM.yyyy");
+            if (date1.Checked)
             ShowBtn();
 
         }
 
         private void add_actor_btn_Click(object sender, EventArgs e)
         {
-            Actors.Add(actors_list.SelectedItem.ToString());
-            SelectActor = true;
-            ShowBtn();
+            if (!Actors.Contains(actors_list.SelectedItem.ToString()))
+            {
+                Actors.Add(actors_list.SelectedItem.ToString());
+                SelectActor = true;
+                ShowBtn();
+                MessageBox.Show("Актер добавлен в характеристики фильмов");
+            }
+            else
+            {
+                MessageBox.Show("Данный актер уже был добавлен в характеристики фильмов");
+            }
 
         }
 
@@ -933,7 +992,6 @@ namespace TeamProject2__ListOfRecommendations
         {
             try
             {
-                List<int> ids = new List<int>();
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
@@ -1016,15 +1074,15 @@ namespace TeamProject2__ListOfRecommendations
 
                     while (reader.Read())
                     {
-                        ids.Add(reader.GetInt32("MovieID"));
+                        Ids.Add(reader.GetInt32("MovieID"));
 
                     }
 
                     reader.Close();
 
                     connection.Close();
-                    logger.Info("Получен список id фильмов, подходящих под нужные характеристики");
-                    return ids;
+                    logger.Info("Получен список id фильмов, подходящих под нужные характеристики. Количество найденных - "+Ids.Count());
+                    return Ids;
                 }
             }
             catch (Exception ex)
@@ -1042,7 +1100,6 @@ namespace TeamProject2__ListOfRecommendations
         {
            
             List<Movie> allMovies = AllMovies(Login);
-            List<int> Ids = GetFilteredMoviesIds();
             List<Movie> movies = new List<Movie>();
             if (Ids.Count > 0 && Ids.Count >= 5)
             {
@@ -1085,11 +1142,16 @@ namespace TeamProject2__ListOfRecommendations
 
         private void save_btn_Click(object sender, EventArgs e)
         {
-
+            Ids = GetFilteredMoviesIds();
             pass__individual__btn.Visible = false;
             pass_filtration_btn.Visible = true;
             pass_collection_btn.Visible = false;
             closing_panel.Visible = false;
+
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
 
             genre_info.Text = string.Join(",", Genres);
             actors_info.Text = string.Join(",", Actors);
@@ -1120,11 +1182,8 @@ namespace TeamProject2__ListOfRecommendations
             {
                 reset_stats_btn.Visible = true;
             }
-            actors_list.ClearSelected();
-            genres_list.ClearSelected();
-            countries_list.ClearSelected();
-            date1.Text = null;
-            date1.Text = date1.MaxDate.ToString();
+            
+            
 
         }
 
@@ -1354,10 +1413,27 @@ namespace TeamProject2__ListOfRecommendations
                 }
             }
             ShowInfoInLblForCollection();
+            star_btn.Visible = false;
         }
 
         private void reset_stats_btn_Click(object sender, EventArgs e)
         {
+            search_genre_btn.Text = "Поиск по списку..";
+            search_actor_tb.Text = "Поиск по списку..";
+            search_country_tb.Text = "Поиск по списку..";
+            actors_list.SelectedItem = null;
+            genres_list.SelectedItem = null;
+            countries_list.SelectedItem = null;
+            star_btn.Visible=false;
+            add_actor_btn.Visible = false;
+            date1.Text = date1.MaxDate.ToString();
+            add_country_btn.Visible = false;
+            add_genre_btn.Visible = false;
+            for (int i = 0; i <= 9; i++)
+            {
+                starBoxes[i].Image = Properties.Resources.grayStar;
+            }
+            Ids.Clear();
             dateinterval_info.Text = "";
             genre_info.Text = "";
             actors_info.Text = "";
@@ -1503,6 +1579,7 @@ namespace TeamProject2__ListOfRecommendations
                 TopRatedFilteredMovies = GetRatedFiltredMovies();
             }
             ShowRecomendedMovie(TopRatedFilteredMovies[0]);
+            star_btn.Visible = false;
         }
 
 

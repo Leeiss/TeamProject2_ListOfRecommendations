@@ -56,18 +56,19 @@
             this.info_country.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info_country.Font = new System.Drawing.Font("XO Courser", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.info_country.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_country.Location = new System.Drawing.Point(976, 634);
+            this.info_country.Location = new System.Drawing.Point(954, 713);
             this.info_country.Name = "info_country";
             this.info_country.ReadOnly = true;
             this.info_country.Size = new System.Drawing.Size(337, 102);
             this.info_country.TabIndex = 99;
+            this.info_country.TabStop = false;
             this.info_country.Text = "";
             // 
             // substrate5
             // 
             this.substrate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate5.Controls.Add(this.country_lbl);
-            this.substrate5.Location = new System.Drawing.Point(778, 640);
+            this.substrate5.Location = new System.Drawing.Point(756, 719);
             this.substrate5.Name = "substrate5";
             this.substrate5.Size = new System.Drawing.Size(190, 96);
             this.substrate5.TabIndex = 98;
@@ -88,11 +89,12 @@
             this.info_year.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info_year.Font = new System.Drawing.Font("XO Courser", 11F);
             this.info_year.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_year.Location = new System.Drawing.Point(975, 507);
+            this.info_year.Location = new System.Drawing.Point(953, 586);
             this.info_year.Name = "info_year";
             this.info_year.ReadOnly = true;
             this.info_year.Size = new System.Drawing.Size(337, 96);
             this.info_year.TabIndex = 95;
+            this.info_year.TabStop = false;
             this.info_year.Text = "";
             // 
             // info_actors
@@ -101,11 +103,12 @@
             this.info_actors.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info_actors.Font = new System.Drawing.Font("XO Courser", 11F);
             this.info_actors.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_actors.Location = new System.Drawing.Point(975, 366);
+            this.info_actors.Location = new System.Drawing.Point(953, 445);
             this.info_actors.Name = "info_actors";
             this.info_actors.ReadOnly = true;
             this.info_actors.Size = new System.Drawing.Size(337, 102);
             this.info_actors.TabIndex = 94;
+            this.info_actors.TabStop = false;
             this.info_actors.Text = "";
             // 
             // info_genre
@@ -114,18 +117,19 @@
             this.info_genre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info_genre.Font = new System.Drawing.Font("XO Courser", 11F);
             this.info_genre.ForeColor = System.Drawing.Color.DarkGray;
-            this.info_genre.Location = new System.Drawing.Point(975, 243);
+            this.info_genre.Location = new System.Drawing.Point(953, 322);
             this.info_genre.Name = "info_genre";
             this.info_genre.ReadOnly = true;
             this.info_genre.Size = new System.Drawing.Size(337, 102);
             this.info_genre.TabIndex = 93;
+            this.info_genre.TabStop = false;
             this.info_genre.Text = "";
             // 
             // substrate2
             // 
             this.substrate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate2.Controls.Add(this.actors_lbl);
-            this.substrate2.Location = new System.Drawing.Point(778, 366);
+            this.substrate2.Location = new System.Drawing.Point(756, 445);
             this.substrate2.Name = "substrate2";
             this.substrate2.Size = new System.Drawing.Size(190, 102);
             this.substrate2.TabIndex = 92;
@@ -144,7 +148,7 @@
             // 
             this.substrate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate1.Controls.Add(this.genre_lbl);
-            this.substrate1.Location = new System.Drawing.Point(778, 243);
+            this.substrate1.Location = new System.Drawing.Point(756, 322);
             this.substrate1.Name = "substrate1";
             this.substrate1.Size = new System.Drawing.Size(190, 102);
             this.substrate1.TabIndex = 91;
@@ -163,7 +167,7 @@
             // 
             this.substrate3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.substrate3.Controls.Add(this.year_lbl);
-            this.substrate3.Location = new System.Drawing.Point(777, 507);
+            this.substrate3.Location = new System.Drawing.Point(755, 586);
             this.substrate3.Name = "substrate3";
             this.substrate3.Size = new System.Drawing.Size(190, 102);
             this.substrate3.TabIndex = 89;
@@ -180,9 +184,9 @@
             // 
             // image_poster
             // 
-            this.image_poster.Location = new System.Drawing.Point(49, 92);
+            this.image_poster.Location = new System.Drawing.Point(49, 51);
             this.image_poster.Name = "image_poster";
-            this.image_poster.Size = new System.Drawing.Size(656, 767);
+            this.image_poster.Size = new System.Drawing.Size(656, 782);
             this.image_poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.image_poster.TabIndex = 97;
             this.image_poster.TabStop = false;
@@ -193,11 +197,11 @@
             this.info_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info_title.Font = new System.Drawing.Font("Stencil", 16F, System.Drawing.FontStyle.Bold);
             this.info_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.info_title.Location = new System.Drawing.Point(765, 92);
+            this.info_title.Location = new System.Drawing.Point(747, 92);
             this.info_title.Multiline = true;
             this.info_title.Name = "info_title";
             this.info_title.ReadOnly = true;
-            this.info_title.Size = new System.Drawing.Size(547, 114);
+            this.info_title.Size = new System.Drawing.Size(630, 237);
             this.info_title.TabIndex = 100;
             this.info_title.TabStop = false;
             // 
