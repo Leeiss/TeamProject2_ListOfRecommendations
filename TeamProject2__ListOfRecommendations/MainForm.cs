@@ -490,6 +490,7 @@ namespace TeamProject2__ListOfRecommendations
             formWidth = just_panel.Location.X + just_panel.Width + buttonOffset; // Вычисляем желаемую ширину формы
             formHeight = just_panel.Location.Y + just_panel.Height + buttonOffset; // Вычисляем желаемую высоту формы
             this.ClientSize = new Size(formWidth, formHeight); // Устанавливаем размер формы
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
 
         }
