@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamProject2__ListOfRecommendations", "TeamProject2__ListOfRecommendations\TeamProject2__ListOfRecommendations.csproj", "{9E38FF32-C9C6-4C6F-A3FC-10CA81C5576A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOfRecommendation.Tests", "ListOfRecommendation.Tests\ListOfRecommendation.Tests.csproj", "{B6494172-DF8F-4D96-9144-3B73CF7B64D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9E38FF32-C9C6-4C6F-A3FC-10CA81C5576A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E38FF32-C9C6-4C6F-A3FC-10CA81C5576A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E38FF32-C9C6-4C6F-A3FC-10CA81C5576A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6494172-DF8F-4D96-9144-3B73CF7B64D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6494172-DF8F-4D96-9144-3B73CF7B64D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6494172-DF8F-4D96-9144-3B73CF7B64D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6494172-DF8F-4D96-9144-3B73CF7B64D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
