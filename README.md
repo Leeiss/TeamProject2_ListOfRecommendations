@@ -1,7 +1,7 @@
 # Приложение "Список рекомендаций фильмов"
 :ballot_box_with_check: [Техническое задание]()  :ballot_box_with_check: [Презентация]()  :ballot_box_with_check: [Баг-репорт]()  
   
-Финальная версия проекта [здесь]()
+Финальная версия проекта [здесь](https://github.com/Leeiss/TeamProject2_ListOfRecommendations)
 
 Участники проекта  
 Аналитик: [Azat](https://github.com/Baby1ner)   
