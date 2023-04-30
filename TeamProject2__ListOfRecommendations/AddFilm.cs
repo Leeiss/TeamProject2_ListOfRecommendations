@@ -222,33 +222,31 @@ namespace TeamProject2__ListOfRecommendations
             {
                 DataBase db = new DataBase();
                 db.OpenConnection();
-                MySqlCommand command1 = new MySqlCommand("SELECT * FROM movies WHERE Title = @Title ", db.GetConnection());
+
+                // Проверяем, есть ли в базе фильм с таким же названием 
+                MySqlCommand command1 = new MySqlCommand("SELECT * FROM movies WHERE Title = @Title", db.GetConnection());
                 command1.Parameters.Add("@Title", MySqlDbType.VarChar).Value = title_tb.Text;
+                int titleCount = Convert.ToInt32(command1.ExecuteScalar());
 
-                MySqlCommand command2 = new MySqlCommand("SELECT * FROM movies WHERE Date = @Date ", db.GetConnection());
+                // Проверяем, есть ли в базе фильм с такой же датой выхода 
+                MySqlCommand command2 = new MySqlCommand("SELECT * FROM movies WHERE Date = @Date", db.GetConnection());
                 command2.Parameters.Add("@Date", MySqlDbType.VarChar).Value = chosenDate;
+                int dateCount = Convert.ToInt32(command2.ExecuteScalar());
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-                adapter.SelectCommand = command1;
-                DataTable table1 = new DataTable();
-                adapter.Fill(table1);
-
-                adapter.SelectCommand = command2;
-                DataTable table2 = new DataTable();
-                adapter.Fill(table2);
-
-                if (table1.Rows.Count == 0 && table2.Rows.Count == 0)
+                if (titleCount > 0 && dateCount > 0)
                 {
+                    // Если уже есть фильм с таким названием и датой выхода, выводим сообщение 
+                    MessageBox.Show("Данный фильм уже добавлен в приложение");
+                }
+                else
+                {
+                    // Если фильм уникален по названию и дате выхода, добавляем его в базу 
                     AddMovie();
                     MessageBox.Show("Фильм успешно добавлен");
                     this.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Данный фильм уже добавлен в приложение");
-                    this.Close();
-                }
+
+                db.CloseConnection();
             }
             else
             {

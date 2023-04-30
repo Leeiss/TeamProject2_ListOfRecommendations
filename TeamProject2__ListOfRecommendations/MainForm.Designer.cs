@@ -1226,7 +1226,7 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 85);
+            this.collections_panel.Location = new System.Drawing.Point(2, 89);
             this.collections_panel.Name = "collections_panel";
             this.collections_panel.Size = new System.Drawing.Size(2119, 1256);
             this.collections_panel.TabIndex = 116;
@@ -1425,7 +1425,7 @@
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel10);
-            this.panel_show_collectionfilm.Location = new System.Drawing.Point(5, 84);
+            this.panel_show_collectionfilm.Location = new System.Drawing.Point(17, 85);
             this.panel_show_collectionfilm.Name = "panel_show_collectionfilm";
             this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1244);
             this.panel_show_collectionfilm.TabIndex = 118;
@@ -1815,7 +1815,6 @@
             this.Controls.Add(this.panel_show_collectionfilm);
             this.Controls.Add(this.closing_panel);
             this.Controls.Add(this.collections_panel);
-            this.Controls.Add(this.star_btn);
             this.Controls.Add(this.film_title_lbl);
             this.Controls.Add(this.select_mark_lbl);
             this.Controls.Add(this.add_to_favorites_btn);
@@ -1856,6 +1855,7 @@
             this.Controls.Add(this.pass_collection_btn);
             this.Controls.Add(this.reset_stats_btn);
             this.Controls.Add(this.search_results_lb);
+            this.Controls.Add(this.star_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";
             this.Text = "Список рекомендаций";
