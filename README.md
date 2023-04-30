@@ -1,5 +1,5 @@
 # Приложение "Список рекомендаций фильмов"
-:ballot_box_with_check: [Техническое задание]()  :ballot_box_with_check: [Презентация]()  :ballot_box_with_check: [Баг-репорт]()  
+:ballot_box_with_check: [Техническое задание]()  :ballot_box_with_check: [Презентация]()  :ballot_box_with_check: [Баг-репорт](https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/master/%D0%91%D0%B0%D0%B3%20%D0%A0%D0%B5%D0%BF%D0%BE%D1%80%D1%82%2030.04.2023.docx)  
   
 Финальная версия проекта [здесь](https://github.com/Leeiss/TeamProject2_ListOfRecommendations)
 
