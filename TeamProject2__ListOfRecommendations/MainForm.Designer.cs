@@ -143,6 +143,7 @@
             this.grayStar8 = new System.Windows.Forms.PictureBox();
             this.grayStar9 = new System.Windows.Forms.PictureBox();
             this.grayStar10 = new System.Windows.Forms.PictureBox();
+            this.show_all_btn = new System.Windows.Forms.CheckBox();
             this.upper_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frame_searching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collections_btn)).BeginInit();
@@ -716,6 +717,7 @@
             // 
             // closing_panel
             // 
+            this.closing_panel.Controls.Add(this.show_all_btn);
             this.closing_panel.Controls.Add(this.cancel_btn);
             this.closing_panel.Controls.Add(this.save_btn);
             this.closing_panel.Controls.Add(this.add_actor_btn);
@@ -732,7 +734,7 @@
             this.closing_panel.Controls.Add(this.panel6);
             this.closing_panel.Controls.Add(this.genres_list);
             this.closing_panel.Controls.Add(this.search_genre_btn);
-            this.closing_panel.Location = new System.Drawing.Point(1521, 192);
+            this.closing_panel.Location = new System.Drawing.Point(1527, 192);
             this.closing_panel.Name = "closing_panel";
             this.closing_panel.Size = new System.Drawing.Size(556, 1132);
             this.closing_panel.TabIndex = 112;
@@ -743,7 +745,7 @@
             this.cancel_btn.BackColor = System.Drawing.Color.Gray;
             this.cancel_btn.Font = new System.Drawing.Font("XO Courser", 8F);
             this.cancel_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(242)))));
-            this.cancel_btn.Location = new System.Drawing.Point(387, 14);
+            this.cancel_btn.Location = new System.Drawing.Point(397, 1069);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(157, 42);
             this.cancel_btn.TabIndex = 130;
@@ -783,7 +785,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.date_lbl1);
-            this.panel7.Location = new System.Drawing.Point(10, 49);
+            this.panel7.Location = new System.Drawing.Point(10, 87);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(188, 102);
             this.panel7.TabIndex = 115;
@@ -862,7 +864,7 @@
             // 
             this.date1.CalendarMonthBackground = System.Drawing.Color.Silver;
             this.date1.Font = new System.Drawing.Font("XO Courser", 9F);
-            this.date1.Location = new System.Drawing.Point(293, 94);
+            this.date1.Location = new System.Drawing.Point(293, 132);
             this.date1.Name = "date1";
             this.date1.Size = new System.Drawing.Size(260, 35);
             this.date1.TabIndex = 116;
@@ -1226,9 +1228,9 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 85);
+            this.collections_panel.Location = new System.Drawing.Point(2, 84);
             this.collections_panel.Name = "collections_panel";
-            this.collections_panel.Size = new System.Drawing.Size(2119, 1260);
+            this.collections_panel.Size = new System.Drawing.Size(2119, 1261);
             this.collections_panel.TabIndex = 116;
             this.collections_panel.Visible = false;
             // 
@@ -1425,9 +1427,9 @@
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel10);
-            this.panel_show_collectionfilm.Location = new System.Drawing.Point(17, 85);
+            this.panel_show_collectionfilm.Location = new System.Drawing.Point(17, 89);
             this.panel_show_collectionfilm.Name = "panel_show_collectionfilm";
-            this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1244);
+            this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1240);
             this.panel_show_collectionfilm.TabIndex = 118;
             this.panel_show_collectionfilm.TabStop = true;
             this.panel_show_collectionfilm.Visible = false;
@@ -1806,6 +1808,18 @@
             this.grayStar10.TabStop = false;
             this.grayStar10.Click += new System.EventHandler(this.grayStar10_Click);
             // 
+            // show_all_btn
+            // 
+            this.show_all_btn.AutoSize = true;
+            this.show_all_btn.Font = new System.Drawing.Font("XO Courser", 9F);
+            this.show_all_btn.ForeColor = System.Drawing.Color.Silver;
+            this.show_all_btn.Location = new System.Drawing.Point(26, 8);
+            this.show_all_btn.Name = "show_all_btn";
+            this.show_all_btn.Size = new System.Drawing.Size(506, 58);
+            this.show_all_btn.TabIndex = 129;
+            this.show_all_btn.Text = "Показать список всех фильмов вне \r\nзависомости от моих предпочтений";
+            this.show_all_btn.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -2052,5 +2066,6 @@
         private System.Windows.Forms.PictureBox frame_searching;
         private System.Windows.Forms.ListBox search_results_lb;
         public System.Windows.Forms.Button close_showing_collection_film_btn;
+        private System.Windows.Forms.CheckBox show_all_btn;
     }
 }

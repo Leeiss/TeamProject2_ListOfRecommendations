@@ -584,6 +584,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void change_btn_Click(object sender, EventArgs e)
         {
+            show_all_btn.Checked = false;
             search_genre_btn.Text = "Поиск по списку..";
             search_actor_tb.Text = "Поиск по списку..";
             search_country_tb.Text = "Поиск по списку..";
@@ -1130,6 +1131,31 @@ namespace TeamProject2__ListOfRecommendations
             }
         }
 
+
+        private List<Movie> GetAllFiltredMovies()
+        {
+            List<Movie> allMovies = AllMovies(Login);
+            List<Movie> movies = new List<Movie>();
+            if (Ids.Count > 0)
+            {
+                foreach (int id in Ids)
+                {
+                    foreach (Movie movie in allMovies)
+                    {
+                        if (movie.MovieID == id)
+                            movies.Add(movie);
+                    }
+                }
+                logger.Info("Фильмы с конкретными характеристиками");
+                return movies;
+            }
+            else
+            {
+                logger.Info("Не найдены фильмы с введенными характеристиками");
+                return new List<Movie>();
+            }
+        }
+
         private void save_btn_Click(object sender, EventArgs e)
         {
             Ids = GetFilteredMoviesIds();
@@ -1150,7 +1176,15 @@ namespace TeamProject2__ListOfRecommendations
 
             if (TopRatedFilteredMovies != null)
                 TopRatedFilteredMovies.Clear();
-            TopRatedFilteredMovies = GetRatedFiltredMovies();
+            if (show_all_btn.Checked)
+            {
+                TopRatedFilteredMovies = GetAllFiltredMovies();
+            }
+            else if (!show_all_btn.Checked)
+            {
+                TopRatedFilteredMovies = GetRatedFiltredMovies();
+            }
+                
             if (TopRatedFilteredMovies == null)
             {
                 MessageBox.Show("К сожалению, не нашлось фильмов с такими характеристиками");
@@ -1408,6 +1442,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void reset_stats_btn_Click(object sender, EventArgs e)
         {
+            show_all_btn.Checked = false;
             search_genre_btn.Text = "Поиск по списку..";
             search_actor_tb.Text = "Поиск по списку..";
             search_country_tb.Text = "Поиск по списку..";
