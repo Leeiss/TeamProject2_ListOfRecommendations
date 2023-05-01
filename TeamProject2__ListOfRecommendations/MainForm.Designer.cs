@@ -1226,9 +1226,9 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 89);
+            this.collections_panel.Location = new System.Drawing.Point(2, 85);
             this.collections_panel.Name = "collections_panel";
-            this.collections_panel.Size = new System.Drawing.Size(2119, 1256);
+            this.collections_panel.Size = new System.Drawing.Size(2119, 1260);
             this.collections_panel.TabIndex = 116;
             this.collections_panel.Visible = false;
             // 
@@ -1647,7 +1647,7 @@
             this.search_results_lb.ForeColor = System.Drawing.SystemColors.MenuBar;
             this.search_results_lb.FormattingEnabled = true;
             this.search_results_lb.ItemHeight = 30;
-            this.search_results_lb.Location = new System.Drawing.Point(1032, 66);
+            this.search_results_lb.Location = new System.Drawing.Point(1030, 62);
             this.search_results_lb.Name = "search_results_lb";
             this.search_results_lb.Size = new System.Drawing.Size(430, 92);
             this.search_results_lb.TabIndex = 128;
@@ -1812,6 +1812,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(2098, 1336);
+            this.Controls.Add(this.search_results_lb);
             this.Controls.Add(this.panel_show_collectionfilm);
             this.Controls.Add(this.closing_panel);
             this.Controls.Add(this.collections_panel);
@@ -1854,7 +1855,6 @@
             this.Controls.Add(this.pass__individual__btn);
             this.Controls.Add(this.pass_collection_btn);
             this.Controls.Add(this.reset_stats_btn);
-            this.Controls.Add(this.search_results_lb);
             this.Controls.Add(this.star_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";

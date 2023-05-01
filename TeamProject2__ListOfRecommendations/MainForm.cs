@@ -1607,6 +1607,7 @@ namespace TeamProject2__ListOfRecommendations
 
         private void search_tb_KeyDown(object sender, KeyEventArgs e)
         {
+            Searching_movieIds.Clear();
             try
             {
                 if (e.KeyCode == Keys.Enter)
@@ -1691,7 +1692,7 @@ namespace TeamProject2__ListOfRecommendations
         }
             
         private void search_results_lb_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        { 
             try
             {
                 close_showing_collection_film_btn.Visible = false;
