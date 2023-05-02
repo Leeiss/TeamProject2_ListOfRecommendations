@@ -43,6 +43,7 @@
             this.year_lbl = new System.Windows.Forms.Label();
             this.image_poster = new System.Windows.Forms.PictureBox();
             this.info_title = new System.Windows.Forms.TextBox();
+            this.administration_btn = new System.Windows.Forms.Label();
             this.substrate5.SuspendLayout();
             this.substrate2.SuspendLayout();
             this.substrate1.SuspendLayout();
@@ -205,12 +206,27 @@
             this.info_title.TabIndex = 100;
             this.info_title.TabStop = false;
             // 
+            // administration_btn
+            // 
+            this.administration_btn.AutoSize = true;
+            this.administration_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.administration_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(162)))), ((int)(((byte)(167)))));
+            this.administration_btn.Location = new System.Drawing.Point(782, 831);
+            this.administration_btn.Name = "administration_btn";
+            this.administration_btn.Size = new System.Drawing.Size(492, 29);
+            this.administration_btn.TabIndex = 101;
+            this.administration_btn.Text = "Почему мне рекомендуется этот фильм?";
+            this.administration_btn.Click += new System.EventHandler(this.administration_btn_Click);
+            this.administration_btn.MouseEnter += new System.EventHandler(this.administration_btn_MouseEnter);
+            this.administration_btn.MouseLeave += new System.EventHandler(this.administration_btn_MouseLeave);
+            // 
             // InfoAboutFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(90)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(1374, 914);
+            this.Controls.Add(this.administration_btn);
             this.Controls.Add(this.info_title);
             this.Controls.Add(this.info_country);
             this.Controls.Add(this.substrate5);
@@ -256,5 +272,6 @@
         private System.Windows.Forms.Panel substrate3;
         private System.Windows.Forms.Label year_lbl;
         private System.Windows.Forms.TextBox info_title;
+        private System.Windows.Forms.Label administration_btn;
     }
 }
