@@ -1240,9 +1240,9 @@
             this.collections_panel.Controls.Add(this.substrate4);
             this.collections_panel.Controls.Add(this.substrate5);
             this.collections_panel.Controls.Add(this.substrate6);
-            this.collections_panel.Location = new System.Drawing.Point(2, 1268);
+            this.collections_panel.Location = new System.Drawing.Point(2, 89);
             this.collections_panel.Name = "collections_panel";
-            this.collections_panel.Size = new System.Drawing.Size(2119, 77);
+            this.collections_panel.Size = new System.Drawing.Size(2119, 1256);
             this.collections_panel.TabIndex = 116;
             this.collections_panel.Visible = false;
             // 
@@ -1439,9 +1439,9 @@
             this.panel_show_collectionfilm.Controls.Add(this.panel11);
             this.panel_show_collectionfilm.Controls.Add(this.genres_collectionfilm);
             this.panel_show_collectionfilm.Controls.Add(this.panel10);
-            this.panel_show_collectionfilm.Location = new System.Drawing.Point(17, 1280);
+            this.panel_show_collectionfilm.Location = new System.Drawing.Point(17, 86);
             this.panel_show_collectionfilm.Name = "panel_show_collectionfilm";
-            this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 49);
+            this.panel_show_collectionfilm.Size = new System.Drawing.Size(2101, 1243);
             this.panel_show_collectionfilm.TabIndex = 118;
             this.panel_show_collectionfilm.TabStop = true;
             this.panel_show_collectionfilm.Visible = false;
