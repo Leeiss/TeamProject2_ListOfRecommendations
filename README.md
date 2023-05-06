@@ -113,7 +113,12 @@ __________
 + Поиск фильмов с использованием данных веб-службы OMDb API
  
 <img src="https://github.com/Leeiss/TeamProject2_ListOfRecommendations/blob/develop/TeamProject2__ListOfRecommendations/Resources/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D0%BF%D0%BE%20api.png" alt="Основное окно" width="1100"/>  
-
+       
+#### Итоги:  
+Оценка за групповую деятельность: :five:/:five:  + :two: (доп.задание)    
+Оценка за индивидуальную деятельность аналитика: :five:/:five:  
+Оценка за индивидуальную деятельность разработчика: :five:/:five:  
+Оценка за индивидуальную деятельность тестировщика: :five:/:five: 
 
 
 
